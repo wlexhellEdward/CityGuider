@@ -101,6 +101,7 @@ export default function SideBar({ currentStatus }: SideBarProps) {
     display: 'flex',
     columnGap: '20px',
   }))
+  
 
 
 
