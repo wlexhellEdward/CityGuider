@@ -1,20 +1,20 @@
 import SideBar from './components/Drawer/SideBar'
 import Aside from './components/Aside/Aside'
 import Container from '@mui/material/Container'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useJsApiLoader, Libraries } from "@react-google-maps/api";
 import Box from '@mui/material/Box'
 import AppStyle from './AppStyle'
 import arrowDisableDrawer from './assets/img/arrowDisableDrawer.svg'
 import Map from './components/Map/Map'
-
-
+import { getBrowserLocation } from './utils/geo';
 
 const libraries: Libraries = ['places']
 
 
 function App() {
-  const [currentStatus, setCurrentStatus] = React.useState('close');
+  const [currentStatus, setCurrentStatus] = useState('close');
+  const [center, setCenter] = React.useState({ lat: 51.5085300, lng: -0.1257400 })
   const useAppStyle = AppStyle();
   const handleDrawerSwitch = (name: string) => {
     setCurrentStatus(name);
@@ -26,10 +26,13 @@ function App() {
     libraries: libraries,
   });
 
-  const center = {
-    lat: 55.21233213303506,
-    lng: 30.229970924112642
-  };
+  useEffect(() => {
+    getBrowserLocation().then((currentLocation) => {
+      setCenter(currentLocation)
+    }).catch((defaultLocation) => {
+      setCenter(defaultLocation)
+    })
+  }, [])
 
   return (
     <>
@@ -47,7 +50,7 @@ function App() {
               </Container>
             </Box></>
         }
-        <Map isLoaded={isLoaded} center={center} />
+        <Map isLoaded={isLoaded} currentPostion={center} />
       </Box>
     </>
   )
