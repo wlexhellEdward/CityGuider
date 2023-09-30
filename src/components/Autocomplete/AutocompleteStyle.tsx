@@ -2,7 +2,7 @@ import { makeStyles } from 'tss-react/mui';
 
 const greyColor = '#7D908C'
 
-const SearchStyle = makeStyles()((theme) => {
+const AutocompleteStyle = makeStyles()((theme) => {
     const space = theme.spacing(2.5);
     return {
         containerInput: {
@@ -29,8 +29,14 @@ const SearchStyle = makeStyles()((theme) => {
             '&:after': {
                 content: 'none'
             }
+        },
+        suggestions:{
+            backgroundColor:'red',
+            width:350,
+            height:200,
+            zIndex:9999
         }
     };
 });
 
-export default SearchStyle
+export default AutocompleteStyle

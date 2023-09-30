@@ -1,40 +1,43 @@
-import { useState } from 'react';
+import { useState, useCallback, SetStateAction, useRef } from 'react';
 import Box from "@mui/material/Box";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { GoogleMap,  } from "@react-google-maps/api";
 import MapStyle from './MapStyle';
-import ThemeMap from './ThemeMap';
+import { DefaultOptions } from '../../utils/consts';
 
-const defaultOptions = {
-    panControl: true,
-    zoomControl: true,
-    mapTypeControl: false,
-    scaleControl: false,
-    streetViewControl: false,
-    rotateControl: false,
-    clickableIcons: false,
-    keyboardShortcuts: false,
-    styles: ThemeMap()
+
+interface MapProps {
+    center: {
+        lat: number,
+        lng: number
+    }
+    isLoaded:boolean
 }
 
+const API_KEY = process.env.REACT_APP_API_KEY // ?
 
-const Map = () => {
+const Map = ({ center,isLoaded }: MapProps) => {
     const useMapStyle = MapStyle();
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyCpvlHwgo1v5fqOAJEVGLO9VJEQQklycYA"
-    });
+    
 
-    const [map, setMap] = useState(null);
+    const mapRef = useRef<google.maps.Map | undefined>(undefined)
+    
+
+    const onLoad = useCallback(function callback(map: google.maps.Map) {
+        mapRef.current = map
+    }, [])
+
+    const onUnmount = useCallback(function callback() {
+        mapRef.current = undefined
+    }, [])
+
+
 
     const containerStyle = {
         width: '100%',
         height: '100%'
     };
 
-    const center = {
-        lat: -34.397,
-        lng: 150.644
-    };
+
 
     return (
         <Box className={useMapStyle.classes.containerMap}>
@@ -42,10 +45,9 @@ const Map = () => {
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={center}
-                    zoom={15}
-                    options={defaultOptions}
+                    zoom={18}
+                    options={DefaultOptions}
                 >
-                    {map && <Marker position={center} />}
                 </GoogleMap>
             ) : (
                 <p>Loading...</p>

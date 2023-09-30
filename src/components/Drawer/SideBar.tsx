@@ -3,7 +3,7 @@ import MuiDrawer from '@mui/material/Drawer';
 import Container from "@mui/material/Container"
 import DrawerStyle from './DrawerStyle.tsx'
 import CardFavorite from '../CardFavorite/CardFavorite.tsx';
-import Search from '../Search/Search.tsx'
+import Autocomplete from '../Autocomplete/Autocomplete.tsx'
 import tempPhoto from '../../assets/img/tempPhoto.jpg'
 import React from 'react'
 import Input from '@mui/material/Input';
@@ -17,6 +17,7 @@ const DrawerWidth = 600
 
 interface SideBarProps {
   currentStatus: string;
+  isLoaded: boolean
 }
 
 
@@ -47,7 +48,7 @@ const items = [
   }
 ]
 
-export default function SideBar({ currentStatus }: SideBarProps) {
+export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
 
   const [itemsArray, setItemsArray] = React.useState(items)
 
@@ -101,7 +102,7 @@ export default function SideBar({ currentStatus }: SideBarProps) {
     display: 'flex',
     columnGap: '20px',
   }))
-  
+
 
 
 
@@ -111,7 +112,7 @@ export default function SideBar({ currentStatus }: SideBarProps) {
       <Drawer className={useDrawerStyle.classes.drawer} variant="permanent" anchor='left' open={currentStatus != 'close' ? true : false}>
         <DrawerContent className={useDrawerStyle.classes.drawerContent}>
           <Container className={useDrawerStyle.classes.containerSearch}>
-            <Search />
+            <Autocomplete isLoaded={isLoaded} />
           </Container>
           <Box >
             {currentStatus == 'search' ?
