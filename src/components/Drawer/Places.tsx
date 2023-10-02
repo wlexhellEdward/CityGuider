@@ -17,97 +17,113 @@ import religion from '../../assets/img/placeIcon/religion.svg'
 import shoping from '../../assets/img/placeIcon/shoping.svg'
 import sport from '../../assets/img/placeIcon/sport.svg'
 
-export default function getPlaces() {
-    return [
-        {
-            id: 0,
-            img: architecture,
-            title: 'Архитектура'
-        },
-        {
-            id: 1,
-            img: bank,
-            title: 'Банки'
-        },
-        {
-            id: 2,
-            img: bike,
-            title: 'Туризм (велосипед)'
-        },
-        {
-            id: 3,
-            img: car,
-            title: 'Туризм (автомобиль)'
-        },
-        {
-            id: 4,
-            img: coffe,
-            title: 'Кафе'
-        },
-        {
-            id: 5,
-            img: culture,
-            title: 'Природа'
-        },
-        {
-            id: 6,
-            img: entertaiment,
-            title: 'Увлечение'
-        },
-        {
-            id: 7,
-            img: erotics,
-            title: '18+'
-        },
-        {
-            id: 8,
-            img: food,
-            title: 'Еда'
-        },
-        {
-            id: 9,
-            img: gasStation,
-            title: 'Заправки'
-        },
-        {
-            id: 10,
-            img: history,
-            title: 'Исторические места'
-        },
-        {
-            id: 11,
-            img: hostel,
-            title: 'Отели'
-        },
-        {
-            id: 12,
-            img: industry,
-            title: 'Предприятия'
-        },
-        {
-            id: 13,
-            img: nature,
-            title: 'Природа'
-        },
-        {
-            id: 15,
-            img: other,
-            title: 'Другое'
-        },
-        {
-            id: 16,
-            img: religion,
-            title: 'Религия'
-        },
-        {
-            id: 17,
-            img: shoping,
-            title: 'Магазины'
-        },
-        {
-            id: 18,
-            img: sport,
-            title: 'Спорт'
-        }
-    ]
-}
+export const Places = [
+    {
+        id: 0,
+        type: 'architecture',
+        img: architecture,
+        title: 'Архитектура'
+    },
+    {
+        id: 1,
+        type: 'bank',
+        img: bank,
+        title: 'Банки'
+    },
+    {
+        id: 2,
+        type: 'tourist-attraction',
+        img: bike,
+        title: 'Туризм (велосипед)'
+    },
+    {
+        id: 3,
+        type: 'car-dealer',
+        img: car,
+        title: 'Туризм (автомобиль)'
+    },
+    {
+        id: 4,
+        type: 'cafe',
+        img: coffe,
+        title: 'Кафе'
+    },
+    {
+        id: 5,
+        type: 'park',
+        img: culture,
+        title: 'Природа'
+    },
+    {
+        id: 6,
+        type: 'entertainment',
+        img: entertaiment,
+        title: 'Увлечение'
+    },
+    {
+        id: 7,
+        type: 'erotic',
+        img: erotics,
+        title: '18+'
+    },
+    {
+        id: 8,
+        type: '',
+        img: food,
+        title: 'Еда'
+    },
+    {
+        id: 9,
+        type: 'food',
+        img: gasStation,
+        title: 'Заправки'
+    },
+    {
+        id: 10,
+        type: 'history',
+        img: history,
+        title: 'Исторические места'
+    },
+    {
+        id: 11,
+        type: 'hostel',
+        img: hostel,
+        title: 'Отели'
+    },
+    {
+        id: 12,
+        type: 'industry',
+        img: industry,
+        title: 'Предприятия'
+    },
+    {
+        id: 13,
+        type: 'nature',
+        img: nature,
+        title: 'Природа'
+    },
+    {
+        id: 15,
+        type: 'other',
+        img: other,
+        title: 'Другое'
+    },
+    {
+        id: 16,
+        type: 'religion',
+        img: religion,
+        title: 'Религия'
+    },
+    {
+        id: 17,
+        type: 'shop',
+        img: shoping,
+        title: 'Магазины'
+    },
+    {
+        id: 18,
+        type: 'sport',
+        img: sport,
+        title: 'Спорт'
+    }
+]

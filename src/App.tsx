@@ -1,26 +1,37 @@
 import SideBar from './components/Drawer/SideBar'
 import Aside from './components/Aside/Aside'
 import Container from '@mui/material/Container'
+import { useTypeSelector, useAppDispatch } from './hooks/redux'
+import { setCenter, setCurrentStatus } from './store/reducers'
 import React, { useEffect, useState } from 'react'
 import { useJsApiLoader, Libraries } from "@react-google-maps/api";
-import { Box, Button } from '@mui/material'
+import { Box } from '@mui/material'
 import AppStyle from './AppStyle'
 import arrowDisableDrawer from './assets/img/arrowDisableDrawer.svg'
 import Map from './components/Map/Map'
+import useOnclickOutside from "react-cool-onclickoutside";
+
 import { getBrowserLocation } from './utils/geo';
 
 const libraries: Libraries = ['places']
 
 
 function App() {
-  const [currentStatus, setCurrentStatus] = useState('close');
-  const [center, setCenter] = React.useState({ lat: 51.5085300, lng: -0.1257400 })
-  const useAppStyle = AppStyle();
-  const handleDrawerSwitch = (name: string) => {
-    setCurrentStatus(name);
-  };
+  const dispatch = useAppDispatch()
+  const currentStatus = useTypeSelector(state => state.currentStatus.status)
 
-  const API_KEY = process.env.REACT_APP_API_KEY as string;
+  const [searchButtonIsClicked, setSearchButtonIsClicked] = useState(false)
+
+  const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
+  const useAppStyle = AppStyle();
+
+  const handleSetSearchButtonIsClicked = () => {
+    setSearchButtonIsClicked(true)
+    setTimeout(() => setSearchButtonIsClicked(false), 1)
+  }
+
+
+
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -28,35 +39,41 @@ function App() {
     libraries: libraries,
   });
 
-  useEffect(() => {
-    getBrowserLocation().then((currentLocation) => {
-      setCenter(currentLocation)
-    }).catch((defaultLocation) => {
-      setCenter(defaultLocation)
-    })
-  }, [])
+
+
+
+
+  const ref = useOnclickOutside(() => {
+    setCurrentStatus('close')
+  });
+
+
 
   return (
     <>
 
       <Box className={useAppStyle.classes.containerApp} >
-        <Aside currentStatus={currentStatus} handleDrawerSwitch={handleDrawerSwitch} />
+        <Aside />
         {currentStatus != 'close' ?
-          <Container disableGutters className={useAppStyle.classes.containerSideBar}>
-            <SideBar setCenter={setCenter} currentStatus={currentStatus} isLoaded={isLoaded} />
+          <Container ref={ref} disableGutters className={useAppStyle.classes.containerSideBar}>
+            <SideBar
+              handleSetSearchButtonIsClicked={handleSetSearchButtonIsClicked}
+              currentStatus={currentStatus}
+              isLoaded={isLoaded}
+            />
           </Container>
           : <>
             <Box className={useAppStyle.classes.boxArrow}>
               <Container className={useAppStyle.classes.containerArrow}>
-                
-                <img src={arrowDisableDrawer} className={useAppStyle.classes.arrowShowMore} onClick={() => setCurrentStatus('favorites')} alt="" />
+                <img src={arrowDisableDrawer} className={useAppStyle.classes.arrowShowMore} onClick={() => switchCurrentStatus('favorites')} alt="" />
               </Container>
             </Box></>
         }
-        <Map isLoaded={isLoaded} currentPostion={center} />
+        <Map isLoaded={isLoaded} />
       </Box>
     </>
   )
+
 }
 export default App
 

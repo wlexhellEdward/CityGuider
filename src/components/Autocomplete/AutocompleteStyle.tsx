@@ -6,7 +6,6 @@ const AutocompleteStyle = makeStyles()((theme) => {
     const space = theme.spacing(2.5);
     return {
         containerInput: {
-            border: `1px solid ${greyColor}`,
             borderRadius: '8px',
             padding: '8px 12px',
             display: 'flex',
@@ -16,6 +15,7 @@ const AutocompleteStyle = makeStyles()((theme) => {
         },
         Autocomplete: {
             display: 'flex',
+            border: `1px solid ${greyColor}`,
             flexDirection: 'column',
         },
         ListContainer: {
@@ -24,8 +24,20 @@ const AutocompleteStyle = makeStyles()((theme) => {
             maxWidth: '100%',
             flexDirection: 'column',
             backgroundColor: 'white',
-            borderRadius: 8,
-            border: `1px solid ${greyColor}`
+            borderTop: `1px solid ${greyColor}`
+        },
+        suggestionContainer:{
+            display:'flex',
+            flexDirection:'column',
+            alignItems:'start'
+        },
+        titleSuggestion:{
+            fontWeight:'bold',
+            fontSize:12
+        },
+        titleDescription:{
+            fontSize:10,
+            color:'#A9A9A9',
         },
         listItem: {
             display: 'flex',

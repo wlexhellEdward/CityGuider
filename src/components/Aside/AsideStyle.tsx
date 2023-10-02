@@ -52,12 +52,19 @@ const AsideStyle = makeStyles()((theme) => {
         profileOutter: {
             display: 'flex',
             justifyContent: 'center',
-            marginBottom: 8
+            marginBottom: 8,
+            cursor:'pointer'
         },
         containerButton:{
             display:'flex',
             justifyContent:'center',
-            alignItems:'center'
+            alignItems:'center',
+            '&>*':{
+                transition:'all .3s linear'
+            },
+            '&>*:hover':{
+                transform:'scale(1.045)'
+            }
         }
 
     }

@@ -1,7 +1,7 @@
 import CardFavoriteStyle from './CardFavoriteStyle';
 import arrowMore from '../../assets/img/arrowMore.svg'
 import FavoriteImg from '../../assets/img/inFavorite.svg'
-import getPlaces from '../Drawer/Places';
+import { Places } from '../Drawer/Places';
 import greyFavorite from '../../assets/img/greyFavorite.svg'
 import travel from '../../assets/img/travel.svg'
 import ButtonTravel from '../../GUI/ButtonTravel/ButtonTravel';
@@ -35,7 +35,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                     <CardContent className={useCardFavoriteStyle.classes.cardContent}>
                         <Box className={useCardFavoriteStyle.classes.imgCard}>
                             {favoriteItem.currentStatus.map((item) => {
-                                const matchingPlace = getPlaces().find((place) => place.title === item);
+                                const matchingPlace = Places.find((place) => place.title === item);
                                 if (matchingPlace) {
                                     return (
                                         <img

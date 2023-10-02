@@ -1,7 +1,7 @@
 import CardFavoriteStyle from './CardFavoriteStyle';
 import arrowMore from '../../assets/img/arrowMore.svg'
 import FavoriteImg from '../../assets/img/inFavorite.svg'
-import getPlaces from '../Drawer/Places';
+import {Places} from '../Drawer/Places';
 
 import React from 'react'
 import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
@@ -31,7 +31,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, han
                     <CardContent className={useCardFavoriteStyle.classes.cardContent}>
                         <Box className={useCardFavoriteStyle.classes.imgCard}>
                             {favoriteItem.currentStatus.map((item) => {
-                                const matchingPlace = getPlaces().find((place) => place.title === item);
+                                const matchingPlace = Places.find((place) => place.title === item);
                                 if (matchingPlace) {
                                     return (
                                         <img

@@ -1,6 +1,8 @@
 import AutocompleteStyle from './AutocompleteStyle'
-import { Container, Input, List, ListItem } from '@mui/material'
+import { Container, Input, List, ListItem, Typography } from '@mui/material'
 import searchSVG from '../../assets/img/searchInput.svg'
+import { useAppDispatch } from '../../hooks/redux.ts';
+import { setCenter } from '../../store/reducers';
 import { refactorString } from '../../utils/textRefactors';
 import usePlacesAutocomplete, {
     getGeocode,
@@ -11,11 +13,14 @@ import { useEffect } from 'react';
 
 interface AutocompleteProops {
     isLoaded: boolean;
-    setCenter: React.Dispatch<React.SetStateAction<{ lat: number; lng: number; }>>;
 }
 
 
-export default function Autocomplete({ isLoaded, setCenter }: AutocompleteProops) {
+export default function Autocomplete({ isLoaded }: AutocompleteProops) {
+    const dispatch = useAppDispatch()
+    const handlerSetCenter = (object: object) => {
+        dispatch(setCenter(object))
+    }
     const {
         ready,
         value,
@@ -48,7 +53,7 @@ export default function Autocomplete({ isLoaded, setCenter }: AutocompleteProops
                 clearSuggestions();
                 getGeocode({ address: description }).then((results) => {
                     const { lat, lng } = getLatLng(results[0]);
-                    setCenter(getLatLng(results[0]))
+                    handlerSetCenter(getLatLng(results[0]))
                     console.log("📍 Coordinates: ", { lat, lng });
                 });
             };
@@ -61,9 +66,10 @@ export default function Autocomplete({ isLoaded, setCenter }: AutocompleteProops
             } = suggestion;
 
             return (
-                <li key={place_id} onClick={handleSelect(suggestion)}>
-                    <strong>{main_text}</strong> <span>{refactorString(secondary_text)}</span>
-                </li>
+                <ListItem key={place_id} onClick={handleSelect(suggestion)} className={useAutocompleteStyle.classes.suggestionContainer}>
+                    <Typography className={useAutocompleteStyle.classes.titleSuggestion}>{main_text}</Typography>
+                    <Typography className={useAutocompleteStyle.classes.titleDescription}>{refactorString(secondary_text)}</Typography>
+                </ListItem>
             );
         });
 
@@ -82,6 +88,7 @@ export default function Autocomplete({ isLoaded, setCenter }: AutocompleteProops
                     className={useAutocompleteStyle.classes.searchInput}
                 ></Input>
             </Container>
+
             {status === "OK" && (
                 <List className={useAutocompleteStyle.classes.ListContainer}>
                     <ListItem disablePadding className={useAutocompleteStyle.classes.listItem}>{renderSuggestions()}</ListItem>

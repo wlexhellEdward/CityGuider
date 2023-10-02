@@ -4,27 +4,31 @@ import Container from "@mui/material/Container"
 import DrawerStyle from './DrawerStyle.tsx'
 import CardFavorite from '../CardFavorite/CardFavorite.tsx';
 import Autocomplete from '../Autocomplete/Autocomplete.tsx'
+import { addItem, deleteItem } from '../../store/reducers'
+
 import tempPhoto from '../../assets/img/tempPhoto.jpg'
 import React from 'react'
+
 import Input from '@mui/material/Input';
-import getPlaces from './Places.tsx';
+import { Places } from './Places.tsx';
 import SearchPlace from '../SearchPlace/SearchPlace.tsx';
 import Typography from '@mui/material/Typography';
 import searchIcon from '../../assets/img/Search.svg'
 import Box from '@mui/material/Box'
+import { useAppDispatch, useTypeSelector } from '../../hooks/redux.ts';
 
 const DrawerWidth = 600
 
 interface SideBarProps {
   currentStatus: string;
   isLoaded: boolean;
-  setCenter: React.Dispatch<React.SetStateAction<{ lat: number; lng: number; }>>;
+  handleSetSearchButtonIsClicked: () => void;
 }
-
 
 const items = [
   {
     id: 0,
+    type: '',
     img: tempPhoto,
     title: 'Фантаcмагарический музей им. П.М. Машерова',
     description: 'Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon prelogi. Någonstansare begöpp. Homoadoption tesände keck såsom köttrymden. Epigen digon fast svennefiera håven postfaktisk. Atomslöjd defåling nigovena tegt i platt-tv. Sextremism julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp eftersom spetät senessa inklusive mepaktiga. Bloggbävning makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen hikikomori när stenomiheten täpos. Du kan vara drabbad.',
@@ -33,6 +37,7 @@ const items = [
   },
   {
     id: 1,
+    type: '',
     img: tempPhoto,
     title: 'Фантаcмагарический музей им. П.М. Машерова',
     description: 'Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon prelogi. Någonstansare begöpp. Homoadoption tesände keck såsom köttrymden. Epigen digon fast svennefiera håven postfaktisk. Atomslöjd defåling nigovena tegt i platt-tv. Sextremism julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp eftersom spetät senessa inklusive mepaktiga. Bloggbävning makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen hikikomori när stenomiheten täpos. Du kan vara drabbad.',
@@ -41,6 +46,7 @@ const items = [
   },
   {
     id: 2,
+    type: '',
     img: tempPhoto,
     title: 'Фантаcмагарический музей им. П.М. Машерова',
     description: 'Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon prelogi. Någonstansare begöpp. Homoadoption tesände keck såsom köttrymden. Epigen digon fast svennefiera håven postfaktisk. Atomslöjd defåling nigovena tegt i platt-tv. Sextremism julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp eftersom spetät senessa inklusive mepaktiga. Bloggbävning makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen hikikomori när stenomiheten täpos. Du kan vara drabbad.',
@@ -49,13 +55,19 @@ const items = [
   }
 ]
 
-export default function SideBar({ currentStatus, setCenter, isLoaded }: SideBarProps) {
+export default function SideBar({ currentStatus, handleSetSearchButtonIsClicked, isLoaded }: SideBarProps) {
 
   const [itemsArray, setItemsArray] = React.useState(items)
+  // const dispatch = useAppDispatch()
+  const selectedItems = useTypeSelector((state) => state.selectedItems.selectedItems)
+
+  
 
   const handleDeleteFavorite = (id: number) => {
     setItemsArray(itemsArray.filter((item) => item.id != id))
   }
+
+
 
   const useDrawerStyle = DrawerStyle()
 
@@ -79,7 +91,6 @@ export default function SideBar({ currentStatus, setCenter, isLoaded }: SideBarP
       width: `calc(${theme.spacing(13)} + 1px)`,
     },
   });
-
   const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
       width: 'auto',
@@ -98,12 +109,10 @@ export default function SideBar({ currentStatus, setCenter, isLoaded }: SideBarP
       }),
     }),
   );
-
-
   const DrawerContent = styled('div')(() => ({
     display: 'flex',
     columnGap: '20px',
-    overflowX:'hidden',
+    overflowX: 'hidden',
     '&::-webkit-scrollbar': {
       width: 5
     },
@@ -121,22 +130,23 @@ export default function SideBar({ currentStatus, setCenter, isLoaded }: SideBarP
 
 
 
+
   return (
     <>
       <Drawer className={useDrawerStyle.classes.drawer} variant="permanent" anchor='left' open={currentStatus != 'close' ? true : false}>
         <DrawerContent className={useDrawerStyle.classes.drawerContent}>
           <Container className={useDrawerStyle.classes.containerSearch}>
-            <Autocomplete setCenter={setCenter} isLoaded={isLoaded} />
+            <Autocomplete isLoaded={isLoaded} />
           </Container>
-          <Box >
+          <Box>
             {currentStatus == 'search' ?
               <Container className={useDrawerStyle.classes.platePlaces}>
                 <Typography className={useDrawerStyle.classes.titleFavorite}>Искать: </Typography>
                 <Container className={useDrawerStyle.classes.containerPlaces}>
-                  {getPlaces().map((item) => {
+                  {Places.map((item) => {
                     return (
                       <>
-                        <SearchPlace SearchPlace={item} />
+                        <SearchPlace isSelected={selectedItems.includes(item.type)} SearchPlace={item} />
                       </>
                     )
                   })}
@@ -148,7 +158,7 @@ export default function SideBar({ currentStatus, setCenter, isLoaded }: SideBarP
                     <Typography className={useDrawerStyle.classes.spanDescription}>км</Typography>
                   </Container>
                   <Container className={useDrawerStyle.classes.buttonSearch} >
-                    <img src={searchIcon} alt="" />
+                    <img onClick={handleSetSearchButtonIsClicked} src={searchIcon} alt="" />
                   </Container>
                 </Container>
 

@@ -23,6 +23,15 @@ const SearchPlaceStyle = makeStyles()((theme) => {
         },
         titlePlace: {
             fontSize: 14
+        },
+        titleSelectedPlace: {
+            fontSize: 14,
+            color:greyColor,
+        },
+        imgSelectedPlace:{
+            width: 30,
+            height: 30,
+            opacity:.6
         }
 
     }
