@@ -10,6 +10,7 @@ const DrawerStyle = makeStyles()((theme) => {
             marginRight: theme.spacing(2),
         },
         drawer: {
+            
             position: "relative",
             transition: 'all .3s ease-in-out'
         },
@@ -42,17 +43,7 @@ const DrawerStyle = makeStyles()((theme) => {
             backgroundColor:'white',
             minHeight:'85vh',
             maxHeight:'85vh',
-            '&::-webkit-scrollbar': {
-                width: 5
-            },
-            '&::-webkit-scrollbar-track': {
-                backgroundColor: 'transparent'
-            },
-            '&::-webkit-scrollbar-thumb': {
-                borderRadius: 4,
-                backgroundColor: `${greyColor}`
-            },
-            overflowY: 'scroll',
+            
         },
         titleFavorite: {
             fontWeight: 700,

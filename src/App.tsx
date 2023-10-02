@@ -3,7 +3,7 @@ import Aside from './components/Aside/Aside'
 import Container from '@mui/material/Container'
 import React, { useEffect, useState } from 'react'
 import { useJsApiLoader, Libraries } from "@react-google-maps/api";
-import Box from '@mui/material/Box'
+import { Box, Button } from '@mui/material'
 import AppStyle from './AppStyle'
 import arrowDisableDrawer from './assets/img/arrowDisableDrawer.svg'
 import Map from './components/Map/Map'
@@ -20,9 +20,11 @@ function App() {
     setCurrentStatus(name);
   };
 
+  const API_KEY = process.env.REACT_APP_API_KEY as string;
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCpvlHwgo1v5fqOAJEVGLO9VJEQQklycYA",
+    googleMapsApiKey: "AIzaSyDTA2iAnMibajMRsRHrYmAldVNOPxGhE94",
     libraries: libraries,
   });
 
@@ -41,11 +43,12 @@ function App() {
         <Aside currentStatus={currentStatus} handleDrawerSwitch={handleDrawerSwitch} />
         {currentStatus != 'close' ?
           <Container disableGutters className={useAppStyle.classes.containerSideBar}>
-            <SideBar currentStatus={currentStatus} isLoaded={isLoaded} />
+            <SideBar setCenter={setCenter} currentStatus={currentStatus} isLoaded={isLoaded} />
           </Container>
           : <>
             <Box className={useAppStyle.classes.boxArrow}>
               <Container className={useAppStyle.classes.containerArrow}>
+                
                 <img src={arrowDisableDrawer} className={useAppStyle.classes.arrowShowMore} onClick={() => setCurrentStatus('favorites')} alt="" />
               </Container>
             </Box></>

@@ -1,6 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
 
-const greyColor = '#7D908C'
+const greyColor = '#EEEEEE'
 
 const AutocompleteStyle = makeStyles()((theme) => {
     const space = theme.spacing(2.5);
@@ -12,16 +12,45 @@ const AutocompleteStyle = makeStyles()((theme) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height:60,
+            height: "60",
         },
-        searchImg:{
-            opacity:0.3
+        Autocomplete: {
+            display: 'flex',
+            flexDirection: 'column',
+        },
+        ListContainer: {
+            display: 'flex',
+            padding: '10px 8px',
+            maxWidth: '100%',
+            flexDirection: 'column',
+            backgroundColor: 'white',
+            borderRadius: 8,
+            border: `1px solid ${greyColor}`
+        },
+        listItem: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'start',
+            width: '100%',
+            transition: '.3s linear',
+            '&>li': {
+                margin: '5px 0px',
+                cursor: 'pointer',
+                width: '100%',
+            },
+            '&>li:hover': {
+                backgroundColor: greyColor,
+            }
+        },
+        searchImg: {
+            opacity: 0.3
         },
         searchInput: {
-            paddingLeft:space,
-            paddingTop:4,
-            fontSize:18,
-            display:'flex',
+            paddingLeft: space,
+            paddingTop: 4,
+            fontSize: 18,
+            display: 'flex',
+            height: 40,
             width: '100%',
             '&:before': {
                 content: 'none',
@@ -30,11 +59,11 @@ const AutocompleteStyle = makeStyles()((theme) => {
                 content: 'none'
             }
         },
-        suggestions:{
-            backgroundColor:'red',
-            width:350,
-            height:200,
-            zIndex:9999
+        suggestions: {
+            backgroundColor: 'red',
+            width: 350,
+            height: 200,
+            zIndex: 9999
         }
     };
 });

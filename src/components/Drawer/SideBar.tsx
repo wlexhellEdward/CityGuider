@@ -17,7 +17,8 @@ const DrawerWidth = 600
 
 interface SideBarProps {
   currentStatus: string;
-  isLoaded: boolean
+  isLoaded: boolean;
+  setCenter: React.Dispatch<React.SetStateAction<{ lat: number; lng: number; }>>;
 }
 
 
@@ -48,7 +49,7 @@ const items = [
   }
 ]
 
-export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
+export default function SideBar({ currentStatus, setCenter, isLoaded }: SideBarProps) {
 
   const [itemsArray, setItemsArray] = React.useState(items)
 
@@ -86,6 +87,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
       flexShrink: 0,
       whiteSpace: 'nowrap',
       boxSizing: 'border-box',
+
       ...(open && {
         ...openedMixin(theme),
         '& .MuiDrawer-paper': openedMixin(theme),
@@ -101,6 +103,18 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
   const DrawerContent = styled('div')(() => ({
     display: 'flex',
     columnGap: '20px',
+    overflowX:'hidden',
+    '&::-webkit-scrollbar': {
+      width: 5
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: 'transparent'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      borderRadius: 4,
+      backgroundColor: `#7D908C`
+    },
+    overflowY: 'scroll',
   }))
 
 
@@ -112,7 +126,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
       <Drawer className={useDrawerStyle.classes.drawer} variant="permanent" anchor='left' open={currentStatus != 'close' ? true : false}>
         <DrawerContent className={useDrawerStyle.classes.drawerContent}>
           <Container className={useDrawerStyle.classes.containerSearch}>
-            <Autocomplete isLoaded={isLoaded} />
+            <Autocomplete setCenter={setCenter} isLoaded={isLoaded} />
           </Container>
           <Box >
             {currentStatus == 'search' ?
