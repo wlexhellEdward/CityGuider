@@ -5,7 +5,7 @@ import { useAppDispatch, useTypeSelector } from '../../hooks/redux';
 import { addItem, deleteItem } from '../../store/reducers';
 
 interface SearchPlaceProps {
-    SearchPlace: {
+    searchPlace: {
         id: number,
         type: string,
         img: string,
@@ -15,7 +15,7 @@ interface SearchPlaceProps {
 }
 
 
-const SearchPlace: React.FC<SearchPlaceProps> = ({ isSelected, SearchPlace }) => {
+const SearchPlace: React.FC<SearchPlaceProps> = ({ isSelected, searchPlace }) => {
     const dispatch = useAppDispatch()
     const selectedItems = useTypeSelector((state) => state.selectedItems.selectedItems)
 
@@ -31,16 +31,16 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ isSelected, SearchPlace }) =>
     return (
         <>
 
-            <Container onClick={() => handleSetSelectedItemsArray(SearchPlace.type)} disableGutters className={useSearchPlaceStyle.classes.containerPlace} key={SearchPlace.id}>
+            <Container onClick={() => handleSetSelectedItemsArray(searchPlace.type)} disableGutters className={useSearchPlaceStyle.classes.containerPlace} key={searchPlace.id}>
                 {isSelected ?
                     <>
-                        <img className={useSearchPlaceStyle.classes.imgPlace} src={SearchPlace.img} alt="" />
-                        <Typography className={useSearchPlaceStyle.classes.titlePlace}>{SearchPlace.title}</Typography>
+                        <img className={useSearchPlaceStyle.classes.imgPlace} src={searchPlace.img} alt="" />
+                        <Typography className={useSearchPlaceStyle.classes.titlePlace}>{searchPlace.title}</Typography>
                     </>
                     :
                     <>
-                        <img className={useSearchPlaceStyle.classes.imgSelectedPlace} src={SearchPlace.img} alt="" />
-                        <Typography className={useSearchPlaceStyle.classes.titleSelectedPlace}>{SearchPlace.title}</Typography>
+                        <img className={useSearchPlaceStyle.classes.imgSelectedPlace} src={searchPlace.img} alt="" />
+                        <Typography className={useSearchPlaceStyle.classes.titleSelectedPlace}>{searchPlace.title}</Typography>
                     </>
                 }
             </Container>

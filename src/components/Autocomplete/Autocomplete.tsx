@@ -52,10 +52,8 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
                 console.log(description)
                 clearSuggestions();
                 getGeocode({ address: description }).then((results) => {
-                    const { lat, lng } = getLatLng(results[0]);
                     handlerSetCenter(getLatLng(results[0]))
-                    console.log("📍 Coordinates: ", { lat, lng });
-                });
+                    });
             };
 
     const renderSuggestions = () =>

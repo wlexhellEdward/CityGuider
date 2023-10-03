@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+
 const selectedItemsSlice = createSlice({
     name: 'seletedItemsSlice',
     initialState: {
@@ -10,7 +13,7 @@ const selectedItemsSlice = createSlice({
             state.selectedItems.push(action.payload)
         },
         deleteItem(state, action) {
-            state.selectedItems.filter((typeItem) => action.payload != typeItem)
+            state.selectedItems = state.selectedItems.filter((typeItem) => action.payload != typeItem)
         }
     }
 })

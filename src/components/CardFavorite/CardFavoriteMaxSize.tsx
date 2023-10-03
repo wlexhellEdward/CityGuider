@@ -1,6 +1,5 @@
 import CardFavoriteStyle from './CardFavoriteStyle';
 import arrowMore from '../../assets/img/arrowMore.svg'
-import FavoriteImg from '../../assets/img/inFavorite.svg'
 import { Places } from '../Drawer/Places';
 import greyFavorite from '../../assets/img/greyFavorite.svg'
 import travel from '../../assets/img/travel.svg'
@@ -9,24 +8,28 @@ import ButtonSave from '../../GUI/ButtonSave/ButtonSave';
 
 import React from 'react'
 import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
+import { useAppDispatch } from '../../hooks/redux';
+import { deleteFavoriteItem } from '../../store/reducers';
 
 interface CardFavoriteProps {
     favoriteItem: {
-        id: number;
-        img: string;
-        title: string;
-        description: string;
-        isFavorite: boolean;
-        currentStatus: string[];
-    };
-    handleDeleteFavorite: (id: number) => void;
+        id: number,
+        type: string[],
+        img: string,
+        title: string,
+        description: string,
+    }
     handleSetIsOpen: (status: boolean) => void;
     isOpen: boolean;
 }
 
 
 
-const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleDeleteFavorite, handleSetIsOpen }) => {
+const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleSetIsOpen }) => {
+
+    const dispatch = useAppDispatch()
+    const handleDeleteFavorite = (id: number) => dispatch(deleteFavoriteItem(id))
+
     const useCardFavoriteStyle = CardFavoriteStyle(true, favoriteItem.img)()
     return (
         <>
@@ -34,8 +37,8 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                 <Box className={useCardFavoriteStyle.classes.containerImgTitle} >
                     <CardContent className={useCardFavoriteStyle.classes.cardContent}>
                         <Box className={useCardFavoriteStyle.classes.imgCard}>
-                            {favoriteItem.currentStatus.map((item) => {
-                                const matchingPlace = Places.find((place) => place.title === item);
+                            {favoriteItem.type.map((item) => {
+                                const matchingPlace = Places.find((place) => place.type === item);
                                 if (matchingPlace) {
                                     return (
                                         <img

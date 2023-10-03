@@ -1,28 +1,32 @@
 import CardFavoriteStyle from './CardFavoriteStyle';
 import arrowMore from '../../assets/img/arrowMore.svg'
 import FavoriteImg from '../../assets/img/inFavorite.svg'
-import {Places} from '../Drawer/Places';
+import { Places } from '../Drawer/Places';
+import { useAppDispatch, useTypeSelector } from '../../hooks/redux';
+import { deleteFavoriteItem } from '../../store/reducers';
+
 
 import React from 'react'
 import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
 
+
 interface CardFavoriteProps {
     favoriteItem: {
-        id: number;
-        img: string;
-        title: string;
-        description: string;
-        isFavorite: boolean;
-        currentStatus: string[];
-    };
-    handleDeleteFavorite: (id: number) => void;
+        id: number,
+        type: string[],
+        img: string,
+        title: string,
+        description: string,
+    }
     handleSetIsOpen: (status: boolean) => void;
     isOpen: boolean;
 }
 
 
 
-const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleDeleteFavorite, handleSetIsOpen }) => {
+const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleSetIsOpen }) => {
+    const dispatch = useAppDispatch()
+    const handleDeleteFavorite = (id: number) => dispatch(deleteFavoriteItem(id))
     const useCardFavoriteStyle = CardFavoriteStyle(false, favoriteItem.img)()
     return (
         <>
@@ -30,8 +34,8 @@ const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, han
                 <Box className={useCardFavoriteStyle.classes.containerImgTitle} >
                     <CardContent className={useCardFavoriteStyle.classes.cardContent}>
                         <Box className={useCardFavoriteStyle.classes.imgCard}>
-                            {favoriteItem.currentStatus.map((item) => {
-                                const matchingPlace = Places.find((place) => place.title === item);
+                            {favoriteItem.type.map((item) => {
+                                const matchingPlace = Places.find((place) => place.type === item);
                                 if (matchingPlace) {
                                     return (
                                         <img
@@ -53,7 +57,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, han
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions disableSpacing className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <img src={FavoriteImg} onClick={()=>handleDeleteFavorite(favoriteItem.id)} className={useCardFavoriteStyle.classes.icon} />
+                    <img src={FavoriteImg} onClick={() => handleDeleteFavorite(favoriteItem.id)} className={useCardFavoriteStyle.classes.icon} />
                     <img onClick={() => handleSetIsOpen(true)} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt="" />
                 </CardActions>
             </Card>

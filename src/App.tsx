@@ -2,8 +2,8 @@ import SideBar from './components/Drawer/SideBar'
 import Aside from './components/Aside/Aside'
 import Container from '@mui/material/Container'
 import { useTypeSelector, useAppDispatch } from './hooks/redux'
-import { setCenter, setCurrentStatus } from './store/reducers'
-import React, { useEffect, useState } from 'react'
+import { setCurrentStatus } from './store/reducers'
+import React, { useState } from 'react'
 import { useJsApiLoader, Libraries } from "@react-google-maps/api";
 import { Box } from '@mui/material'
 import AppStyle from './AppStyle'
@@ -11,7 +11,6 @@ import arrowDisableDrawer from './assets/img/arrowDisableDrawer.svg'
 import Map from './components/Map/Map'
 import useOnclickOutside from "react-cool-onclickoutside";
 
-import { getBrowserLocation } from './utils/geo';
 
 const libraries: Libraries = ['places']
 
@@ -19,18 +18,7 @@ const libraries: Libraries = ['places']
 function App() {
   const dispatch = useAppDispatch()
   const currentStatus = useTypeSelector(state => state.currentStatus.status)
-
-  const [searchButtonIsClicked, setSearchButtonIsClicked] = useState(false)
-
   const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
-  const useAppStyle = AppStyle();
-
-  const handleSetSearchButtonIsClicked = () => {
-    setSearchButtonIsClicked(true)
-    setTimeout(() => setSearchButtonIsClicked(false), 1)
-  }
-
-
 
 
   const { isLoaded } = useJsApiLoader({
@@ -39,15 +27,12 @@ function App() {
     libraries: libraries,
   });
 
-
-
-
-
   const ref = useOnclickOutside(() => {
-    setCurrentStatus('close')
+    switchCurrentStatus('close')
   });
 
 
+  const useAppStyle = AppStyle();
 
   return (
     <>
@@ -57,7 +42,6 @@ function App() {
         {currentStatus != 'close' ?
           <Container ref={ref} disableGutters className={useAppStyle.classes.containerSideBar}>
             <SideBar
-              handleSetSearchButtonIsClicked={handleSetSearchButtonIsClicked}
               currentStatus={currentStatus}
               isLoaded={isLoaded}
             />

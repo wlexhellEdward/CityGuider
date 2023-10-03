@@ -68,7 +68,7 @@ export const Places = [
     },
     {
         id: 8,
-        type: '',
+        type: 'food',
         img: food,
         title: 'Еда'
     },

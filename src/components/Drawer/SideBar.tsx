@@ -4,10 +4,7 @@ import Container from "@mui/material/Container"
 import DrawerStyle from './DrawerStyle.tsx'
 import CardFavorite from '../CardFavorite/CardFavorite.tsx';
 import Autocomplete from '../Autocomplete/Autocomplete.tsx'
-import { addItem, deleteItem } from '../../store/reducers'
-
-import tempPhoto from '../../assets/img/tempPhoto.jpg'
-import React from 'react'
+import { deleteFavoriteItem, setIsClicked } from '../../store/reducers'
 
 import Input from '@mui/material/Input';
 import { Places } from './Places.tsx';
@@ -22,50 +19,23 @@ const DrawerWidth = 600
 interface SideBarProps {
   currentStatus: string;
   isLoaded: boolean;
-  handleSetSearchButtonIsClicked: () => void;
 }
 
-const items = [
-  {
-    id: 0,
-    type: '',
-    img: tempPhoto,
-    title: 'Фантаcмагарический музей им. П.М. Машерова',
-    description: 'Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon prelogi. Någonstansare begöpp. Homoadoption tesände keck såsom köttrymden. Epigen digon fast svennefiera håven postfaktisk. Atomslöjd defåling nigovena tegt i platt-tv. Sextremism julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp eftersom spetät senessa inklusive mepaktiga. Bloggbävning makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen hikikomori när stenomiheten täpos. Du kan vara drabbad.',
-    isFavorite: false,
-    currentStatus: ['Архитектура', 'Исторические места']
-  },
-  {
-    id: 1,
-    type: '',
-    img: tempPhoto,
-    title: 'Фантаcмагарический музей им. П.М. Машерова',
-    description: 'Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon prelogi. Någonstansare begöpp. Homoadoption tesände keck såsom köttrymden. Epigen digon fast svennefiera håven postfaktisk. Atomslöjd defåling nigovena tegt i platt-tv. Sextremism julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp eftersom spetät senessa inklusive mepaktiga. Bloggbävning makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen hikikomori när stenomiheten täpos. Du kan vara drabbad.',
-    isFavorite: false,
-    currentStatus: ['Архитектура', 'Исторические места']
-  },
-  {
-    id: 2,
-    type: '',
-    img: tempPhoto,
-    title: 'Фантаcмагарический музей им. П.М. Машерова',
-    description: 'Lörem ipsum jere. Intrabel peraktiv pävufåsk läslov pide. Exon prelogi. Någonstansare begöpp. Homoadoption tesände keck såsom köttrymden. Epigen digon fast svennefiera håven postfaktisk. Atomslöjd defåling nigovena tegt i platt-tv. Sextremism julgranssyndrom. Rit-avdrag fyr, jukanat don. Apfälla menskopp eftersom spetät senessa inklusive mepaktiga. Bloggbävning makroligt spepp gönas. Sitskate epir tidsfönster. Hjärtslagslag defånera. Neck röstsamtal möbelhund. Hexaledes ryggsäcksmodellen hikikomori när stenomiheten täpos. Du kan vara drabbad.',
-    isFavorite: false,
-    currentStatus: ['Архитектура', 'Исторические места']
-  }
-]
 
-export default function SideBar({ currentStatus, handleSetSearchButtonIsClicked, isLoaded }: SideBarProps) {
 
-  const [itemsArray, setItemsArray] = React.useState(items)
-  // const dispatch = useAppDispatch()
-  const selectedItems = useTypeSelector((state) => state.selectedItems.selectedItems)
+export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
 
-  
 
-  const handleDeleteFavorite = (id: number) => {
-    setItemsArray(itemsArray.filter((item) => item.id != id))
-  }
+  const dispatch = useAppDispatch()
+  const favoriteItems = useTypeSelector((state) => state.favoriteItems.favoriteItems)
+
+
+  const itemsArray = useTypeSelector((state) => state.selectedItems.selectedItems)
+
+
+  const handleSetSearchButtonIsClicked = dispatch(setIsClicked())
+
+
 
 
 
@@ -146,7 +116,7 @@ export default function SideBar({ currentStatus, handleSetSearchButtonIsClicked,
                   {Places.map((item) => {
                     return (
                       <>
-                        <SearchPlace isSelected={selectedItems.includes(item.type)} SearchPlace={item} />
+                        <SearchPlace searchPlace={item} isSelected={itemsArray.includes(item.type)} />
                       </>
                     )
                   })}
@@ -158,7 +128,7 @@ export default function SideBar({ currentStatus, handleSetSearchButtonIsClicked,
                     <Typography className={useDrawerStyle.classes.spanDescription}>км</Typography>
                   </Container>
                   <Container className={useDrawerStyle.classes.buttonSearch} >
-                    <img onClick={handleSetSearchButtonIsClicked} src={searchIcon} alt="" />
+                    <img onClick={() => handleSetSearchButtonIsClicked} src={searchIcon} alt="" />
                   </Container>
                 </Container>
 
@@ -167,12 +137,9 @@ export default function SideBar({ currentStatus, handleSetSearchButtonIsClicked,
               <Container className={useDrawerStyle.classes.cardsFavorites}>
                 <Typography className={useDrawerStyle.classes.titleFavorite}>Избранное:</Typography>
                 <Box className={useDrawerStyle.classes.containerCardsFavorites}>
-                  {itemsArray.map((item) => {
+                  {favoriteItems.map((item) => {
                     return (<>
-                      <CardFavorite
-                        favoriteItem={item}
-                        handleDeleteFavorite={handleDeleteFavorite}
-                      />
+                      <CardFavorite favoriteItem={item} />
                     </>)
                   })}
                 </Box>

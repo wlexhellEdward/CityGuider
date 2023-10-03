@@ -1,4 +1,4 @@
-import React,{ useState, useCallback, SetStateAction, useRef } from 'react';
+import React, { useRef } from 'react';
 import Box from "@mui/material/Box";
 import { useTypeSelector, useAppDispatch } from '../../hooks/redux';
 import { useEffect } from 'react';
@@ -20,10 +20,12 @@ const Map = ({ isLoaded }: MapProps) => {
     const dispatch = useAppDispatch()
 
     const currentPosition = useTypeSelector(state => state.currentPosition.position)
+    const searchButtonIsClicked = useTypeSelector(state => state.isClickedSearchButton)
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const selectedItems = useTypeSelector((state) => state.selectedItems.selectedItems)
-    const mapRef = useRef<google.maps.Map | undefined>(undefined)
 
+
+    // const mapRef = useRef<google.maps.Map | undefined>(undefined)
     // const handlerSetCenter = (center: object) => dispatch(setCenter(center))
 
 
@@ -38,31 +40,30 @@ const Map = ({ isLoaded }: MapProps) => {
         // dispatch(setMap(map))
     }, [])
 
+    useEffect(() => {
+        if (isLoaded && mapContainerRef.current) {
+            const map = new google.maps.Map(mapContainerRef.current, DefaultOptions);
 
+            const service = new google.maps.places.PlacesService(map);
 
-    // useEffect(() => {
-    //     if (isLoaded && mapContainerRef.current) {
-    //         const map = new google.maps.Map(mapContainerRef.current, {});
-
-    //         const service = new google.maps.places.PlacesService(map);
-
-    //         const request: google.maps.places.PlaceSearchRequest = {
-    //             location: currentPosition,
-    //             radius: 500,
-    //             type: selectedItems.toString(),
-    //         };
-
-    //         service.nearbySearch(request, (results, status) => {
-    //             if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //                 if (results != null) {
-    //                     results.forEach((place) => {
-    //                         console.log(place.name);
-    //                     });
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }, [searchButtonIsClicked]);
+            const request: google.maps.places.PlaceSearchRequest = {
+                location: currentPosition,
+                radius: 500,
+                type: selectedItems.toString(),
+            };
+            service.nearbySearch(request, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    if (results != null) {
+                        results.forEach((place) => {
+                            console.log(place.name);
+                        });
+                    }
+                }
+            });
+        }
+    }, [searchButtonIsClicked]);
+    
+    // doesnt work
 
     const useMapStyle = MapStyle();
     const containerStyle = {
