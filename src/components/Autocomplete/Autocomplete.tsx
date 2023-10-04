@@ -49,11 +49,10 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
         ({ description }: any) =>
             () => {
                 setValue(description, false);
-                console.log(description)
                 clearSuggestions();
                 getGeocode({ address: description }).then((results) => {
                     handlerSetCenter(getLatLng(results[0]))
-                    });
+                });
             };
 
     const renderSuggestions = () =>

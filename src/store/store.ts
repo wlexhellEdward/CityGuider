@@ -1,18 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit'
-import selectedItemsSlice from './reducers/selectedItemsSlice/selectedItemsSlice'
+import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
 import currentStatusSlice from './reducers/currentStatus/currentStatusSlice';
 import centerSlice from './reducers/centerSlice/centerSlice';
 import searchButtonSlice from './reducers/searchButtonSlice/searchButtonSlice';
 import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice';
+import mapSlice from './reducers/mapSlice/mapSlice';
 
 
 export const store = configureStore({
     reducer: {
         currentStatus: currentStatusSlice,
         currentPosition: centerSlice,
-        selectedItems: selectedItemsSlice,
+        searchSlice: searchSlice,
         isClickedSearchButton: searchButtonSlice,
-        favoriteItems: favoriteItemsSlice
+        favoriteItems: favoriteItemsSlice,
+        map: mapSlice
     }
 });
 

@@ -1,21 +1,22 @@
-import erotics from '../../assets/img/placeIcon/erotics.svg'
-import bank from '../../assets/img/placeIcon/bank.svg'
-import bike from '../../assets/img/placeIcon/bike.svg'
-import car from '../../assets/img/placeIcon/car.svg'
-import coffe from '../../assets/img/placeIcon/coffee.svg'
-import culture from '../../assets/img/placeIcon/culture.svg'
-import entertaiment from '../../assets/img/placeIcon/entertainment.svg'
-import architecture from '../../assets/img/placeIcon/architecture.svg'
-import food from '../../assets/img/placeIcon/food.svg'
-import gasStation from '../../assets/img/placeIcon/gasStation.svg'
-import history from '../../assets/img/placeIcon/history.svg'
-import hostel from '../../assets/img/placeIcon/hostel.svg'
-import industry from '../../assets/img/placeIcon/industry.svg'
-import nature from '../../assets/img/placeIcon/nature.svg'
-import other from '../../assets/img/placeIcon/other.svg'
-import religion from '../../assets/img/placeIcon/religion.svg'
-import shoping from '../../assets/img/placeIcon/shoping.svg'
-import sport from '../../assets/img/placeIcon/sport.svg'
+import erotics from '../../assets/img/icons-markers/18+.svg'
+import bank from '../../assets/img/icons-markers/bank.svg'
+import bike from '../../assets/img/icons-markers/bicycle.svg'
+import car from '../../assets/img/icons-markers/car.svg'
+import coffe from '../../assets/img/icons-markers/coffee.svg'
+import culture from '../../assets/img/icons-markers/culture.svg'
+import entertaiment from '../../assets/img/icons-markers/ferris-wheel.svg'
+import architecture from '../../assets/img/icons-markers/architecture1.svg'
+import food from '../../assets/img/icons-markers/food.svg'
+import gasStation from '../../assets/img/icons-markers/gas station.svg'
+import history from '../../assets/img/icons-markers/history.svg'
+import hostel from '../../assets/img/icons-markers/bed.svg'
+import industry from '../../assets/img/icons-markers/industry.svg'
+import nature from '../../assets/img/icons-markers/nature.svg'
+import other from '../../assets/img/icons-markers/other.svg'
+import religion from '../../assets/img/icons-markers/religion1.svg'
+import shoping from '../../assets/img/icons-markers/shopping-basket.svg'
+import sport from '../../assets/img/icons-markers/sports-soccer.svg'
+
 
 export const Places = [
     {
@@ -40,7 +41,7 @@ export const Places = [
         id: 3,
         type: 'car-dealer',
         img: car,
-        title: 'Туризм (автомобиль)'
+        title: 'Работа с авто'
     },
     {
         id: 4,
@@ -50,9 +51,9 @@ export const Places = [
     },
     {
         id: 5,
-        type: 'park',
+        type: 'culture',
         img: culture,
-        title: 'Природа'
+        title: 'Культура'
     },
     {
         id: 6,
@@ -74,7 +75,7 @@ export const Places = [
     },
     {
         id: 9,
-        type: 'food',
+        type: 'gas-station',
         img: gasStation,
         title: 'Заправки'
     },
@@ -86,7 +87,7 @@ export const Places = [
     },
     {
         id: 11,
-        type: 'hostel',
+        type:'hostel',
         img: hostel,
         title: 'Отели'
     },
@@ -104,7 +105,7 @@ export const Places = [
     },
     {
         id: 15,
-        type: 'other',
+        type:'other',
         img: other,
         title: 'Другое'
     },

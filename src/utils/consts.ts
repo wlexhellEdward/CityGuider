@@ -55,10 +55,6 @@ const ThemeMap =
             ]
         }
     ]
-
-
-
-
 export const DefaultOptions = {
     panControl: true,
     zoomControl: true,

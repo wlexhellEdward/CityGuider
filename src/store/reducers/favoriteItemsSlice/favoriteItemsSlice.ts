@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IFavoriteItem } from "../../../models/IFavoriteItem";
 
-// delete later
 import tempPhoto from '../../../assets/img/tempPhoto.jpg'
 
 interface FavoriteItemsState {

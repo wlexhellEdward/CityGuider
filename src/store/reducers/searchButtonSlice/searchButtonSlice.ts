@@ -7,8 +7,7 @@ const searchButtonSlice = createSlice({
     },
     reducers: {
         setIsClicked(state) {
-            // state.isClicked = !state.isClicked
-            // setTimeout(() => { state.isClicked = false }, 100)
+            state.isClicked = !state.isClicked
         }
     }
 })

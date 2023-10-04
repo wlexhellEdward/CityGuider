@@ -1,5 +1,6 @@
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
+import { useState } from 'react'
 import SearchPlaceStyle from './SearchPlaceStyle'
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux';
 import { addItem, deleteItem } from '../../store/reducers';
@@ -15,9 +16,13 @@ interface SearchPlaceProps {
 }
 
 
-const SearchPlace: React.FC<SearchPlaceProps> = ({ isSelected, searchPlace }) => {
+
+
+const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) => {
+
     const dispatch = useAppDispatch()
-    const selectedItems = useTypeSelector((state) => state.selectedItems.selectedItems)
+    const selectedItems = useTypeSelector((state) => state.searchSlice.selectedItems)
+
 
     const handleSetSelectedItemsArray = (type: string) => {
         if (!selectedItems.includes(type)) {
@@ -27,6 +32,9 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ isSelected, searchPlace }) =>
             dispatch(deleteItem(type))
         }
     }
+
+
+
     const useSearchPlaceStyle = SearchPlaceStyle()
     return (
         <>

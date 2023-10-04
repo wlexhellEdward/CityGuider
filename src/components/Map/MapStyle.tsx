@@ -9,6 +9,10 @@ const MapStyle = makeStyles()((theme) => {
         height:'100%',
         padding:0,
         margin:0,
+        '&>*':{
+            width:'32px',
+            height:'32px',
+        }
        }
     };
 });
