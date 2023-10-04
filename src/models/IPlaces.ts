@@ -1,4 +1,4 @@
-interface PlaceResult {
+export default interface PlaceResult {
     adr_address: string;
     business_status: string;
     formatted_address: string;

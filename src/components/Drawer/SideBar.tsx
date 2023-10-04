@@ -61,12 +61,9 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
         placesServices.nearbySearch(request, (results, status, pagination) => {
           if (status === google.maps.places.PlacesServiceStatus.OK && results) {
             results.forEach(result => {
-              console.log(selectedItem)
-              console.log(Places.find(place => place.type === selectedItem ))
-              result.icon = Places.find(place => place.type === selectedItem )?.img
+              result.icon = Places.find(place => place.type === selectedItem)?.img
             })
 
-            console.log(selectedItem)
             handleSetResults(results)
             if (pagination?.hasNextPage) {
               pagination.nextPage()

@@ -36,7 +36,6 @@ function App() {
 
   return (
     <>
-
       <Box className={useAppStyle.classes.containerApp} >
         <Aside />
         {currentStatus != 'close' ?
@@ -55,6 +54,7 @@ function App() {
         }
         <Map isLoaded={isLoaded} />
       </Box>
+
     </>
   )
 
