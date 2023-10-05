@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
 import { useTypeSelector, useAppDispatch } from '../../hooks/redux';
-// import { getCurrentIcon } from './getCurrentIcon';
 import { setCenter } from '../../store/reducers';
 import { getBrowserLocation } from '../../utils/geo';
 import { GoogleMap, Marker } from "@react-google-maps/api";

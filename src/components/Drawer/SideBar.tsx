@@ -1,18 +1,16 @@
 import { styled, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
-import { useRef, useState } from 'react'
-import Container from "@mui/material/Container"
+import { useState } from 'react'
+import { Container, Typography, Box } from "@mui/material"
 import DrawerStyle from './DrawerStyle.tsx'
 import CardFavorite from '../CardFavorite/CardFavorite.tsx';
 import Autocomplete from '../Autocomplete/Autocomplete.tsx'
 import Input from '@mui/material/Input';
 import { Places } from './Places.tsx';
 import SearchPlace from '../SearchPlace/SearchPlace.tsx';
-import Typography from '@mui/material/Typography';
 import searchIcon from '../../assets/img/Search.svg'
-import Box from '@mui/material/Box'
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux.ts';
-import { setResults } from '../../store/reducers/index.ts';
+import { clearResults, setResults } from '../../store/reducers/index.ts';
 import { Loader } from '../Loader/Loader.tsx';
 
 const DrawerWidth = 600
@@ -42,7 +40,9 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
   const itemsArray = useTypeSelector((state) => state.searchSlice.selectedItems)
   const handleSetResults = (result: google.maps.places.PlaceResult[]) => dispatch(setResults(result))
 
+
   const handleSetSearchButtonIsClicked = () => {
+    dispatch(clearResults())
     if (inputValue.length > 0) {
       if (!map) {
         return
@@ -145,7 +145,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
       result = false
     }
     return result
-  }
+  } // перенести в более уютное место
 
 
 

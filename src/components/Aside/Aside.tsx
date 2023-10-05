@@ -1,9 +1,6 @@
 import AsideStyle from './AsideStyle'
-import Container from '@mui/material/Container'
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import { useTypeSelector,useAppDispatch } from '../../hooks/redux'
+import { Container, List, ListItem, ListItemIcon } from '@mui/material'
+import { useTypeSelector, useAppDispatch } from '../../hooks/redux'
 import { setCurrentStatus } from '../../store/reducers/currentStatus/currentStatusSlice'
 
 import Logo from '../../assets/img/Logo.svg'

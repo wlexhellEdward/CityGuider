@@ -28,7 +28,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, han
     const dispatch = useAppDispatch()
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
     const useCardFavoriteStyle = CardFavoriteStyle(false, favoriteItem.img)()
-    console.log(favoriteItem)
+
     return (
         <>
             <Card className={useCardFavoriteStyle.classes.cardFavorite}>

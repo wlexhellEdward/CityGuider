@@ -18,16 +18,19 @@ const selectedItemsSlice = createSlice({
             state.selectedItems.push(action.payload)
         },
         deleteItem(state, action: PayloadAction<string>) {
-            state.selectedItems = state.selectedItems.filter((typeItem) => action.payload != typeItem)
+            state.selectedItems = state.selectedItems.filter(item => item != action.payload)
         },
         setResults(state, action) {
             state.resultsSearch = [...action.payload, ...(state.resultsSearch || [])];
         },
+        clearResults(state) {
+            state.resultsSearch = []
+        }
 
 
     }
 })
 
-export const { addItem, deleteItem, setResults } = selectedItemsSlice.actions
+export const { addItem, deleteItem, setResults, clearResults } = selectedItemsSlice.actions
 
 export default selectedItemsSlice.reducer

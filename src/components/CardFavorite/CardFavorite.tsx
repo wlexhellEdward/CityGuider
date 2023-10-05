@@ -15,7 +15,6 @@ interface CardFavoriteProps {
 
 
 const CardFavorite = ({ favoriteItem }: CardFavoriteProps) => {
-
     const [isOpen, setIsOpen] = React.useState(false)
     function handleSetIsOpen(status: boolean) {
         setIsOpen(status)

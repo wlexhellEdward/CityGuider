@@ -8,8 +8,8 @@ const CardPlaceStyle = makeStyles()((theme) => {
             minHeight:'250px',
         },
         placePhoto:{
-            minWidth:'100%',
-            minHeight:'150px'
+            minWidth:'400px',
+            maxHeight:'350px'
         },
         cardContent:{
             display:'flex',

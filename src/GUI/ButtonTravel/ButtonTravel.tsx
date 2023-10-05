@@ -1,21 +1,22 @@
-import { Button, Icon } from '@mui/material'
+import { Button, Icon, Typography } from '@mui/material'
 import ButtonTravelStyle from './ButtonTravelStyle'
+import travel from '../../assets/img/travel.svg'
+
 
 
 interface ButtonTravelProps {
     handleFunction: () => void,
-    url: string;
 }
 
-export default function ButtonTravel({ handleFunction, url }: ButtonTravelProps) {
+export default function ButtonTravel({ handleFunction }: ButtonTravelProps) {
     const useButtonTravelStyle = ButtonTravelStyle()
     return (
         <>
-            <Button className={useButtonTravelStyle.classes.buttonTravel}>
+            <Button onClick={() => handleFunction} className={useButtonTravelStyle.classes.buttonTravel}>
                 <Icon className={useButtonTravelStyle.classes.iconTravel}>
-                    <img src={url} alt="" />
+                    <img src={travel} alt="" />
                 </Icon>
-                Маршрут
+                <Typography>Маршрут</Typography>
             </Button></>
     )
 }

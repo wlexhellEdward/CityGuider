@@ -2,7 +2,6 @@ import CardFavoriteStyle from './CardFavoriteStyle';
 import arrowMore from '../../assets/img/arrowMore.svg'
 import { Places } from '../Drawer/Places';
 import { IFavoriteItem } from '../../models/IFavoriteItem';
-import travel from '../../assets/img/travel.svg'
 import ButtonTravel from '../../GUI/ButtonTravel/ButtonTravel';
 import ButtonSave from '../../GUI/ButtonSave/ButtonSave';
 
@@ -62,7 +61,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
                     <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
-                    <ButtonTravel handleFunction={() => console.log("lorem")} url={travel} />
+                    <ButtonTravel handleFunction={() => console.log("lorem")}  />
                     <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} src={arrowMore} alt="" />
                 </CardActions>
             </Card>

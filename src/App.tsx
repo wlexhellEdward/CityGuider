@@ -1,15 +1,14 @@
 import SideBar from './components/Drawer/SideBar'
 import Aside from './components/Aside/Aside'
-import Container from '@mui/material/Container'
+import { Container } from '@mui/material'
 import { useTypeSelector, useAppDispatch } from './hooks/redux'
 import { setCurrentStatus } from './store/reducers'
-import React, { useState } from 'react'
 import { useJsApiLoader, Libraries } from "@react-google-maps/api";
 import { Box } from '@mui/material'
-import AppStyle from './AppStyle'
 import arrowDisableDrawer from './assets/img/arrowDisableDrawer.svg'
 import Map from './components/Map/Map'
 import useOnclickOutside from "react-cool-onclickoutside";
+import AppStyle from './AppStyle'
 
 
 const libraries: Libraries = ['places']
@@ -25,7 +24,7 @@ function App() {
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyDTA2iAnMibajMRsRHrYmAldVNOPxGhE94",
     libraries: libraries,
-  });
+  });  // надо перенести в более уютное место
 
   const ref = useOnclickOutside(() => {
     switchCurrentStatus('close')
