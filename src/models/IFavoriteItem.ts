@@ -1,7 +1,8 @@
 export interface IFavoriteItem {
-    id:number,
-    type:string[],
-    img:string,
-    title:string,
-    description:string,
+    id: number,
+    type: string[],
+    img: string,
+    coordinates: google.maps.LatLng,
+    title: string,
+    description: string,
 }

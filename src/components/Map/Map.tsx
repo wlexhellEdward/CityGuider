@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Box } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
 import { useTypeSelector, useAppDispatch } from '../../hooks/redux';
-import { setCenter } from '../../store/reducers';
+import { setCenter, setHumanPosition } from '../../store/reducers';
 import { getBrowserLocation } from '../../utils/geo';
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import MapStyle from './MapStyle';
@@ -33,9 +33,11 @@ const Map = ({ isLoaded }: MapProps) => {
         getBrowserLocation()
             .then((location) => {
                 dispatch(setCenter(location))
+                dispatch(setHumanPosition(location))
             })
             .catch((defaultLocation) => {
-                dispatch(setCenter(defaultLocation))
+                dispatch(setCenter(location))
+                dispatch(setHumanPosition(defaultLocation))
             });
     }, [])
 

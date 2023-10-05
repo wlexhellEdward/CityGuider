@@ -7,6 +7,7 @@ interface CardFavoriteProps {
     favoriteItem: {
         id: number,
         type: string[],
+        coordinates: google.maps.LatLng,
         img: string,
         title: string,
         description: string,
