@@ -3,11 +3,11 @@ import arrowMore from '../../assets/img/arrowMore.svg'
 import FavoriteImg from '../../assets/img/inFavorite.svg'
 import { Places } from '../Drawer/Places';
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux';
-import { deleteFavoriteItem } from '../../store/reducers';
-
+import { IFavoriteItem } from '../../models/IFavoriteItem';
 
 import React from 'react'
 import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
+import { addFavoriteItem } from '../../store/reducers';
 
 
 interface CardFavoriteProps {
@@ -26,8 +26,9 @@ interface CardFavoriteProps {
 
 const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()
-    const handleDeleteFavorite = (id: number) => dispatch(deleteFavoriteItem(id))
+    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
     const useCardFavoriteStyle = CardFavoriteStyle(false, favoriteItem.img)()
+    console.log(favoriteItem)
     return (
         <>
             <Card className={useCardFavoriteStyle.classes.cardFavorite}>
@@ -57,7 +58,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, han
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions disableSpacing className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <img src={FavoriteImg} onClick={() => handleDeleteFavorite(favoriteItem.id)} className={useCardFavoriteStyle.classes.icon} />
+                    <img src={FavoriteImg} onClick={() => handleAddToFavorite(favoriteItem)} className={useCardFavoriteStyle.classes.icon} />
                     <img onClick={() => handleSetIsOpen(true)} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt="" />
                 </CardActions>
             </Card>

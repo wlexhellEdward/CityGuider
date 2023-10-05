@@ -1,7 +1,7 @@
 import CardFavoriteStyle from './CardFavoriteStyle';
 import arrowMore from '../../assets/img/arrowMore.svg'
 import { Places } from '../Drawer/Places';
-import greyFavorite from '../../assets/img/greyFavorite.svg'
+import { IFavoriteItem } from '../../models/IFavoriteItem';
 import travel from '../../assets/img/travel.svg'
 import ButtonTravel from '../../GUI/ButtonTravel/ButtonTravel';
 import ButtonSave from '../../GUI/ButtonSave/ButtonSave';
@@ -9,7 +9,7 @@ import ButtonSave from '../../GUI/ButtonSave/ButtonSave';
 import React from 'react'
 import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
 import { useAppDispatch } from '../../hooks/redux';
-import { deleteFavoriteItem } from '../../store/reducers';
+import { addFavoriteItem } from '../../store/reducers';
 
 interface CardFavoriteProps {
     favoriteItem: {
@@ -28,7 +28,8 @@ interface CardFavoriteProps {
 const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleSetIsOpen }) => {
 
     const dispatch = useAppDispatch()
-    const handleDeleteFavorite = (id: number) => dispatch(deleteFavoriteItem(id))
+    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
+
 
     const useCardFavoriteStyle = CardFavoriteStyle(true, favoriteItem.img)()
     return (
@@ -60,7 +61,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <ButtonSave handleFunction={() => handleDeleteFavorite(favoriteItem.id)} url={greyFavorite} />
+                    <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
                     <ButtonTravel handleFunction={() => console.log("lorem")} url={travel} />
                     <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} src={arrowMore} alt="" />
                 </CardActions>

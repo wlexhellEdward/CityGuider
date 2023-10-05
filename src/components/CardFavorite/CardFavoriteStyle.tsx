@@ -10,7 +10,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             transition: 'all .3s linear',
         },
         cardFavorite: {
-            width: 350,
+            width: 300,
             padding: '20px 20px 0px 20px',
             border: '1px solid #7D908C',
             borderRadius: 8,
@@ -21,6 +21,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             position: 'relative',
             height: isOpen ? 200 : 80,
             display: 'flex',
+            minWidth: isOpen ? '100%' :'40%',
             alignItems: 'end',
             borderRadius: 8,
             backgroundImage: `url('${url}')`,
@@ -39,8 +40,8 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             margin: 0,
             padding: 0,
             display: 'flex',
+            justifyContent:'space-between',
             flexDirection: isOpen ? 'column' : 'row',
-            justifyContent: 'space-between',
             alignItems: 'center',
             '&:last-child': {
                 padding: 0,
@@ -49,6 +50,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
         },
         containerTitle: {
             display: 'flex',
+            width: '40%',
             justifyContent: 'center',
             alignItems: 'center',
             textAlign: 'center',
@@ -71,8 +73,8 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            margin:0,
-            padding:0,
+            margin: 0,
+            padding: 0,
             marginBottom: '20px'
         },
 

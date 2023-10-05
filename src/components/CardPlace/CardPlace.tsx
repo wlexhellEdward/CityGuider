@@ -6,12 +6,24 @@ import ButtonTravel from '../../GUI/ButtonTravel/ButtonTravel'
 import search from '../../assets/img/Search.svg'
 
 
+import { useAppDispatch, useTypeSelector } from '../../hooks/redux'
+import { addFavoriteItem } from '../../store/reducers'
+import { IFavoriteItem } from '../../models/IFavoriteItem'
+import { convertPlaceToFavorite } from '../../utils/convert'
+
+
 interface CardPlaceProps {
     place: google.maps.places.PlaceResult
 
 }
 export default function CardPlace({ place }: CardPlaceProps) {
-    console.log(place)
+    const dispatch = useAppDispatch()
+    const favoriteItems = useTypeSelector(state => state.favoriteItems.favoriteItems)
+    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
+
+    const isFavorite = favoriteItems.some(item => item.title == place.name)
+
+    console.log(isFavorite)
     const useCardPlaceStyle = CardPlaceStyle()
     if (place != undefined) {
         return (
@@ -24,7 +36,7 @@ export default function CardPlace({ place }: CardPlaceProps) {
                     <Typography className={useCardPlaceStyle.classes.placeAdress}>{place.vicinity}</Typography>
                 </CardContent>
                 <CardActions className={useCardPlaceStyle.classes.cardActions}>
-                    <ButtonSave handleFunction={() => console.log("asd")} url={search} />
+                    <ButtonSave handleFunction={() => handleAddToFavorite(convertPlaceToFavorite(place))} isFavorite={isFavorite} />
                     <ButtonTravel handleFunction={() => console.log("asd")} url={search} />
                 </CardActions>
             </Card>

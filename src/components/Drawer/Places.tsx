@@ -27,7 +27,7 @@ export const Places = [
     },
     {
         id: 1,
-        type: 'bank',
+        type: 'atm',
         img: bank,
         title: 'Банки'
     },

@@ -13,9 +13,7 @@ import searchIcon from '../../assets/img/Search.svg'
 import Box from '@mui/material/Box'
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux.ts';
 import { setResults } from '../../store/reducers/index.ts';
-// import { getCurrentIcon } from '../Map/getCurrentIcon.ts';
-import { Search } from '@mui/icons-material';
-
+import { Loader } from '../Loader/Loader.tsx';
 
 const DrawerWidth = 600
 
@@ -187,11 +185,20 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
               <Container className={useDrawerStyle.classes.cardsFavorites}>
                 <Typography className={useDrawerStyle.classes.titleFavorite}>Избранное:</Typography>
                 <Box className={useDrawerStyle.classes.containerCardsFavorites}>
-                  {favoriteItems.map((item) => {
-                    return (<>
-                      <CardFavorite favoriteItem={item} />
-                    </>)
-                  })}
+                  {favoriteItems.length > 0 ?
+                    favoriteItems.map((item) => {
+                      return (
+                        <>
+                          <CardFavorite favoriteItem={item} />
+                        </>)
+                    })
+                    :
+                    <>
+                      <Loader text={"Попробуйте что-нибудь добавить)"}></Loader>
+                    </>
+                  }
+
+
                 </Box>
 
               </Container>

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { setArray } from "../../../utils/arrayRefactor"
 
 
 interface SearchItemState {
@@ -22,9 +21,7 @@ const selectedItemsSlice = createSlice({
             state.selectedItems = state.selectedItems.filter((typeItem) => action.payload != typeItem)
         },
         setResults(state, action) {
-            // const temp: google.maps.places.PlaceResult[] =
-            // state.resultsSearch = setArray(temp);
-            state.resultsSearch =  [...action.payload, ...(state.resultsSearch || [])];
+            state.resultsSearch = [...action.payload, ...(state.resultsSearch || [])];
         },
 
 
