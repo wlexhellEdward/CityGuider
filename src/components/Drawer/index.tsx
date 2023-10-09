@@ -174,7 +174,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
                     <Typography className={useDrawerStyle.classes.spanDescription}>км</Typography>
                   </Container>
                   <Container onClick={handleSetSearchButtonIsClicked} className={useDrawerStyle.classes.buttonSearch} >
-                    <img src={searchIcon} alt="" />
+                    <img src={searchIcon} alt="../../../public/tempPhoto.jpg" title='icon search' />
                   </Container>
                 </Container>
 

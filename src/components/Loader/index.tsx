@@ -1,4 +1,4 @@
-import { Container, Box, Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import LoaderStyle from './styled'
 
 interface LoaderProps {

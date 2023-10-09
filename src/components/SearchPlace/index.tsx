@@ -42,12 +42,22 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
             <Container onClick={() => handleSetSelectedItemsArray(searchPlace.type)} disableGutters className={useSearchPlaceStyle.classes.containerPlace} key={searchPlace.id}>
                 {isSelected ?
                     <>
-                        <img className={useSearchPlaceStyle.classes.imgPlace} src={searchPlace.img} alt="" />
+                        <img
+                            className={useSearchPlaceStyle.classes.imgPlace}
+                            src={searchPlace.img}
+                            title='place photo'
+                            alt="../../../public/tempPhoto.jpg"
+                        />
                         <Typography className={useSearchPlaceStyle.classes.titlePlace}>{searchPlace.title}</Typography>
                     </>
                     :
                     <>
-                        <img className={useSearchPlaceStyle.classes.imgSelectedPlace} src={searchPlace.img} alt="" />
+                        <img
+                            className={useSearchPlaceStyle.classes.imgSelectedPlace}
+                            src={searchPlace.img}
+                            title='place photo'
+                            alt="../../../public/tempPhoto.jpg"
+                        />
                         <Typography className={useSearchPlaceStyle.classes.titleSelectedPlace}>{searchPlace.title}</Typography>
                     </>
                 }

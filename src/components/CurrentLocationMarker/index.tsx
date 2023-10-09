@@ -17,7 +17,7 @@ export const CurrentLocationMarker = ({ position }: CurrentLocationMarkerProps) 
     return (
         <>
             <Box className={useCurrentLocationMarkerStyle.classes.markerContainer}>
-                <Marker icon={im} position={position}  />
+                <Marker icon={im} title='marker icon' position={position}  />
             </Box>
         </>
     )

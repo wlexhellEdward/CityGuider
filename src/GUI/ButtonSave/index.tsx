@@ -14,7 +14,7 @@ export default function ButtonSave({ handleFunction, isFavorite }: ButtonSavePro
         <>
             <Button onClick={() => handleFunction()} className={useButtonSaveStyle.classes.btnSaved}>
                 <Icon className={useButtonSaveStyle.classes.icon}>
-                    <img src={isFavorite ? favorite : favoriteGrey} alt="" />
+                    <img src={isFavorite ? favorite : favoriteGrey} alt="../../../public/tempPhoto.jpg" title='save button photo' />
                 </Icon>
                 <Typography>{isFavorite ? "Удалить" : "Добавить"}</Typography>
             </Button>

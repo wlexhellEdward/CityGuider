@@ -9,7 +9,7 @@ import { useAppDispatch, useTypeSelector } from '../../hooks/redux'
 import { addFavoriteItem, setTravelKilometrs } from '../../store/reducers'
 import { IFavoriteItem } from '../../models/IFavoriteItem'
 import { convertPlaceToFavorite } from '../../utils/convert'
-// import { makeRoute } from '../../utils/route'
+
 
 interface CardPlaceProps {
     place: google.maps.places.PlaceResult
@@ -31,7 +31,6 @@ export default function CardPlace({ place }: CardPlaceProps) {
 
 
     const handlerSetTravelInfo = (kilometrs: string) => {
-        console.log("handlerSetTravelInfo")
         dispatch(setTravelKilometrs({ kilometrs }))
     }
 
@@ -40,7 +39,12 @@ export default function CardPlace({ place }: CardPlaceProps) {
         return (
             <Card className={useCardPlaceStyle.classes.cardPlace}>
                 <CardMedia>
-                    <img className={useCardPlaceStyle.classes.placePhoto} src={checkValidPhoto(place)} alt="" />
+                    <img
+                        className={useCardPlaceStyle.classes.placePhoto}
+                        src={checkValidPhoto(place)}
+                        alt='../../../public/tempPhoto.jpg'
+                        title='place photo'
+                    />
                 </CardMedia>
                 <CardContent className={useCardPlaceStyle.classes.cardContent}>
                     <Typography className={useCardPlaceStyle.classes.title}>{place.name}</Typography>

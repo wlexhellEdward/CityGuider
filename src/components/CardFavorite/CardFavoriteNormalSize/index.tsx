@@ -39,11 +39,14 @@ const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, han
                             {favoriteItem.type.map((item) => {
                                 const matchingPlace = Places.find((place) => place.type === item);
                                 if (matchingPlace) {
+                                    const [title, img] = [matchingPlace.title, matchingPlace.img];
                                     return (
                                         <img
-                                            key={matchingPlace.title}
+                                            alt='../../../public/tempPhoto.jpg'
+                                            title='place icon'
+                                            key={title}
                                             className={useCardFavoriteStyle.classes.iconStatis}
-                                            src={matchingPlace.img}
+                                            src={img}
                                         />
                                     );
                                 }

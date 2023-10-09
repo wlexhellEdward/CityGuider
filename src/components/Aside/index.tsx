@@ -17,7 +17,7 @@ export default function Aside() {
     const switchCurrentStatus = (status: string) => {
         dispatch(setCurrentStatus(status))
     }
-
+    const [favorites, search] = ['favorites', 'search']
 
 
     const useAsideStyle = AsideStyle()
@@ -27,19 +27,19 @@ export default function Aside() {
             <List className={useAsideStyle.classes.listItems}>
                 <ListItem className={useAsideStyle.classes.logo}>
                     <ListItemIcon className={useAsideStyle.classes.logo}>
-                        <img onClick={() => switchCurrentStatus('close')} src={Logo} alt="" />
+                        <img onClick={() => switchCurrentStatus('close')} title='icon for closing drawer' src={Logo} alt="../../../public/tempPhoto.jpg" />
                     </ListItemIcon>
                 </ListItem>
                 <ListItem className={useAsideStyle.classes.listItemButton}>
                     <Container className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('favorites')} disableGutters>
-                        {currentStatus !== 'favorites' ?
+                        {currentStatus !== favorites ?
                             <Favorite />
                             :
                             <FavoriteSelected />
                         }
                     </Container>
                     <Container className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('search')} disableGutters>
-                        {currentStatus !== 'search' ?
+                        {currentStatus !== search ?
                             <Search />
                             :
                             <SearchSelected />
@@ -49,7 +49,7 @@ export default function Aside() {
             </List>
 
             <Container className={useAsideStyle.classes.profileOutter}>
-                <img src={Profile} alt="" />
+                <img src={Profile} alt="../../../public/tempPhoto.jpg" title='img for profile' />
             </Container>
 
         </Container>
