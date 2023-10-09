@@ -1,18 +1,11 @@
-import CardFavoriteMaxSize from './CardFavoriteMaxSize';
-import CardFavoriteNormalSize from './CardFavoriteNormalSize';
 import React from 'react'
 
+import CardFavoriteMaxSize from './CardFavoriteMaxSize';
+import CardFavoriteNormalSize from './CardFavoriteNormalSize';
+import { CardFavoriteProps } from './interfaceProps';
 
-interface CardFavoriteProps {
-    favoriteItem: {
-        id: number,
-        type: string[],
-        coordinates: google.maps.LatLng,
-        img: string,
-        title: string,
-        description: string,
-    }
-}
+
+
 
 
 const CardFavorite = ({ favoriteItem }: CardFavoriteProps) => {

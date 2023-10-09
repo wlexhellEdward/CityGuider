@@ -1,31 +1,23 @@
-import CardFavoriteStyle from '../styled';
-import arrowMore from '../../assets/img/arrowMore.svg'
-import { Places } from '../../Drawer/Places';
-import { IFavoriteItem } from '../../../models/IFavoriteItem';
-import ButtonTravel from '../../../GUI/ButtonTravel';
-import ButtonSave from '../../../GUI/ButtonSave';
-import { makeRoute } from '../../../utils/route';
+import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
+import arrowMore from 'assets/img/arrowMore.svg'
+import { Places } from 'components/Drawer/Places';
+import ButtonSave from 'GUI/ButtonSave';
+import ButtonTravel from 'GUI/ButtonTravel';
+import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
-import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
-import { useAppDispatch, useTypeSelector } from '../../../hooks/redux';
-import { addFavoriteItem, setTravelKilometrs } from '../../../store/reducers';
+import { addFavoriteItem, setTravelKilometrs } from 'store/reducers';
+import { makeRoute } from 'utils/route';
 
-interface CardFavoriteProps {
-    favoriteItem: {
-        id: number,
-        type: string[],
-        img: string,
-        coordinates: google.maps.LatLng,
-        title: string,
-        description: string,
-    }
-    handleSetIsOpen: (status: boolean) => void;
-    isOpen: boolean;
-}
+import DoesntExistPhoto from '/public/doesntExist.jpg'
+
+import CardFavoriteStyle from '../styled';
+import { CardFavoritePropsMaxSize } from './interfaceProps';
 
 
 
-const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleSetIsOpen }) => {
+
+const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
 
     const dispatch = useAppDispatch()
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
@@ -51,7 +43,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                                     const [title, img] = [matchingPlace.title, matchingPlace.img];
                                     return (
                                         <img
-                                            alt='../../../public/tempPhoto.jpg'
+                                            alt={DoesntExistPhoto}
                                             title='place icon'
                                             key={title}
                                             className={useCardFavoriteStyle.classes.iconStatis}
@@ -83,7 +75,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                         }
                     }
                     } />
-                    <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} src={arrowMore} alt="" />
+                    <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>
 

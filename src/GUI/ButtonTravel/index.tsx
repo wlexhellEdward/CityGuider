@@ -1,12 +1,14 @@
 import { Button, Icon, Typography } from '@mui/material'
+import travel from 'assets/img/travel.svg'
+
+import DoesntExistPhoto from '/public/doesntExist.jpg'
+
 import ButtonTravelStyle from './styled'
-import travel from '../../assets/img/travel.svg'
+import { ButtonTravelProps } from './interfaceProps'
 
 
 
-interface ButtonTravelProps {
-    handleFunction: () => void,
-}
+
 
 export default function ButtonTravel({ handleFunction }: ButtonTravelProps) {
     const useButtonTravelStyle = ButtonTravelStyle()
@@ -14,7 +16,7 @@ export default function ButtonTravel({ handleFunction }: ButtonTravelProps) {
         <>
             <Button onClick={() => handleFunction()} className={useButtonTravelStyle.classes.buttonTravel}>
                 <Icon className={useButtonTravelStyle.classes.iconTravel}>
-                    <img src={travel} alt='../../../public/tempPhoto.jpg' title="travel button photo" />
+                    <img src={travel} alt={DoesntExistPhoto} title="travel button photo" />
                 </Icon>
                 <Typography>Маршрут</Typography>
             </Button></>

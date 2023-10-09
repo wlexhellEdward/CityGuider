@@ -1,31 +1,20 @@
-import CardFavoriteStyle from '../styled';
-import arrowMore from '../../assets/img/arrowMore.svg'
-import FavoriteImg from '../../assets/img/inFavorite.svg'
-import { Places } from '../../Drawer/Places';
-import { useAppDispatch, useTypeSelector } from '../../../hooks/redux';
-import { IFavoriteItem } from '../../../models/IFavoriteItem';
-
+import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
+import arrowMore from 'assets/img/arrowMore.svg'
+import FavoriteImg from 'assets/img/inFavorite.svg'
+import { Places } from 'components/Drawer/Places';
+import { useAppDispatch } from 'hooks/redux';
+import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
-import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
-import { addFavoriteItem } from '../../../store/reducers';
+import { addFavoriteItem } from 'store/reducers';
 
+import DoesntExistPhoto from '/public/doesntExist.jpg'
 
-interface CardFavoriteProps {
-    favoriteItem: {
-        id: number,
-        type: string[],
-        img: string,
-        coordinates: google.maps.LatLng,
-        title: string,
-        description: string,
-    }
-    handleSetIsOpen: (status: boolean) => void;
-    isOpen: boolean;
-}
+import CardFavoriteStyle from '../styled';
+import { CardFavoritePropsNormalSize } from './interfaceProps';
 
 
 
-const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleSetIsOpen }) => {
+const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
     const useCardFavoriteStyle = CardFavoriteStyle(false, favoriteItem.img)()
@@ -42,7 +31,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoriteProps> = ({ favoriteItem, han
                                     const [title, img] = [matchingPlace.title, matchingPlace.img];
                                     return (
                                         <img
-                                            alt='../../../public/tempPhoto.jpg'
+                                            alt={DoesntExistPhoto}
                                             title='place icon'
                                             key={title}
                                             className={useCardFavoriteStyle.classes.iconStatis}

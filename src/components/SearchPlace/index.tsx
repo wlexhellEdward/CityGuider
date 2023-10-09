@@ -1,19 +1,14 @@
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-import { useState } from 'react'
-import SearchPlaceStyle from './style'
-import { useAppDispatch, useTypeSelector } from '../../hooks/redux';
-import { addItem, deleteItem } from '../../store/reducers';
+import { Container, Typography } from '@mui/material'
+import { useAppDispatch, useTypeSelector } from 'hooks/redux'
+import { addItem, deleteItem } from 'store/reducers'
 
-interface SearchPlaceProps {
-    searchPlace: {
-        id: number,
-        type: string,
-        img: string,
-        title: string,
-    }
-    isSelected: boolean,
-}
+import DoesntExistPhoto from '/public/doesntExist.jpg'
+
+import SearchPlaceStyle from './style'
+import { SearchPlaceProps } from './interfaceProps'
+
+
+
 
 
 
@@ -46,7 +41,7 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
                             className={useSearchPlaceStyle.classes.imgPlace}
                             src={searchPlace.img}
                             title='place photo'
-                            alt="../../../public/tempPhoto.jpg"
+                            alt={DoesntExistPhoto}
                         />
                         <Typography className={useSearchPlaceStyle.classes.titlePlace}>{searchPlace.title}</Typography>
                     </>
@@ -56,7 +51,7 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
                             className={useSearchPlaceStyle.classes.imgSelectedPlace}
                             src={searchPlace.img}
                             title='place photo'
-                            alt="../../../public/tempPhoto.jpg"
+                            alt={DoesntExistPhoto}
                         />
                         <Typography className={useSearchPlaceStyle.classes.titleSelectedPlace}>{searchPlace.title}</Typography>
                     </>

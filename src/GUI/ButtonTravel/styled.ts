@@ -1,8 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
 
 
-const greyColor = '#7D908C'
-const greyLight = '808080'
 
 
 const ButtonTravelStyle = makeStyles()((theme) => {
@@ -15,7 +13,7 @@ const ButtonTravelStyle = makeStyles()((theme) => {
             height: 30,
             color: 'white',
             backgroundColor: '#5E7BC7',
-            borderRadius: 8,
+            borderRadius: theme.spacing(1),
             gap: 10,
             '&:hover': {
                 backgroundColor: '#6495ed'

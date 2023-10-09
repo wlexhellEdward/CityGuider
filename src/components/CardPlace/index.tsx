@@ -1,22 +1,21 @@
-import { Card, CardActions, CardHeader, CardMedia, CardContent, Typography, } from '@mui/material'
+import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
+import ButtonSave from 'GUI/ButtonSave';
+import ButtonTravel from 'GUI/ButtonTravel';
+import { useAppDispatch, useTypeSelector } from 'hooks/redux'
+import { IFavoriteItem } from 'models/IFavoriteItem'
+import { addFavoriteItem, setTravelKilometrs } from 'store/reducers'
+import { convertPlaceToFavorite } from 'utils/convert'
+import { makeRoute } from 'utils/route';
+
+import DoesntExistPhoto from '../../../public/doesntExist.jpg'
+
+
 import CardPlaceStyle from './styled'
-import ButtonSave from '../../GUI/ButtonSave'
-import ButtonTravel from '../../GUI/ButtonTravel'
-import tempPhoto from '../../../public/tempPhoto.jpg'
-import { makeRoute } from '../../utils/route';
+import { CardPlaceProps } from './interfaceProps';
 
-import { useAppDispatch, useTypeSelector } from '../../hooks/redux'
-import { addFavoriteItem, setTravelKilometrs } from '../../store/reducers'
-import { IFavoriteItem } from '../../models/IFavoriteItem'
-import { convertPlaceToFavorite } from '../../utils/convert'
-
-
-interface CardPlaceProps {
-    place: google.maps.places.PlaceResult
-}
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
-    return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : tempPhoto
+    return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : DoesntExistPhoto
 }
 
 
@@ -42,7 +41,7 @@ export default function CardPlace({ place }: CardPlaceProps) {
                     <img
                         className={useCardPlaceStyle.classes.placePhoto}
                         src={checkValidPhoto(place)}
-                        alt='../../../public/tempPhoto.jpg'
+                        alt={DoesntExistPhoto}
                         title='place photo'
                     />
                 </CardMedia>

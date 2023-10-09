@@ -1,15 +1,15 @@
-import SideBar from './components/Drawer'
-import Aside from './components/Aside'
-import { Container } from '@mui/material'
-import { useTypeSelector, useAppDispatch } from './hooks/redux'
-import { setCurrentStatus, setTravelKilometrs } from './store/reducers'
-import { useJsApiLoader, Libraries } from "@react-google-maps/api";
-import { Box } from '@mui/material'
-import arrowDisableDrawer from './assets/img/arrowDisableDrawer.svg'
-import Map from './components/Map'
+import { Box,Container } from '@mui/material'
+import { Libraries, useJsApiLoader } from "@react-google-maps/api";
+import arrowDisableDrawer from 'assets/img/arrowDisableDrawer.svg'
+import Aside from 'components/Aside'
+import SideBar from 'components/Drawer'
+import Map from 'components/Map'
+import { RouteInfo } from 'components/RouteInfo'
+import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import useOnclickOutside from "react-cool-onclickoutside";
+import { setCurrentStatus, setTravelKilometrs } from 'store/reducers'
+
 import AppStyle from './AppStyle'
-import { RouteInfo } from './components/RouteInfo'
 
 
 const libraries: Libraries = ['places']
@@ -70,36 +70,3 @@ function App() {
 
 }
 export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// <SideBar currentStatus={currentStatus} />
-// {/* <Box className={useAppStyle.classes.boxArrowOpen}>
-//   <Container className={useAppStyle.classes.containerArrow}>
-//     <img src={arrowDisableDrawer} onClick={() => setCurrentStatus('close')} alt="" />
-//   </Container>
-// </Box> */}
-// </Container>
-// :<></>
-// // <Box className={useAppStyle.classes.boxArrow}>
-// //   <Container className={useAppStyle.classes.containerArrow}>
-// //     <img src={arrowDisableDrawer} className={useAppStyle.classes.arrowShowMore} onClick={() => setCurrentStatus('favorites')} alt="" />
-// //   </Container>
-// // </Box>
-// }

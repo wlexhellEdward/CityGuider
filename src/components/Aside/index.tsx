@@ -1,22 +1,21 @@
-import AsideStyle from './styled'
 import { Container, List, ListItem, ListItemIcon } from '@mui/material'
-import { useTypeSelector, useAppDispatch } from '../../hooks/redux'
-import { setCurrentStatus } from '../../store/reducers/currentStatus/currentStatusSlice'
+import Logo from 'assets/img/Logo.svg'
+import Profile from 'assets/img/profile.svg'
+import Favorite from 'GUI/Favorite'
+import FavoriteSelected from 'GUI/Favorite/FavoriteSelected'
+import Search from 'GUI/Search/Search';
+import SearchSelected from 'GUI/Search/SearchSelected'
+import { useAppDispatch, useTypeSelector } from 'hooks/redux'
+import { setCurrentStatus } from 'store/reducers'
 
-import Logo from '../../assets/img/Logo.svg'
-import Profile from '../../assets/img/profile.svg'
-import Favorite from '../../GUI/Favorite';
-import Search from '../../GUI/Search/Search';
-import FavoriteSelected from '../../GUI/Favorite/FavoriteSelected'
-import SearchSelected from '../../GUI/Search/SearchSelected'
+import DoesntExistPhoto from '../../../public/doesntExist.jpg'
 
+import AsideStyle from './styled'
 
 export default function Aside() {
     const dispatch = useAppDispatch()
     const currentStatus = useTypeSelector((state) => state.currentStatus.status)
-    const switchCurrentStatus = (status: string) => {
-        dispatch(setCurrentStatus(status))
-    }
+    const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
 
 
@@ -27,7 +26,7 @@ export default function Aside() {
             <List className={useAsideStyle.classes.listItems}>
                 <ListItem className={useAsideStyle.classes.logo}>
                     <ListItemIcon className={useAsideStyle.classes.logo}>
-                        <img onClick={() => switchCurrentStatus('close')} title='icon for closing drawer' src={Logo} alt="../../../public/tempPhoto.jpg" />
+                        <img onClick={() => switchCurrentStatus('close')} title='icon for closing drawer' src={Logo} alt={DoesntExistPhoto} />
                     </ListItemIcon>
                 </ListItem>
                 <ListItem className={useAsideStyle.classes.listItemButton}>
@@ -49,7 +48,7 @@ export default function Aside() {
             </List>
 
             <Container className={useAsideStyle.classes.profileOutter}>
-                <img src={Profile} alt="../../../public/tempPhoto.jpg" title='img for profile' />
+                <img src={Profile} alt={DoesntExistPhoto} title='img for profile' />
             </Container>
 
         </Container>

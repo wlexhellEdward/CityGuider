@@ -31,6 +31,7 @@
     "use-places-autocomplete": "^4.0.1"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.22.15",
     "@svgr/core": "^8.1.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
@@ -40,6 +41,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "redux-toolkit": "^1.1.2",
     "sass": "^1.68.0",
     "typescript": "^5.0.2",

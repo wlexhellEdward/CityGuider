@@ -1,18 +1,19 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
-import currentStatusSlice from './reducers/currentStatus/currentStatusSlice';
-import centerSlice from './reducers/centerSlice/centerSlice';
-import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice';
-import mapSlice from './reducers/mapSlice/mapSlice';
 import {
-    persistStore, persistReducer, FLUSH,
-    REHYDRATE,
+FLUSH,
     PAUSE,
     PERSIST,
-    PURGE,
+persistReducer,     persistStore,     PURGE,
     REGISTER,
+    REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+import centerSlice from './reducers/centerSlice/centerSlice';
+import currentStatusSlice from './reducers/currentStatus/currentStatusSlice';
+import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice';
+import mapSlice from './reducers/mapSlice/mapSlice';
+import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
 
 
 const rootReducer = combineReducers({
