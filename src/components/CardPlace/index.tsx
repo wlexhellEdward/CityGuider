@@ -1,12 +1,12 @@
 import { Card, CardActions, CardHeader, CardMedia, CardContent, Typography, } from '@mui/material'
-import CardPlaceStyle from './CardPlaceStye'
-import ButtonSave from '../../GUI/ButtonSave/ButtonSave'
-import ButtonTravel from '../../GUI/ButtonTravel/ButtonTravel'
+import CardPlaceStyle from './styled'
+import ButtonSave from '../../GUI/ButtonSave'
+import ButtonTravel from '../../GUI/ButtonTravel'
 import tempPhoto from '../../../public/tempPhoto.jpg'
 import { makeRoute } from '../../utils/route';
 
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux'
-import { addFavoriteItem } from '../../store/reducers'
+import { addFavoriteItem, setTravelKilometrs } from '../../store/reducers'
 import { IFavoriteItem } from '../../models/IFavoriteItem'
 import { convertPlaceToFavorite } from '../../utils/convert'
 // import { makeRoute } from '../../utils/route'
@@ -30,6 +30,11 @@ export default function CardPlace({ place }: CardPlaceProps) {
     const map = useTypeSelector(state => state.map.map)
 
 
+    const handlerSetTravelInfo = (kilometrs: string) => {
+        console.log("handlerSetTravelInfo")
+        dispatch(setTravelKilometrs({ kilometrs }))
+    }
+
 
     if (place != undefined) {
         return (
@@ -45,7 +50,12 @@ export default function CardPlace({ place }: CardPlaceProps) {
                     <ButtonSave handleFunction={() => handleAddToFavorite(convertPlaceToFavorite(place))} isFavorite={isFavorite} />
                     <ButtonTravel handleFunction={() => {
                         if (place.geometry?.location != null && map != null) {
-                            makeRoute({ start: center, map: map, end: place.geometry?.location })
+                            makeRoute({
+                                start: center,
+                                map: map,
+                                end: place.geometry?.location,
+                                setTravelInfo: (kilometrs: string) => handlerSetTravelInfo(kilometrs)
+                            })
                         } else {
                             alert("У данного места нету координат(")
                         }

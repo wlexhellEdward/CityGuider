@@ -1,14 +1,15 @@
-import SideBar from './components/Drawer/SideBar'
-import Aside from './components/Aside/Aside'
+import SideBar from './components/Drawer'
+import Aside from './components/Aside'
 import { Container } from '@mui/material'
 import { useTypeSelector, useAppDispatch } from './hooks/redux'
-import { setCurrentStatus } from './store/reducers'
+import { setCurrentStatus, setTravelKilometrs } from './store/reducers'
 import { useJsApiLoader, Libraries } from "@react-google-maps/api";
 import { Box } from '@mui/material'
 import arrowDisableDrawer from './assets/img/arrowDisableDrawer.svg'
-import Map from './components/Map/Map'
+import Map from './components/Map'
 import useOnclickOutside from "react-cool-onclickoutside";
 import AppStyle from './AppStyle'
+import { RouteInfo } from './components/RouteInfo'
 
 
 const libraries: Libraries = ['places']
@@ -18,7 +19,11 @@ function App() {
   const dispatch = useAppDispatch()
   const currentStatus = useTypeSelector(state => state.currentStatus.status)
   const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
-
+  const travelInfo = useTypeSelector(state => state.map.travelInfo)
+  const handlerSetTravelKilometrs = (kilometrs: string) => {
+    console.log("qwe")
+    dispatch(setTravelKilometrs(kilometrs))
+  }
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -52,6 +57,12 @@ function App() {
             </Box></>
         }
         <Map isLoaded={isLoaded} />
+        {
+          travelInfo.distance != "" ?
+            <RouteInfo key={travelInfo.distance} distance={travelInfo.distance.kilometrs} handlerSetTravelKilometrs={() => handlerSetTravelKilometrs("")} />
+            :
+            <></>
+        }
       </Box>
 
     </>
@@ -59,6 +70,7 @@ function App() {
 
 }
 export default App
+
 
 
 

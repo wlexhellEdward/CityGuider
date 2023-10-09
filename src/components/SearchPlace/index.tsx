@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
-import SearchPlaceStyle from './SearchPlaceStyle'
+import SearchPlaceStyle from './style'
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux';
 import { addItem, deleteItem } from '../../store/reducers';
 

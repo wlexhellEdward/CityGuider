@@ -1,13 +1,13 @@
-import CardFavoriteStyle from './CardFavoriteStyle';
+import CardFavoriteStyle from '../styled';
 import arrowMore from '../../assets/img/arrowMore.svg'
 import FavoriteImg from '../../assets/img/inFavorite.svg'
-import { Places } from '../Drawer/Places';
-import { useAppDispatch, useTypeSelector } from '../../hooks/redux';
-import { IFavoriteItem } from '../../models/IFavoriteItem';
+import { Places } from '../../Drawer/Places';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux';
+import { IFavoriteItem } from '../../../models/IFavoriteItem';
 
 import React from 'react'
 import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
-import { addFavoriteItem } from '../../store/reducers';
+import { addFavoriteItem } from '../../../store/reducers';
 
 
 interface CardFavoriteProps {

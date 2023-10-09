@@ -2,16 +2,16 @@ import { styled, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import { useState } from 'react'
 import { Container, Typography, Box } from "@mui/material"
-import DrawerStyle from './DrawerStyle.tsx'
-import CardFavorite from '../CardFavorite/CardFavorite.tsx';
-import Autocomplete from '../Autocomplete/Autocomplete.tsx'
+import DrawerStyle from './styled.ts'
+import CardFavorite from '../CardFavorite/index.tsx';
+import Autocomplete from '../Autocomplete/index.tsx'
 import Input from '@mui/material/Input';
-import { Places } from './Places.tsx';
-import SearchPlace from '../SearchPlace/SearchPlace.tsx';
+import { Places } from './Places.ts';
+import SearchPlace from '../SearchPlace/index.tsx';
 import searchIcon from '../../assets/img/Search.svg'
 import { useAppDispatch, useTypeSelector } from '../../hooks/redux.ts';
 import { clearResults, setResults } from '../../store/reducers/index.ts';
-import { Loader } from '../Loader/Loader.tsx';
+import { Loader } from '../Loader/index.tsx';
 
 const DrawerWidth = 600
 
@@ -47,8 +47,6 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
       if (!map) {
         return
       }
-
-
       selectedItems.forEach(selectedItem => {
         const request = {
           location: center,

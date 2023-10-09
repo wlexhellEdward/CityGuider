@@ -1,5 +1,5 @@
 import { Button, Icon, Typography } from '@mui/material'
-import ButtonTravelStyle from './ButtonTravelStyle'
+import ButtonTravelStyle from './styled'
 import travel from '../../assets/img/travel.svg'
 
 

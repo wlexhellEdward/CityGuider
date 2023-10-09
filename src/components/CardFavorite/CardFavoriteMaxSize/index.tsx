@@ -1,14 +1,14 @@
-import CardFavoriteStyle from './CardFavoriteStyle';
+import CardFavoriteStyle from '../styled';
 import arrowMore from '../../assets/img/arrowMore.svg'
-import { Places } from '../Drawer/Places';
-import { IFavoriteItem } from '../../models/IFavoriteItem';
-import ButtonTravel from '../../GUI/ButtonTravel/ButtonTravel';
-import ButtonSave from '../../GUI/ButtonSave/ButtonSave';
-import { makeRoute } from '../../utils/route';
+import { Places } from '../../Drawer/Places';
+import { IFavoriteItem } from '../../../models/IFavoriteItem';
+import ButtonTravel from '../../../GUI/ButtonTravel';
+import ButtonSave from '../../../GUI/ButtonSave';
+import { makeRoute } from '../../../utils/route';
 import React from 'react'
 import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
-import { useAppDispatch, useTypeSelector } from '../../hooks/redux';
-import { addFavoriteItem } from '../../store/reducers';
+import { useAppDispatch, useTypeSelector } from '../../../hooks/redux';
+import { addFavoriteItem, setTravelKilometrs } from '../../../store/reducers';
 
 interface CardFavoriteProps {
     favoriteItem: {
@@ -33,6 +33,9 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
     const map = useTypeSelector(state => state.map.map)
 
 
+    const handlerSetTravelInfo = (kilometrs: string) => {
+        dispatch(setTravelKilometrs({ kilometrs }))
+    }
 
 
     const useCardFavoriteStyle = CardFavoriteStyle(true, favoriteItem.img)()
@@ -68,7 +71,12 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                     <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
                     <ButtonTravel handleFunction={() => {
                         if (map != null) {
-                            makeRoute({ start: center, map: map, end: favoriteItem.coordinates })
+                            makeRoute({
+                                start: center,
+                                map: map,
+                                end: favoriteItem.coordinates,
+                                setTravelInfo: (kilometrs: string) => handlerSetTravelInfo(kilometrs)
+                            })
                         }
                     }
                     } />

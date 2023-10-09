@@ -5,11 +5,12 @@ import { useTypeSelector, useAppDispatch } from '../../hooks/redux';
 import { setCenter, setHumanPosition } from '../../store/reducers';
 import { getBrowserLocation } from '../../utils/geo';
 import { GoogleMap, Marker } from "@react-google-maps/api";
-import MapStyle from './MapStyle';
-import { CurrentLocationMarker } from '../CurrentLocationMarker/CurrentLocationMarker';
+import MapStyle from './style';
+import { CurrentLocationMarker } from '../CurrentLocationMarker';
 import { DefaultOptions } from '../../utils/consts';
 import { setMap } from '../../store/reducers/mapSlice/mapSlice';
-import CardPlace from '../CardPlace/CardPlace';
+import CardPlace from '../CardPlace';
+import { Loader } from '../Loader';
 
 
 interface MapProps {
@@ -74,7 +75,6 @@ const Map = ({ isLoaded }: MapProps) => {
                             icon={place.icon}
                             title={place.name}
                         />
-
                     ))}
                     {selectedPlace && (
                         <InfoWindow position={selectedPlace?.geometry?.location} onCloseClick={() => setSelectedPlace(undefined)}>
@@ -84,7 +84,7 @@ const Map = ({ isLoaded }: MapProps) => {
                     <CurrentLocationMarker position={currentPosition} />
                 </GoogleMap>
             ) : (
-                <p>Loading...</p>
+                <Loader text={"Карта загружается"}/>
             )}
         </Box>
     );

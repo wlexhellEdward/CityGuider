@@ -1,5 +1,5 @@
 import { Button, Icon, Typography } from '@mui/material'
-import ButtonSaveStyle from './ButtonSaveStyle'
+import ButtonSaveStyle from './styled'
 import favorite from '../../assets/img/inFavorite.svg'
 import favoriteGrey from '../../assets/img/greyFavorite.svg'
 

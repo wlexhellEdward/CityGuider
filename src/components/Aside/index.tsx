@@ -1,11 +1,11 @@
-import AsideStyle from './AsideStyle'
+import AsideStyle from './styled'
 import { Container, List, ListItem, ListItemIcon } from '@mui/material'
 import { useTypeSelector, useAppDispatch } from '../../hooks/redux'
 import { setCurrentStatus } from '../../store/reducers/currentStatus/currentStatusSlice'
 
 import Logo from '../../assets/img/Logo.svg'
 import Profile from '../../assets/img/profile.svg'
-import Favorite from '../../GUI/Favorite/Favorite';
+import Favorite from '../../GUI/Favorite';
 import Search from '../../GUI/Search/Search';
 import FavoriteSelected from '../../GUI/Favorite/FavoriteSelected'
 import SearchSelected from '../../GUI/Search/SearchSelected'
@@ -17,6 +17,7 @@ export default function Aside() {
     const switchCurrentStatus = (status: string) => {
         dispatch(setCurrentStatus(status))
     }
+
 
 
     const useAsideStyle = AsideStyle()

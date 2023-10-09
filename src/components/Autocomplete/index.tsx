@@ -1,9 +1,9 @@
-import AutocompleteStyle from './AutocompleteStyle'
+import AutocompleteStyle from './styled.tsx'
 import { Container, Input, List, ListItem, Typography } from '@mui/material'
 import searchSVG from '../../assets/img/searchInput.svg'
 import { useAppDispatch } from '../../hooks/redux.ts';
-import { setCenter } from '../../store/reducers';
-import { refactorString } from '../../utils/textRefactors';
+import { setCenter } from '../../store/reducers/index.ts';
+import { refactorString } from '../../utils/textRefactors.ts';
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,

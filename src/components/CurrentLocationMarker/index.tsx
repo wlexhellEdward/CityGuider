@@ -1,5 +1,5 @@
 import { Marker } from "@react-google-maps/api"
-import CurrentLocationMarkerStyle from "./CurrentLocationMarkerStyle"
+import CurrentLocationMarkerStyle from "./styled"
 import { Box } from '@mui/material'
 import im from '../../assets/img/Im.svg'
 
