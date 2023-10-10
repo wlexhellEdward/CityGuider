@@ -1,5 +1,5 @@
 export * from './centerSlice/centerSlice'
-export * from './searchItemsSlice/searchItemsSlice'
 export * from './currentStatus/currentStatusSlice'
 export * from './favoriteItemsSlice/favoriteItemsSlice'
 export * from './mapSlice/mapSlice'
+export * from './searchItemsSlice/searchItemsSlice'

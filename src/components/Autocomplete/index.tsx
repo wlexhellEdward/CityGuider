@@ -1,19 +1,21 @@
-import AutocompleteStyle from './styled.tsx'
 import { Container, Input, List, ListItem, Typography } from '@mui/material'
-import searchSVG from '../../assets/img/searchInput.svg'
-import { useAppDispatch } from '../../hooks/redux.ts';
-import { setCenter } from '../../store/reducers/index.ts';
-import { refactorString } from '../../utils/textRefactors.ts';
+import searchSVG from 'assets/img/searchInput.svg'
+import { useAppDispatch } from 'hooks/redux.ts';
+import { useEffect } from 'react';
+import useOnclickOutside from "react-cool-onclickoutside";
+import { setCenter } from 'store/reducers/index.ts';
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
 } from "use-places-autocomplete";
-import useOnclickOutside from "react-cool-onclickoutside";
-import { useEffect } from 'react';
+import { refactorString } from 'utils/textRefactors.ts';
 
-interface AutocompleteProops {
-    isLoaded: boolean;
-}
+import DoesntExistPhoto from 'public/doesntExist.jpg'
+
+import { AutocompleteProops } from './interfaceProps.ts';
+import AutocompleteStyle from './styled.ts'
+
+
 
 
 export default function Autocomplete({ isLoaded }: AutocompleteProops) {
@@ -73,10 +75,11 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
 
 
     const useAutocompleteStyle = AutocompleteStyle()
+    const OK = "OK"
     return (
         <Container disableGutters className={useAutocompleteStyle.classes.Autocomplete}>
             <Container ref={ref} className={useAutocompleteStyle.classes.containerInput}>
-                <img className={useAutocompleteStyle.classes.searchImg} src={searchSVG} alt="" />
+                <img className={useAutocompleteStyle.classes.searchImg} src={searchSVG} alt={DoesntExistPhoto} />
                 <Input
                     value={value}
                     onChange={handleInput}
@@ -86,7 +89,7 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
                 ></Input>
             </Container>
 
-            {status === "OK" && (
+            {status === OK && (
                 <List className={useAutocompleteStyle.classes.ListContainer}>
                     <ListItem disablePadding className={useAutocompleteStyle.classes.listItem}>{renderSuggestions()}</ListItem>
                 </List>)

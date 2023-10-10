@@ -1,40 +1,33 @@
-import CardFavoriteStyle from '../styled';
-import arrowMore from '../../assets/img/arrowMore.svg'
-import { Places } from '../../Drawer/Places';
-import { IFavoriteItem } from '../../../models/IFavoriteItem';
-import ButtonTravel from '../../../GUI/ButtonTravel';
-import ButtonSave from '../../../GUI/ButtonSave';
-import { makeRoute } from '../../../utils/route';
+import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
+import arrowMore from 'assets/img/arrowMore.svg'
+import { Places } from 'components/Drawer/Places';
+import ButtonSave from 'GUI/ButtonSave';
+import ButtonTravel from 'GUI/ButtonTravel';
+import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
-import { Container, Card, Box, Typography, CardContent, CardActions, } from '@mui/material';
-import { useAppDispatch, useTypeSelector } from '../../../hooks/redux';
-import { addFavoriteItem, setTravelKilometrs } from '../../../store/reducers';
+import { addFavoriteItem, setTravelDistance, setTravelPlaceGeometry } from 'store/reducers';
+import { makeRoute } from 'utils/route';
 
-interface CardFavoriteProps {
-    favoriteItem: {
-        id: number,
-        type: string[],
-        img: string,
-        coordinates: google.maps.LatLng,
-        title: string,
-        description: string,
-    }
-    handleSetIsOpen: (status: boolean) => void;
-    isOpen: boolean;
-}
+import DoesntExistPhoto from '/public/doesntExist.jpg'
+
+import CardFavoriteStyle from '../styled';
+import { CardFavoritePropsMaxSize } from './interfaceProps';
 
 
 
-const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handleSetIsOpen }) => {
+
+const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
 
     const dispatch = useAppDispatch()
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
-    const map = useTypeSelector(state => state.map.map)
+    const map = useTypeSelector(state => state.map.mapRef)
 
+    const handleSetTravelPlaceGeomety = (coordinates: google.maps.LatLng) => dispatch(setTravelPlaceGeometry(coordinates))
 
     const handlerSetTravelInfo = (kilometrs: string) => {
-        dispatch(setTravelKilometrs({ kilometrs }))
+        dispatch(setTravelDistance({ kilometrs }))
     }
 
 
@@ -48,11 +41,14 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                             {favoriteItem.type.map((item) => {
                                 const matchingPlace = Places.find((place) => place.type === item);
                                 if (matchingPlace) {
+                                    const [title, img] = [matchingPlace.title, matchingPlace.img];
                                     return (
                                         <img
-                                            key={matchingPlace.title}
+                                            alt={DoesntExistPhoto}
+                                            title='place icon'
+                                            key={title}
                                             className={useCardFavoriteStyle.classes.iconStatis}
-                                            src={matchingPlace.img}
+                                            src={img}
                                         />
                                     );
                                 }
@@ -71,16 +67,17 @@ const CardFavoriteMaxSize: React.FC<CardFavoriteProps> = ({ favoriteItem, handle
                     <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
                     <ButtonTravel handleFunction={() => {
                         if (map != null) {
+                            handleSetTravelPlaceGeomety(favoriteItem.coordinates)
                             makeRoute({
                                 start: center,
                                 map: map,
                                 end: favoriteItem.coordinates,
-                                setTravelInfo: (kilometrs: string) => handlerSetTravelInfo(kilometrs)
+                                setTravelDistance: (kilometrs: string) => handlerSetTravelInfo(kilometrs)
                             })
                         }
                     }
                     } />
-                    <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} src={arrowMore} alt="" />
+                    <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>
 

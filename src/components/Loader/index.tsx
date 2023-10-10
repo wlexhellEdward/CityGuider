@@ -1,9 +1,9 @@
-import { Container, Box, Typography } from '@mui/material'
-import LoaderStyle from './styled'
+import { Container, Typography } from '@mui/material'
 
-interface LoaderProps {
-    text: string
-}
+import LoaderStyle from './styled'
+import { LoaderProps } from './interfaceProps'
+
+
 
 export const Loader = ({ text }: LoaderProps) => {
     const useLoaderStyle = LoaderStyle()

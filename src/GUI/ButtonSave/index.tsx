@@ -1,12 +1,12 @@
 import { Button, Icon, Typography } from '@mui/material'
-import ButtonSaveStyle from './styled'
-import favorite from '../../assets/img/inFavorite.svg'
-import favoriteGrey from '../../assets/img/greyFavorite.svg'
+import favoriteGrey from 'assets/img/greyFavorite.svg'
+import favorite from 'assets/img/inFavorite.svg'
 
-interface ButtonSaveProps {
-    handleFunction: () => void,
-    isFavorite: boolean,
-}
+import DoesntExistPhoto from '/public/doesntExist.jpg'
+
+import ButtonSaveStyle from './styled'
+import { ButtonSaveProps } from './interfaceProps'
+
 
 export default function ButtonSave({ handleFunction, isFavorite }: ButtonSaveProps) {
     const useButtonSaveStyle = ButtonSaveStyle()
@@ -14,7 +14,7 @@ export default function ButtonSave({ handleFunction, isFavorite }: ButtonSavePro
         <>
             <Button onClick={() => handleFunction()} className={useButtonSaveStyle.classes.btnSaved}>
                 <Icon className={useButtonSaveStyle.classes.icon}>
-                    <img src={isFavorite ? favorite : favoriteGrey} alt="" />
+                    <img src={isFavorite ? favorite : favoriteGrey} alt={DoesntExistPhoto} title='save button photo' />
                 </Icon>
                 <Typography>{isFavorite ? "Удалить" : "Добавить"}</Typography>
             </Button>

@@ -1,21 +1,21 @@
-import React, { useState, useRef } from 'react';
 import { Box } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
-import { useTypeSelector, useAppDispatch } from '../../hooks/redux';
-import { setCenter, setHumanPosition } from '../../store/reducers';
-import { getBrowserLocation } from '../../utils/geo';
 import { GoogleMap, Marker } from "@react-google-maps/api";
+import CardPlace from "components/CardPlace";
+import { CurrentLocationMarker } from "components/CurrentLocationMarker";
+import { Loader } from "components/Loader";
+import { useAppDispatch,useTypeSelector } from 'hooks/redux';
+import React, { useRef,useState } from 'react';
+import { setCenter, setHumanPosition } from 'store/reducers';
+import { setMap } from 'store/reducers/mapSlice/mapSlice';
+import { DefaultOptions } from 'utils/consts';
+import { getBrowserLocation } from 'utils/geo';
+
 import MapStyle from './style';
-import { CurrentLocationMarker } from '../CurrentLocationMarker';
-import { DefaultOptions } from '../../utils/consts';
-import { setMap } from '../../store/reducers/mapSlice/mapSlice';
-import CardPlace from '../CardPlace';
-import { Loader } from '../Loader';
+import { MapProps } from "./interfaceProps";
 
 
-interface MapProps {
-    isLoaded: boolean;
-}
+
 
 const API_KEY = process.env.REACT_APP_API_KEY // ?
 

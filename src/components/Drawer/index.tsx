@@ -1,24 +1,23 @@
-import { styled, Theme, CSSObject } from '@mui/material/styles';
+import { Box, Container, Typography } from "@mui/material"
 import MuiDrawer from '@mui/material/Drawer';
-import { useState } from 'react'
-import { Container, Typography, Box } from "@mui/material"
-import DrawerStyle from './styled.ts'
-import CardFavorite from '../CardFavorite/index.tsx';
-import Autocomplete from '../Autocomplete/index.tsx'
 import Input from '@mui/material/Input';
+import { CSSObject, styled, Theme } from '@mui/material/styles';
+import searchIcon from 'assets/img/Search.svg'
+import Autocomplete from "components/Autocomplete/index.tsx";
+import CardFavorite from 'components/CardFavorite/index.tsx';
+import { Loader } from 'components/Loader/index.tsx';
+import SearchPlace from 'components/SearchPlace/index.tsx';
+import { useAppDispatch, useTypeSelector } from 'hooks/redux.ts';
+import { useState } from 'react'
+import { clearResults, setResults } from 'store/reducers/index.ts';
+
+import DoesntExistPhoto from '/public/doesntExist.jpg'
+
 import { Places } from './Places.ts';
-import SearchPlace from '../SearchPlace/index.tsx';
-import searchIcon from '../../assets/img/Search.svg'
-import { useAppDispatch, useTypeSelector } from '../../hooks/redux.ts';
-import { clearResults, setResults } from '../../store/reducers/index.ts';
-import { Loader } from '../Loader/index.tsx';
+import DrawerStyle from './styled.ts'
+import { SideBarProps } from "./interfaceProps.ts";
 
 const DrawerWidth = 600
-
-interface SideBarProps {
-  currentStatus: string;
-  isLoaded: boolean;
-}
 
 
 
@@ -27,7 +26,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
   const dispatch = useAppDispatch()
 
   const [inputValue, setInputValue] = useState("1")
-  const map = useTypeSelector(state => state.map.map)
+  const map = useTypeSelector(state => state.map.mapRef)
   const center = useTypeSelector(state => state.currentPosition.position)
   const favoriteItems = useTypeSelector((state) => state.favoriteItems.favoriteItems)
   const selectedItems = useTypeSelector(state => state.searchSlice.selectedItems)
@@ -81,42 +80,42 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
 
   const useDrawerStyle = DrawerStyle()
 
-  const openedMixin = (theme: Theme): CSSObject => ({
-    width: 'auto',
-    maxWidth: DrawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    overflowX: 'hidden',
-  });
-  const closedMixin = (theme: Theme): CSSObject => ({
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: `calc(${theme.spacing(11)} + 1px)`,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(${theme.spacing(13)} + 1px)`,
-    },
-  });
+  // const openedMixin = (theme: Theme): CSSObject => ({
+  //   width: 'auto',
+  //   maxWidth: DrawerWidth,
+  //   transition: theme.transitions.create('width', {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.enteringScreen,
+  //   }),
+  //   overflowX: 'hidden',
+  // });
+  // const closedMixin = (theme: Theme): CSSObject => ({
+  //   transition: theme.transitions.create('width', {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.leavingScreen,
+  //   }),
+  //   overflowX: 'hidden',
+  //   width: `calc(${theme.spacing(11)} + 1px)`,
+  //   [theme.breakpoints.up('sm')]: {
+  //     width: `calc(${theme.spacing(13)} + 1px)`,
+  //   },
+  // });
   const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
+    ({ theme /*,open*/ }) => ({
       width: 'auto',
       maxWidth: DrawerWidth,
       flexShrink: 0,
       whiteSpace: 'nowrap',
       boxSizing: 'border-box',
 
-      ...(open && {
-        ...openedMixin(theme),
-        '& .MuiDrawer-paper': openedMixin(theme),
-      }),
-      ...(!open && {
-        ...closedMixin(theme),
-        '& .MuiDrawer-paper': closedMixin(theme),
-      }),
+      // ...(open && {
+      //   ...openedMixin(theme),
+      //   '& .MuiDrawer-paper': openedMixin(theme),
+      // }),
+      // ...(!open && {
+      //   ...closedMixin(theme),
+      //   '& .MuiDrawer-paper': closedMixin(theme),
+      // }),
     }),
   );
   const DrawerContent = styled('div')(() => ({
@@ -174,7 +173,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
                     <Typography className={useDrawerStyle.classes.spanDescription}>км</Typography>
                   </Container>
                   <Container onClick={handleSetSearchButtonIsClicked} className={useDrawerStyle.classes.buttonSearch} >
-                    <img src={searchIcon} alt="" />
+                    <img src={searchIcon} alt={DoesntExistPhoto} title='icon search' />
                   </Container>
                 </Container>
 
@@ -195,10 +194,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
                       <Loader text={"Попробуйте что-нибудь добавить)"}></Loader>
                     </>
                   }
-
-
                 </Box>
-
               </Container>
             }
           </Box>
