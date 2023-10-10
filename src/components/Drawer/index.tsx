@@ -26,7 +26,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
   const dispatch = useAppDispatch()
 
   const [inputValue, setInputValue] = useState("1")
-  const map = useTypeSelector(state => state.map.map)
+  const map = useTypeSelector(state => state.map.mapRef)
   const center = useTypeSelector(state => state.currentPosition.position)
   const favoriteItems = useTypeSelector((state) => state.favoriteItems.favoriteItems)
   const selectedItems = useTypeSelector(state => state.searchSlice.selectedItems)

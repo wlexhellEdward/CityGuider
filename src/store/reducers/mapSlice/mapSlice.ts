@@ -1,18 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface mapState {
-    map: google.maps.Map | null,
-    travelInfo:{
-        distance:string,
-        // time:string,
+    mapRef: google.maps.Map | null,
+    travelInfo: {
+        distanceTraveled: string,
+        distance: string,
+        placeGeometry: google.maps.LatLng | undefined,
+        time: string,
+        progress: number
     }
 }
 
 const initialState: mapState = {
-    map: null,
-    travelInfo:{
-        distance:"",
-        // time:"",
+    mapRef: null,
+    travelInfo: {
+        placeGeometry: undefined,
+        distanceTraveled: "",
+        distance: "",
+        time: "",
+        progress: 0
     },
 }
 
@@ -22,15 +28,26 @@ const mapSlice = createSlice({
     initialState,
     reducers: {
         setMap(state, action) {
-            state.map = action.payload
+            state.mapRef = action.payload
         },
-        setTravelKilometrs(state, action) {
-            console.log(action.payload)
+        setTravelPlaceGeometry(state,action){
+            state.travelInfo.placeGeometry = action.payload
+        },
+        setTravelDistance(state, action) {
             state.travelInfo.distance = action.payload
+        },
+        setTravelDistanceTraveled(state, action) {
+            state.travelInfo.distanceTraveled = action.payload
+        },
+        setTravelTime(state, action) {
+            state.travelInfo.time = action.payload
+        },
+        setTravelProgress(state, action) {
+            state.travelInfo.progress = action.payload
         }
     }
 })
 
-export const { setMap, setTravelKilometrs } = mapSlice.actions
+export const { setMap,setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelProgress, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer

@@ -1,4 +1,4 @@
-import { Box,Container } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import { Libraries, useJsApiLoader } from "@react-google-maps/api";
 import arrowDisableDrawer from 'assets/img/arrowDisableDrawer.svg'
 import Aside from 'components/Aside'
@@ -7,7 +7,7 @@ import Map from 'components/Map'
 import { RouteInfo } from 'components/RouteInfo'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import useOnclickOutside from "react-cool-onclickoutside";
-import { setCurrentStatus, setTravelKilometrs } from 'store/reducers'
+import { setCurrentStatus, setTravelDistance } from 'store/reducers'
 
 import AppStyle from './AppStyle'
 
@@ -21,8 +21,7 @@ function App() {
   const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
   const travelInfo = useTypeSelector(state => state.map.travelInfo)
   const handlerSetTravelKilometrs = (kilometrs: string) => {
-    console.log("qwe")
-    dispatch(setTravelKilometrs(kilometrs))
+    dispatch(setTravelDistance(kilometrs))
   }
 
   const { isLoaded } = useJsApiLoader({
@@ -59,7 +58,7 @@ function App() {
         <Map isLoaded={isLoaded} />
         {
           travelInfo.distance != "" ?
-            <RouteInfo key={travelInfo.distance} distance={travelInfo.distance.kilometrs} handlerSetTravelKilometrs={() => handlerSetTravelKilometrs("")} />
+            <RouteInfo />
             :
             <></>
         }

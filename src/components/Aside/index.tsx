@@ -26,7 +26,7 @@ export default function Aside() {
             <List className={useAsideStyle.classes.listItems}>
                 <ListItem className={useAsideStyle.classes.logo}>
                     <ListItemIcon className={useAsideStyle.classes.logo}>
-                        <img onClick={() => switchCurrentStatus('close')} title='icon for closing drawer' src={Logo} alt={DoesntExistPhoto} />
+                        <img title='icon for closing drawer' src={Logo} alt={DoesntExistPhoto} />
                     </ListItemIcon>
                 </ListItem>
                 <ListItem className={useAsideStyle.classes.listItemButton}>

@@ -6,7 +6,7 @@ import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
-import { addFavoriteItem, setTravelKilometrs } from 'store/reducers';
+import { addFavoriteItem, setTravelDistance, setTravelPlaceGeometry } from 'store/reducers';
 import { makeRoute } from 'utils/route';
 
 import DoesntExistPhoto from '/public/doesntExist.jpg'
@@ -22,11 +22,12 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     const dispatch = useAppDispatch()
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
-    const map = useTypeSelector(state => state.map.map)
+    const map = useTypeSelector(state => state.map.mapRef)
 
+    const handleSetTravelPlaceGeomety = (coordinates: google.maps.LatLng) => dispatch(setTravelPlaceGeometry(coordinates))
 
     const handlerSetTravelInfo = (kilometrs: string) => {
-        dispatch(setTravelKilometrs({ kilometrs }))
+        dispatch(setTravelDistance({ kilometrs }))
     }
 
 
@@ -66,11 +67,12 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                     <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
                     <ButtonTravel handleFunction={() => {
                         if (map != null) {
+                            handleSetTravelPlaceGeomety(favoriteItem.coordinates)
                             makeRoute({
                                 start: center,
                                 map: map,
                                 end: favoriteItem.coordinates,
-                                setTravelInfo: (kilometrs: string) => handlerSetTravelInfo(kilometrs)
+                                setTravelDistance: (kilometrs: string) => handlerSetTravelInfo(kilometrs)
                             })
                         }
                     }
