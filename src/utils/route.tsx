@@ -1,7 +1,7 @@
-import { setTravelTime } from "store/reducers";
 
 interface makeRouteProps {
-    setTravelDistance: (time: string) => void,
+    setTravelDistance: (kilometrs: string) => void,
+    setTravelTime: (time: string) => void,
     start: {
         lat: number,
         lng: number
@@ -10,7 +10,12 @@ interface makeRouteProps {
     map: google.maps.Map
 }
 
-export const makeRoute = ({ start, end, map, setTravelDistance }: makeRouteProps) => {
+export const makeRoute = ({ start, end, map, setTravelDistance, setTravelTime }: makeRouteProps) => {
+    
+    const distanceToTime = (distance: string) => {
+        return parseFloat(distance) / 5 + " ч."
+    }
+    
     if (start && end != null) {
         try {
             const directionsService = new google.maps.DirectionsService();
@@ -27,7 +32,10 @@ export const makeRoute = ({ start, end, map, setTravelDistance }: makeRouteProps
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsRenderer.setDirections(response);
                     const route = response?.routes[0]
-                    setTravelDistance(route?.legs[0].distance?.text || "")
+                    const distance = route?.legs[0].distance?.text
+                    setTravelDistance(distance || "")
+                    setTravelTime(distanceToTime(distance || ""))
+
                 } else {
                     window.alert('Произошла ошибка при поиске маршрута: ' + status);
                 }
@@ -57,8 +65,6 @@ interface TravelProps {
 
 
 export const setTravelInfo = ({ start, distanceTraveled, end, map, setTavelDistanceTraveled, setTravelProgress, setTravelTime }: TravelProps) => {
-    console.log(start, distanceTraveled, end, map)
-
     const calculateProgress = (distance: string, distanceTraveled: string) => {
         return (parseFloat(distance) / parseFloat(distanceTraveled)) * 100;
     }

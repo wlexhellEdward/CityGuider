@@ -3,7 +3,7 @@ import ButtonSave from 'GUI/ButtonSave';
 import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { IFavoriteItem } from 'models/IFavoriteItem'
-import { addFavoriteItem, setTravelDistance, setTravelPlaceGeometry } from 'store/reducers'
+import { addFavoriteItem, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers'
 import { convertPlaceToFavorite } from 'utils/convert'
 import { makeRoute } from 'utils/route';
 
@@ -31,7 +31,8 @@ export default function CardPlace({ place }: CardPlaceProps) {
     const handlerSetTravelInfo = (kilometrs: string) => {
         dispatch(setTravelDistance({ kilometrs }))
     }
-    const handleSetTravelPlaceGeomety = (coordinates:google.maps.places.PlaceGeometry) => dispatch(setTravelPlaceGeometry(coordinates))
+    const handlerSetTravelTime = (time: string) => dispatch(setTravelTime(time))
+    const handleSetTravelPlaceGeomety = (coordinates: google.maps.places.PlaceGeometry) => dispatch(setTravelPlaceGeometry(coordinates))
     const useCardPlaceStyle = CardPlaceStyle()
 
     if (place != undefined) {
@@ -58,7 +59,8 @@ export default function CardPlace({ place }: CardPlaceProps) {
                                 start: center,
                                 map: map,
                                 end: place.geometry?.location,
-                                setTravelDistance: (kilometrs: string) => handlerSetTravelInfo(kilometrs)
+                                setTravelDistance: (kilometrs: string) => handlerSetTravelInfo(kilometrs),
+                                setTravelTime: (time: string) => handlerSetTravelTime(time)
                             })
                         } else {
                             <PopUp text={"У данного места нету координат"} />

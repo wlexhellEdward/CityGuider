@@ -6,7 +6,7 @@ import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
-import { addFavoriteItem, setTravelDistance, setTravelPlaceGeometry } from 'store/reducers';
+import { addFavoriteItem, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
 import { makeRoute } from 'utils/route';
 
 import DoesntExistPhoto from '/public/doesntExist.jpg'
@@ -25,7 +25,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     const map = useTypeSelector(state => state.map.mapRef)
 
     const handleSetTravelPlaceGeomety = (coordinates: google.maps.LatLng) => dispatch(setTravelPlaceGeometry(coordinates))
-
+    const handlerSetTravelTime = (time: string) => dispatch(setTravelTime(time))
     const handlerSetTravelInfo = (kilometrs: string) => {
         dispatch(setTravelDistance({ kilometrs }))
     }
@@ -67,12 +67,14 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                     <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
                     <ButtonTravel handleFunction={() => {
                         if (map != null) {
+
                             handleSetTravelPlaceGeomety(favoriteItem.coordinates)
                             makeRoute({
                                 start: center,
                                 map: map,
                                 end: favoriteItem.coordinates,
-                                setTravelDistance: (kilometrs: string) => handlerSetTravelInfo(kilometrs)
+                                setTravelDistance: (kilometrs: string) => handlerSetTravelInfo(kilometrs),
+                                setTravelTime: (time: string) => handlerSetTravelTime(time)
                             })
                         }
                     }

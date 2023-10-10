@@ -4,7 +4,9 @@ interface mapState {
     mapRef: google.maps.Map | null,
     travelInfo: {
         distanceTraveled: string,
-        distance: string,
+        distance: {
+            kilometrs: string
+        },
         placeGeometry: google.maps.LatLng | undefined,
         time: string,
         progress: number
@@ -16,7 +18,9 @@ const initialState: mapState = {
     travelInfo: {
         placeGeometry: undefined,
         distanceTraveled: "",
-        distance: "",
+        distance: {
+            kilometrs: ""
+        },
         time: "",
         progress: 0
     },
@@ -30,7 +34,7 @@ const mapSlice = createSlice({
         setMap(state, action) {
             state.mapRef = action.payload
         },
-        setTravelPlaceGeometry(state,action){
+        setTravelPlaceGeometry(state, action) {
             state.travelInfo.placeGeometry = action.payload
         },
         setTravelDistance(state, action) {
@@ -48,6 +52,6 @@ const mapSlice = createSlice({
     }
 })
 
-export const { setMap,setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelProgress, setTravelTime } = mapSlice.actions
+export const { setMap, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelProgress, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer

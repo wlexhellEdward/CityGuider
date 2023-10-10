@@ -19,10 +19,7 @@ function App() {
   const dispatch = useAppDispatch()
   const currentStatus = useTypeSelector(state => state.currentStatus.status)
   const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
-  const travelInfo = useTypeSelector(state => state.map.travelInfo)
-  const handlerSetTravelKilometrs = (kilometrs: string) => {
-    dispatch(setTravelDistance(kilometrs))
-  }
+  const distance = useTypeSelector(state => state.map.travelInfo.distance)
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -57,7 +54,7 @@ function App() {
         }
         <Map isLoaded={isLoaded} />
         {
-          travelInfo.distance != "" ?
+          distance.kilometrs != "" ?
             <RouteInfo />
             :
             <></>
