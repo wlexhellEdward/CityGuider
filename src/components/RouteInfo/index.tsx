@@ -4,7 +4,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 import RouteInfoStyle from "./style"
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import { setTravelDistanceTraveled, setTravelProgress, setTravelTime } from 'store/reducers';
+import { deleteTravel, setTravelDistanceTraveled, setTravelProgress, setTravelTime } from 'store/reducers';
 import { setTravelInfo } from 'utils/route';
 
 export const RouteInfo = () => {
@@ -18,38 +18,32 @@ export const RouteInfo = () => {
     const progressTravel = useTypeSelector(state => state.map.travelInfo.progress)
 
     const handleSetTavelDistanceTraveled = (kilometrs: string) => dispatch(setTravelDistanceTraveled(kilometrs))
+    const handleDeleteTravel = () => dispatch(deleteTravel())
     const handleSetTraveProgress = (progress: number) => dispatch(setTravelProgress(progress))
     const handleSetTravelTime = (time: string) => dispatch(setTravelTime(time))
 
     const useRouteInfoStyle = RouteInfoStyle()
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            if (placeGeometry && map) {
-                setTravelInfo({
-                    start: center,
-                    distanceTraveled: distanceTraveled,
-                    end: placeGeometry,
-                    map: map,
-                    setTavelDistanceTraveled: handleSetTavelDistanceTraveled,
-                    setTravelProgress: handleSetTraveProgress,
-                    setTravelTime: handleSetTravelTime
-                });
-            }
+        if (placeGeometry && map) {
+            setTravelInfo({
+                start: center,
+                distanceTraveled: distanceTraveled,
+                end: placeGeometry,
+                map: map,
+                setTavelDistanceTraveled: handleSetTavelDistanceTraveled,
+                setTravelProgress: handleSetTraveProgress,
+                setTravelTime: handleSetTravelTime
+            });
+        }
+    }, [center]);
 
-        }, 60000);
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, []);
-
-
+    console.log(progressTravel)
     return (
         <Container className={useRouteInfoStyle.classes.routeContainer}>
             <Box>
-                <LinearProgress value={progressTravel} /> 
-                <Button onClick={() => handleSetTavelDistanceTraveled("")}>X</Button>
+                <LinearProgress className={useRouteInfoStyle.classes.progressBar} variant='determinate' value={progressTravel+30} />
+                <Button className={useRouteInfoStyle.classes.buttonClose} onClick={handleDeleteTravel}>X</Button>
             </Box>
             <Box>
                 <Typography className={useRouteInfoStyle.classes.routeValue}>{distance}</Typography>

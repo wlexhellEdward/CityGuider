@@ -48,10 +48,17 @@ const mapSlice = createSlice({
         },
         setTravelProgress(state, action) {
             state.travelInfo.progress = action.payload
+        },
+        deleteTravel(state) {
+            state.travelInfo.distance.kilometrs = ""
+            state.travelInfo.distanceTraveled=""
+            state.travelInfo.progress=0
+            state.travelInfo.placeGeometry=undefined
+            state.travelInfo.time=""
         }
     }
 })
 
-export const { setMap, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelProgress, setTravelTime } = mapSlice.actions
+export const { setMap, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelProgress, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer

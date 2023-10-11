@@ -45,16 +45,16 @@ function App() {
               isLoaded={isLoaded}
             />
           </Container>
-          : <>
-            <Box className={useAppStyle.classes.boxArrow}>
-              <Container className={useAppStyle.classes.containerArrow}>
-                <img src={arrowDisableDrawer} className={useAppStyle.classes.arrowShowMore} onClick={() => switchCurrentStatus('favorites')} alt="" />
-              </Container>
-            </Box></>
+          :
+          <Box className={useAppStyle.classes.boxArrow}>
+            <Container className={useAppStyle.classes.containerArrow}>
+              <img src={arrowDisableDrawer} className={useAppStyle.classes.arrowShowMore} onClick={() => switchCurrentStatus('favorites')} alt="" />
+            </Container>
+          </Box>
         }
         <Map isLoaded={isLoaded} />
         {
-          distance.kilometrs != "" ?
+          distance.kilometrs.length>0 ?
             <RouteInfo />
             :
             <></>

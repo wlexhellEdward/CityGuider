@@ -19,9 +19,17 @@ const RouteInfoStyle = makeStyles()((theme) => {
             padding:'4px 8px',
             border: '1px solid black',
             '&>div': {
-                height: '40%',
+                height: '30%',
                 display: 'flex',
+                alignItems:'center',
                 justifyContent: 'space-between'
+            }
+        },
+        progressBar:{
+            width:'100%',
+            backgroundColor:'#E8DF1',
+            '& span':{
+                backgroundColor:'#C75E5E'
             }
         },
         routeValue: {
@@ -33,6 +41,13 @@ const RouteInfoStyle = makeStyles()((theme) => {
             color: darkBlue,
             opacity:.8,
             fontSize: '10px'
+        },
+        buttonClose:{
+            justifyContent:'end',
+            '&:focus':{
+                border:'none',
+                outline:'none',
+            }
         }
     };
 });
