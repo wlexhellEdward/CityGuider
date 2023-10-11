@@ -28,10 +28,10 @@ export default function CardPlace({ place }: CardPlaceProps) {
     const map = useTypeSelector(state => state.map.mapRef)
 
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
-    const handlerSetTravelInfo = (kilometrs: string) => {
+    const handleSetTravelInfo = (kilometrs: string) => {
         dispatch(setTravelDistance({ kilometrs }))
     }
-    const handlerSetTravelTime = (time: string) => dispatch(setTravelTime(time))
+    const handleSetTravelTime = (time: string) => dispatch(setTravelTime(time))
     const handleSetTravelPlaceGeomety = (coordinates: google.maps.places.PlaceGeometry) => dispatch(setTravelPlaceGeometry(coordinates))
     const useCardPlaceStyle = CardPlaceStyle()
 
@@ -59,8 +59,8 @@ export default function CardPlace({ place }: CardPlaceProps) {
                                 start: center,
                                 map: map,
                                 end: place.geometry?.location,
-                                setTravelDistance: (kilometrs: string) => handlerSetTravelInfo(kilometrs),
-                                setTravelTime: (time: string) => handlerSetTravelTime(time)
+                                setTravelDistance: (kilometrs: string) => handleSetTravelInfo(kilometrs),
+                                setTravelTime: (time: string) => handleSetTravelTime(time)
                             })
                         } else {
                             <PopUp text={"У данного места нету координат"} />

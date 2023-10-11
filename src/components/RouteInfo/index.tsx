@@ -38,7 +38,6 @@ export const RouteInfo = () => {
         }
     }, [center]);
 
-    console.log(progressTravel)
     return (
         <Container className={useRouteInfoStyle.classes.routeContainer}>
             <Box>

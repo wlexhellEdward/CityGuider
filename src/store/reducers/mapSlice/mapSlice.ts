@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface mapState {
     mapRef: google.maps.Map | null,
+    isLoaded: boolean,
     travelInfo: {
         distanceTraveled: string,
         distance: {
@@ -15,6 +16,7 @@ interface mapState {
 
 const initialState: mapState = {
     mapRef: null,
+    isLoaded: false,
     travelInfo: {
         placeGeometry: undefined,
         distanceTraveled: "",
@@ -51,14 +53,17 @@ const mapSlice = createSlice({
         },
         deleteTravel(state) {
             state.travelInfo.distance.kilometrs = ""
-            state.travelInfo.distanceTraveled=""
-            state.travelInfo.progress=0
-            state.travelInfo.placeGeometry=undefined
-            state.travelInfo.time=""
+            state.travelInfo.distanceTraveled = ""
+            state.travelInfo.progress = 0
+            state.travelInfo.placeGeometry = undefined
+            state.travelInfo.time = ""
+        },
+        setIsLoaded(state, action) {
+            state.isLoaded = action.payload
         }
     }
 })
 
-export const { setMap, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelProgress, setTravelTime } = mapSlice.actions
+export const { setMap, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelProgress, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer

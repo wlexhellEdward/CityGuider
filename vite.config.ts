@@ -1,11 +1,8 @@
 import react from '@vitejs/plugin-react'
 import { loadEnv } from 'vite'
 
-// Загрузка переменных среды
 const env = loadEnv(process.env.MODE, process.cwd(), '');
-
 export default {
- 
   define: {
     'process.env': env,
   },

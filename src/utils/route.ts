@@ -11,11 +11,11 @@ interface makeRouteProps {
 }
 
 export const makeRoute = ({ start, end, map, setTravelDistance, setTravelTime }: makeRouteProps) => {
-    
+
     const distanceToTime = (distance: string) => {
-        return parseFloat(distance) / 5 + " ч."
+        return (parseFloat(distance) / 5).toFixed(1) + " ч."
     }
-    
+
     if (start && end != null) {
         try {
             const directionsService = new google.maps.DirectionsService();
@@ -65,12 +65,13 @@ interface TravelProps {
 
 
 export const setTravelInfo = ({ start, distanceTraveled, end, map, setTavelDistanceTraveled, setTravelProgress, setTravelTime }: TravelProps) => {
+    
     const calculateProgress = (distance: string, distanceTraveled: string) => {
         return (parseFloat(distance) / parseFloat(distanceTraveled)) * 100;
     }
 
     const distanceToTime = (distance: string) => {
-        return parseFloat(distance) / 5 + " ч."
+        return (parseFloat(distance) / 5).toFixed(1) + " ч."
     }
 
     if (start && end != null) {
