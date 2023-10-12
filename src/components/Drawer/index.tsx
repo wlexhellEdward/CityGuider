@@ -16,6 +16,7 @@ import DoesntExistPhoto from '/public/doesntExist.jpg'
 import { Places } from './Places.ts';
 import DrawerStyle from './styled.ts'
 import { SideBarProps } from "./interfaceProps.ts";
+import { Waiter } from "components/Waiter/index.tsx";
 
 const DrawerWidth = 600
 
@@ -191,7 +192,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
                     })
                     :
                     <>
-                      <Loader text={"Попробуйте что-нибудь добавить)"}></Loader>
+                      <Waiter text={" Попробуйте что-нибудь добавить"} />
                     </>
                   }
                 </Box>

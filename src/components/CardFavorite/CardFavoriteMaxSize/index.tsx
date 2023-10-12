@@ -6,8 +6,8 @@ import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
-import { addFavoriteItem, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
-import { makeRoute } from 'utils/route';
+import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelDistanceTraveled, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
+import { getDirections } from 'utils/route';
 
 import DoesntExistPhoto from '/public/doesntExist.jpg'
 
@@ -24,10 +24,34 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
     const map = useTypeSelector(state => state.map.mapRef)
 
-    const handleSetTravelPlaceGeomety = (coordinates: google.maps.LatLng) => dispatch(setTravelPlaceGeometry(coordinates))
-    const handlerSetTravelTime = (time: string) => dispatch(setTravelTime(time))
-    const handlerSetTravelInfo = (kilometrs: string) => {
-        dispatch(setTravelDistance({ kilometrs }))
+    
+
+    const handleClickRoute = async () => {
+        try {
+            dispatch(clearDirection())
+
+            const directionRequest = {
+                origin: center,
+                destination: favoriteItem.coordinates,
+                travelMode: google.maps.TravelMode.WALKING
+            }
+
+            const result = await getDirections(directionRequest)
+            const distance = result?.routes[0].legs[0].distance?.value || 0
+            const time = result?.routes[0].legs[0].duration?.text || ''
+
+            const directionsRenderer = new google.maps.DirectionsRenderer({
+                map: map,
+                directions: result
+            })
+            
+            dispatch(setTravelDistance(distance))
+            dispatch(setTravelPlaceGeometry(favoriteItem.coordinates))
+            dispatch(setTravelTime(time))
+            dispatch(setDirectionRenderer(directionsRenderer))
+        } catch (e) {
+            console.log(e);
+        }
     }
 
 
@@ -65,26 +89,15 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
                     <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
-                    <ButtonTravel handleFunction={() => {
-                        if (map != null) {
-
-                            handleSetTravelPlaceGeomety(favoriteItem.coordinates)
-                            makeRoute({
-                                start: center,
-                                map: map,
-                                end: favoriteItem.coordinates,
-                                setTravelDistance: (kilometrs: string) => handlerSetTravelInfo(kilometrs),
-                                setTravelTime: (time: string) => handlerSetTravelTime(time)
-                            })
-                        }
-                    }
-                    } />
-                    <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
+                    <ButtonTravel handleFunction={handleClickRoute} />
+                        
+                        <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>
 
         </>
     )
 }
+
 
 export default CardFavoriteMaxSize

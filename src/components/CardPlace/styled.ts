@@ -2,32 +2,37 @@ import { makeStyles } from "tss-react/mui";
 
 
 const CardPlaceStyle = makeStyles()((theme) => {
-    return{
-        cardPlace:{
-            minWidth:'200px',
-            minHeight:'250px',
+    return {
+        cardPlace: {
+            width: theme.spacing(40),
+            height: theme.spacing(40),
         },
-        placePhoto:{
-            minWidth:'400px',
-            maxHeight:'350px'
+        placePhoto: {
+            width: '100%',
+            height: theme.spacing(28)
         },
-        cardContent:{
-            display:'flex',
-            flexDirection:'column'
-            
+        cardContent: {
+            display: 'flex',
+            flexDirection: 'column'
         },
-        cardActions:{
-            display:'flex',
-            justifyContent:'space-between'
+        
+        cardActions: {
+            display: 'flex',
+            justifyContent: 'space-between'
         },
-        title:{
-            color:'black',
-            fontSize:16,
+        title: {
+            color: 'black',
+            fontSize: 16,
         },
-        placeAdress:{
-            fontSize:10,
-            color:'grey'
-        }
+        placeAdress: {
+            fontSize: 10,
+            color: 'grey'
+        },
+        '@media (max-width: 768px)': {
+            placePhoto: {
+                backgroundColor: 'lightblue',
+            },
+        },
     }
 })
 

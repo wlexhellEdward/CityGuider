@@ -7,17 +7,11 @@ const blueColor = '#5E7BC7'
 const LoaderStyle = makeStyles()((theme) => {
     return {
         loaderContainer: {
-            width: '100%',
-            height: '100%',
+            width: '100vw',
+            height: '100vh',
+            alignItems:'center',
             display: 'flex',
             justifyContent: 'center',
-            textAlign: 'center',
-        },
-        loaderText: {
-            position:'relative',
-            fontSize: 12,
-            color: 'grey',
-            fontWeight: '300'
         }
     };
 });

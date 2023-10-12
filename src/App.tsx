@@ -17,8 +17,6 @@ function App() {
       <Map />
     </Box>
   );
-
-
 }
 export default App
 

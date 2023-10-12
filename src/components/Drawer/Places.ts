@@ -129,5 +129,3 @@ export const Places = [
         title: 'Спорт'
     }
 ]
-
-console.log(Places)
