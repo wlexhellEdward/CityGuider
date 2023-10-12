@@ -5,10 +5,10 @@ import { makeStyles } from 'tss-react/mui';
 const ArrowBoxStyle = makeStyles()((theme) => {
     return {
         boxArrow: {
-            width: 20,
+            width: theme.spacing(3),
             position: 'absolute',
             zIndex: '10',
-            left: theme.spacing(16),
+            left: theme.spacing(12),
             height: '100%',
             display: 'flex',
             cursor: 'pointer',

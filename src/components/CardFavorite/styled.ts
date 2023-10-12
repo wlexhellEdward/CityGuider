@@ -10,7 +10,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             transition: 'all .3s linear',
         },
         cardFavorite: {
-            width: 300,
+            maxWidth: 300,
             padding: '20px 20px 0px 20px',
             border: '1px solid #7D908C',
             borderRadius: 8,

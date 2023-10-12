@@ -9,7 +9,7 @@ const SearchPlaceStyle = makeStyles()((theme) => {
         containerPlace: {
             display: 'flex',
             justifyContent: 'start',
-            marginBottom: 10,
+            marginBottom: theme.spacing(2),
             gap: 20,
             alignItems: 'center',
             cursor: 'pointer',
@@ -22,7 +22,8 @@ const SearchPlaceStyle = makeStyles()((theme) => {
             height: 30,
         },
         titlePlace: {
-            fontSize: 14
+            fontSize: 14,
+            color:'black',
         },
         titleSelectedPlace: {
             fontSize: 14,

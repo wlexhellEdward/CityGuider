@@ -9,6 +9,7 @@ const blueColor = '#5E7BC7'
 
 
 export const DrawerStyle = makeStyles()((theme) => {
+    const borderRadius = theme.spacing(1)
     return {
         apply: {
             marginRight: theme.spacing(2),
@@ -18,10 +19,17 @@ export const DrawerStyle = makeStyles()((theme) => {
             transition: 'all .3s ease-in-out'
         },
         containerSearch: {
-            margin: '20px 0px',
+            borderRadius:borderRadius,
+            border:`1px solid ${greyColor}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
+        },
+        titleFavorite: {
+            color: 'black',
+            fontWeight: 700,
+            fontSize: 18,
+            marginBottom: 20,
         },
         listItem: {
             display: "block",
@@ -32,87 +40,15 @@ export const DrawerStyle = makeStyles()((theme) => {
         drawerContent: {
             display: 'flex',
             flexDirection: 'column',
+        },
+        
+        
+       
+        
+        
+        
+        
 
-        },
-        containerCardsFavorites: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-
-        },
-        cardsFavorites: {
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: 'white',
-            minHeight: '85vh',
-            maxHeight: '85vh',
-
-        },
-        titleFavorite: {
-            fontWeight: 700,
-            fontSize: 18,
-            marginBottom: 20,
-        },
-        containerPlaces: {
-            border: `1px solid ${greyColor}`,
-            maxHeight: 350,
-            paddingTop: 8,
-            width: 'auto',
-            '&::-webkit-scrollbar': {
-                width: 5
-            },
-            '&::-webkit-scrollbar-track': {
-                backgroundColor: 'transparent'
-            },
-            '&::-webkit-scrollbar-thumb': {
-                borderRadius: 4,
-                backgroundColor: `${greyColor}`
-            },
-            overflowY: 'scroll',
-        },
-        titleRadius: {
-            fontSize: 18,
-            fontWeight: 700,
-            marginTop: 30,
-            marginBottom: 10
-        },
-        platePlaces: {
-            margin: '0px 2px'
-        },
-        spanDescription: {
-            fontSize: 10,
-            fontWeight: 700,
-        },
-        containerInputs: {
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10
-        },
-        inputSearch: {
-            display: 'flex',
-            padding: 8,
-            borderRadius: 8,
-            width: 60,
-            height: 30,
-            border: `1px solid ${greyColor}`,
-            '&:before': {
-                content: 'none',
-            },
-            '&:after': {
-                content: 'none'
-            }
-        },
-        buttonSearch: {
-            marginTop: 20,
-            cursor: 'pointer',
-            backgroundColor: `${blueColor}`,
-            width: 350,
-            height: 60,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 8
-        }
     };
 });
 
@@ -141,19 +77,21 @@ export const DrawerContent = styled('div')(({ theme }) => ({
     rowGap: theme.spacing(2),
     padding: theme.spacing(2.5),
     overflowY: 'auto',
-    maxHeight: '100vh',
+    maxWidth:'280px',
+    boxShadow:"8px 0px 5px -6px rgba(200, 200, 200, 0.6)",
+    zIndex:10,
+    backgroundColor:'white',
+    height: '100vh',
     '&::-webkit-scrollbar': {
-        width: theme.spacing(.5)
+        width: 5
     },
-
     '&::-webkit-scrollbar-track': {
-        backgroundColor: ' transparent'
+        backgroundColor: 'transparent'
     },
-
     '&::-webkit-scrollbar-thumb': {
-        borderRadius: theme.spacing(.4),
-        backgroundColor: theme.palette.common.black,
-    }
+        borderRadius: 4,
+        backgroundColor: `${greyColor}`
+    },
 }))
 export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
@@ -170,5 +108,3 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
         }),
     }),
 );
-
-// export default DrawerStyle

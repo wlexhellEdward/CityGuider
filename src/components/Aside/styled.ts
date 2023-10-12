@@ -7,11 +7,13 @@ const AsideStyle = makeStyles()((theme) => {
     return {
         container:{
             display:'flex',
+            alignItems:'start',
+            justifyContent:'start',
             width:'auto'
         },
         asideContainer: {
             width:'100px',
-            zIndex:1,
+            zIndex:11,
             margin:0,
             boxShadow: '8px 0px 5px -6px rgba(200, 200, 200, 0.6)',
             height: '100vh',

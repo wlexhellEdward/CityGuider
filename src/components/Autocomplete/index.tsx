@@ -1,4 +1,4 @@
-import { Container, Input, List, ListItem, Typography } from '@mui/material'
+import { Container, Input,Box, List, ListItem, Typography } from '@mui/material'
 import searchSVG from 'assets/img/searchInput.svg'
 import { useAppDispatch } from 'hooks/redux.ts';
 import { useEffect } from 'react';
@@ -66,8 +66,8 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
 
             return (
                 <ListItem key={place_id} onClick={handleSelect(suggestion)} className={useAutocompleteStyle.classes.suggestionContainer}>
-                    <Typography className={useAutocompleteStyle.classes.titleSuggestion}>{main_text}</Typography>
-                    <Typography className={useAutocompleteStyle.classes.titleDescription}>{refactorString(secondary_text)}</Typography>
+                    <Typography whiteSpace={'normal'} className={useAutocompleteStyle.classes.titleSuggestion}>{main_text}</Typography>
+                    <Typography whiteSpace={'normal'} className={useAutocompleteStyle.classes.titleDescription}>{refactorString(secondary_text)}</Typography>
                 </ListItem>
             );
         });
@@ -77,8 +77,8 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
     const useAutocompleteStyle = AutocompleteStyle()
     const OK = "OK"
     return (
-        <Container disableGutters className={useAutocompleteStyle.classes.Autocomplete}>
-            <Container ref={ref} className={useAutocompleteStyle.classes.containerInput}>
+        <Box className={useAutocompleteStyle.classes.Autocomplete}>
+            <Box ref={ref} className={useAutocompleteStyle.classes.containerInput}>
                 <img className={useAutocompleteStyle.classes.searchImg} src={searchSVG} alt={DoesntExistPhoto} />
                 <Input
                     value={value}
@@ -86,15 +86,15 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
                     disabled={!ready}
                     placeholder='Место, адрес...'
                     className={useAutocompleteStyle.classes.searchInput}
-                ></Input>
-            </Container>
+                />
+            </Box>
 
             {status === OK && (
                 <List className={useAutocompleteStyle.classes.ListContainer}>
-                    <ListItem disablePadding className={useAutocompleteStyle.classes.listItem}>{renderSuggestions()}</ListItem>
+                    <ListItem  disablePadding className={useAutocompleteStyle.classes.listItem}>{renderSuggestions()}</ListItem>
                 </List>)
             }
 
-        </Container>
+        </Box>
     )
 }
