@@ -5,8 +5,12 @@ const greyColor = '#7D908C'
 
 const AsideStyle = makeStyles()((theme) => {
     return {
+        container:{
+            display:'flex',
+            width:'auto'
+        },
         asideContainer: {
-            width:120,
+            width:'100px',
             zIndex:1,
             margin:0,
             boxShadow: '8px 0px 5px -6px rgba(200, 200, 200, 0.6)',
@@ -52,7 +56,7 @@ const AsideStyle = makeStyles()((theme) => {
         profileOutter: {
             display: 'flex',
             justifyContent: 'center',
-            marginBottom: 8,
+            marginBottom: theme.spacing(2),
             cursor:'pointer'
         },
         containerButton:{

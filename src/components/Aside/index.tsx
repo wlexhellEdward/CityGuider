@@ -11,6 +11,7 @@ import { setCurrentStatus } from 'store/reducers'
 import DoesntExistPhoto from '../../../public/doesntExist.jpg'
 
 import AsideStyle from './styled'
+import SideBarContainer from 'components/SideBarContainer'
 
 export default function Aside() {
     const dispatch = useAppDispatch()
@@ -18,39 +19,42 @@ export default function Aside() {
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
 
-
     const useAsideStyle = AsideStyle()
 
     return (
-        <Container className={useAsideStyle.classes.asideContainer}>
-            <List className={useAsideStyle.classes.listItems}>
-                <ListItem className={useAsideStyle.classes.logo}>
-                    <ListItemIcon className={useAsideStyle.classes.logo}>
-                        <img title='icon for closing drawer' src={Logo} alt={DoesntExistPhoto} />
-                    </ListItemIcon>
-                </ListItem>
-                <ListItem className={useAsideStyle.classes.listItemButton}>
-                    <Container className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('favorites')} disableGutters>
-                        {currentStatus !== favorites ?
-                            <Favorite />
-                            :
-                            <FavoriteSelected />
-                        }
-                    </Container>
-                    <Container className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('search')} disableGutters>
-                        {currentStatus !== search ?
-                            <Search />
-                            :
-                            <SearchSelected />
-                        }
-                    </Container>
-                </ListItem>
-            </List>
+        <>
+            <Container className={useAsideStyle.classes.container}>
+                <Container className={useAsideStyle.classes.asideContainer}>
+                    <List className={useAsideStyle.classes.listItems}>
+                        <ListItem className={useAsideStyle.classes.logo}>
+                            <ListItemIcon className={useAsideStyle.classes.logo}>
+                                <img title='icon for closing drawer' src={Logo} alt={DoesntExistPhoto} />
+                            </ListItemIcon>
+                        </ListItem>
+                        <ListItem className={useAsideStyle.classes.listItemButton}>
+                            <Container className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('favorites')} disableGutters>
+                                {currentStatus !== favorites ?
+                                    <Favorite />
+                                    :
+                                    <FavoriteSelected />
+                                }
+                            </Container>
+                            <Container className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('search')} disableGutters>
+                                {currentStatus !== search ?
+                                    <Search />
+                                    :
+                                    <SearchSelected />
+                                }
+                            </Container>
+                        </ListItem>
+                    </List>
 
-            <Container className={useAsideStyle.classes.profileOutter}>
-                <img src={Profile} alt={DoesntExistPhoto} title='img for profile' />
+                    <Container className={useAsideStyle.classes.profileOutter}>
+                        <img src={Profile} alt={DoesntExistPhoto} title='img for profile' />
+                    </Container>
+                </Container>
+                <SideBarContainer />
             </Container>
-
-        </Container>
+        </>
     )
 }

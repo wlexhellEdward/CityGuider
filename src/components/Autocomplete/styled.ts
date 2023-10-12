@@ -3,15 +3,15 @@ import { makeStyles } from 'tss-react/mui';
 const greyColor = '#EEEEEE'
 
 const AutocompleteStyle = makeStyles()((theme) => {
-    const space = theme.spacing(2.5);
+    const borderRadius = theme.spacing(1)
     return {
         containerInput: {
-            borderRadius: '8px',
-            padding: '8px 12px',
+            borderRadius: borderRadius,
+            padding: `${theme.spacing(1)} ${theme.spacing(1.5)}`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height: "60",
+            height: theme.spacing(8),
         },
         Autocomplete: {
             display: 'flex',
@@ -21,7 +21,7 @@ const AutocompleteStyle = makeStyles()((theme) => {
         ListContainer: {
             display: 'flex',
             padding: '10px 8px',
-            maxWidth: '100%',
+            maxWidth: '96%',
             flexDirection: 'column',
             backgroundColor: 'white',
             borderTop: `1px solid ${greyColor}`
@@ -58,7 +58,7 @@ const AutocompleteStyle = makeStyles()((theme) => {
             opacity: 0.3
         },
         searchInput: {
-            paddingLeft: space,
+            paddingLeft: theme.spacing(2),
             paddingTop: 4,
             fontSize: 18,
             display: 'flex',
@@ -73,9 +73,9 @@ const AutocompleteStyle = makeStyles()((theme) => {
         },
         suggestions: {
             backgroundColor: 'red',
-            width: 350,
-            height: 200,
-            zIndex: 9999
+            width: theme.spacing(50),
+            height: theme.spacing(40),
+            zIndex: 10
         }
     };
 });

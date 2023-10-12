@@ -1,24 +1,19 @@
-import { Box, Container, Typography } from "@mui/material"
-import MuiDrawer from '@mui/material/Drawer';
-import Input from '@mui/material/Input';
-import { CSSObject, styled, Theme } from '@mui/material/styles';
+import { Container, Box, Typography, Input } from "@mui/material"
 import searchIcon from 'assets/img/Search.svg'
 import Autocomplete from "components/Autocomplete/index.tsx";
 import CardFavorite from 'components/CardFavorite/index.tsx';
-import { Loader } from 'components/Loader/index.tsx';
 import SearchPlace from 'components/SearchPlace/index.tsx';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux.ts';
 import { useState } from 'react'
-import { clearResults, setResults } from 'store/reducers/index.ts';
-
+import { clearResults, setCurrentStatus, setResults } from 'store/reducers/index.ts';
 import DoesntExistPhoto from '/public/doesntExist.jpg'
 
 import { Places } from './Places.ts';
-import DrawerStyle from './styled.ts'
+import { DrawerStyle, Drawer, DrawerContent } from './styled.ts'
 import { SideBarProps } from "./interfaceProps.ts";
 import { Waiter } from "components/Waiter/index.tsx";
+import useOnclickOutside from "react-cool-onclickoutside";
 
-const DrawerWidth = 600
 
 
 
@@ -36,9 +31,13 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
   const handlerSetInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value.replace(/[^0-9]/g, ''))
   }
+  const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
 
   const itemsArray = useTypeSelector((state) => state.searchSlice.selectedItems)
   const handleSetResults = (result: google.maps.places.PlaceResult[]) => dispatch(setResults(result))
+  const ref = useOnclickOutside(() => {
+    switchCurrentStatus('close')
+  });
 
 
   const handleSetSearchButtonIsClicked = () => {
@@ -81,60 +80,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
 
   const useDrawerStyle = DrawerStyle()
 
-  // const openedMixin = (theme: Theme): CSSObject => ({
-  //   width: 'auto',
-  //   maxWidth: DrawerWidth,
-  //   transition: theme.transitions.create('width', {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
-  //   overflowX: 'hidden',
-  // });
-  // const closedMixin = (theme: Theme): CSSObject => ({
-  //   transition: theme.transitions.create('width', {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.leavingScreen,
-  //   }),
-  //   overflowX: 'hidden',
-  //   width: `calc(${theme.spacing(11)} + 1px)`,
-  //   [theme.breakpoints.up('sm')]: {
-  //     width: `calc(${theme.spacing(13)} + 1px)`,
-  //   },
-  // });
-  const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme /*,open*/ }) => ({
-      width: 'auto',
-      maxWidth: DrawerWidth,
-      flexShrink: 0,
-      whiteSpace: 'nowrap',
-      boxSizing: 'border-box',
 
-      // ...(open && {
-      //   ...openedMixin(theme),
-      //   '& .MuiDrawer-paper': openedMixin(theme),
-      // }),
-      // ...(!open && {
-      //   ...closedMixin(theme),
-      //   '& .MuiDrawer-paper': closedMixin(theme),
-      // }),
-    }),
-  );
-  const DrawerContent = styled('div')(() => ({
-    display: 'flex',
-    columnGap: '20px',
-    overflowX: 'hidden',
-    '&::-webkit-scrollbar': {
-      width: 5
-    },
-    '&::-webkit-scrollbar-track': {
-      backgroundColor: 'transparent'
-    },
-    '&::-webkit-scrollbar-thumb': {
-      borderRadius: 4,
-      backgroundColor: `#7D908C`
-    },
-    overflowY: 'scroll',
-  }))
 
 
   function testIsSelected(type: string) {
@@ -149,12 +95,12 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
 
   return (
     <>
-      <Drawer className={useDrawerStyle.classes.drawer} variant="permanent" anchor='left' open={currentStatus != 'close' ? true : false}>
+      <Drawer ref={ref} className={useDrawerStyle.classes.drawer} variant="permanent" anchor='left' open={currentStatus != 'close'}>
         <DrawerContent className={useDrawerStyle.classes.drawerContent}>
           <Container className={useDrawerStyle.classes.containerSearch}>
             <Autocomplete isLoaded={isLoaded} />
           </Container>
-          <Box>
+          {/* <Box>
             {currentStatus == 'search' ?
               <Container className={useDrawerStyle.classes.platePlaces}>
                 <Typography className={useDrawerStyle.classes.titleFavorite}>Искать: </Typography>
@@ -198,7 +144,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
                 </Box>
               </Container>
             }
-          </Box>
+          </Box> */}
         </DrawerContent>
       </Drawer>
     </>

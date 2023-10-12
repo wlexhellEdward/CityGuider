@@ -7,9 +7,9 @@ const SideBarContainerStyle = makeStyles()((theme) => {
     return {
         containerSideBar:{
             height: '100vh',
-            width: 'auto',
+            // width: theme.spacing(65),
+            overflow:'hidden',
             display: 'flex',
-            position: 'absolute',
             left: theme.spacing(15),
             '&>*::-webkit-scrollbar': {
                 width: 5

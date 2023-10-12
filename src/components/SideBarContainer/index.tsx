@@ -18,17 +18,14 @@ function SideBarContainer() {
     const currentStatus = useTypeSelector(state => state.currentStatus.status)
     const isLoaded = useGoogleMaps()
 
-    const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
-    const useSideBarContainerStyle = SideBarContainerStyle()
 
-    const ref = useOnclickOutside(() => {
-        switchCurrentStatus('close')
-    });
+
+    const useSideBarContainerStyle = SideBarContainerStyle()
 
     return (
         <>
             {currentStatus !== 'close' ?
-                <Container ref={ref} disableGutters className={useSideBarContainerStyle.classes.containerSideBar}>
+                <Container disableGutters className={useSideBarContainerStyle.classes.containerSideBar}>
                     <SideBar currentStatus={currentStatus} isLoaded={isLoaded} />
                 </Container>
                 :
