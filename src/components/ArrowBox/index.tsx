@@ -11,7 +11,7 @@ function ArrowBox() {
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     return (
         <Box onClick={() => switchCurrentStatus('favorites')} className={useArrowBoxStyle.classes.boxArrow}>
-            <Container className={useArrowBoxStyle.classes.containerArrow}>
+            <Container disableGutters className={useArrowBoxStyle.classes.containerArrow}>
                 <img
                     src={arrowDisableDrawer}
                     className={useArrowBoxStyle.classes.arrowShowMore}

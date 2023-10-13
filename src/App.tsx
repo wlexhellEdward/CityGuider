@@ -3,7 +3,6 @@ import Aside from 'components/Aside'
 import Map from 'components/Map'
 
 import AppStyle from './AppStyle'
-import SideBarContainer from 'components/SideBarContainer';
 
 
 
@@ -13,12 +12,9 @@ function App() {
   return (
     <Box className={useAppStyle.classes.containerApp}>
       <Aside />
-      <SideBarContainer />
       <Map />
     </Box>
   );
-
-
 }
 export default App
 

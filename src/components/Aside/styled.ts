@@ -5,9 +5,15 @@ const greyColor = '#7D908C'
 
 const AsideStyle = makeStyles()((theme) => {
     return {
+        container:{
+            display:'flex',
+            alignItems:'start',
+            justifyContent:'start',
+            width:'auto'
+        },
         asideContainer: {
-            width:120,
-            zIndex:1,
+            width:'100px',
+            zIndex:11,
             margin:0,
             boxShadow: '8px 0px 5px -6px rgba(200, 200, 200, 0.6)',
             height: '100vh',
@@ -16,13 +22,22 @@ const AsideStyle = makeStyles()((theme) => {
             display: 'flex',
             flexDirection: 'column',
             color: "black",
+            [theme.breakpoints.down('sm')]: {
+                width:'50px',
+            }
         },
         logo: {
             display: 'flex',
             justifyContent: 'center',
             textAlign: 'center',
             marginBottom: 20,
-            marginTop: 10
+            marginTop: 10,
+            [theme.breakpoints.down('sm')]: {
+                marginBottom:5,
+                '&>img':{
+                    height:25
+                }
+            },
         },
         listItems: {
             display: 'flex',
@@ -31,6 +46,13 @@ const AsideStyle = makeStyles()((theme) => {
             flexDirection: 'column'
         },
         listItemButton: {
+            [theme.breakpoints.down('sm')]: {
+                width:'40px',
+                rowGap: theme.spacing(1),
+                '&>div':{
+                    width:'35px',
+                }
+            },
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -52,8 +74,13 @@ const AsideStyle = makeStyles()((theme) => {
         profileOutter: {
             display: 'flex',
             justifyContent: 'center',
-            marginBottom: 8,
-            cursor:'pointer'
+            marginBottom: theme.spacing(2),
+            cursor:'pointer',
+            [theme.breakpoints.down('sm')]:{
+                '&>*':{
+                    width:'32px'
+                }
+            }
         },
         containerButton:{
             display:'flex',
@@ -64,7 +91,8 @@ const AsideStyle = makeStyles()((theme) => {
             },
             '&>*:hover':{
                 transform:'scale(1.045)'
-            }
+            },
+            
         }
 
     }

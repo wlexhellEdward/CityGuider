@@ -18,7 +18,7 @@ export default function ButtonTravel({ handleFunction }: ButtonTravelProps) {
                 <Icon className={useButtonTravelStyle.classes.iconTravel}>
                     <img src={travel} alt={DoesntExistPhoto} title="travel button photo" />
                 </Icon>
-                <Typography>Маршрут</Typography>
+                <Typography className={useButtonTravelStyle.classes.buttonTravelTitle}>Маршрут</Typography>
             </Button></>
     )
 }

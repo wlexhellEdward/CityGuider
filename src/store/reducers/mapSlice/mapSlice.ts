@@ -3,28 +3,27 @@ import { createSlice } from "@reduxjs/toolkit";
 interface mapState {
     mapRef: google.maps.Map | null,
     isLoaded: boolean,
+    directionsRenderer: google.maps.DirectionsRenderer | null,
     travelInfo: {
-        distanceTraveled: string,
-        distance: {
-            kilometrs: string
+        distanceTraveled: number,
+        distance: number,
+        placeGeometry: {
+            lat: number,
+            lng: number,
         },
-        placeGeometry: google.maps.LatLng | undefined,
         time: string,
-        progress: number
     }
 }
 
 const initialState: mapState = {
     mapRef: null,
     isLoaded: false,
+    directionsRenderer: null,
     travelInfo: {
-        placeGeometry: undefined,
-        distanceTraveled: "",
-        distance: {
-            kilometrs: ""
-        },
+        placeGeometry: { lat: 0, lng: 0 },
+        distanceTraveled: 0,
+        distance: 0,
         time: "",
-        progress: 0
     },
 }
 
@@ -35,6 +34,12 @@ const mapSlice = createSlice({
     reducers: {
         setMap(state, action) {
             state.mapRef = action.payload
+        },
+        setDirectionRenderer(state, action) {
+            state.directionsRenderer = action.payload
+        },
+        clearDirection(state) {
+            state.directionsRenderer?.setMap(null)
         },
         setTravelPlaceGeometry(state, action) {
             state.travelInfo.placeGeometry = action.payload
@@ -48,14 +53,11 @@ const mapSlice = createSlice({
         setTravelTime(state, action) {
             state.travelInfo.time = action.payload
         },
-        setTravelProgress(state, action) {
-            state.travelInfo.progress = action.payload
-        },
         deleteTravel(state) {
-            state.travelInfo.distance.kilometrs = ""
-            state.travelInfo.distanceTraveled = ""
-            state.travelInfo.progress = 0
-            state.travelInfo.placeGeometry = undefined
+            state.travelInfo.distance = 0
+            state.travelInfo.distanceTraveled = 0
+            state.travelInfo.placeGeometry.lat = 0
+            state.travelInfo.placeGeometry.lng = 0
             state.travelInfo.time = ""
         },
         setIsLoaded(state, action) {
@@ -64,6 +66,6 @@ const mapSlice = createSlice({
     }
 })
 
-export const { setMap, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelProgress, setTravelTime } = mapSlice.actions
+export const { setMap, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer

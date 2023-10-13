@@ -3,9 +3,9 @@ import ButtonSave from 'GUI/ButtonSave';
 import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { IFavoriteItem } from 'models/IFavoriteItem'
-import { addFavoriteItem, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers'
+import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelDistanceTraveled, setTravelPlaceGeometry, setTravelTime } from 'store/reducers'
 import { convertPlaceToFavorite } from 'utils/convert'
-import { makeRoute } from 'utils/route';
+import { getDirections } from 'utils/route';
 
 import DoesntExistPhoto from '../../../public/doesntExist.jpg'
 
@@ -28,11 +28,37 @@ export default function CardPlace({ place }: CardPlaceProps) {
     const map = useTypeSelector(state => state.map.mapRef)
 
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
-    const handleSetTravelInfo = (kilometrs: string) => {
-        dispatch(setTravelDistance({ kilometrs }))
+    const handleClickMakeRoute = async () => {
+        try {
+            dispatch(clearDirection())
+            const placeLocation = {
+                lat: place.geometry?.location?.lat() || 0,
+                lng: place.geometry?.location?.lng() || 0
+            }
+
+            const directionRequest = {
+                origin: center,
+                destination: placeLocation,
+                travelMode: google.maps.TravelMode.WALKING
+            }
+
+            const result = await getDirections(directionRequest)
+            const distance = result?.routes[0].legs[0].distance?.value || 0
+            const time = result?.routes[0].legs[0].duration?.text || ''
+
+            const directionsRenderer = new google.maps.DirectionsRenderer({
+                map: map,
+                directions: result
+            })
+            dispatch(setTravelDistance(distance))
+            dispatch(setTravelPlaceGeometry(placeLocation))
+            dispatch(setTravelTime(time))
+            dispatch(setDirectionRenderer(directionsRenderer))
+
+        } catch (e) {
+            console.log(e);
+        }
     }
-    const handleSetTravelTime = (time: string) => dispatch(setTravelTime(time))
-    const handleSetTravelPlaceGeomety = (coordinates: google.maps.places.PlaceGeometry) => dispatch(setTravelPlaceGeometry(coordinates))
     const useCardPlaceStyle = CardPlaceStyle()
 
     if (place != undefined) {
@@ -54,17 +80,9 @@ export default function CardPlace({ place }: CardPlaceProps) {
                     <ButtonSave handleFunction={() => handleAddToFavorite(convertPlaceToFavorite(place))} isFavorite={isFavorite} />
                     <ButtonTravel handleFunction={() => {
                         if (place.geometry?.location != null && map != null) {
-                            handleSetTravelPlaceGeomety(place.geometry)
-                            makeRoute({
-                                start: center,
-                                map: map,
-                                end: place.geometry?.location,
-                                setTravelDistance: (kilometrs: string) => handleSetTravelInfo(kilometrs),
-                                setTravelTime: (time: string) => handleSetTravelTime(time)
-                            })
+                            handleClickMakeRoute()
                         } else {
                             <PopUp text={"У данного места нету координат"} />
-
                         }
                     }
                     } />

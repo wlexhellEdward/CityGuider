@@ -3,26 +3,24 @@ import { makeStyles } from 'tss-react/mui';
 const greyColor = '#EEEEEE'
 
 const AutocompleteStyle = makeStyles()((theme) => {
-    const space = theme.spacing(2.5);
     return {
         containerInput: {
-            borderRadius: '8px',
-            padding: '8px 12px',
             display: 'flex',
+            width:'100%',
             alignItems: 'center',
+            padding:'4px 8px',
+            columnGap:theme.spacing(2),
             justifyContent: 'center',
-            height: "60",
         },
         Autocomplete: {
             display: 'flex',
-            border: `1px solid ${greyColor}`,
             flexDirection: 'column',
         },
         ListContainer: {
             display: 'flex',
             padding: '10px 8px',
-            maxWidth: '100%',
             flexDirection: 'column',
+            color:'black',
             backgroundColor: 'white',
             borderTop: `1px solid ${greyColor}`
         },
@@ -33,9 +31,12 @@ const AutocompleteStyle = makeStyles()((theme) => {
         },
         titleSuggestion:{
             fontWeight:'bold',
+            fontFamily:'mont',
             fontSize:12
         },
         titleDescription:{
+            fontFamily:'mont',
+            
             fontSize:10,
             color:'#A9A9A9',
         },
@@ -58,12 +59,11 @@ const AutocompleteStyle = makeStyles()((theme) => {
             opacity: 0.3
         },
         searchInput: {
-            paddingLeft: space,
             paddingTop: 4,
             fontSize: 18,
             display: 'flex',
-            height: 40,
-            width: '100%',
+            fontFamily:'mont',
+            height: theme.spacing(5),
             '&:before': {
                 content: 'none',
             },
@@ -73,9 +73,8 @@ const AutocompleteStyle = makeStyles()((theme) => {
         },
         suggestions: {
             backgroundColor: 'red',
-            width: 350,
-            height: 200,
-            zIndex: 9999
+            height: theme.spacing(40),
+            zIndex: 10
         }
     };
 });

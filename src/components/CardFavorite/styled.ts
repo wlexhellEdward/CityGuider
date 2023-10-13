@@ -2,6 +2,7 @@ import { makeStyles } from 'tss-react/mui';
 
 
 const greyColorTitle = '#373737'
+const greyColor = '#7D908C'
 
 const CardFavoriteStyle = (isOpen: boolean, url: string) => {
     return makeStyles()((theme) => ({
@@ -10,18 +11,23 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             transition: 'all .3s linear',
         },
         cardFavorite: {
-            width: 300,
+            width: '300px',
+            boxShadow: " 0px 5px 10px 2px rgba(226, 226,226, 1);",
             padding: '20px 20px 0px 20px',
-            border: '1px solid #7D908C',
+            border: `1px solid ${greyColor}`,
             borderRadius: 8,
-            marginBottom: 10,
-            marginTop: 10,
+            marginBottom: theme.spacing(3),
+
+            [theme.breakpoints.down('sm')]: {
+                padding: '5px 10px',
+                width: '250px',
+            },
         },
         imgCard: {
             position: 'relative',
             height: isOpen ? 200 : 80,
             display: 'flex',
-            minWidth: isOpen ? '100%' :'40%',
+            minWidth: isOpen ? '100%' : '40%',
             alignItems: 'end',
             borderRadius: 8,
             backgroundImage: `url('${url}')`,
@@ -30,24 +36,33 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             width: isOpen ? '100%' : theme.spacing(20),
             backgroundRepeat: 'no-repeat',
             transition: 'height .3s ease-in-out',
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            [theme.breakpoints.down('sm')]: {
+                margin: '5px 0px',
+                width: '100%',
+                height: isOpen ? 200 : 120,
+            },
         },
         containerImgTitle: {
             display: 'flex',
             justifyContent: 'space-between',
         },
         cardContent: {
-            margin: 0,
-            padding: 0,
             display: 'flex',
-            justifyContent:'space-between',
+            columnGap: theme.spacing(2),
+            justifyContent: 'space-between',
             flexDirection: isOpen ? 'column' : 'row',
             alignItems: 'center',
             '&:last-child': {
                 padding: 0,
             },
-            width: '100%'
+            width: '100%',
+            [theme.breakpoints.down('sm')]: {
+                flexDirection: 'column'
+            },
+
         },
+
         containerTitle: {
             display: 'flex',
             width: '40%',
@@ -57,8 +72,9 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             marginTop: isOpen ? 10 : 0,
         },
         title: {
+            fontSize: 'calc(16px + (24 - 16) * ((100vw - 375px) / (1920 - 375)/2))',
             color: greyColorTitle,
-            fontSize: isOpen ? 24 : 14,
+            fontFamily:'mont',
             fontWeight: 700
         },
         descriptionContainer: {
@@ -67,7 +83,9 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
         },
         description: {
             opacity: 0.8,
-            fontSize: 10
+            fontSize: 10,
+            fontFamily:'mont',
+
         },
         containerDownIcons: {
             display: 'flex',
@@ -89,6 +107,9 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             transition: 'all .6s linear',
             rotate: '90deg',
             '&:hover': {
+                rotate: '270deg'
+            },
+            [theme.breakpoints.down('sm')]: {
                 rotate: '270deg'
             }
         },

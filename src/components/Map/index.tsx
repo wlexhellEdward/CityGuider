@@ -7,7 +7,7 @@ import { Loader } from "components/Loader";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import React, { useRef, useState } from 'react';
 import { setCenter, setHumanPosition } from 'store/reducers';
-import { setMap } from 'store/reducers/mapSlice/mapSlice';
+import { clearDirection,  setMap } from 'store/reducers/mapSlice/mapSlice';
 import { DefaultOptions } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
 
@@ -20,7 +20,7 @@ const Map = () => {
     const dispatch = useAppDispatch()
     const [selectedPlace, setSelectedPlace] = useState<google.maps.places.PlaceResult>()
     const isLoaded = useGoogleMaps()
-    const travel = useTypeSelector(state => state.map.travelInfo.placeGeometry)
+    const travel = useTypeSelector(state => state.map.travelInfo.distance)
 
 
     const currentPosition = useTypeSelector(state => state.currentPosition.position)
@@ -40,7 +40,10 @@ const Map = () => {
                 dispatch(setHumanPosition(defaultLocation))
             });
     }, [])
-
+    const handleClickClose = () => {
+        setSelectedPlace(undefined)
+        dispatch(clearDirection())
+    }
     const resultSearch = useTypeSelector(state => state.searchSlice.resultsSearch)
     const useMapStyle = MapStyle();
     const containerStyle = {
@@ -73,14 +76,14 @@ const Map = () => {
                             />
                         ))}
                         {selectedPlace && (
-                            <InfoWindow position={selectedPlace?.geometry?.location} onCloseClick={() => setSelectedPlace(undefined)}>
+                            <InfoWindow position={selectedPlace?.geometry?.location} onCloseClick={handleClickClose}>
                                 <CardPlace place={selectedPlace} />
                             </InfoWindow>
                         )}
                         <CurrentLocationMarker position={currentPosition} />
                     </GoogleMap>
                 ) : (
-                    <Loader text={"Карта загружается"} />
+                    <Loader />
                 )}
             </Box>
             {travel && <RouteInfo />}

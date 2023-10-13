@@ -1,4 +1,4 @@
-import { Container, Typography } from '@mui/material'
+import {  Box, Typography } from '@mui/material'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { addItem, deleteItem } from 'store/reducers'
 
@@ -34,7 +34,7 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
     return (
         <>
 
-            <Container onClick={() => handleSetSelectedItemsArray(searchPlace.type)} disableGutters className={useSearchPlaceStyle.classes.containerPlace} key={searchPlace.id}>
+            <Box onClick={() => handleSetSelectedItemsArray(searchPlace.type)} className={useSearchPlaceStyle.classes.containerPlace} key={searchPlace.id}>
                 {isSelected ?
                     <>
                         <img
@@ -56,7 +56,7 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
                         <Typography className={useSearchPlaceStyle.classes.titleSelectedPlace}>{searchPlace.title}</Typography>
                     </>
                 }
-            </Container>
+            </Box>
         </>
     )
 }

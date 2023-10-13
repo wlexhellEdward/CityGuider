@@ -10,7 +10,6 @@ export function useGoogleMaps() {
     const libraries: Libraries = ['places']
     
     const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string
-    console.log(apiKey)
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: apiKey,
