@@ -28,6 +28,7 @@ const PlateSearchPlacesStyle = makeStyles()((theme) => {
         titleRadius: {
             fontSize: 18,
             color: 'black',
+            fontFamily:'mont',
             fontWeight: 700,
             margin: '10px 0px'
         },
@@ -41,11 +42,13 @@ const PlateSearchPlacesStyle = makeStyles()((theme) => {
             color: 'black',
             fontWeight: 700,
             fontSize: 18,
+            fontFamily:'mont',
             marginBottom: 20,
         },
         spanDescription: {
             fontSize: 10,
             fontWeight: 700,
+            fontFamily:'mont',
         },
 
         inputSearch: {

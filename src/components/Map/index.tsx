@@ -7,7 +7,7 @@ import { Loader } from "components/Loader";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import React, { useRef, useState } from 'react';
 import { setCenter, setHumanPosition } from 'store/reducers';
-import { clearDirection, deleteTravel, setMap } from 'store/reducers/mapSlice/mapSlice';
+import { clearDirection,  setMap } from 'store/reducers/mapSlice/mapSlice';
 import { DefaultOptions } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
 
@@ -22,10 +22,6 @@ const Map = () => {
     const isLoaded = useGoogleMaps()
     const travel = useTypeSelector(state => state.map.travelInfo.distance)
 
-    const handleClickClose = ()=>{
-        dispatch(deleteTravel())
-        dispatch(clearDirection())
-    }
 
     const currentPosition = useTypeSelector(state => state.currentPosition.position)
     const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -44,7 +40,10 @@ const Map = () => {
                 dispatch(setHumanPosition(defaultLocation))
             });
     }, [])
-
+    const handleClickClose = () => {
+        setSelectedPlace(undefined)
+        dispatch(clearDirection())
+    }
     const resultSearch = useTypeSelector(state => state.searchSlice.resultsSearch)
     const useMapStyle = MapStyle();
     const containerStyle = {
@@ -77,7 +76,7 @@ const Map = () => {
                             />
                         ))}
                         {selectedPlace && (
-                            <InfoWindow position={selectedPlace?.geometry?.location} onCloseClick={()=>handleClickClose()}>
+                            <InfoWindow position={selectedPlace?.geometry?.location} onCloseClick={handleClickClose}>
                                 <CardPlace place={selectedPlace} />
                             </InfoWindow>
                         )}

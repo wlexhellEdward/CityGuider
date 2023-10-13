@@ -22,13 +22,22 @@ const AsideStyle = makeStyles()((theme) => {
             display: 'flex',
             flexDirection: 'column',
             color: "black",
+            [theme.breakpoints.down('sm')]: {
+                width:'50px',
+            }
         },
         logo: {
             display: 'flex',
             justifyContent: 'center',
             textAlign: 'center',
             marginBottom: 20,
-            marginTop: 10
+            marginTop: 10,
+            [theme.breakpoints.down('sm')]: {
+                marginBottom:5,
+                '&>img':{
+                    height:25
+                }
+            },
         },
         listItems: {
             display: 'flex',
@@ -37,6 +46,13 @@ const AsideStyle = makeStyles()((theme) => {
             flexDirection: 'column'
         },
         listItemButton: {
+            [theme.breakpoints.down('sm')]: {
+                width:'40px',
+                rowGap: theme.spacing(1),
+                '&>div':{
+                    width:'35px',
+                }
+            },
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -59,7 +75,12 @@ const AsideStyle = makeStyles()((theme) => {
             display: 'flex',
             justifyContent: 'center',
             marginBottom: theme.spacing(2),
-            cursor:'pointer'
+            cursor:'pointer',
+            [theme.breakpoints.down('sm')]:{
+                '&>*':{
+                    width:'32px'
+                }
+            }
         },
         containerButton:{
             display:'flex',
@@ -70,7 +91,8 @@ const AsideStyle = makeStyles()((theme) => {
             },
             '&>*:hover':{
                 transform:'scale(1.045)'
-            }
+            },
+            
         }
 
     }

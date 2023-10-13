@@ -31,9 +31,12 @@ const AutocompleteStyle = makeStyles()((theme) => {
         },
         titleSuggestion:{
             fontWeight:'bold',
+            fontFamily:'mont',
             fontSize:12
         },
         titleDescription:{
+            fontFamily:'mont',
+            
             fontSize:10,
             color:'#A9A9A9',
         },
@@ -59,6 +62,7 @@ const AutocompleteStyle = makeStyles()((theme) => {
             paddingTop: 4,
             fontSize: 18,
             display: 'flex',
+            fontFamily:'mont',
             height: theme.spacing(5),
             '&:before': {
                 content: 'none',

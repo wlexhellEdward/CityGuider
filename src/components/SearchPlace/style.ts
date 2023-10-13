@@ -23,10 +23,12 @@ const SearchPlaceStyle = makeStyles()((theme) => {
         },
         titlePlace: {
             fontSize: 14,
+            fontFamily:'mont',
             color:'black',
         },
         titleSelectedPlace: {
             fontSize: 14,
+            fontFamily:'mont',
             color:greyColor,
         },
         imgSelectedPlace:{

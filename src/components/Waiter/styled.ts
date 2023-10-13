@@ -13,6 +13,7 @@ const WaiterStyle = makeStyles()((theme) => {
             textAlign: 'center',
         },
         loaderText: {
+            fontFamily:'mont',
             position:'relative',
             fontSize: 12,
             color: 'grey',

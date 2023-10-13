@@ -7,14 +7,17 @@ const ArrowBoxStyle = makeStyles()((theme) => {
         boxArrow: {
             width: theme.spacing(3),
             position: 'absolute',
-            zIndex: '10',
-            left: theme.spacing(12),
+            zIndex: '12',
+            left: theme.spacing(11.5),
             height: '100%',
             display: 'flex',
             cursor: 'pointer',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
+            [theme.breakpoints.down('sm')]:{
+                left: theme.spacing(5),
+            }
         },
         boxArrowOpen: {
             width: 20,

@@ -14,8 +14,7 @@ const PlateFavoritesStyle = makeStyles()((theme) => {
             flexDirection: 'column',
             backgroundColor: 'white',
             minHeight: '85vh',
-            maxHeight: '85vh',
-
+            maxHeight: '85vh', 
         },
         titleFavorite: {
             color: 'black',

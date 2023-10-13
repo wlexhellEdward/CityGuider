@@ -31,7 +31,6 @@ export default function CardPlace({ place }: CardPlaceProps) {
     const handleClickMakeRoute = async () => {
         try {
             dispatch(clearDirection())
-
             const placeLocation = {
                 lat: place.geometry?.location?.lat() || 0,
                 lng: place.geometry?.location?.lng() || 0

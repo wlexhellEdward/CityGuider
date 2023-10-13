@@ -16,7 +16,7 @@ const ButtonSaveStyle = makeStyles()((theme) => {
             justifyContent: 'center',
             alignItems: 'center',
             color: greyColor,
-            gap: 15,
+            gap: theme.spacing(2),
             marginLeft: '0',
             cursor: 'pointer',
             '&:hover': {
@@ -26,10 +26,31 @@ const ButtonSaveStyle = makeStyles()((theme) => {
             '& > *': {
                 color: greyLight,
             },
+            [theme.breakpoints.down('sm')]: {
+                gap: theme.spacing(0.5),
+            },
         },
         icon: {
             cursor: 'pointer',
             transition: 'all .3s linear',
+            display:'flex',
+            alignItems:'center',
+            justifyContent:'center',
+            '& > *': {
+               
+                width: '16px',
+                height: '16px',
+                [theme.breakpoints.down('sm')]: {
+                    width: theme.spacing(1.5),
+                    height: theme.spacing(1.5)
+                }
+            },
+        },
+        buttonSearchTitle: {
+            fontFamily:'mont',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: 12,
+            }
         },
     };
 });

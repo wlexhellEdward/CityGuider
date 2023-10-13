@@ -77,7 +77,7 @@ export const DrawerContent = styled('div')(({ theme }) => ({
     rowGap: theme.spacing(2),
     padding: theme.spacing(2.5),
     overflowY: 'auto',
-    maxWidth:'280px',
+    maxWidth:'350px',
     boxShadow:"8px 0px 5px -6px rgba(200, 200, 200, 0.6)",
     zIndex:10,
     backgroundColor:'white',
