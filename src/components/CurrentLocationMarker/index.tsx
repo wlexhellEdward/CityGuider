@@ -1,13 +1,9 @@
 import { Box } from '@mui/material'
 import { Marker } from "@react-google-maps/api"
-
 import im from 'assets/img/Im.svg'
-import CurrentLocationMarkerStyle from "./styled"
+
 import { CurrentLocationMarkerProps } from './interfaces'
-
-
-
-
+import CurrentLocationMarkerStyle from "./styled"
 
 export const CurrentLocationMarker = ({ position }: CurrentLocationMarkerProps) => {
     const useCurrentLocationMarkerStyle = CurrentLocationMarkerStyle()

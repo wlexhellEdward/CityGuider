@@ -1,14 +1,12 @@
-import { useState } from 'react'
-import { Box, Typography, List, Input } from "@mui/material"
+import { Box, Input,List, Typography } from "@mui/material"
+import { Places } from 'components/Drawer/Places.ts';
 import SearchPlace from 'components/SearchPlace/index.tsx';
+import { ButtonSearch } from "GUI/ButtonSearch"
 import { useAppDispatch, useTypeSelector } from 'hooks/redux.ts';
+import { useState } from 'react'
 import { clearResults, setResults } from 'store/reducers/index.ts';
 
-
-import { ButtonSearch } from "GUI/ButtonSearch"
 import PlateSearchPlacesStyle from "./styled"
-import { Places } from 'components/Drawer/Places.ts';
-
 
 export const PlateSearchPlaces = () => {
     const itemsArray = useTypeSelector((state) => state.searchSlice.selectedItems)

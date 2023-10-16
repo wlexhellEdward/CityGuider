@@ -1,7 +1,7 @@
 import { makeStyles } from 'tss-react/mui';
 import { themeApp } from 'utils/consts';
 
-const PlateFavoritesStyle = makeStyles()((theme) => {
+const PlateFavoritesStyle = makeStyles()(() => {
     return {
         containerCardsFavorites: {
             display: 'flex',

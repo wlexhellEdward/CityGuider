@@ -2,11 +2,10 @@ import {  Box, Typography } from '@mui/material'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { addItem, deleteItem } from 'store/reducers'
 
-import DoesntExistPhoto from '/public/doesntExist.jpg'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
-import SearchPlaceStyle from './styled'
 import { SearchPlaceProps } from './interfaces'
-
+import SearchPlaceStyle from './styled'
 
 const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) => {
 

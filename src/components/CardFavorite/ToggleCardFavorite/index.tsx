@@ -4,7 +4,6 @@ import CardFavoriteMaxSize from '../CardFavoriteMaxSize';
 import CardFavoriteNormalSize from '../CardFavoriteNormalSize';
 import { CardFavoriteProps } from './interfaces';
 
-
 const CardFavorite = ({ favoriteItem }: CardFavoriteProps) => {
     const [isOpen, setIsOpen] = useState(false)
     function handleSetIsOpen(isOpenStatus: boolean) {

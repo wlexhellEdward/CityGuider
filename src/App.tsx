@@ -1,9 +1,8 @@
 import { Box } from '@mui/material'
 import Aside from 'components/Aside'
 import Map from 'components/Map'
+
 import AppStyle from './AppStyle'
-
-
 
 function App() {
   const useAppStyle = AppStyle();

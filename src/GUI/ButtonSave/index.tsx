@@ -2,11 +2,10 @@ import { Button, Icon, Typography } from '@mui/material'
 import favoriteGrey from 'assets/img/greyFavorite.svg'
 import favorite from 'assets/img/inFavorite.svg'
 
-import DoesntExistPhoto from '/public/doesntExist.jpg'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
-import ButtonSaveStyle from './styled'
 import { ButtonSaveProps } from './interfaces'
-
+import ButtonSaveStyle from './styled'
 
 export default function ButtonSave({ handleFunction, isFavorite }: ButtonSaveProps) {
     const useButtonSaveStyle = ButtonSaveStyle()

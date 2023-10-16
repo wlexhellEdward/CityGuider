@@ -1,24 +1,22 @@
-import { memo } from 'react'
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
+import PopUp from 'components/Pop-up';
 import ButtonSave from 'GUI/ButtonSave';
 import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { IFavoriteItem } from 'models/IFavoriteItem'
+import DoesntExistPhoto from 'public/doesntExist.png'
+import { memo } from 'react'
 import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers'
 import { convertPlaceToFavorite } from 'utils/convert'
 import { getDirections } from 'utils/route';
 
-import DoesntExistPhoto from 'public/doesntExist.jpg'
-
-import CardPlaceStyle from './styled'
 import { CardPlaceProps } from './interfaces.ts';
-import PopUp from 'components/Pop-up';
+import CardPlaceStyle from './styled'
 
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
     return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : DoesntExistPhoto
 }
-
 
 const CardPlace = ({ place }: CardPlaceProps) => {
     const dispatch = useAppDispatch()

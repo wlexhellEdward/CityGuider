@@ -1,4 +1,3 @@
-
 function FavoriteSelected(props: object) {
     return (
         <svg

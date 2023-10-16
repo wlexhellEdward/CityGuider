@@ -1,14 +1,10 @@
 import { Button, Icon, Typography } from '@mui/material'
 import travel from 'assets/img/travel.svg'
 
-import DoesntExistPhoto from '/public/doesntExist.jpg'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
-import ButtonTravelStyle from './styled'
 import { ButtonTravelProps } from './interfaces'
-
-
-
-
+import ButtonTravelStyle from './styled'
 
 export default function ButtonTravel({ handleFunction }: ButtonTravelProps) {
     const useButtonTravelStyle = ButtonTravelStyle()

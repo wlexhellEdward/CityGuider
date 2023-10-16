@@ -1,10 +1,10 @@
-import { Box } from "@mui/system"
-import PlateFavoritesStyle from "./styled"
 import { Typography } from "@mui/material"
-import { Waiter } from "components/Waiter"
+import { Box } from "@mui/system"
 import CardFavorite from "components/CardFavorite/ToggleCardFavorite"
+import { Waiter } from "components/Waiter"
 import { useTypeSelector } from "hooks/redux"
 
+import PlateFavoritesStyle from "./styled"
 
 export const PlateFavorites = () => {
     const usePlateFavoriteStyle = PlateFavoritesStyle()

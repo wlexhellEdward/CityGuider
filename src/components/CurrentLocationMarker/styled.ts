@@ -2,7 +2,7 @@ import { makeStyles } from 'tss-react/mui';
 import { themeApp } from 'utils/consts';
 
 
-const CurrentLocationMarkerStyle = makeStyles()((theme) => {
+const CurrentLocationMarkerStyle = makeStyles()(() => {
     return {
         markerContainer: {
             backgroundColor: themeApp.Pallete.blueColor,

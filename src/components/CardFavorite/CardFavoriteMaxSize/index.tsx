@@ -9,11 +9,10 @@ import React from 'react'
 import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
 import { getDirections } from 'utils/route';
 
-import DoesntExistPhoto from '/public/doesntExist.jpg'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
-
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
 

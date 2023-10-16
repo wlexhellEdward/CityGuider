@@ -7,12 +7,10 @@ import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
 import { addFavoriteItem } from 'store/reducers';
 
-import DoesntExistPhoto from '/public/doesntExist.jpg'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsNormalSize } from './interfaces.ts';
-
-
 
 const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()

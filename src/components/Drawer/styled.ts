@@ -1,6 +1,6 @@
-import { makeStyles } from 'tss-react/mui';
-import { CSSObject, styled, Theme } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
+import { CSSObject, styled, Theme } from '@mui/material/styles';
+import { makeStyles } from 'tss-react/mui';
 import { themeApp } from 'utils/consts';
 
 

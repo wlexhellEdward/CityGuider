@@ -1,12 +1,11 @@
-import { useEffect } from 'react'
 import { Box, Button, Container, Typography, } from "@mui/material"
 import LinearProgress from '@mui/material/LinearProgress';
-
-import RouteInfoStyle from "./styled"
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import { useEffect } from 'react'
 import { clearDirection, deleteTravel, setDirectionRenderer, setTravelDistanceTraveled, setTravelTime } from 'store/reducers';
 import { getDirections } from 'utils/route';
 
+import RouteInfoStyle from "./styled"
 
 export const RouteInfo = () => {
     const dispatch = useAppDispatch()

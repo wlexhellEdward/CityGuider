@@ -1,7 +1,7 @@
 import { makeStyles } from 'tss-react/mui';
 
 
-const AppStyle = makeStyles()((theme) => {
+const AppStyle = makeStyles()(() => {
     return {
         containerApp: {
             display: 'flex',

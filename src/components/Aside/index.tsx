@@ -1,21 +1,19 @@
-import { List, ListItem,Box, ListItemIcon } from '@mui/material'
+import { Box, List, ListItem,ListItemIcon } from '@mui/material'
 import Logo from 'assets/img/Logo.svg'
 import Profile from 'assets/img/profile.svg'
+import ArrowBox from 'components/ArrowBox'
+import SideBar from 'components/Drawer'
 import Favorite from 'GUI/Favorite'
 import FavoriteSelected from 'GUI/Favorite/FavoriteSelected'
 import Search from 'GUI/Search/Search';
 import SearchSelected from 'GUI/Search/SearchSelected'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
+import { useGoogleMaps } from 'hooks/useGoogleMapsLoader'
+import DoesntExistPhoto from 'public/doesntExist.jpg'
+import useOnclickOutside from 'react-cool-onclickoutside'
 import { setCurrentStatus } from 'store/reducers'
 
-import DoesntExistPhoto from 'public/doesntExist.jpg'
-
 import AsideStyle from './styled'
-import SideBar from 'components/Drawer'
-import ArrowBox from 'components/ArrowBox'
-import { useGoogleMaps } from 'hooks/useGoogleMapsLoader'
-import useOnclickOutside from 'react-cool-onclickoutside'
-
 
 export default function Aside() {
     const dispatch = useAppDispatch()

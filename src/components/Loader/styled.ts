@@ -1,7 +1,7 @@
 import { makeStyles } from 'tss-react/mui';
 
 
-const LoaderStyle = makeStyles()((theme) => {
+const LoaderStyle = makeStyles()(() => {
     return {
         loaderContainer: {
             width: '100vw',

@@ -1,4 +1,3 @@
-
 function SvgComponent(props: object) {
     return (
         <svg

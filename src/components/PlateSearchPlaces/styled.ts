@@ -1,9 +1,7 @@
 import { makeStyles } from 'tss-react/mui';
 import { themeApp } from 'utils/consts';
 
-
-
-const PlateSearchPlacesStyle = makeStyles()((theme) => {
+const PlateSearchPlacesStyle = makeStyles()(() => {
     return {
         platePlaces: {
             margin: '0px 2px'

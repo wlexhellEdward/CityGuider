@@ -4,7 +4,9 @@ import { GoogleMap, Marker } from "@react-google-maps/api";
 import CardPlace from "components/CardPlace";
 import { CurrentLocationMarker } from "components/CurrentLocationMarker";
 import { Loader } from "components/Loader";
+import { RouteInfo } from "components/RouteInfo";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
 import React, { useRef, useState } from 'react';
 import { setCenter, setHumanPosition } from 'store/reducers';
 import { clearDirection,  setMap } from 'store/reducers/mapSlice/mapSlice';
@@ -12,9 +14,6 @@ import { DefaultOptions } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
 
 import MapStyle from './styled';
-import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
-import { RouteInfo } from "components/RouteInfo";
-
 
 const Map = () => {
     const dispatch = useAppDispatch()

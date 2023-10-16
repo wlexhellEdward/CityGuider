@@ -1,9 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
 
-
-const greyColor = '#7D908C'
-
-const WaiterStyle = makeStyles()((theme) => {
+const WaiterStyle = makeStyles()(() => {
     return {
         loaderContainer: {
             width: '100%',

@@ -4,7 +4,7 @@ import { themeApp } from 'utils/consts';
 
 
 
-const ButtonSearchStyle = makeStyles()((theme) => {
+const ButtonSearchStyle = makeStyles()(() => {
     return {
        buttonSearch: {
             marginTop: 20,
