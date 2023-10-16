@@ -1,11 +1,8 @@
-// import { styled } from '@mui/system';
-
-import { makeStyles } from 'tss-react/mui';
-import { CSSObject, styled, Theme } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
+import { CSSObject, styled, Theme } from '@mui/material/styles';
+import { makeStyles } from 'tss-react/mui';
+import { themeApp } from 'utils/consts';
 
-const greyColor = '#7D908C'
-const blueColor = '#5E7BC7'
 
 
 export const DrawerStyle = makeStyles()((theme) => {
@@ -20,7 +17,7 @@ export const DrawerStyle = makeStyles()((theme) => {
         },
         containerSearch: {
             borderRadius:borderRadius,
-            border:`1px solid ${greyColor}`,
+            border:`1px solid ${themeApp.Pallete.greyColor}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
@@ -90,7 +87,7 @@ export const DrawerContent = styled('div')(({ theme }) => ({
     },
     '&::-webkit-scrollbar-thumb': {
         borderRadius: 4,
-        backgroundColor: `${greyColor}`
+        backgroundColor: `${themeApp.Pallete.greyColor}`
     },
 }))
 export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(

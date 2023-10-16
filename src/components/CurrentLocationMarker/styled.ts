@@ -1,13 +1,11 @@
 import { makeStyles } from 'tss-react/mui';
-
-const greyColor = '#7D908C'
-const blueColor = '#5E7BC7'
+import { themeApp } from 'utils/consts';
 
 
-const CurrentLocationMarkerStyle = makeStyles()((theme) => {
+const CurrentLocationMarkerStyle = makeStyles()(() => {
     return {
         markerContainer: {
-            backgroundColor: blueColor,
+            backgroundColor: themeApp.Pallete.blueColor,
             width: 120,
             height: 40,
             borderRadius: 64,

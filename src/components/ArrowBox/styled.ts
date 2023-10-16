@@ -34,13 +34,14 @@ const ArrowBoxStyle = makeStyles()((theme) => {
         containerArrow: {
             display: 'flex',
             alignItems: 'center',
+            padding:theme.spacing(4,0),
             boxShadow: '8px 0px 6px 2px rgba(200, 200, 200, 0.6)',
             width: 20,
             height: 40,
             backgroundColor: 'white',
             borderRadius: '0 8px 8px 0',
         },
-        arrowShowMore: {
+        openDrawerArrow: {
             rotate: '180deg',
         }
     };

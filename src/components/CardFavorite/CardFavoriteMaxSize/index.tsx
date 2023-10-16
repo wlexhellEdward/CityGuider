@@ -6,16 +6,13 @@ import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
-import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelDistanceTraveled, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
+import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
 import { getDirections } from 'utils/route';
 
-import DoesntExistPhoto from '/public/doesntExist.jpg'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 import CardFavoriteStyle from '../styled';
-import { CardFavoritePropsMaxSize } from './interfaceProps';
-
-
-
+import { CardFavoritePropsMaxSize } from './interfaces';
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
 

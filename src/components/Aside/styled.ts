@@ -1,6 +1,6 @@
 import { makeStyles } from "tss-react/mui";
+import { themeApp } from "utils/consts";
 
-const greyColor = '#7D908C'
 
 
 const AsideStyle = makeStyles()((theme) => {
@@ -21,7 +21,7 @@ const AsideStyle = makeStyles()((theme) => {
             justifyContent: 'space-between',
             display: 'flex',
             flexDirection: 'column',
-            color: "black",
+            color: themeApp.Pallete.black,
             [theme.breakpoints.down('sm')]: {
                 width:'50px',
             }

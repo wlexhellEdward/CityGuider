@@ -1,6 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
+import { themeApp } from 'utils/consts';
 
-const greyColor = '#EEEEEE'
 
 const AutocompleteStyle = makeStyles()((theme) => {
     return {
@@ -22,7 +22,7 @@ const AutocompleteStyle = makeStyles()((theme) => {
             flexDirection: 'column',
             color:'black',
             backgroundColor: 'white',
-            borderTop: `1px solid ${greyColor}`
+            borderTop: `1px solid ${themeApp.Pallete.lightGreyColor}`
         },
         suggestionContainer:{
             display:'flex',
@@ -52,7 +52,7 @@ const AutocompleteStyle = makeStyles()((theme) => {
                 width: '100%',
             },
             '&>li:hover': {
-                backgroundColor: greyColor,
+                backgroundColor: themeApp.Pallete.lightGreyColor,
             }
         },
         searchImg: {

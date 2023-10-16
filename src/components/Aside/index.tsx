@@ -1,20 +1,19 @@
-import { Container, List, ListItem,Box, ListItemIcon } from '@mui/material'
+import { useRef } from 'react'
+import { Box, List, ListItem, ListItemIcon } from '@mui/material'
 import Logo from 'assets/img/Logo.svg'
 import Profile from 'assets/img/profile.svg'
+import ArrowBox from 'components/ArrowBox'
+import SideBar from 'components/Drawer'
 import Favorite from 'GUI/Favorite'
 import FavoriteSelected from 'GUI/Favorite/FavoriteSelected'
 import Search from 'GUI/Search/Search';
 import SearchSelected from 'GUI/Search/SearchSelected'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
+import { useGoogleMaps } from 'hooks/useGoogleMapsLoader'
+import DoesntExistPhoto from 'public/doesntExist.jpg'
 import { setCurrentStatus } from 'store/reducers'
 
-import DoesntExistPhoto from '../../../public/doesntExist.jpg'
-
 import AsideStyle from './styled'
-import SideBar from 'components/Drawer'
-import ArrowBox from 'components/ArrowBox'
-import { useGoogleMaps } from 'hooks/useGoogleMapsLoader'
-import useOnclickOutside from 'react-cool-onclickoutside'
 
 export default function Aside() {
     const dispatch = useAppDispatch()
@@ -22,17 +21,14 @@ export default function Aside() {
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
     const isLoaded = useGoogleMaps()
+    const handleCloseClick = () => {switchCurrentStatus('close'); console.log('click oustide')}
 
 
     const useAsideStyle = AsideStyle()
-    const ref = useOnclickOutside(() => {
-        switchCurrentStatus('close')
-    });
-    const handleCloseClick = () => switchCurrentStatus('close')
 
     return (
         <>
-            <Box ref={ref}  className={useAsideStyle.classes.container}>
+            <Box className={useAsideStyle.classes.container}>
                 <Box className={useAsideStyle.classes.asideContainer}>
                     <List className={useAsideStyle.classes.listItems}>
                         <ListItem className={useAsideStyle.classes.logo}>

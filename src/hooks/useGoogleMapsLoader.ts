@@ -1,8 +1,8 @@
 import { Libraries, useJsApiLoader } from '@react-google-maps/api';
 import { useEffect } from 'react';
+import { setIsLoaded } from 'store/reducers';
 
 import { useAppDispatch } from './redux';
-import { setIsLoaded } from 'store/reducers';
 
 export function useGoogleMaps() {
     const dispatch = useAppDispatch()
