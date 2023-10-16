@@ -10,7 +10,6 @@ import PlateSearchPlacesStyle from "./styled"
 import { Places } from 'components/Drawer/Places.ts';
 
 
-
 export const PlateSearchPlaces = () => {
     const itemsArray = useTypeSelector((state) => state.searchSlice.selectedItems)
     const [inputValue, setInputValue] = useState("1")

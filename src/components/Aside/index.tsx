@@ -8,13 +8,14 @@ import SearchSelected from 'GUI/Search/SearchSelected'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { setCurrentStatus } from 'store/reducers'
 
-import DoesntExistPhoto from '../../../public/doesntExist.jpg'
+import DoesntExistPhoto from 'public/doesntExist.jpg'
 
 import AsideStyle from './styled'
 import SideBar from 'components/Drawer'
 import ArrowBox from 'components/ArrowBox'
 import { useGoogleMaps } from 'hooks/useGoogleMapsLoader'
 import useOnclickOutside from 'react-cool-onclickoutside'
+
 
 export default function Aside() {
     const dispatch = useAppDispatch()

@@ -7,8 +7,6 @@ import { PlateSearchPlaces } from 'components/PlateSearchPlaces/index.tsx';
 import { PlateFavorites } from 'components/PlateFavorites/index.tsx';
 
 
-
-
 export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
   const useDrawerStyle = DrawerStyle()
 

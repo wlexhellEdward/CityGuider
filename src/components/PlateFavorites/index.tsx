@@ -2,7 +2,7 @@ import { Box } from "@mui/system"
 import PlateFavoritesStyle from "./styled"
 import { Typography } from "@mui/material"
 import { Waiter } from "components/Waiter"
-import CardFavorite from "components/CardFavorite"
+import CardFavorite from "components/CardFavorite/ToggleCardFavorite"
 import { useTypeSelector } from "hooks/redux"
 
 

@@ -2,10 +2,9 @@ import { Box } from "@mui/system"
 import DoesntExistPhoto from '/public/doesntExist.jpg'
 import ButtonSearchStyle from "./styled"
 import searchIcon from 'assets/img/Search.svg'
+import { ButtonSearchProps } from "./intefraces"
 
-interface ButtonSearchProps {
-    handleSetSearchButtonIsClicked: () => void,
-}
+
 
 export const ButtonSearch = ({ handleSetSearchButtonIsClicked }: ButtonSearchProps) => {
     const useButtonSearchStyle = ButtonSearchStyle()

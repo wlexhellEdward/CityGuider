@@ -40,7 +40,7 @@ const ArrowBoxStyle = makeStyles()((theme) => {
             backgroundColor: 'white',
             borderRadius: '0 8px 8px 0',
         },
-        arrowShowMore: {
+        openDrawerArrow: {
             rotate: '180deg',
         }
     };

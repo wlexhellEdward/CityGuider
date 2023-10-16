@@ -1,5 +1,5 @@
 import { makeStyles } from 'tss-react/mui';
-
+import { themeApp } from 'utils/consts';
 
 const PlateFavoritesStyle = makeStyles()((theme) => {
     return {
@@ -16,7 +16,7 @@ const PlateFavoritesStyle = makeStyles()((theme) => {
             maxHeight: '85vh', 
         },
         titleFavorite: {
-            color: 'black',
+            color: themeApp.Pallete.black,
             fontWeight: 700,
             fontSize: 18,
             marginBottom: 20,

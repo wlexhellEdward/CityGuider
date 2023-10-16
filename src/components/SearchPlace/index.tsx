@@ -8,11 +8,6 @@ import SearchPlaceStyle from './styled'
 import { SearchPlaceProps } from './interfaces'
 
 
-
-
-
-
-
 const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) => {
 
     const dispatch = useAppDispatch()

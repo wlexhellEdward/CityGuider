@@ -7,6 +7,7 @@ import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { clearDirection, deleteTravel, setDirectionRenderer, setTravelDistanceTraveled, setTravelTime } from 'store/reducers';
 import { getDirections } from 'utils/route';
 
+
 export const RouteInfo = () => {
     const dispatch = useAppDispatch()
     const map = useTypeSelector(state => state.map.mapRef)

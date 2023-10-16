@@ -16,7 +16,7 @@ export default {
       "GUI": "/src/GUI",
       "models": "/src/models",
       "assets": "/src/assets",
-      "public": "./public",
+      "public": "/public",
     },
   },
 };
