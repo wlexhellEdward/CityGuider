@@ -5,7 +5,7 @@ import { addItem, deleteItem } from 'store/reducers'
 import DoesntExistPhoto from '/public/doesntExist.jpg'
 
 import SearchPlaceStyle from './style'
-import { SearchPlaceProps } from './interfaceProps'
+import { SearchPlaceProps } from './interfaces'
 
 
 

@@ -3,7 +3,7 @@ import { Marker } from "@react-google-maps/api"
 
 import im from '../../assets/img/Im.svg'
 import CurrentLocationMarkerStyle from "./styled"
-import { CurrentLocationMarkerProps } from './interfaceProps'
+import { CurrentLocationMarkerProps } from './interfaces'
 
 
 

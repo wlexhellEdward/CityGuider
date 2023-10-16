@@ -12,7 +12,7 @@ import { refactorString } from 'utils/textRefactors.ts';
 
 import DoesntExistPhoto from 'public/doesntExist.jpg'
 
-import { AutocompleteProops } from './interfaceProps.ts';
+import { AutocompleteProops } from './interfaces.ts';
 import AutocompleteStyle from './styled.ts'
 
 

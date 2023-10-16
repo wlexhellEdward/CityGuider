@@ -1,7 +1,7 @@
 import { Typography, Container } from '@mui/material'
 
 import WaiterStyle from './styled'
-import { WaiterProps } from './interfaceProps'
+import { WaiterProps } from './interfaces'
 
 
 export const Waiter = ({ text }: WaiterProps) => {

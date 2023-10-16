@@ -11,7 +11,7 @@ import DoesntExistPhoto from '../../../public/doesntExist.jpg'
 
 
 import CardPlaceStyle from './styled'
-import { CardPlaceProps } from './interfaceProps';
+import { CardPlaceProps } from './interfaces.ts';
 import PopUp from 'components/Pop-up';
 
 

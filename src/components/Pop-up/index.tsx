@@ -2,7 +2,7 @@ import { Container, Modal, Typography } from '@mui/material';
 import { useState } from "react"
 
 import PopUpStyle from './styled';
-import { PopUpProps } from './interfaceProps';
+import { PopUpProps } from './interfaces';
 
 
 export default function PopUp({ text }: PopUpProps) {

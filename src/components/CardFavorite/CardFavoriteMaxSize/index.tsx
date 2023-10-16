@@ -12,7 +12,7 @@ import { getDirections } from 'utils/route';
 import DoesntExistPhoto from '/public/doesntExist.jpg'
 
 import CardFavoriteStyle from '../styled';
-import { CardFavoritePropsMaxSize } from './interfaceProps';
+import { CardFavoritePropsMaxSize } from './interfaces';
 
 
 

@@ -1,24 +1,28 @@
-import React from 'react'
+import { useState } from 'react'
 
 import CardFavoriteMaxSize from './CardFavoriteMaxSize';
 import CardFavoriteNormalSize from './CardFavoriteNormalSize';
-import { CardFavoriteProps } from './interfaceProps';
+import { CardFavoriteProps } from './interfaces';
 
 
 
 
 
 const CardFavorite = ({ favoriteItem }: CardFavoriteProps) => {
-    const [isOpen, setIsOpen] = React.useState(false)
+    const [isOpen, setIsOpen] = useState(false)
     function handleSetIsOpen(status: boolean) {
         setIsOpen(status)
     }
-    return (
-        isOpen ?
+
+    if (isOpen) {
+        return (
             <CardFavoriteMaxSize favoriteItem={favoriteItem} handleSetIsOpen={handleSetIsOpen} isOpen={isOpen} />
-            :
+        )
+    } else {
+        return (
             <CardFavoriteNormalSize favoriteItem={favoriteItem} handleSetIsOpen={handleSetIsOpen} isOpen={isOpen} />
-    )
+        )
+    }
 }
 
 

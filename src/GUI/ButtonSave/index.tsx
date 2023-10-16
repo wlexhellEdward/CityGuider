@@ -5,7 +5,7 @@ import favorite from 'assets/img/inFavorite.svg'
 import DoesntExistPhoto from '/public/doesntExist.jpg'
 
 import ButtonSaveStyle from './styled'
-import { ButtonSaveProps } from './interfaceProps'
+import { ButtonSaveProps } from './interfaces'
 
 
 export default function ButtonSave({ handleFunction, isFavorite }: ButtonSaveProps) {

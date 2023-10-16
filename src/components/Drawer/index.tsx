@@ -2,7 +2,7 @@ import { Box } from "@mui/material"
 import Autocomplete from "components/Autocomplete/index.tsx";
 
 import { DrawerStyle, DrawerContent } from './styled.ts'
-import { SideBarProps } from "./interfaceProps.ts";
+import { SideBarProps } from "./interfaces.ts";
 import { PlateSearchPlaces } from 'components/PlateSearchPlaces/index.tsx';
 import { PlateFavorites } from 'components/PlateFavorites/index.tsx';
 
