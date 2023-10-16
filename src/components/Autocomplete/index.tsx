@@ -1,4 +1,4 @@
-import { Container, Input,Box, List, ListItem, Typography } from '@mui/material'
+import { Input,Box, List, ListItem, Typography } from '@mui/material'
 import searchSVG from 'assets/img/searchInput.svg'
 import { useAppDispatch } from 'hooks/redux.ts';
 import { useEffect } from 'react';

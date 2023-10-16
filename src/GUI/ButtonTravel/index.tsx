@@ -4,7 +4,7 @@ import travel from 'assets/img/travel.svg'
 import DoesntExistPhoto from '/public/doesntExist.jpg'
 
 import ButtonTravelStyle from './styled'
-import { ButtonTravelProps } from './interfaceProps'
+import { ButtonTravelProps } from './interfaces'
 
 
 

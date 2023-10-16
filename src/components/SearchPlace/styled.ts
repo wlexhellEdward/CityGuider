@@ -1,8 +1,6 @@
 import { makeStyles } from "tss-react/mui";
+import { themeApp } from "utils/consts";
 
-const greyColor = '#7D908C'
-const lightGreyColor = '#EEEEEE'
-const blueColor = '#5E7BC7'
 
 const SearchPlaceStyle = makeStyles()((theme) => {
     return {
@@ -14,7 +12,7 @@ const SearchPlaceStyle = makeStyles()((theme) => {
             alignItems: 'center',
             cursor: 'pointer',
             '&:hover': {
-                backgroundColor: `${lightGreyColor}`
+                backgroundColor: `${themeApp.Pallete.lightGreyColor}`
             }
         },
         imgPlace: {
@@ -29,7 +27,7 @@ const SearchPlaceStyle = makeStyles()((theme) => {
         titleSelectedPlace: {
             fontSize: 14,
             fontFamily:'mont',
-            color:greyColor,
+            color:themeApp.Pallete.greyColor,
         },
         imgSelectedPlace:{
             width: 30,

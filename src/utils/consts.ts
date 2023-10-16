@@ -66,3 +66,13 @@ export const DefaultOptions = {
     keyboardShortcuts: false,
     styles: ThemeMap
 }
+export const themeApp = {
+    Pallete: {
+        lightGreyColor: '#EEEEEE',
+        greyColorTitle:'#373737',
+        greyColor: '#7D908C',
+        blueColor: '#5E7BC7',
+        darkBlue: '#405F7B',
+        black: 'black'
+    }
+}

@@ -1,6 +1,7 @@
 import { makeStyles } from 'tss-react/mui';
+import { themeApp } from 'utils/consts';
 
-const greyColor = '#EEEEEE'
+
 
 const PlateSearchPlacesStyle = makeStyles()((theme) => {
     return {
@@ -8,7 +9,7 @@ const PlateSearchPlacesStyle = makeStyles()((theme) => {
             margin: '0px 2px'
         },
         containerPlaces: {
-            border: `1px solid ${greyColor}`,
+            border: `1px solid ${themeApp.Pallete.lightGreyColor}`,
             borderRadius: '8px',
             padding: '5px 15px',
             maxHeight: 350,
@@ -21,13 +22,13 @@ const PlateSearchPlacesStyle = makeStyles()((theme) => {
             },
             '&::-webkit-scrollbar-thumb': {
                 borderRadius: 4,
-                backgroundColor: `${greyColor}`
+                backgroundColor: `${themeApp.Pallete.lightGreyColor}`
             },
             overflowY: 'scroll',
         },
         titleRadius: {
             fontSize: 18,
-            color: 'black',
+            color: themeApp.Pallete.black,
             fontFamily:'mont',
             fontWeight: 700,
             margin: '10px 0px'
@@ -35,11 +36,11 @@ const PlateSearchPlacesStyle = makeStyles()((theme) => {
         containerInputs: {
             display: 'flex',
             alignItems: 'center',
-            color: 'black',
+            color: themeApp.Pallete.black,
             gap: 10
         },
         titleFavorite: {
-            color: 'black',
+            color: themeApp.Pallete.black,
             fontWeight: 700,
             fontSize: 18,
             fontFamily:'mont',
@@ -57,7 +58,7 @@ const PlateSearchPlacesStyle = makeStyles()((theme) => {
             borderRadius: 8,
             width: 60,
             height: 30,
-            border: `1px solid ${greyColor}`,
+            border: `1px solid ${themeApp.Pallete.lightGreyColor}`,
             '&:before': {
                 content: 'none',
             },

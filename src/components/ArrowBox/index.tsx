@@ -1,5 +1,5 @@
 import { Box, Container } from '@mui/system';
-import arrowDisableDrawer from 'assets/img/arrowDisableDrawer.svg'
+import openDrawerArrow from 'assets/img/arrowDisableDrawer.svg'
 
 import ArrowBoxStyle from './styled';
 import { useAppDispatch } from 'hooks/redux';
@@ -13,9 +13,9 @@ function ArrowBox() {
         <Box onClick={() => switchCurrentStatus('favorites')} className={useArrowBoxStyle.classes.boxArrow}>
             <Container disableGutters className={useArrowBoxStyle.classes.containerArrow}>
                 <img
-                    src={arrowDisableDrawer}
+                    src={openDrawerArrow}
                     className={useArrowBoxStyle.classes.arrowShowMore}
-                    alt=""
+                    alt=''
                 />
             </Container>
         </Box>

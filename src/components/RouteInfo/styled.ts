@@ -1,8 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
+import { themeApp } from 'utils/consts';
 
-// const greyColor = '#7D908C'
-// const blueColor = '#5E7BC7'
-const darkBlue = '#405F7B'
 
 
 const RouteInfoStyle = makeStyles()((theme) => {
@@ -39,12 +37,12 @@ const RouteInfoStyle = makeStyles()((theme) => {
             }
         },
         routeValue: {
-            color:darkBlue,
+            color:themeApp.Pallete.darkBlue,
             fontWeight: 'bold',
             fontSize: 'calc(16px + (24 - 16) * ((100vw - 375px) / (1920 - 375)))',
         },
         routeValueDescription: {
-            color: darkBlue,
+            color: themeApp.Pallete.darkBlue,
             opacity:.8,
             fontSize: '10px',
             [theme.breakpoints.down('sm')]: {

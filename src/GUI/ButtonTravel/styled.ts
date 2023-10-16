@@ -1,4 +1,5 @@
 import { makeStyles } from 'tss-react/mui';
+import { themeApp } from 'utils/consts';
 
 
 
@@ -13,7 +14,7 @@ const ButtonTravelStyle = makeStyles()((theme) => {
             width: 120,
             height: 30,
             color: 'white',
-            backgroundColor: '#5E7BC7',
+            backgroundColor: themeApp.Pallete.blueColor,
             borderRadius: theme.spacing(1),
             gap: theme.spacing(2),
             '&:hover': {

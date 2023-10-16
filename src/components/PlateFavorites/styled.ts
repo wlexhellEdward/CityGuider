@@ -1,6 +1,5 @@
 import { makeStyles } from 'tss-react/mui';
 
-const greyColor = '#EEEEEE'
 
 const PlateFavoritesStyle = makeStyles()((theme) => {
     return {

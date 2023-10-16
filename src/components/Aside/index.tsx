@@ -1,4 +1,4 @@
-import { Container, List, ListItem,Box, ListItemIcon } from '@mui/material'
+import { List, ListItem,Box, ListItemIcon } from '@mui/material'
 import Logo from 'assets/img/Logo.svg'
 import Profile from 'assets/img/profile.svg'
 import Favorite from 'GUI/Favorite'

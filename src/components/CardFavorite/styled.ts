@@ -1,8 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
+import { themeApp } from 'utils/consts';
 
-
-const greyColorTitle = '#373737'
-const greyColor = '#7D908C'
 
 const CardFavoriteStyle = (isOpen: boolean, url: string) => {
     return makeStyles()((theme) => ({
@@ -14,7 +12,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             width: '300px',
             boxShadow: " 0px 5px 10px 2px rgba(226, 226,226, 1);",
             padding: '20px 20px 0px 20px',
-            border: `1px solid ${greyColor}`,
+            border: `1px solid ${themeApp.Pallete.lightGreyColor}`,
             borderRadius: 8,
             marginBottom: theme.spacing(3),
 
@@ -73,7 +71,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
         },
         title: {
             fontSize: 'calc(16px + (24 - 16) * ((100vw - 375px) / (1920 - 375)/2))',
-            color: greyColorTitle,
+            color: themeApp.Pallete.greyColorTitle,
             fontFamily:'mont',
             fontWeight: 700
         },

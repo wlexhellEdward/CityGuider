@@ -11,7 +11,7 @@ import { clearDirection,  setMap } from 'store/reducers/mapSlice/mapSlice';
 import { DefaultOptions } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
 
-import MapStyle from './style';
+import MapStyle from './styled';
 import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
 import { RouteInfo } from "components/RouteInfo";
 

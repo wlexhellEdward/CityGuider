@@ -1,6 +1,7 @@
 import { makeStyles } from 'tss-react/mui';
+import { themeApp } from 'utils/consts';
 
-const blueColor = '#5E7BC7'
+
 
 
 const ButtonSearchStyle = makeStyles()((theme) => {
@@ -8,7 +9,7 @@ const ButtonSearchStyle = makeStyles()((theme) => {
        buttonSearch: {
             marginTop: 20,
             cursor: 'pointer',
-            backgroundColor: `${blueColor}`,
+            backgroundColor: `${themeApp.Pallete.blueColor}`,
             height: 60,
             display: 'flex',
             justifyContent: 'center',

@@ -1,7 +1,6 @@
 import { Box } from '@mui/material'
 import Aside from 'components/Aside'
 import Map from 'components/Map'
-import logo from '../public/logo.webp'
 import AppStyle from './AppStyle'
 
 
