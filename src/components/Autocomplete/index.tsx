@@ -1,9 +1,8 @@
-import { Box, Input,List, ListItem, Typography } from '@mui/material'
+import { Box, Input, List, ListItem, Typography } from '@mui/material'
 import searchSVG from 'assets/img/searchInput.svg'
 import { useAppDispatch } from 'hooks/redux.ts';
 import DoesntExistPhoto from 'public/doesntExist.jpg'
-import { useEffect } from 'react';
-import useOnclickOutside from "react-cool-onclickoutside";
+import { useEffect, useRef } from 'react';
 import { setCenter } from 'store/reducers/index.ts';
 import usePlacesAutocomplete, {
     getGeocode,
@@ -13,9 +12,11 @@ import { refactorString } from 'utils/textRefactors.ts';
 
 import { AutocompleteProops } from './interfaces.ts';
 import AutocompleteStyle from './styled.ts'
+import { useOnClickOutside } from 'hooks/useOnClickOutside.ts';
 
 export default function Autocomplete({ isLoaded }: AutocompleteProops) {
     const dispatch = useAppDispatch()
+    const ref = useRef<HTMLDivElement>(null);
     const handlerSetCenter = (object: object) => {
         dispatch(setCenter(object))
     }
@@ -35,9 +36,6 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
             init()
         }
     }, [isLoaded, init])
-    const ref = useOnclickOutside(() => {
-        // clearSuggestions();
-    });
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
@@ -68,13 +66,18 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
             );
         });
 
+    const handleClickOutside = () => {
+        clearSuggestions();
+    };
+
+    useOnClickOutside(ref, handleClickOutside);
 
 
     const useAutocompleteStyle = AutocompleteStyle()
     const OK = "OK"
     return (
-        <Box className={useAutocompleteStyle.classes.Autocomplete}>
-            <Box ref={ref} className={useAutocompleteStyle.classes.containerInput}>
+        <Box ref={ref} className={useAutocompleteStyle.classes.Autocomplete}>
+            <Box className={useAutocompleteStyle.classes.containerInput}>
                 <img className={useAutocompleteStyle.classes.searchImg} src={searchSVG} alt={DoesntExistPhoto} />
                 <Input
                     value={value}
@@ -87,7 +90,7 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
 
             {status === OK && (
                 <List className={useAutocompleteStyle.classes.ListContainer}>
-                    <ListItem  disablePadding className={useAutocompleteStyle.classes.listItem}>{renderSuggestions()}</ListItem>
+                    <ListItem disablePadding className={useAutocompleteStyle.classes.listItem}>{renderSuggestions()}</ListItem>
                 </List>)
             }
 

@@ -1,3 +1,4 @@
+import { useCallback, useRef, useState } from 'react';
 import { Box } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
 import { GoogleMap, Marker } from "@react-google-maps/api";
@@ -7,9 +8,8 @@ import { Loader } from "components/Loader";
 import { RouteInfo } from "components/RouteInfo";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
-import React, { useRef, useState } from 'react';
 import { setCenter, setHumanPosition } from 'store/reducers';
-import { clearDirection,  setMap } from 'store/reducers/mapSlice/mapSlice';
+import { clearDirection, setMap } from 'store/reducers/mapSlice/mapSlice';
 import { DefaultOptions } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
 
@@ -27,7 +27,7 @@ const Map = () => {
     const handleSetMap = (object: google.maps.Map) => dispatch(setMap(object))
 
 
-    const onLoad = React.useCallback(function callback(map: google.maps.Map) {
+    const onLoad = useCallback(function callback(map: google.maps.Map) {
         handleSetMap(map)
         getBrowserLocation()
             .then((location) => {
@@ -53,7 +53,7 @@ const Map = () => {
 
     return (
         <>
-            <Box ref={mapContainerRef} className={useMapStyle.classes.containerMap}>
+            <Box  ref={mapContainerRef} className={useMapStyle.classes.containerMap}>
                 {isLoaded ? (
                     <GoogleMap
                         onLoad={onLoad}
