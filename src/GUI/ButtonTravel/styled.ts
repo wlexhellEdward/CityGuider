@@ -29,6 +29,7 @@ const ButtonTravelStyle = makeStyles()((theme) => {
 
             [theme.breakpoints.down('sm')]: {
                 fontSize: 12,
+                display:'none'
             }
         },
         iconTravel: {

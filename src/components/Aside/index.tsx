@@ -20,7 +20,7 @@ export default function Aside() {
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
     const isLoaded = useGoogleMaps()
-    const handleCloseClick = () => {switchCurrentStatus('close'); console.log('click oustide')}
+    const handleCloseClick = () => {switchCurrentStatus('close')}
 
     const useAsideStyle = AsideStyle()
 
