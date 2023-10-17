@@ -48,6 +48,7 @@ const ButtonSaveStyle = makeStyles()((theme) => {
             fontFamily: 'mont',
             [theme.breakpoints.down('sm')]: {
                 fontSize: 12,
+                display:'none'
             }
         },
     };

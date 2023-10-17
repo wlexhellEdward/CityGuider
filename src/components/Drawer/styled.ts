@@ -13,7 +13,8 @@ export const DrawerStyle = makeStyles()((theme) => {
         },
         drawer: {
             position: "relative",
-            transition: 'all .3s ease-in-out'
+            transition: 'all .3s ease-in-out',
+            
         },
         containerSearch: {
             borderRadius:borderRadius,
@@ -37,6 +38,9 @@ export const DrawerStyle = makeStyles()((theme) => {
         drawerContent: {
             display: 'flex',
             flexDirection: 'column',
+            [theme.breakpoints.down('sm')]:{
+                maxHeight:'94vh'
+            }
         },
         
         

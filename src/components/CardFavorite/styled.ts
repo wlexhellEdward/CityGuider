@@ -18,7 +18,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
 
             [theme.breakpoints.down('sm')]: {
                 padding: '5px 10px',
-                width: '250px',
+                width: '195px',
             },
         },
         imgCard: {
