@@ -1,7 +1,7 @@
 import { Box, Input, List, ListItem, Typography } from '@mui/material'
 import searchSVG from 'assets/img/searchInput.svg'
 import { useAppDispatch } from 'hooks/redux.ts';
-import DoesntExistPhoto from 'public/doesntExist.jpg'
+import DoesntExistPhoto from 'public/doesntExist.png'
 import { useEffect, useRef } from 'react';
 import { setCenter } from 'store/reducers/index.ts';
 import usePlacesAutocomplete, {
