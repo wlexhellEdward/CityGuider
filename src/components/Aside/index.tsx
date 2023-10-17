@@ -9,7 +9,7 @@ import Search from 'GUI/Search/Search';
 import SearchSelected from 'GUI/Search/SearchSelected'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { useGoogleMaps } from 'hooks/useGoogleMapsLoader'
-import DoesntExistPhoto from 'public/doesntExist.jpg'
+import DoesntExistPhoto from 'public/doesntExist.png'
 import { setCurrentStatus } from 'store/reducers'
 
 import AsideStyle from './styled'
