@@ -7,8 +7,8 @@ const CardPlaceStyle = makeStyles()((theme) => {
             width: theme.spacing(40),
             height: theme.spacing(43),
             [theme.breakpoints.down('sm')]:{
-                width:theme.spacing(28),
-                height:theme.spacing(32)
+                width:theme.spacing(20),
+                height:theme.spacing(35)
             }
         },
         placePhoto: {
