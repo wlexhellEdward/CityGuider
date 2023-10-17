@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { Box, List, ListItem, ListItemIcon } from '@mui/material'
 import Logo from 'assets/img/Logo.svg'
 import Profile from 'assets/img/profile.svg'
@@ -22,7 +21,6 @@ export default function Aside() {
     const [favorites, search] = ['favorites', 'search']
     const isLoaded = useGoogleMaps()
     const handleCloseClick = () => {switchCurrentStatus('close'); console.log('click oustide')}
-
 
     const useAsideStyle = AsideStyle()
 
