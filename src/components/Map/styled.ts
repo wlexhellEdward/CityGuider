@@ -1,9 +1,8 @@
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
 
 
-const MapStyle = makeStyles()((theme) => {
+const MapStyle = makeStyles()(() => {
     return {
         containerMap: {
             position: 'absolute',

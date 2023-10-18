@@ -47,6 +47,7 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
                 setValue(description, false);
                 clearSuggestions();
                 getGeocode({ address: description }).then((results) => {
+                    console.log(results)
                     handlerSetCenter(getLatLng(results[0]))
                 });
             };
@@ -57,7 +58,6 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
                 place_id,
                 structured_formatting: { main_text, secondary_text },
             } = suggestion;
-
             return (
                 <ListItem key={place_id} onClick={handleSelect(suggestion)} className={useAutocompleteStyle.classes.suggestionContainer}>
                     <Typography whiteSpace={'normal'} className={useAutocompleteStyle.classes.titleSuggestion}>{main_text}</Typography>

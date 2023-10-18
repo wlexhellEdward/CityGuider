@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
-import { Box, Button, } from "@mui/material";
+import { Box, } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import CardPlace from "components/CardPlace";
@@ -73,7 +73,7 @@ const Map = () => {
                     >
                         {resultSearch && resultSearch.map((place, index) => (
                             <Marker
-                                onClick={() => setSelectedPlace(place)}
+                                onClick={() => {setSelectedPlace(place)}}
                                 key={`${place.place_id}-${index}`}
                                 position={{
                                     lat: place?.geometry?.location?.lat() || 0,

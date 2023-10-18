@@ -1,4 +1,3 @@
-import { useTypeSelector } from "hooks/redux"
 
 export const MAP_THEME =
     [
