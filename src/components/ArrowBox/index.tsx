@@ -1,5 +1,5 @@
 import { Box, Container } from '@mui/system';
-import openDrawerArrow from 'assets/img/arrowDisableDrawer.svg'
+import openDrawerArrow from 'assets/img/DrawerActions/CloseDrawerButton/arrowDisableDrawer.svg'
 import { useAppDispatch } from 'hooks/redux';
 import DoesntExistPhoto from 'public/doesntExist.png'
 import { setCurrentStatus } from 'store/reducers';
