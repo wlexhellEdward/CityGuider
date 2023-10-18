@@ -28,6 +28,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             minWidth: isOpen ? '100%' : '40%',
             alignItems: 'end',
             borderRadius: 8,
+            backgroundPosition:'center',
             backgroundImage: `url('${url}')`,
             gap: 4,
             justifyContent: 'end',

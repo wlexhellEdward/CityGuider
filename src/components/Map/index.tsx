@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
-import { Box } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import CardPlace from "components/CardPlace";
@@ -9,26 +9,31 @@ import { RouteInfo } from "components/RouteInfo";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
 import { setCenter, setHumanPosition } from 'store/reducers';
-import { clearDirection, setMap } from 'store/reducers/mapSlice/mapSlice';
-import { DefaultOptions } from 'utils/consts';
+import { clearDirection, setMap, setThemeMap } from 'store/reducers/mapSlice/mapSlice';
+import { DEFAULT_OPTIONS, MAP_DARK_THEME, MAP_THEME } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
+import Sun from 'assets/img/sun.svg'
+import Moon from 'assets/img/moon.svg'
 
 import MapStyle from './styled';
 
 const Map = () => {
     const dispatch = useAppDispatch()
     const [selectedPlace, setSelectedPlace] = useState<google.maps.places.PlaceResult>()
+    const [themeIcon, setThemeIcon] = useState(Sun)
     const isLoaded = useGoogleMaps()
     const travel = useTypeSelector(state => state.map.travelInfo.distance)
-
+    const resultSearch = useTypeSelector(state => state.searchSlice.resultsSearch)
+    const mapRef = useTypeSelector(state => state.map.mapRef)
 
     const currentPosition = useTypeSelector(state => state.currentPosition.position)
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const handleSetMap = (object: google.maps.Map) => dispatch(setMap(object))
-
+    const defaultTheme = useTypeSelector(state => state.map.options.theme)
 
     const onLoad = useCallback(function callback(map: google.maps.Map) {
         handleSetMap(map)
+        DEFAULT_OPTIONS.style = defaultTheme
         getBrowserLocation()
             .then((location) => {
                 dispatch(setCenter(location))
@@ -39,11 +44,19 @@ const Map = () => {
                 dispatch(setHumanPosition(defaultLocation))
             });
     }, [])
+    const handleSwitchMapTheme = () => {
+        setThemeIcon(prev => prev != Sun ? Sun : Moon)
+        const newTheme = defaultTheme === MAP_THEME ? MAP_DARK_THEME : MAP_THEME;
+        const map = mapRef;
+        if (map) {
+            map.setOptions({ styles: newTheme });
+            dispatch(setThemeMap(newTheme));
+        }
+    }
     const handleClickClose = () => {
         setSelectedPlace(undefined)
         dispatch(clearDirection())
     }
-    const resultSearch = useTypeSelector(state => state.searchSlice.resultsSearch)
     const useMapStyle = MapStyle();
     const containerStyle = {
         width: '100%',
@@ -51,16 +64,20 @@ const Map = () => {
 
     };
 
+
     return (
         <>
-            <Box  ref={mapContainerRef} className={useMapStyle.classes.containerMap}>
+            <Box ref={mapContainerRef} className={useMapStyle.classes.containerMap}>
+                <IconButton aria-label="delete" onClick={handleSwitchMapTheme} className={useMapStyle.classes.switchThemeButton} >
+                    <img src={themeIcon} alt="" />
+                </IconButton>
                 {isLoaded ? (
                     <GoogleMap
                         onLoad={onLoad}
                         mapContainerStyle={containerStyle}
                         center={currentPosition}
                         zoom={18}
-                        options={DefaultOptions}
+                        options={DEFAULT_OPTIONS}
                     >
                         {resultSearch && resultSearch.map((place, index) => (
                             <Marker

@@ -87,7 +87,6 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
                     <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
                     <ButtonTravel handleFunction={handleClickRoute} />
-                        
                         <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>

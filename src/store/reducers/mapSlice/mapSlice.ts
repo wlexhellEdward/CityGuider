@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { MAP_THEME } from "utils/consts";
 
 interface mapState {
     mapRef: google.maps.Map | null,
+    options: {
+        theme: google.maps.MapTypeStyle[],
+        zoom: number
+    },
     isLoaded: boolean,
     directionsRenderer: google.maps.DirectionsRenderer | null,
     travelInfo: {
@@ -17,6 +22,10 @@ interface mapState {
 
 const initialState: mapState = {
     mapRef: null,
+    options: {
+        theme: MAP_THEME,
+        zoom: 15
+    },
     isLoaded: false,
     directionsRenderer: null,
     travelInfo: {
@@ -62,10 +71,13 @@ const mapSlice = createSlice({
         },
         setIsLoaded(state, action) {
             state.isLoaded = action.payload
+        },
+        setThemeMap(state, action) {
+            state.options.theme = action.payload
         }
     }
 })
 
-export const { setMap, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
+export const { setMap, setThemeMap, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer
