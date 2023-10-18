@@ -1,6 +1,6 @@
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
-import arrowMore from 'assets/img/arrowMore.svg'
-import FavoriteImg from 'assets/img/inFavorite.svg'
+import arrowMore from 'assets/img/CardFavoriteActions/arrowMore.svg'
+import FavoriteImg from 'assets/img/CardFavoriteActions/inFavorite.svg'
 import { Places } from 'components/Drawer/Places';
 import { useAppDispatch } from 'hooks/redux';
 import { IFavoriteItem } from 'models/IFavoriteItem';

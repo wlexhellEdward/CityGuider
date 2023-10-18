@@ -9,11 +9,15 @@ import { RouteInfo } from "components/RouteInfo";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
 import { setCenter, setHumanPosition } from 'store/reducers';
-import { clearDirection, setMap, setThemeMap } from 'store/reducers/mapSlice/mapSlice';
+import { clearDirection, decreaseZoom, increaseZoom, setMap, setThemeMap } from 'store/reducers/mapSlice/mapSlice';
 import { DEFAULT_OPTIONS, MAP_DARK_THEME, MAP_THEME } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
-import Sun from 'assets/img/sun.svg'
-import Moon from 'assets/img/moon.svg'
+
+import DoesntExistPhoto from '/public/doesntExist.png'
+
+import Sun from 'assets/img/MapActions/ButtonSwitchTheme/sun.svg'
+import Moon from 'assets/img/MapActions/ButtonSwitchTheme/moon.svg'
+import FindMe from 'assets/img/MapActions/ButtonFindMe/findMe.svg'
 
 import MapStyle from './styled';
 
@@ -25,7 +29,7 @@ const Map = () => {
     const travel = useTypeSelector(state => state.map.travelInfo.distance)
     const resultSearch = useTypeSelector(state => state.searchSlice.resultsSearch)
     const mapRef = useTypeSelector(state => state.map.mapRef)
-
+    const zoom = useTypeSelector(state => state.map.options.zoom)
     const currentPosition = useTypeSelector(state => state.currentPosition.position)
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const handleSetMap = (object: google.maps.Map) => dispatch(setMap(object))
@@ -57,6 +61,17 @@ const Map = () => {
         setSelectedPlace(undefined)
         dispatch(clearDirection())
     }
+    const handleIncreaseZoom = () => {
+        dispatch(increaseZoom())
+    }
+    const handleDecreaseZoom = () => {
+        dispatch(decreaseZoom())
+    }
+    const handleClickButtonFindMe = () => {
+        getBrowserLocation().then((location) => {
+            dispatch(setCenter(location))
+        })
+    }
     const useMapStyle = MapStyle();
     const containerStyle = {
         width: '100%',
@@ -68,15 +83,25 @@ const Map = () => {
     return (
         <>
             <Box ref={mapContainerRef} className={useMapStyle.classes.containerMap}>
-                <IconButton aria-label="delete" onClick={handleSwitchMapTheme} className={useMapStyle.classes.switchThemeButton} >
-                    <img src={themeIcon} alt="" />
+                <IconButton onClick={handleSwitchMapTheme} className={useMapStyle.classes.switchThemeButton} >
+                    <img src={themeIcon} alt={DoesntExistPhoto} title='switch theme map' />
                 </IconButton>
+                <Box className={useMapStyle.classes.containerMapActions}>
+                    <IconButton onClick={handleClickButtonFindMe} className={useMapStyle.classes.findMeButton} >
+                        <img src={FindMe} alt={DoesntExistPhoto} title='button find me for map' />
+                    </IconButton>
+                    <Box className={useMapStyle.classes.containerMapActionsZoom}>
+                        <Button className={useMapStyle.classes.buttonZoom} onClick={handleIncreaseZoom}>+</Button>
+                        <hr />
+                        <Button className={useMapStyle.classes.buttonZoom} onClick={handleDecreaseZoom}>-</Button>
+                    </Box>
+                </Box>
                 {isLoaded ? (
                     <GoogleMap
                         onLoad={onLoad}
                         mapContainerStyle={containerStyle}
                         center={currentPosition}
-                        zoom={18}
+                        zoom={zoom}
                         options={DEFAULT_OPTIONS}
                     >
                         {resultSearch && resultSearch.map((place, index) => (
@@ -101,8 +126,9 @@ const Map = () => {
                 ) : (
                     <Loader />
                 )}
-            </Box>
-            {travel && <RouteInfo />}
+            </Box >
+            {travel && <RouteInfo />
+            }
         </>
     );
 }

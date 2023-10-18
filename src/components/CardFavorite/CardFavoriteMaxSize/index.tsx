@@ -1,5 +1,5 @@
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
-import arrowMore from 'assets/img/arrowMore.svg'
+import arrowMore from 'assets/img/CardFavoriteActions/arrowMore.svg'
 import { Places } from 'components/Drawer/Places';
 import ButtonSave from 'GUI/ButtonSave';
 import ButtonTravel from 'GUI/ButtonTravel';

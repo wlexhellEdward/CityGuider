@@ -1,6 +1,6 @@
 import { Box, List, ListItem, ListItemIcon } from '@mui/material'
-import Logo from 'assets/img/Logo.svg'
-import Profile from 'assets/img/profile.svg'
+import Logo from 'assets/img/Drawer/Logo.svg'
+import Profile from 'assets/img/Drawer/profile.svg'
 import ArrowBox from 'components/ArrowBox'
 import SideBar from 'components/Drawer'
 import Favorite from 'GUI/Favorite'

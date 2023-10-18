@@ -74,10 +74,16 @@ const mapSlice = createSlice({
         },
         setThemeMap(state, action) {
             state.options.theme = action.payload
+        },
+        increaseZoom(state) {
+            state.options.zoom += 1
+        },
+        decreaseZoom(state) {
+            state.options.zoom -= 1
         }
     }
 })
 
-export const { setMap, setThemeMap, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
+export const { setMap, increaseZoom, decreaseZoom, setThemeMap, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer

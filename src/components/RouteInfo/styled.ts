@@ -15,7 +15,7 @@ const RouteInfoStyle = makeStyles()((theme) => {
             bottom: 20,
             borderRadius:8,
             padding:'4px 8px',
-            border: '1px solid black',
+            border: `1px solid ${themeApp.Pallete.greyColor}`,
             '&>div': {
                 height: '30%',
                 display: 'flex',
