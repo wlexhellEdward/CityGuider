@@ -1,6 +1,7 @@
 import { Button, Icon, Typography } from '@mui/material'
-import favoriteGrey from 'assets/img/greyFavorite.svg'
-import favorite from 'assets/img/inFavorite.svg'
+import favoriteGrey from 'assets/img/CardFavoriteActions/greyFavorite.svg'
+
+import favorite from 'assets/img/CardFavoriteActions/inFavorite.svg'
 
 import DoesntExistPhoto from '/public/doesntExist.png'
 

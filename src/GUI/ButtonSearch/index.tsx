@@ -1,5 +1,6 @@
 import { Box } from "@mui/system"
-import searchIcon from 'assets/img/Search.svg'
+import searchIcon from 'assets/img/DrawerActions/ButtonSearch/Search.svg'
+
 
 import DoesntExistPhoto from '/public/doesntExist.png'
 

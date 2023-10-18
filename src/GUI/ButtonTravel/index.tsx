@@ -1,5 +1,5 @@
 import { Button, Icon, Typography } from '@mui/material'
-import travel from 'assets/img/travel.svg'
+import travel from 'assets/img/CardFavoriteActions/travel.svg'
 
 import DoesntExistPhoto from '/public/doesntExist.png'
 
