@@ -5,16 +5,16 @@ import { themeApp } from "utils/consts";
 
 const AsideStyle = makeStyles()((theme) => {
     return {
-        container:{
-            display:'flex',
-            alignItems:'start',
-            justifyContent:'start',
-            width:'auto'
+        container: {
+            display: 'flex',
+            alignItems: 'start',
+            justifyContent: 'start',
+            width: 'auto'
         },
         asideContainer: {
-            width:'100px',
-            zIndex:11,
-            margin:0,
+            width: '100px',
+            zIndex: 11,
+            margin: 0,
             boxShadow: '8px 0px 5px -6px rgba(200, 200, 200, 0.6)',
             height: '100vh',
             backgroundColor: 'white',
@@ -23,7 +23,7 @@ const AsideStyle = makeStyles()((theme) => {
             flexDirection: 'column',
             color: themeApp.Pallete.black,
             [theme.breakpoints.down('sm')]: {
-                width:'50px',
+                width: '50px',
             }
         },
         logo: {
@@ -33,9 +33,9 @@ const AsideStyle = makeStyles()((theme) => {
             marginBottom: 20,
             marginTop: 10,
             [theme.breakpoints.down('sm')]: {
-                marginBottom:5,
-                '&>img':{
-                    height:25
+                marginBottom: 5,
+                '&>img': {
+                    height: 25
                 }
             },
         },
@@ -47,10 +47,10 @@ const AsideStyle = makeStyles()((theme) => {
         },
         listItemButton: {
             [theme.breakpoints.down('sm')]: {
-                width:'40px',
+                width: '40px',
                 rowGap: theme.spacing(1),
-                '&>div':{
-                    width:'35px',
+                '&>div': {
+                    width: '35px',
                 }
             },
             display: 'flex',
@@ -61,9 +61,9 @@ const AsideStyle = makeStyles()((theme) => {
             padding: 0,
             width: 100,
             gap: 20,
-            '& > *': { 
+            '& > *': {
                 cursor: 'pointer',
-                transition:'.3s linear'
+                transition: '.3s linear'
             },
         },
         itemButton: {
@@ -75,24 +75,46 @@ const AsideStyle = makeStyles()((theme) => {
             display: 'flex',
             justifyContent: 'center',
             marginBottom: theme.spacing(2),
-            cursor:'pointer',
-            [theme.breakpoints.down('sm')]:{
-                '&>*':{
-                    width:'32px'
+            cursor: 'pointer',
+            [theme.breakpoints.down('sm')]: {
+                '&>*': {
+                    width: '32px'
                 }
             }
         },
-        containerButton:{
-            display:'flex',
-            justifyContent:'center',
-            alignItems:'center',
-            '&>*':{
-                transition:'all .3s linear'
+        containerButton: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            '&>*': {
+                transition: 'all .3s linear'
             },
-            '&>*:hover':{
-                transform:'scale(1.045)'
+            '&>*:hover': {
+                transform: 'scale(1.045)'
             },
+
+        },
+        drawerAction: {
+            display: 'flex',
+            marginTop: 10,
             
+            justifyContent: 'center',
+            alignItems:'center',
+            textAlign: 'center'
+        },
+        buttonCloseDrawer: {
+            transition: 'all .3s linear',
+            fontSize:14,
+            color: themeApp.Pallete.greyColor,
+            '&:focus': {
+                outline: 'none'
+            },
+            '&:focus-visible': {
+                outline: 'none'
+            },
+            '&:hover': {
+                borderColor: themeApp.Pallete.lightGreyColor,
+            },
         }
 
     }

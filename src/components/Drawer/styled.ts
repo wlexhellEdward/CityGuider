@@ -14,11 +14,11 @@ export const DrawerStyle = makeStyles()((theme) => {
         drawer: {
             position: "relative",
             transition: 'all .3s ease-in-out',
-            
+
         },
         containerSearch: {
-            borderRadius:borderRadius,
-            border:`1px solid ${themeApp.Pallete.greyColor}`,
+            borderRadius: borderRadius,
+            border: `1px solid ${themeApp.Pallete.greyColor}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
@@ -38,17 +38,18 @@ export const DrawerStyle = makeStyles()((theme) => {
         drawerContent: {
             display: 'flex',
             flexDirection: 'column',
-            [theme.breakpoints.down('sm')]:{
-                maxHeight:'94vh'
+            [theme.breakpoints.down('sm')]: {
+                maxHeight: '94vh'
             }
         },
         
-        
-       
-        
-        
-        
-        
+
+
+
+
+
+
+
 
     };
 });
@@ -78,10 +79,10 @@ export const DrawerContent = styled('div')(({ theme }) => ({
     rowGap: theme.spacing(2),
     padding: theme.spacing(2.5),
     overflowY: 'auto',
-    maxWidth:'350px',
-    boxShadow:"8px 0px 5px -6px rgba(200, 200, 200, 0.6)",
-    zIndex:10,
-    backgroundColor:'white',
+    maxWidth: '350px',
+    boxShadow: "8px 0px 5px -6px rgba(200, 200, 200, 0.6)",
+    zIndex: 10,
+    backgroundColor: 'white',
     height: '100vh',
     '&::-webkit-scrollbar': {
         width: 5

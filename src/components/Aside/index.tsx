@@ -1,4 +1,4 @@
-import { Box, List, ListItem, ListItemIcon } from '@mui/material'
+import { Box, Button, List, ListItem, ListItemIcon } from '@mui/material'
 import Logo from 'assets/img/Drawer/Logo.svg'
 import Profile from 'assets/img/Drawer/profile.svg'
 import ArrowBox from 'components/ArrowBox'
@@ -20,7 +20,9 @@ export default function Aside() {
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
     const isLoaded = useGoogleMaps()
-    const handleCloseClick = () => {switchCurrentStatus('close')}
+    const handleCloseClick = () => { switchCurrentStatus('close') }
+    const isOpen = 'close' !== useTypeSelector(state => state.currentStatus.status) ? true : false
+
 
     const useAsideStyle = AsideStyle()
 
@@ -29,6 +31,13 @@ export default function Aside() {
             <Box className={useAsideStyle.classes.container}>
                 <Box className={useAsideStyle.classes.asideContainer}>
                     <List className={useAsideStyle.classes.listItems}>
+                        {isOpen ?
+                            <Box className={useAsideStyle.classes.drawerAction}>
+                                <Button className={useAsideStyle.classes.buttonCloseDrawer} onClick={handleCloseClick}>{'<'}</Button>
+                            </Box>
+                            :
+                            <></>
+                        }
                         <ListItem className={useAsideStyle.classes.logo}>
                             <ListItemIcon onClick={handleCloseClick} className={useAsideStyle.classes.logo}>
                                 <img title='icon for closing drawer' src={Logo} alt={DoesntExistPhoto} />
