@@ -12,3 +12,4 @@ export const convertPlaceToFavorite = (place: google.maps.places.PlaceResult) =>
         description: place.vicinity || "description"
     }
 }
+

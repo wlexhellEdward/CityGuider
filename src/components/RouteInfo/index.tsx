@@ -44,14 +44,14 @@ export const RouteInfo = () => {
     }, [center])
 
     return (
-        <Container className={useRouteInfoStyle.classes.routeContainer}>
+        <Container data-testid='route-info' className={useRouteInfoStyle.classes.routeContainer}>
             <Box>
                 <LinearProgress className={useRouteInfoStyle.classes.progressBar} variant='determinate' value={progressTravel} />
-                <Button className={useRouteInfoStyle.classes.buttonClose} onClick={() => handleClickDeleteTravel()}>X</Button>
+                <Button data-testid='route-button-close'  className={useRouteInfoStyle.classes.buttonClose} onClick={() => handleClickDeleteTravel()}>X</Button>
             </Box>
             <Box>
-                <Typography className={useRouteInfoStyle.classes.routeValue}>{distanceRemaining} км</Typography>
-                <Typography className={useRouteInfoStyle.classes.routeValue}>{time}</Typography>
+                <Typography  className={useRouteInfoStyle.classes.routeValue}>{distanceRemaining} км</Typography>
+                <Typography data-testid='route-remaing-time' className={useRouteInfoStyle.classes.routeValue}>{time}</Typography>
             </Box>
             <Box>
                 <Typography className={useRouteInfoStyle.classes.routeValueDescription}>дистацния</Typography>

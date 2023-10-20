@@ -19,7 +19,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
 
     return (
         <>
-            <Card className={useCardFavoriteStyle.classes.cardFavorite}>
+            <Card data-testid='card-normal-size' className={useCardFavoriteStyle.classes.cardFavorite}>
                 <Box className={useCardFavoriteStyle.classes.containerImgTitle} >
                     <CardContent className={useCardFavoriteStyle.classes.cardContent}>
                         <Box className={useCardFavoriteStyle.classes.imgCard}>
@@ -49,8 +49,8 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions disableSpacing className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <img src={FavoriteImg} onClick={() => handleAddToFavorite(favoriteItem)} className={useCardFavoriteStyle.classes.icon} />
-                    <img onClick={() => handleSetIsOpen(true)} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt="" />
+                    <img data-testid='delete-from-favorite' src={FavoriteImg} onClick={() => handleAddToFavorite(favoriteItem)} className={useCardFavoriteStyle.classes.icon} />
+                    <img data-testid='card-favorite-button-show-more' onClick={() => handleSetIsOpen(true)} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt=''/>
                 </CardActions>
             </Card>
 

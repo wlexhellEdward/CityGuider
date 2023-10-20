@@ -1,4 +1,3 @@
-import { useCallback, useRef, useState } from 'react';
 import { Box, } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
 import { GoogleMap, Marker } from "@react-google-maps/api";
@@ -9,12 +8,11 @@ import { MapAction } from 'components/MapAction';
 import { RouteInfo } from "components/RouteInfo";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
+import { useCallback, useRef, useState } from 'react';
 import { setCenter, setHumanPosition } from 'store/reducers';
 import { clearDirection, setMap } from 'store/reducers/mapSlice/mapSlice';
 import { DEFAULT_OPTIONS } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
-
-
 
 import MapStyle from './styled';
 
@@ -71,6 +69,7 @@ const Map = () => {
                         zoom={zoom}
                         options={DEFAULT_OPTIONS}
                     >
+                        
                         {resultSearch && resultSearch.map((place, index) => (
                             <Marker
                                 onClick={() => {setSelectedPlace(place)}}
@@ -88,7 +87,7 @@ const Map = () => {
                                 <CardPlace place={selectedPlace} />
                             </InfoWindow>
                         )}
-                        <CurrentLocationMarker position={currentPosition} />
+                        <CurrentLocationMarker/>
                     </GoogleMap>
                 ) : (
                     <Loader />

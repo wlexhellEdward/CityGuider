@@ -1,17 +1,17 @@
-import { useState } from "react"
-import { useAppDispatch, useTypeSelector } from "hooks/redux"
 import { Box, Button, IconButton } from "@mui/material";
+import FindMe from 'assets/img/MapActions/ButtonFindMe/findMe.svg'
+import Moon from 'assets/img/MapActions/ButtonSwitchTheme/moon.svg'
+import Sun from 'assets/img/MapActions/ButtonSwitchTheme/sun.svg'
+import { useAppDispatch, useTypeSelector } from "hooks/redux"
+import { useState } from "react"
+import { setCenter } from "store/reducers";
 import { decreaseZoom, increaseZoom, setThemeMap } from 'store/reducers/mapSlice/mapSlice';
 import { MAP_DARK_THEME, MAP_THEME } from 'utils/consts';
+import { getBrowserLocation } from "utils/geo";
 
 import DoesntExistPhoto from '/public/doesntExist.png'
 
-import Sun from 'assets/img/MapActions/ButtonSwitchTheme/sun.svg'
-import Moon from 'assets/img/MapActions/ButtonSwitchTheme/moon.svg'
-import FindMe from 'assets/img/MapActions/ButtonFindMe/findMe.svg'
 import MapActionStyle from "./styled"
-import { getBrowserLocation } from "utils/geo";
-import { setCenter } from "store/reducers";
 
 
 export const MapAction = () => {

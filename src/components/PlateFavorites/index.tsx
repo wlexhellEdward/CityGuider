@@ -12,14 +12,14 @@ export const PlateFavorites = () => {
 
     return (
         <>
-            <Box className={usePlateFavoriteStyle.classes.cardsFavorites}>
+            <Box data-testid='plate-favorite' className={usePlateFavoriteStyle.classes.cardsFavorites}>
                 <Typography className={usePlateFavoriteStyle.classes.titleFavorite}>Избранное:</Typography>
                 <Box className={usePlateFavoriteStyle.classes.containerCardsFavorites}>
                     {favoriteItems.length > 0 ?
                         favoriteItems.map((item) => {
                             return (
                                 <>
-                                    <CardFavorite favoriteItem={item} />
+                                    <CardFavorite key={item.id} favoriteItem={item} />
                                 </>)
                         })
                         :

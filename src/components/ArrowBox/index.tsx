@@ -14,7 +14,7 @@ function ArrowBox() {
         switchCurrentStatus('favorites')
     }
     return (
-        <Box onClick={swtchCurretnStatusToFavorite} className={useArrowBoxStyle.classes.boxArrow}>
+        <Box data-testid='drawer-arrow-show-more' onClick={swtchCurretnStatusToFavorite} className={useArrowBoxStyle.classes.boxArrow}>
             <Container disableGutters className={useArrowBoxStyle.classes.containerArrow}>
                 <img
                     src={openDrawerArrow}
