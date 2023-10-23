@@ -19,4 +19,4 @@ jobs:
       - name: build project
         run: npm run build
       - name: eslint test
-        run : npm run eslint --fix . 
+        run : npm run lint:fix 
