@@ -25,6 +25,7 @@ export const MapAction = () => {
         setIsOpenActionMap(prev => prev = !prev)
     }
     const handleSwitchMapTheme = () => {
+        console.log(defaultTheme)
         setThemeIcon(prev => prev != Sun ? Sun : Moon)
         const newTheme = defaultTheme === MAP_THEME ? MAP_DARK_THEME : MAP_THEME;
         const map = mapRef;

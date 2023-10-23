@@ -1,6 +1,6 @@
 import { Box, } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
-import { Circle,GoogleMap, Marker } from "@react-google-maps/api";
+import { Circle, GoogleMap, Marker } from "@react-google-maps/api";
 import CardPlace from "components/CardPlace";
 import { CurrentLocationMarker } from "components/CurrentLocationMarker";
 import { Loader } from "components/Loader";
@@ -28,11 +28,9 @@ const Map = () => {
     const currentPosition = useTypeSelector(state => state.currentPosition.position)
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const handleSetMap = (object: google.maps.Map) => dispatch(setMap(object))
-    const defaultTheme = useTypeSelector(state => state.map.options.theme)
 
     const onLoad = useCallback(function callback(map: google.maps.Map) {
         handleSetMap(map)
-        DEFAULT_OPTIONS.style = defaultTheme
         getBrowserLocation()
             .then((location) => {
                 dispatch(setCenter(location))
@@ -44,7 +42,7 @@ const Map = () => {
             });
     }, [])
 
-    
+
     const handleClickClose = () => {
         setSelectedPlace(undefined)
         dispatch(clearDirection())
