@@ -1,17 +1,18 @@
-import { Box } from '@mui/material'
-import Aside from 'components/Aside'
-import Map from 'components/Map'
+import { HomePage } from 'pages/HomePage';
+import { LoginPage } from 'pages/LoginPage';
+import { RegisterPage } from 'pages/RegisterPage';
+import { Route, Routes } from 'react-router-dom'
 
-import AppStyle from './AppStyle'
+
 
 function App() {
-  const useAppStyle = AppStyle();
   return (
-    
-    <Box className={useAppStyle.classes.containerApp}>
-      <Aside />
-      <Map />
-    </Box>
+    <Routes>
+      <Route path='/' Component={HomePage} />
+      <Route path='/login' Component={LoginPage} />
+      <Route path='/register' Component={RegisterPage} />
+    </Routes>
+
   );
 }
 

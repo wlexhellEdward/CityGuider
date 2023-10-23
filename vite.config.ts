@@ -10,6 +10,7 @@ export default {
   resolve: {
     alias: {
       "components": "/src/components",
+      "pages": "/src/pages",
       "hooks": "/src/hooks",
       "store": "/src/store",
       "utils": "/src/utils",

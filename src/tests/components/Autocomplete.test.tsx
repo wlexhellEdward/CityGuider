@@ -5,22 +5,6 @@ import Autocomplete from 'components/Autocomplete';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
 
-jest.mock('use-places-autocomplete', () => {
-    return {
-        ...jest.requireActual('use-places-autocomplete'),
-        usePlacesAutocomplete: () => {
-            return {
-                ready: true,
-                value: '',
-                suggestions: { status: '', data: [] },
-                setValue: () => { },
-                init: () => { },
-                clearSuggestions: () => { },
-            };
-        },
-    };
-});
-
 describe('Тестирование Autocomplete', () => {
     test('Проверка на отображение корректного текста при вводе в autocomplete', () => {
         render(
