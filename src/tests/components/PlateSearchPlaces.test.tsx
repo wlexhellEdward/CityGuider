@@ -71,11 +71,9 @@ describe('Тестирование PlateSearchPlaces', () => {
                 fireEvent.click(btnPlace[i])
             }
         })
-
         const state = store.getState()
         expect(state.searchSlice.selectedItems).toEqual([]);
     });
-
     // test('Проверка наличия результата при поиске одного типа', async () => {
     //     render(
     //         <Provider store={store}>

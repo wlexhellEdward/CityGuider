@@ -18,20 +18,7 @@ export const PlateSearchPlaces = () => {
     const handleSetResults = (result: google.maps.places.PlaceResult[]) => dispatch(setResults(result))
     const dispatch = useAppDispatch()
 
-    // const circleRadius = new google.maps.Circle({
-    //     center: center,
-    //     radius: 1000,
-    //     map: map,
-    //     fillColor: themeApp.Pallete.blueColor,
-    //     fillOpacity: 0.15,
-    //     strokeColor: themeApp.Pallete.blueColor,
-    //     strokeOpacity: 0.8,
-    // });
-    // const updateCircleRadius = (newRadius: number) => {
-    //     circleRadius.setMap(null)
-    //     circleRadius.setMap(map)
-    //     circleRadius.setRadius(newRadius)
-    // }; 
+    
 
     const handlerSetInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value.replace(/[^0-9]/g, ''))
