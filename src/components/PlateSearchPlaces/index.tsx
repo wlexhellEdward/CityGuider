@@ -1,4 +1,4 @@
-import { Box, Input,List, Typography } from "@mui/material"
+import { Box, Input, List, Typography } from "@mui/material"
 import { Places } from 'components/Drawer/Places.ts';
 import SearchPlace from 'components/SearchPlace/index.tsx';
 import { ButtonSearch } from "GUI/ButtonSearch"
@@ -8,18 +8,21 @@ import { clearResults, setResults } from 'store/reducers/index.ts';
 
 import PlateSearchPlacesStyle from "./styled"
 
+
 export const PlateSearchPlaces = () => {
     const itemsArray = useTypeSelector((state) => state.searchSlice.selectedItems)
     const [inputValue, setInputValue] = useState("1")
     const map = useTypeSelector(state => state.map.mapRef)
     const center = useTypeSelector(state => state.currentPosition.position)
     const selectedItems = useTypeSelector(state => state.searchSlice.selectedItems)
-
-
     const handleSetResults = (result: google.maps.places.PlaceResult[]) => dispatch(setResults(result))
     const dispatch = useAppDispatch()
+
+    
+
     const handlerSetInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value.replace(/[^0-9]/g, ''))
+        // updateCircleRadius(parseFloat(inputValue) * 100);
     }
 
     const handleSetSearchButtonIsClicked = () => {
@@ -68,7 +71,7 @@ export const PlateSearchPlaces = () => {
     }
     const usePlateSearchPlacesStyle = PlateSearchPlacesStyle()
     return (
-        <Box className={usePlateSearchPlacesStyle.classes.platePlaces}>
+        <Box data-testid='plate-search' className={usePlateSearchPlacesStyle.classes.platePlaces}>
             <Typography className={usePlateSearchPlacesStyle.classes.titleFavorite}>Искать: </Typography>
             <List className={usePlateSearchPlacesStyle.classes.containerPlaces}>
                 {Places.map((item) => {

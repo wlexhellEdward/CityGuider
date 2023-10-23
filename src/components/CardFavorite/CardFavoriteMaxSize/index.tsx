@@ -55,7 +55,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     const useCardFavoriteStyle = CardFavoriteStyle(true, favoriteItem.img)()
     return (
         <>
-            <Card className={useCardFavoriteStyle.classes.cardFavorite}>
+            <Card data-testid='card-max-size' className={useCardFavoriteStyle.classes.cardFavorite}>
                 <Box className={useCardFavoriteStyle.classes.containerImgTitle} >
                     <CardContent className={useCardFavoriteStyle.classes.cardContent}>
                         <Box className={useCardFavoriteStyle.classes.imgCard}>
@@ -85,8 +85,8 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <ButtonSave handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
-                    <ButtonTravel handleFunction={handleClickRoute} />
+                    <ButtonSave data-testid='delete-from-favorite' handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
+                    <ButtonTravel  handleFunction={handleClickRoute} />
                         <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>

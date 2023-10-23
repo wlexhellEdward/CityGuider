@@ -186,12 +186,12 @@ export const DEFAULT_OPTIONS = {
     zoomControl: false,
     mapTypeControl: false,
     scaleControl: false,
-    fullscreenControl:false,
+    fullscreenControl: false,
     streetViewControl: false,
     rotateControl: true,
     clickableIcons: false,
     keyboardShortcuts: false,
-    style:{}
+    style: {}
 }
 export const themeApp = {
     Pallete: {
@@ -201,6 +201,12 @@ export const themeApp = {
         blueColor: '#5E7BC7',
         darkBlue: '#405F7B',
         black: 'black',
-        white:'#FFF'
+        white: '#FFF'
     }
+}
+export const CIRCLE_OPTIONS = {
+    fillColor: themeApp.Pallete.blueColor,
+    fillOpacity: 0.15,
+    strokeColor: themeApp.Pallete.blueColor,
+    strokeOpacity: 0.8,
 }

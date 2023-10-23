@@ -28,10 +28,11 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
     return (
         <>
 
-            <Box onClick={() => handleSetSelectedItemsArray(searchPlace.type)} className={useSearchPlaceStyle.classes.containerPlace} key={searchPlace.id}>
+            <Box data-testid='place-for-type-search' onClick={() => handleSetSelectedItemsArray(searchPlace.type)} className={useSearchPlaceStyle.classes.containerPlace} key={searchPlace.id}>
                 {isSelected ?
                     <>
                         <img
+                            data-testid='type-of-place'
                             className={useSearchPlaceStyle.classes.imgPlace}
                             src={searchPlace.img}
                             title='place photo'
@@ -42,6 +43,7 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
                     :
                     <>
                         <img
+                            data-testid='selected-type-of-place'
                             className={useSearchPlaceStyle.classes.imgSelectedPlace}
                             src={searchPlace.img}
                             title='place photo'

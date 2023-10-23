@@ -1,0 +1,108 @@
+import '@testing-library/jest-dom'
+import { render, screen, fireEvent } from '@testing-library/react';
+import Aside from 'components/Aside';
+import { Provider } from 'react-redux';
+import { store } from 'store/store';
+
+
+describe('Тестирование Aside', () => {
+    test('Проверка отображение Aside на странице', () => {
+        render(
+            <Provider store={store}>
+                <Aside />
+            </Provider>
+        );
+        const aside = screen.getByTestId(/aside/i);
+        expect(aside).toBeInTheDocument();
+    });
+    test('Проверка отображения панели контента при клике на любую кнопку', () => {
+        render(
+            <Provider store={store}>
+                <Aside />
+            </Provider>
+        );
+        const btnSearch = screen.getByTestId(/button-search/i);
+        fireEvent.click(btnSearch)
+        const drawerContent = screen.getByPlaceholderText(/Место, адрес.../i);
+        expect(drawerContent).toBeInTheDocument();
+    });
+    test('Проверка отображения панели Поиска мест при клике на кнопку Места', () => {
+        render(
+            <Provider store={store}>
+                <Aside />
+            </Provider>
+        );
+        const btnSearch = screen.getByTestId(/button-search/i);
+        fireEvent.click(btnSearch)
+        screen.debug()
+        const drawerContentSearchPlate = screen.getByTestId(/plate-search/i);
+        expect(drawerContentSearchPlate).toBeInTheDocument();
+    });
+    test('Проверка отображения панели Избранного при клике на кнопку Избанные', () => {
+        render(
+            <Provider store={store}>
+                <Aside />
+            </Provider>
+        );
+        const btnSearch = screen.getByTestId(/button-favorite/i);
+        fireEvent.click(btnSearch)
+        const drawerContentFavoritePlate = screen.getByTestId(/plate-favorite/i);
+        expect(drawerContentFavoritePlate).toBeInTheDocument();
+    });
+    test('Проверка скрытие панели контента при клике на кнопку', () => {
+        render(
+            <Provider store={store}>
+                <Aside />
+            </Provider>
+        );
+    
+        const btnFavorite = screen.getByTestId(/button-favorite/i);
+        fireEvent.click(btnFavorite);
+    
+        const btnClose = screen.getByTestId(/button-close/i);
+        fireEvent.click(btnClose);
+    
+        const drawerContentFavoritePlate = screen.queryByTestId(/plate-favorite/i);
+        expect(drawerContentFavoritePlate).toBeNull();
+    });
+    test('Проверка на смену контента drawer при клике на разные кнопки', () => {
+        render(
+            <Provider store={store}>
+                <Aside />
+            </Provider>
+        );
+
+        const btnSearch = screen.getByTestId(/button-search/i);
+        fireEvent.click(btnSearch)
+
+        const btnFavorite = screen.getByTestId(/button-favorite/i);
+        fireEvent.click(btnFavorite);
+
+        const drawerContentFavoritePlate = screen.getByTestId(/plate-favorite/);
+        expect(drawerContentFavoritePlate).toBeInTheDocument();
+    });
+    test('Проверка на наличие кнопки развернуть при закрытии drawer content', () => {
+        render(
+            <Provider store={store}>
+                <Aside />
+            </Provider>
+        );
+        const btnClose = screen.getByTestId(/button-close/i);
+        fireEvent.click(btnClose);
+
+        const btnShowMore = screen.getByTestId(/drawer-arrow-show-more/i);
+        expect(btnShowMore).toBeInTheDocument();
+    });
+    test('Проверка на скрытие кнопки развернуть при открытии drawer', () => {
+        render(
+            <Provider store={store}>
+                <Aside />
+            </Provider>
+        );
+        const btnSearch = screen.getByTestId(/button-favorite/i);
+        fireEvent.click(btnSearch);
+
+        const btnShowMore = screen.queryByTestId(/drawer-arrow-show-more/i);
+        expect(btnShowMore).toBeNull();
+    });
+})

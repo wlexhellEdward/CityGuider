@@ -6,7 +6,7 @@ import { PlateSearchPlaces } from 'components/PlateSearchPlaces/index.tsx';
 import { SideBarProps } from "./interfaces.ts";
 import { DrawerContent, DrawerStyle } from './styled.ts'
 
-export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
+export default function SideBar({ currentStatus }: SideBarProps) {
   const useDrawerStyle = DrawerStyle()
   
   return (
@@ -14,7 +14,7 @@ export default function SideBar({ currentStatus, isLoaded }: SideBarProps) {
       <DrawerContent className={useDrawerStyle.classes.drawerContent}>
         
         <Box className={useDrawerStyle.classes.containerSearch}>
-          <Autocomplete isLoaded={isLoaded} />
+          <Autocomplete />
         </Box>
         <Box>
           {currentStatus == 'search' ?

@@ -1,6 +1,7 @@
 import { Box, Input, List, ListItem, Typography } from '@mui/material'
 import searchSVG from 'assets/img/DrawerActions/searchInput.svg'
 import { useAppDispatch } from 'hooks/redux.ts';
+import { useOnClickOutside } from 'hooks/useOnClickOutside.ts';
 import DoesntExistPhoto from 'public/doesntExist.png'
 import { useEffect, useRef } from 'react';
 import { setCenter } from 'store/reducers/index.ts';
@@ -10,11 +11,12 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import { refactorString } from 'utils/textRefactors.ts';
 
-import { AutocompleteProops } from './interfaces.ts';
 import AutocompleteStyle from './styled.ts'
-import { useOnClickOutside } from 'hooks/useOnClickOutside.ts';
+import { useGoogleMaps } from 'hooks/useGoogleMapsLoader.ts';
 
-export default function Autocomplete({ isLoaded }: AutocompleteProops) {
+export default function Autocomplete() {
+    const isLoaded = useGoogleMaps()
+
     const dispatch = useAppDispatch()
     const ref = useRef<HTMLDivElement>(null);
     const handlerSetCenter = (object: object) => {
@@ -40,7 +42,6 @@ export default function Autocomplete({ isLoaded }: AutocompleteProops) {
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
-
     const handleSelect =
         ({ description }: google.maps.places.AutocompletePrediction) =>
             () => {

@@ -10,7 +10,7 @@ export default function ButtonTravel({ handleFunction }: ButtonTravelProps) {
     const useButtonTravelStyle = ButtonTravelStyle()
     return (
         <>
-            <Button onClick={() => handleFunction()} className={useButtonTravelStyle.classes.buttonTravel}>
+            <Button data-testid='make-route' onClick={() => handleFunction()} className={useButtonTravelStyle.classes.buttonTravel}>
                 <Icon className={useButtonTravelStyle.classes.iconTravel}>
                     <img src={travel} alt={DoesntExistPhoto} title="travel button photo" />
                 </Icon>

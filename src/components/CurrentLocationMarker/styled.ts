@@ -11,7 +11,6 @@ const CurrentLocationMarkerStyle = makeStyles()(() => {
             borderRadius: 64,
             zIndex: 12
         }
-
     };
 });
 
