@@ -7,7 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import App from './App.tsx'
 import { persistor, store } from './store/store.ts'
-
+import '../firebase.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>

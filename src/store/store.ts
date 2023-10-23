@@ -14,10 +14,12 @@ import currentStatusSlice from './reducers/currentStatus/currentStatusSlice';
 import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice';
 import mapSlice from './reducers/mapSlice/mapSlice';
 import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
+import userSlice from './reducers/userSlice/userSlice';
 
 
 const rootReducer = combineReducers({
     currentStatus: currentStatusSlice,
+    userSlice:userSlice,
     currentPosition: centerSlice,
     searchSlice: searchSlice,
     favoriteItems: favoriteItemsSlice,
