@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
+
+import { fireEvent,render, screen } from '@testing-library/react';
 import Autocomplete from 'components/Autocomplete';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
@@ -24,7 +25,7 @@ describe('Тестирование Autocomplete', () => {
     test('Проверка на отображение корректного текста при вводе в autocomplete', () => {
         render(
             <Provider store={store}>
-                <Autocomplete isLoaded={false} />
+                <Autocomplete />
             </Provider>
         );
 

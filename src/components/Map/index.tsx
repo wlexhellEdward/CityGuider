@@ -1,6 +1,6 @@
 import { Box, } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
-import { GoogleMap, Marker, Circle } from "@react-google-maps/api";
+import { Circle,GoogleMap, Marker } from "@react-google-maps/api";
 import CardPlace from "components/CardPlace";
 import { CurrentLocationMarker } from "components/CurrentLocationMarker";
 import { Loader } from "components/Loader";
@@ -21,6 +21,7 @@ const Map = () => {
     const [selectedPlace, setSelectedPlace] = useState<google.maps.places.PlaceResult>()
 
     const isLoaded = useGoogleMaps()
+    const radius = useTypeSelector(state => state.map.radius)
     const travel = useTypeSelector(state => state.map.travelInfo.distance)
     const resultSearch = useTypeSelector(state => state.searchSlice.resultsSearch)
     const zoom = useTypeSelector(state => state.map.options.zoom)
@@ -43,19 +44,17 @@ const Map = () => {
             });
     }, [])
 
+    
     const handleClickClose = () => {
         setSelectedPlace(undefined)
         dispatch(clearDirection())
     }
-
-
     const useMapStyle = MapStyle();
     const containerStyle = {
         width: '100%',
         height: '100%',
 
     };
-    
 
     return (
         <>
@@ -63,11 +62,7 @@ const Map = () => {
                 <MapAction />
                 {isLoaded ? (
                     <>
-                        <Circle
-                            radius={10}
-                            center={currentPosition}
-                            options={CIRCLE_OPTIONS}
-                        />
+
                         <GoogleMap
                             onLoad={onLoad}
                             mapContainerStyle={containerStyle}
@@ -75,7 +70,11 @@ const Map = () => {
                             zoom={zoom}
                             options={DEFAULT_OPTIONS}
                         >
-
+                            <Circle
+                                radius={radius}
+                                center={currentPosition}
+                                options={CIRCLE_OPTIONS}
+                            />
                             {resultSearch && resultSearch.map((place, index) => (
                                 <Marker
                                     onClick={() => { setSelectedPlace(place) }}

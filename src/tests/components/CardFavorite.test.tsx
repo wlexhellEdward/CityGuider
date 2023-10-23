@@ -1,12 +1,13 @@
 import '@testing-library/jest-dom'
+
+import { LatLng } from "@googlemaps/jest-mocks"
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import ArrowBox from 'components/ArrowBox';
-import { LatLng } from "@googlemaps/jest-mocks"
 import Aside from 'components/Aside';
-import { Provider } from 'react-redux';
-import { store } from 'store/store';
 import CardFavorite from 'components/CardFavorite/ToggleCardFavorite';
+import { Provider } from 'react-redux';
 import { addFavoriteItem } from 'store/reducers';
+import { store } from 'store/store';
 
 
 describe('Тестирование CardFavorite', () => {

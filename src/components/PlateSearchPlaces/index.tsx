@@ -4,7 +4,7 @@ import SearchPlace from 'components/SearchPlace/index.tsx';
 import { ButtonSearch } from "GUI/ButtonSearch"
 import { useAppDispatch, useTypeSelector } from 'hooks/redux.ts';
 import { useState } from 'react'
-import { clearResults, setResults } from 'store/reducers/index.ts';
+import { clearResults, setRadius, setResults } from 'store/reducers/index.ts';
 
 import PlateSearchPlacesStyle from "./styled"
 
@@ -15,14 +15,14 @@ export const PlateSearchPlaces = () => {
     const map = useTypeSelector(state => state.map.mapRef)
     const center = useTypeSelector(state => state.currentPosition.position)
     const selectedItems = useTypeSelector(state => state.searchSlice.selectedItems)
+
     const handleSetResults = (result: google.maps.places.PlaceResult[]) => dispatch(setResults(result))
     const dispatch = useAppDispatch()
-
-    
-
+    const handleSetRadius = (radius: number) => dispatch(setRadius(radius))
     const handlerSetInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(event.target.value.replace(/[^0-9]/g, ''))
-        // updateCircleRadius(parseFloat(inputValue) * 100);
+        const newValue = event.target.value.replace(/[^0-9]/g, '');
+        setInputValue(newValue);
+        handleSetRadius(parseFloat(newValue) * 1250);
     }
 
     const handleSetSearchButtonIsClicked = () => {
@@ -43,7 +43,6 @@ export const PlateSearchPlaces = () => {
                         results.forEach(result => {
                             result.icon = Places.find(place => place.type === selectedItem)?.img
                         })
-
                         handleSetResults(results)
                         if (pagination?.hasNextPage) {
                             pagination.nextPage()
@@ -85,7 +84,7 @@ export const PlateSearchPlaces = () => {
             <Box>
                 <Typography className={usePlateSearchPlacesStyle.classes.titleRadius}>В радиусе: </Typography>
                 <Box className={usePlateSearchPlacesStyle.classes.containerInputs} >
-                    <Input autoFocus={true} onChange={handlerSetInputValue} value={inputValue} className={usePlateSearchPlacesStyle.classes.inputSearch} />
+                    <Input onChange={handlerSetInputValue} value={inputValue} className={usePlateSearchPlacesStyle.classes.inputSearch} />
                     <Typography className={usePlateSearchPlacesStyle.classes.spanDescription}>км</Typography>
                 </Box>
                 <Box className={usePlateSearchPlacesStyle.classes.buttonSearchContainer}>
