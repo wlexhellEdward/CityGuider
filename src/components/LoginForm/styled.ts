@@ -41,6 +41,9 @@ const LoginFormStyle = makeStyles()((theme) => {
                     fontFamily: 'mont'
                 }
             }
+        },
+        supportActionTitle: {
+            fontFamily: 'mont'
         }
     };
 });

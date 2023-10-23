@@ -21,16 +21,16 @@ const RegisterFormStyle = makeStyles()((theme) => {
                 fontFamily: 'mont'
             }
         },
-        containerInputsForm:{
-            display:'flex',
-            flexDirection:'column',
-            '&>*':{
-                marginBottom:theme.spacing(2)
+        containerInputsForm: {
+            display: 'flex',
+            flexDirection: 'column',
+            '&>*': {
+                marginBottom: theme.spacing(2)
             }
         },
-        containerInputsLine:{
-            display:'flex',
-            gap:theme.spacing(2)
+        containerInputsLine: {
+            display: 'flex',
+            gap: theme.spacing(2)
         },
         buttonSubmit: {
             margin: theme.spacing(2, 0),
@@ -44,6 +44,9 @@ const RegisterFormStyle = makeStyles()((theme) => {
                     fontFamily: 'mont'
                 }
             }
+        },
+        supportActionTitle: {
+            fontFamily: 'mont'
         }
     };
 });

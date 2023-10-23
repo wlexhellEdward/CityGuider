@@ -5,8 +5,8 @@ interface userSlice {
     id: number | null,
     email: string,
     password: string,
-    name: string,
-    secondName: string,
+    firstName: string,
+    lastName: string,
 }
 
 const initialState: userSlice = {
@@ -14,8 +14,8 @@ const initialState: userSlice = {
     id: 0,
     email: "",
     password: "",
-    name: "",
-    secondName: "",
+    firstName: "",
+    lastName: "",
 }
 
 
@@ -26,16 +26,16 @@ const userSlice = createSlice({
         setUser(state, action) {
             state.id = action.payload.id;
             state.token = action.payload.token;
-            state.name = action.payload.name;
-            state.secondName = action.payload.secondName;
+            state.firstName = action.payload.name;
+            state.lastName = action.payload.secondName;
             state.password = action.payload.password;
             state.email = action.payload.email
         },
         removeUser(state) {
             state.id = null;
             state.token = "";
-            state.name = "";
-            state.secondName = "";
+            state.firstName = "";
+            state.lastName = "";
             state.password = "";
             state.email = ""
         }

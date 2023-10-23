@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import {
-FLUSH,
+    FLUSH,
     PAUSE,
     PERSIST,
-persistReducer,     persistStore,     PURGE,
+    persistReducer, persistStore, PURGE,
     REGISTER,
     REHYDRATE,
 } from 'redux-persist';
@@ -15,11 +15,13 @@ import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice
 import mapSlice from './reducers/mapSlice/mapSlice';
 import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
 import userSlice from './reducers/userSlice/userSlice';
+import errorSlice from './reducers/errorSlice/errorSlice';
 
 
 const rootReducer = combineReducers({
     currentStatus: currentStatusSlice,
-    userSlice:userSlice,
+    errorSlice: errorSlice,
+    userSlice: userSlice,
     currentPosition: centerSlice,
     searchSlice: searchSlice,
     favoriteItems: favoriteItemsSlice,
@@ -29,7 +31,7 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
     key: 'root',
-    whitelist:['favoriteItems'],
+    whitelist: ['favoriteItems'],
     storage,
 }
 
@@ -42,11 +44,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
 });
 
 export const persistor = persistStore(store)
