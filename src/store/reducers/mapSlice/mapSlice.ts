@@ -3,6 +3,7 @@ import { MAP_THEME } from "utils/consts";
 
 interface mapState {
     mapRef: google.maps.Map | null,
+    radius: number,
     options: {
         theme: google.maps.MapTypeStyle[],
         zoom: number
@@ -22,6 +23,7 @@ interface mapState {
 
 const initialState: mapState = {
     mapRef: null,
+    radius: 1,
     options: {
         theme: MAP_THEME,
         zoom: 15
@@ -80,10 +82,13 @@ const mapSlice = createSlice({
         },
         decreaseZoom(state) {
             state.options.zoom -= 1
+        },
+        setRadius(state, action) {
+            state.radius = action.payload
         }
     }
 })
 
-export const { setMap, increaseZoom, decreaseZoom, setThemeMap, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
+export const { setMap, setRadius, increaseZoom, decreaseZoom, setThemeMap, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer

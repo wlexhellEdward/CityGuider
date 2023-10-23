@@ -2,57 +2,10 @@
 export const MAP_THEME =
     [
         {
-            "featureType": "all",
-            "elementType": "labels.text",
+            "featureType": "poi",
+            "elementType": "labels",
             "stylers": [
-                {
-                    "color": "#878787"
-                }
-            ]
-        },
-        {
-            "featureType": "all",
-            "elementType": "labels.text.stroke",
-            "stylers": [
-                {
-                    "visibility": "off"
-                }
-            ]
-        },
-        {
-            "featureType": "landscape",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "color": "#f9f5ed"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "color": "#f5f5f5"
-                }
-            ]
-        },
-        {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#c9c9c9"
-                }
-            ]
-        },
-        {
-            "featureType": "water",
-            "elementType": "all",
-            "stylers": [
-                {
-                    "color": "#aee0f4"
-                }
+                { "visibility": "off" }
             ]
         }
     ]
@@ -86,7 +39,7 @@ export const MAP_DARK_THEME = [
                 "lightness": 65
             },
             {
-                "visibility": "on"
+                "visibility": "off"
             }
         ]
     },
@@ -179,6 +132,13 @@ export const MAP_DARK_THEME = [
                 "saturation": -100
             }
         ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+            { "visibility": "off" }
+        ]
     }
 ]
 export const DEFAULT_OPTIONS = {
@@ -191,7 +151,7 @@ export const DEFAULT_OPTIONS = {
     rotateControl: true,
     clickableIcons: false,
     keyboardShortcuts: false,
-    style: {}
+    styles: MAP_THEME
 }
 export const themeApp = {
     Pallete: {

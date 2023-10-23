@@ -1,6 +1,7 @@
 import { Box, Input, List, ListItem, Typography } from '@mui/material'
 import searchSVG from 'assets/img/DrawerActions/searchInput.svg'
 import { useAppDispatch } from 'hooks/redux.ts';
+import { useGoogleMaps } from 'hooks/useGoogleMapsLoader.ts';
 import { useOnClickOutside } from 'hooks/useOnClickOutside.ts';
 import DoesntExistPhoto from 'public/doesntExist.png'
 import { useEffect, useRef } from 'react';
@@ -12,7 +13,6 @@ import usePlacesAutocomplete, {
 import { refactorString } from 'utils/textRefactors.ts';
 
 import AutocompleteStyle from './styled.ts'
-import { useGoogleMaps } from 'hooks/useGoogleMapsLoader.ts';
 
 export default function Autocomplete() {
     const isLoaded = useGoogleMaps()

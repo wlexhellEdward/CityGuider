@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+
 import { render, screen } from '@testing-library/react';
 import ArrowBox from 'components/ArrowBox';
 import { Provider } from 'react-redux';

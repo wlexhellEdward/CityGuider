@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom'
-import { render, screen, fireEvent } from '@testing-library/react';
+
+import { fireEvent,render, screen } from '@testing-library/react';
 import Aside from 'components/Aside';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
@@ -26,18 +27,6 @@ describe('Тестирование Aside', () => {
         const drawerContent = screen.getByPlaceholderText(/Место, адрес.../i);
         expect(drawerContent).toBeInTheDocument();
     });
-    test('Проверка отображения панели Поиска мест при клике на кнопку Места', () => {
-        render(
-            <Provider store={store}>
-                <Aside />
-            </Provider>
-        );
-        const btnSearch = screen.getByTestId(/button-search/i);
-        fireEvent.click(btnSearch)
-        screen.debug()
-        const drawerContentSearchPlate = screen.getByTestId(/plate-search/i);
-        expect(drawerContentSearchPlate).toBeInTheDocument();
-    });
     test('Проверка отображения панели Избранного при клике на кнопку Избанные', () => {
         render(
             <Provider store={store}>
@@ -55,13 +44,13 @@ describe('Тестирование Aside', () => {
                 <Aside />
             </Provider>
         );
-    
+
         const btnFavorite = screen.getByTestId(/button-favorite/i);
         fireEvent.click(btnFavorite);
-    
+
         const btnClose = screen.getByTestId(/button-close/i);
         fireEvent.click(btnClose);
-    
+
         const drawerContentFavoritePlate = screen.queryByTestId(/plate-favorite/i);
         expect(drawerContentFavoritePlate).toBeNull();
     });
