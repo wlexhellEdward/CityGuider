@@ -1,10 +1,11 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { LoadingButton } from '@mui/lab';
 import {
-Avatar, Box,
-Link, TextField,     Typography} from '@mui/material';
+    Avatar, Box,
+    Link, TextField, Typography
+} from '@mui/material';
 import { ModalFormError } from 'components/ModalFormError';
-import { createUserWithEmailAndPassword,getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import * as React from 'react';
 import { useState } from 'react';
@@ -84,6 +85,7 @@ export const RegisterForm = () => {
                                 className={useRegisterFormStyle.classes.inputRegister}
                                 required
                                 fullWidth
+                                data-testid='input'
                                 id="firstName"
                                 label="Имя"
                                 autoFocus
@@ -94,6 +96,7 @@ export const RegisterForm = () => {
                                 className={useRegisterFormStyle.classes.inputRegister}
                                 id="lastName"
                                 label="Фамлия"
+                                data-testid='input'
                                 name="lastName"
                                 autoComplete="family-name"
                             />
@@ -105,6 +108,7 @@ export const RegisterForm = () => {
                                 className={useRegisterFormStyle.classes.inputRegister}
                                 id="email"
                                 label="Email адресс"
+                                data-testid='input'
                                 name="email"
                                 autoComplete="email"
                             />
@@ -117,12 +121,13 @@ export const RegisterForm = () => {
                                 name="password"
                                 label="Пароль"
                                 type="password"
+                                data-testid='input'
                                 id="password"
                                 autoComplete="new-password"
                             />
                         </Box>
                     </Box>
-                    <LoadingButton loading={isLoading} className={useRegisterFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Зарегистрироваться</LoadingButton>
+                    <LoadingButton data-testid='button-submit' loading={isLoading} className={useRegisterFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Зарегистрироваться</LoadingButton>
                     <Box className={useRegisterFormStyle.classes.featActionForm}>
                         <Box >
                             <Link className={useRegisterFormStyle.classes.supportActionTitle} href="/login" variant="body2">

@@ -74,6 +74,7 @@ export const LoginForm = () => {
                             <TextField
                                 required
                                 fullWidth
+                                data-testid='input'
                                 className={useLoginFormStyle.classes.inputRegister}
                                 id="email"
                                 label="Email адресс"
@@ -83,6 +84,7 @@ export const LoginForm = () => {
                             <TextField
                                 required
                                 fullWidth
+                                data-testid='input'
                                 className={useLoginFormStyle.classes.inputRegister}
                                 name="password"
                                 label="Пароль"
