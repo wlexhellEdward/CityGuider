@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { СonfirmModal } from 'components/ConfirmModal'
 import { Box, Button, List, ListItem, ListItemIcon } from '@mui/material'
 import Logo from 'assets/img/Drawer/Logo.svg'
 import Profile from 'assets/img/Drawer/profile.svg'
@@ -15,12 +17,15 @@ import AsideStyle from './styled'
 
 export default function Aside() {
     const dispatch = useAppDispatch()
+    const [showModal, setShowModal] = useState(false)
     const currentStatus = useTypeSelector((state) => state.currentStatus.status)
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
 
     const handleCloseClick = () => { switchCurrentStatus('close') }
-
+    const handleClickProfile = () => {
+        setShowModal(prev => !prev)
+    }
     const useAsideStyle = AsideStyle()
 
     return (
@@ -58,8 +63,13 @@ export default function Aside() {
                 </List>
 
                 <Box className={useAsideStyle.classes.profileOutter}>
-                    <img  src={Profile} alt={DoesntExistPhoto} title='img for profile' />
+                    <img onClick={handleClickProfile} src={Profile} alt={DoesntExistPhoto} title='img for profile' />
                 </Box>
+                {showModal ?
+                    <СonfirmModal isOpen={showModal} handleClose={handleClickProfile} />
+                    :
+                    null
+                }
             </Box>
             {currentStatus !== 'close' ?
                 <SideBar currentStatus={currentStatus} />

@@ -164,6 +164,7 @@ export const themeApp = {
         white: '#FFF'
     }
 }
+
 export const CIRCLE_OPTIONS = {
     fillColor: themeApp.Pallete.blueColor,
     fillOpacity: 0.15,
