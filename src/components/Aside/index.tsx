@@ -18,8 +18,8 @@ export default function Aside() {
     const currentStatus = useTypeSelector((state) => state.currentStatus.status)
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
-    const handleCloseClick = () => { switchCurrentStatus('close') }
 
+    const handleCloseClick = () => { switchCurrentStatus('close') }
 
     const useAsideStyle = AsideStyle()
 
@@ -58,7 +58,7 @@ export default function Aside() {
                 </List>
 
                 <Box className={useAsideStyle.classes.profileOutter}>
-                    <img src={Profile} alt={DoesntExistPhoto} title='img for profile' />
+                    <img  src={Profile} alt={DoesntExistPhoto} title='img for profile' />
                 </Box>
             </Box>
             {currentStatus !== 'close' ?

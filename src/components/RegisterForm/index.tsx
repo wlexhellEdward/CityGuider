@@ -1,22 +1,29 @@
-import * as React from 'react';
-import { useNavigate } from 'react-router-dom'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import {
-    Typography, Avatar, Button, TextField, Link, Box
-} from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { LoadingButton } from '@mui/lab';
+import {
+Avatar, Box,
+Link, TextField,     Typography} from '@mui/material';
+import { ModalFormError } from 'components/ModalFormError';
+import { createUserWithEmailAndPassword,getAuth } from "firebase/auth";
+import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import * as React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import { setError } from 'store/reducers/errorSlice/errorSlice';
+import { setUser } from 'store/reducers/userSlice/userSlice';
+import { getMessageError } from 'utils/errorFinder';
 
 import RegisterFormStyle from './styled';
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import { setUser } from 'store/reducers/userSlice/userSlice';
-import { setError } from 'store/reducers/errorSlice/errorSlice';
-import { ModalFormError } from 'components/ModalFormError';
-import { getMessageError } from 'utils/errorFinder';
 
 export const RegisterForm = () => {
     const dispatch = useAppDispatch()
     const redirectTo = useNavigate()
+    const [isLoading, setIsLoading] = useState(false)
     const isOpen = useTypeSelector(state => state.errorSlice.isOpen)
+
+    const handleSetIsLoading = () => {
+        setIsLoading(prev => !prev)
+    }
     const handleSetError = (isOpen: boolean, message: string, type: string) => {
         console.log(message)
         dispatch(setError({
@@ -28,7 +35,7 @@ export const RegisterForm = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const auth = getAuth()
-
+        handleSetIsLoading()
         const formElement = event.target as HTMLFormElement;
         const [email, password, firstName, lastName] = [
             formElement.email.value,
@@ -47,11 +54,13 @@ export const RegisterForm = () => {
                     lastName: lastName
                 }))
                 redirectTo('/');
+                handleSetIsLoading()
             })
             .catch(
                 (error) => {
                     const message = getMessageError(error)
                     handleSetError(true, message, 'Ошибка регистрации')
+                    handleSetIsLoading()
                 }
             )
     };
@@ -113,7 +122,7 @@ export const RegisterForm = () => {
                             />
                         </Box>
                     </Box>
-                    <Button className={useRegisterFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Зарегистрироваться</Button>
+                    <LoadingButton loading={isLoading} className={useRegisterFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Зарегистрироваться</LoadingButton>
                     <Box className={useRegisterFormStyle.classes.featActionForm}>
                         <Box >
                             <Link className={useRegisterFormStyle.classes.supportActionTitle} href="/login" variant="body2">

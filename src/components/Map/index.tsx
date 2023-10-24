@@ -10,7 +10,7 @@ import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
 import { useCallback, useRef, useState } from 'react';
 import { setCenter, setHumanPosition } from 'store/reducers';
-import { clearDirection, setMap } from 'store/reducers/mapSlice/mapSlice';
+import { clearDirection, setMap, setRadius } from 'store/reducers/mapSlice/mapSlice';
 import { CIRCLE_OPTIONS, DEFAULT_OPTIONS } from 'utils/consts';
 import { getBrowserLocation } from 'utils/geo';
 
@@ -31,6 +31,7 @@ const Map = () => {
 
     const onLoad = useCallback(function callback(map: google.maps.Map) {
         handleSetMap(map)
+        dispatch(setRadius(1000))
         getBrowserLocation()
             .then((location) => {
                 dispatch(setCenter(location))

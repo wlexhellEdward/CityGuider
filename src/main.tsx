@@ -1,13 +1,13 @@
 import './index.css'
+import '../firebase.ts'
 
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
 
 import App from './App.tsx'
 import { persistor, store } from './store/store.ts'
-import '../firebase.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>

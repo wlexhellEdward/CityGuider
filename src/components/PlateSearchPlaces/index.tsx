@@ -22,7 +22,7 @@ export const PlateSearchPlaces = () => {
     const handlerSetInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = event.target.value.replace(/[^0-9]/g, '');
         setInputValue(newValue);
-        handleSetRadius(parseFloat(newValue) * 1250);
+        handleSetRadius(parseFloat(newValue) * 1000);
     }
 
     const handleSetSearchButtonIsClicked = () => {
@@ -34,7 +34,7 @@ export const PlateSearchPlaces = () => {
             selectedItems.forEach(selectedItem => {
                 const request = {
                     location: center,
-                    radius: Number(inputValue) * 1000,
+                    radius: Number(inputValue) * 520,
                     keyword: selectedItem
                 }
                 const placesServices = new google.maps.places.PlacesService(map)
@@ -54,13 +54,12 @@ export const PlateSearchPlaces = () => {
                     }
                 })
             })
-
-
         }
         else {
             alert('Введите радиус в км...')
         }
     }
+
     function testIsSelected(type: string) {
         let result = true;
         if (!itemsArray.includes(type)) {

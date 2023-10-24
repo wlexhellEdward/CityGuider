@@ -1,21 +1,23 @@
-import React from 'react';
-import {
-    Typography, Avatar, Button, TextField, Link, Box
-} from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import { LoadingButton } from '@mui/lab';
+import {
+Avatar, Box,
+Link, TextField,     Typography} from '@mui/material';
+import { ModalFormError } from 'components/ModalFormError';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { setError } from 'store/reducers/errorSlice/errorSlice';
+import { setUser } from 'store/reducers/userSlice/userSlice';
+import { getMessageError } from 'utils/errorFinder';
 
 import LoginFormStyle from './styled';
-import { setUser } from 'store/reducers/userSlice/userSlice';
-import { useNavigate } from 'react-router-dom';
-import { ModalFormError } from 'components/ModalFormError';
-import { setError } from 'store/reducers/errorSlice/errorSlice';
-import { getMessageError } from 'utils/errorFinder';
 
 export const LoginForm = () => {
     const dispatch = useAppDispatch()
     const redirectTo = useNavigate()
+    const [isLoading, setIsLoading] = useState(false)
     const isOpen = useTypeSelector(state => state.errorSlice.isOpen)
     const handleSetError = (isOpen: boolean, message: string, type: string) => {
         dispatch(setError({
@@ -24,9 +26,12 @@ export const LoginForm = () => {
             type: type
         }))
     }
-
+    const handleSetIsLoading = () => {
+        setIsLoading(prev => !prev)
+    }
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+        handleSetIsLoading()
         const auth = getAuth()
         const formElement = event.target as HTMLFormElement;
         const [email, password,] = [
@@ -42,11 +47,13 @@ export const LoginForm = () => {
                     password: password,
                 }))
                 redirectTo('/');
+                handleSetIsLoading();
             })
             .catch(
                 (error) => {
                     const message = getMessageError(error)
                     handleSetError(true, message, 'Ошибка авторизации')
+                    handleSetIsLoading()
                 }
             )
     };
@@ -85,10 +92,10 @@ export const LoginForm = () => {
                             />
                         </Box>
                     </Box>
-                    <Button  className={useLoginFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Войти</Button>
+                    <LoadingButton loading={isLoading} className={useLoginFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Войти</LoadingButton>
                     <Box className={useLoginFormStyle.classes.featActionForm}>
                         <Box>
-                            <Link  className={useLoginFormStyle.classes.supportActionTitle} href="/register" variant="body2">
+                            <Link className={useLoginFormStyle.classes.supportActionTitle} href="/register" variant="body2">
                                 Ещё нету аккаунта? Зарегистрироваться
                             </Link>
                         </Box>

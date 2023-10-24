@@ -11,11 +11,11 @@ import storage from 'redux-persist/lib/storage';
 
 import centerSlice from './reducers/centerSlice/centerSlice';
 import currentStatusSlice from './reducers/currentStatus/currentStatusSlice';
+import errorSlice from './reducers/errorSlice/errorSlice';
 import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice';
 import mapSlice from './reducers/mapSlice/mapSlice';
 import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
 import userSlice from './reducers/userSlice/userSlice';
-import errorSlice from './reducers/errorSlice/errorSlice';
 
 
 const rootReducer = combineReducers({
