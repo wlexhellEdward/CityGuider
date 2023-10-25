@@ -11,12 +11,12 @@ const CardFavoriteStyle = makeStyles<ThemeAppCardFavorite>()(
         },
         cardFavorite: {
             width: '300px',
-            boxShadow: ` 0px 5px 10px 2px ${darken(Pallete.background,0.2)}`,
+            boxShadow: ` 0px 5px 10px 2px ${darken(Pallete.background, 0.2)}`,
             padding: '20px 20px 0px 20px',
             border: `1px solid ${Pallete.border}`,
             borderRadius: 8,
             marginBottom: theme.spacing(3),
-            backgroundColor:Pallete.background,
+            backgroundColor: Pallete.background,
             [theme.breakpoints.down('sm')]: {
                 padding: '5px 10px',
                 width: '195px',
@@ -40,7 +40,7 @@ const CardFavoriteStyle = makeStyles<ThemeAppCardFavorite>()(
             [theme.breakpoints.down('sm')]: {
                 margin: '5px 0px',
                 width: '100%',
-                height: isOpen ? 200 : 120,
+                height: isOpen ? 200 : 80,
             },
         },
         containerImgTitle: {
@@ -75,7 +75,10 @@ const CardFavoriteStyle = makeStyles<ThemeAppCardFavorite>()(
             fontSize: 'calc(16px + (24 - 16) * ((100vw - 375px) / (1920 - 375)/2))',
             color: Pallete.title,
             fontFamily: 'mont',
-            fontWeight: 700
+            fontWeight: 700,
+            [theme.breakpoints.down('sm')]: {
+                fontSize: 12
+            }
         },
         descriptionContainer: {
             marginTop: theme.spacing(1),
@@ -85,7 +88,10 @@ const CardFavoriteStyle = makeStyles<ThemeAppCardFavorite>()(
             opacity: 0.8,
             fontSize: 10,
             fontFamily: 'mont',
-            color:Pallete.description
+            color: Pallete.description,
+            [theme.breakpoints.down('sm')]: {
+                fontSize: 8
+            }
         },
         containerDownIcons: {
             display: 'flex',
@@ -93,7 +99,10 @@ const CardFavoriteStyle = makeStyles<ThemeAppCardFavorite>()(
             alignItems: 'center',
             margin: 0,
             padding: 0,
-            marginBottom: '20px'
+            marginBottom: '20px',
+            [theme.breakpoints.down('sm')]: {
+                marginBottom: '4px'
+            }
         },
 
         iconStatis: {
@@ -106,7 +115,7 @@ const CardFavoriteStyle = makeStyles<ThemeAppCardFavorite>()(
             cursor: 'pointer',
             transition: 'all .6s linear',
             rotate: '90deg',
-            filter:'invert(1)',
+            filter: 'invert(1)',
             '&:hover': {
                 rotate: '270deg'
             },
@@ -116,7 +125,7 @@ const CardFavoriteStyle = makeStyles<ThemeAppCardFavorite>()(
         },
         imgArrow: {
             cursor: 'pointer',
-            filter:'invert(1)',
+            filter: 'invert(1)',
             transition: 'all .3s linear',
             '&:hover': {
                 rotate: '90deg'

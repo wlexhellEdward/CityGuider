@@ -103,14 +103,13 @@ const AsideStyle = makeStyles<ThemeApp>()(
         drawerAction: {
             display: 'flex',
             marginTop: 10,
-            backgroundColor: Pallete.background,
 
             justifyContent: 'center',
             alignItems: 'center',
             textAlign: 'center'
         },
         buttonCloseDrawer: {
-            backgroundColor: Pallete.background,
+            backgroundColor: "transparent",
             transition: 'all .3s linear',
             fontSize: 14,
             color: Pallete.description,

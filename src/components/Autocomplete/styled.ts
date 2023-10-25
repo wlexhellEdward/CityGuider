@@ -6,7 +6,7 @@ const AutocompleteStyle = makeStyles<ThemeApp>()(
     (theme, { Pallete }) => ({
         containerInput: {
             display: 'flex',
-            backgroundColor:Pallete.background,
+            backgroundColor: Pallete.background,
             alignItems: 'center',
             padding: '4px 8px',
             columnGap: theme.spacing(2),
@@ -14,13 +14,13 @@ const AutocompleteStyle = makeStyles<ThemeApp>()(
         },
         Autocomplete: {
             display: 'flex',
-            backgroundColor:Pallete.background,
+            backgroundColor: Pallete.background,
             flexDirection: 'column',
         },
         ListContainer: {
             display: 'flex',
             padding: '10px 8px',
-            backgroundColor:Pallete.background,
+            backgroundColor: Pallete.background,
             flexDirection: 'column',
             color: 'black',
             borderTop: `1px solid ${Pallete.border}`
@@ -28,22 +28,22 @@ const AutocompleteStyle = makeStyles<ThemeApp>()(
         suggestionContainer: {
             display: 'flex',
             flexDirection: 'column',
-            backgroundColor:Pallete.background,
+            backgroundColor: Pallete.background,
             alignItems: 'start'
         },
         titleSuggestion: {
             fontWeight: 'bold',
             fontFamily: 'mont',
-            color:Pallete.title,
+            color: Pallete.title,
             fontSize: 12
         },
         titleDescription: {
-            color:Pallete.description,
+            color: Pallete.description,
             fontFamily: 'mont',
             fontSize: 10,
         },
         listItem: {
-            backgroundColor:Pallete.background,
+            backgroundColor: Pallete.background,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'start',
@@ -60,7 +60,7 @@ const AutocompleteStyle = makeStyles<ThemeApp>()(
         },
         searchImg: {
             opacity: 0.3,
-            filter:'invert(1)'
+            filter: 'invert(1)'
         },
         searchInput: {
             paddingTop: 4,
@@ -68,16 +68,19 @@ const AutocompleteStyle = makeStyles<ThemeApp>()(
             display: 'flex',
             fontFamily: 'mont',
             height: theme.spacing(5),
-            color:Pallete.title,
+            color: Pallete.title,
             '&:before': {
                 content: 'none',
             },
             '&:after': {
                 content: 'none'
+            },
+            [theme.breakpoints.down('sm')]: {
+                fontSize: 12,
             }
         },
         suggestions: {
-            backgroundColor:Pallete.background,
+            backgroundColor: Pallete.background,
             height: theme.spacing(40),
             zIndex: 10
         }

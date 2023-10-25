@@ -23,11 +23,17 @@ const SearchPlaceStyle = makeStyles<ThemeApp>()(
             fontSize: 14,
             fontFamily: 'mont',
             color: Pallete.title,
+            [theme.breakpoints.down('sm')]: {
+                fontSize: 12
+            }
         },
         titleSelectedPlace: {
             fontSize: 14,
             fontFamily: 'mont',
             color: Pallete.description,
+            [theme.breakpoints.down('sm')]: {
+                fontSize: 12
+            }
         },
         imgSelectedPlace: {
             width: 30,
