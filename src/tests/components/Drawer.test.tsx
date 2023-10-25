@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 
-import { render, screen,waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import SideBar from 'components/Drawer';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';

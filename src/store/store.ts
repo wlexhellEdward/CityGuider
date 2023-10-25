@@ -33,15 +33,11 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
     key: 'root',
-    whitelist: ['favoriteItems'],
+    whitelist: [''],
     storage,
 }
 
-
 const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-
-
 
 export const store = configureStore({
     reducer: persistedReducer,

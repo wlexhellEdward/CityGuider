@@ -64,7 +64,7 @@ const AutocompleteStyle = makeStyles<ThemeApp>()(
         },
         searchInput: {
             paddingTop: 4,
-            fontSize: 18,
+            fontSize: 16,
             display: 'flex',
             fontFamily: 'mont',
             height: theme.spacing(5),

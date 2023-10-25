@@ -4,9 +4,11 @@ import { Places } from 'components/Drawer/Places';
 import ButtonSave from 'GUI/ButtonSave';
 import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import { useAuth } from 'hooks/useAuth';
 import { IFavoriteItem } from 'models/IFavoriteItem';
-import React from 'react'
-import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
+import React, { useState } from 'react'
+import { clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
+import { DeleteFavoriteCard } from 'utils/firebase';
 import { getDirections } from 'utils/route';
 
 import DoesntExistPhoto from '/public/doesntExist.png'
@@ -14,10 +16,17 @@ import DoesntExistPhoto from '/public/doesntExist.png'
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
 
-const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
 
+const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
+    const { id } = useAuth()
+    const [isAdd, setIsAdd] = useState(false)
     const dispatch = useAppDispatch()
-    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
+    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => {
+        setIsAdd(true)
+        if (id != null) {
+            DeleteFavoriteCard(favoirteItem.id, id).then(() => setIsAdd(false))
+        }
+    }
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
     const map = useTypeSelector(state => state.map.mapRef)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
@@ -84,7 +93,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <ButtonSave data-testid='delete-from-favorite' handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
+                    <ButtonSave data-testid='delete-from-favorite' isLoading={isAdd} handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
                     <ButtonTravel handleFunction={handleClickRoute} />
                     <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>

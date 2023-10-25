@@ -9,7 +9,6 @@ const CardFavorite = ({ favoriteItem }: CardFavoriteProps) => {
     function handleSetIsOpen(isOpenStatus: boolean) {
         setIsOpen(isOpenStatus)
     }
-
     if (isOpen) {
         return (
             <CardFavoriteMaxSize favoriteItem={favoriteItem} handleSetIsOpen={handleSetIsOpen} isOpen={isOpen} />

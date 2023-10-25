@@ -1,6 +1,6 @@
 export interface CardFavoritePropsNormalSize {
     favoriteItem: {
-        id: number,
+        id: string | undefined,
         type: string[],
         img: string,
         coordinates: google.maps.LatLng,

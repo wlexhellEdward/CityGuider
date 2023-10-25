@@ -14,7 +14,7 @@ const PlateFavoritesStyle = makeStyles<ThemeApp>()(
             backgroundColor:Pallete.background,
             flexDirection: 'column',
             minHeight: '85vh',
-            maxHeight: '85vh',
+            marginBottom:theme.spacing(2),
         },
         titleFavorite: {
             color: Pallete.title,

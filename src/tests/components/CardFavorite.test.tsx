@@ -33,7 +33,7 @@ describe('Тестирование CardFavorite', () => {
         expect(cardFavorite).toBe(null);
     });
     test('Проверка отображение CardFavorite c замоканными данными', () => {
-        const mockPlace = { id: 1, type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
+        const mockPlace = { id: "1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
 
         render(
             <Provider store={store}>
@@ -44,7 +44,7 @@ describe('Тестирование CardFavorite', () => {
         expect(cardFavorite).toBeInTheDocument()
     });
     test('Проверка на раскрытие CardFavorite c замоканными данными', async () => {
-        const mockPlace = { id: 1, type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
+        const mockPlace = { id: "1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
 
         render(
             <Provider store={store}>
@@ -62,7 +62,7 @@ describe('Тестирование CardFavorite', () => {
         })
     });
     test('Проверка на удаление из избранного', async () => {
-        const mockPlace = { id: 1, type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
+        const mockPlace = { id: "1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
         render(
             <Provider store={store}>
                 <CardFavorite favoriteItem={mockPlace} />
@@ -80,7 +80,7 @@ describe('Тестирование CardFavorite', () => {
         })
     });
     test('Проверка на построение маршрута', async () => {
-        const mockPlace = { id: 1, type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
+        const mockPlace = { id:" 1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
 
         render(
             <Provider store={store}>

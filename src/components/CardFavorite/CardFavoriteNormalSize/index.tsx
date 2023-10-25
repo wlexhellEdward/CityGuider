@@ -3,9 +3,12 @@ import arrowMore from 'assets/img/CardFavoriteActions/arrowMore.svg'
 import FavoriteImg from 'assets/img/CardFavoriteActions/inFavorite.svg'
 import { Places } from 'components/Drawer/Places';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
+import { useAuth } from 'hooks/useAuth.ts';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
-import { addFavoriteItem } from 'store/reducers';
+import { addFavoriteItem } from 'store/reducers/index.ts';
+import { DeleteFavoriteCard } from 'utils/firebase.ts';
+import { refactorString } from 'utils/textRefactors.ts';
 
 import DoesntExistPhoto from '/public/doesntExist.png'
 
@@ -14,8 +17,15 @@ import { CardFavoritePropsNormalSize } from './interfaces.ts';
 
 const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()
-    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
+    const { id } = useAuth()
+
+    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => {
+        if (id != null) {
+            DeleteFavoriteCard(favoirteItem.id, id)
+        }
+        dispatch(addFavoriteItem(favoirteItem))
+    }
 
     const useCardFavoriteStyle = CardFavoriteStyle({ isOpen: false, url: favoriteItem.img, Pallete: pallete })
 
@@ -42,7 +52,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
                             })}
                         </Box>
                         <Box className={useCardFavoriteStyle.classes.containerTitle}>
-                            <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.title}>{favoriteItem.title}</Typography>
+                            <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.title}>{refactorString(favoriteItem.title)}</Typography>
                         </Box>
                     </CardContent>
                 </Box>

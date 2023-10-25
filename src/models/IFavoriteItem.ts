@@ -1,5 +1,5 @@
 export interface IFavoriteItem {
-    id: number,
+    id: string | undefined,
     type: string[],
     img: string,
     coordinates: google.maps.LatLng,
