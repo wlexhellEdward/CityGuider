@@ -1,17 +1,17 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
 
-const CurrentLocationMarkerStyle = makeStyles()(() => {
-    return {
+const CurrentLocationMarkerStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         markerContainer: {
-            backgroundColor: themeApp.Pallete.blueColor,
+            backgroundColor: Pallete.main,
             width: 120,
             height: 40,
-            borderRadius: 64,
+            borderRadius: theme.spacing(8),
             zIndex: 12
         }
-    };
-});
+    })
+)
 
 export default CurrentLocationMarkerStyle

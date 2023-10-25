@@ -5,8 +5,9 @@ import Sun from 'assets/img/MapActions/ButtonSwitchTheme/sun.svg'
 import { useAppDispatch, useTypeSelector } from "hooks/redux"
 import { useState } from "react"
 import { setCenter } from "store/reducers";
-import { decreaseZoom, increaseZoom, setThemeMap } from 'store/reducers/mapSlice/mapSlice';
-import { MAP_DARK_THEME, MAP_THEME } from 'utils/consts';
+import { setAppTheme } from "store/reducers/appSlice/appSlice";
+import { decreaseZoom, increaseZoom, setMapTheme } from 'store/reducers/mapSlice/mapSlice';
+import { DARK_THEME_APP, LIGHT_THEME_APP, MAP_DARK_THEME, MAP_THEME } from 'utils/consts';
 import { getBrowserLocation } from "utils/geo";
 
 import DoesntExistPhoto from '/public/doesntExist.png'
@@ -16,23 +17,25 @@ import MapActionStyle from "./styled"
 
 export const MapAction = () => {
     const [themeIcon, setThemeIcon] = useState(Sun)
-    const mapRef = useTypeSelector(state => state.map.mapRef)
-    const dispatch = useAppDispatch()
     const [isOpenActionMap, setIsOpenActionMap] = useState(false)
-    const defaultTheme = useTypeSelector(state => state.map.options.theme)
+    const mapRef = useTypeSelector(state => state.map.mapRef)
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
+    const dispatch = useAppDispatch()
+    const defaultThemeMap = useTypeSelector(state => state.map.options.theme)
 
     const handleClickSetIsOpenActionMap = () => {
         setIsOpenActionMap(prev => prev = !prev)
     }
     const handleSwitchMapTheme = () => {
-        console.log(defaultTheme)
         setThemeIcon(prev => prev != Sun ? Sun : Moon)
-        const newTheme = defaultTheme === MAP_THEME ? MAP_DARK_THEME : MAP_THEME;
+        const newMapTheme = defaultThemeMap === MAP_THEME ? MAP_DARK_THEME : MAP_THEME;
+        const newAppTheme = pallete === LIGHT_THEME_APP ? DARK_THEME_APP : LIGHT_THEME_APP
         const map = mapRef;
         if (map) {
-            map.setOptions({ styles: newTheme });
-            dispatch(setThemeMap(newTheme));
+            map.setOptions({ styles: newMapTheme });
+            dispatch(setMapTheme(newMapTheme));
         }
+        dispatch(setAppTheme(newAppTheme))
     }
     const handleIncreaseZoom = () => {
         dispatch(increaseZoom())
@@ -46,7 +49,7 @@ export const MapAction = () => {
         })
     }
 
-    const useMapActionStyle = MapActionStyle()
+    const useMapActionStyle = MapActionStyle({Pallete:pallete})
     return (
         <>
             <Box className={useMapActionStyle.classes.wrapperMapActions}>

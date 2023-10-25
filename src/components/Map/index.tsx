@@ -19,7 +19,7 @@ import MapStyle from './styled';
 const Map = () => {
     const dispatch = useAppDispatch()
     const [selectedPlace, setSelectedPlace] = useState<google.maps.places.PlaceResult>()
-
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const isLoaded = useGoogleMaps()
     const radius = useTypeSelector(state => state.map.radius)
     const travel = useTypeSelector(state => state.map.travelInfo.distance)
@@ -48,7 +48,7 @@ const Map = () => {
         setSelectedPlace(undefined)
         dispatch(clearDirection())
     }
-    const useMapStyle = MapStyle();
+    const useMapStyle = MapStyle({ Pallete: pallete });
     const containerStyle = {
         width: '100%',
         height: '100%',

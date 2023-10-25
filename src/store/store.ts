@@ -9,6 +9,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import appSlice from './reducers/appSlice/appSlice';
 import centerSlice from './reducers/centerSlice/centerSlice';
 import currentStatusSlice from './reducers/currentStatus/currentStatusSlice';
 import errorSlice from './reducers/errorSlice/errorSlice';
@@ -20,6 +21,7 @@ import userSlice from './reducers/userSlice/userSlice';
 
 const rootReducer = combineReducers({
     currentStatus: currentStatusSlice,
+    appSlice:appSlice,
     errorSlice: errorSlice,
     userSlice: userSlice,
     currentPosition: centerSlice,

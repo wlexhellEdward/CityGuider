@@ -6,7 +6,8 @@ import { useTypeSelector } from 'hooks/redux'
 import CurrentLocationMarkerStyle from "./styled"
 
 export const CurrentLocationMarker = () => {
-    const useCurrentLocationMarkerStyle = CurrentLocationMarkerStyle()
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
+    const useCurrentLocationMarkerStyle = CurrentLocationMarkerStyle({Pallete:pallete})
     const position = useTypeSelector(state => state.currentPosition.humanPosition)
     return (
         <Box className={useCurrentLocationMarkerStyle.classes.markerContainer}>

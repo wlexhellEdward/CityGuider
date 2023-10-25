@@ -1,13 +1,13 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
-const PlateSearchPlacesStyle = makeStyles()(() => {
-    return {
+const PlateSearchPlacesStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         platePlaces: {
             margin: '0px 2px'
         },
         containerPlaces: {
-            border: `1px solid ${themeApp.Pallete.lightGreyColor}`,
+            border: `1px solid ${Pallete.border}`,
             borderRadius: '8px',
             padding: '5px 15px',
             maxHeight: 350,
@@ -20,43 +20,44 @@ const PlateSearchPlacesStyle = makeStyles()(() => {
             },
             '&::-webkit-scrollbar-thumb': {
                 borderRadius: 4,
-                backgroundColor: `${themeApp.Pallete.lightGreyColor}`
+                backgroundColor: `${Pallete.border}`
             },
             overflowY: 'scroll',
         },
         titleRadius: {
             fontSize: 18,
-            color: themeApp.Pallete.black,
-            fontFamily:'mont',
+            color: Pallete.title,
+            fontFamily: 'mont',
             fontWeight: 700,
             margin: '10px 0px'
         },
         containerInputs: {
             display: 'flex',
             alignItems: 'center',
-            color: themeApp.Pallete.black,
+            color: Pallete.black,
             gap: 10
         },
         titleFavorite: {
-            color: themeApp.Pallete.black,
+            color: Pallete.title,
             fontWeight: 700,
             fontSize: 18,
-            fontFamily:'mont',
+            fontFamily: 'mont',
             marginBottom: 20,
         },
         spanDescription: {
             fontSize: 10,
+            color:Pallete.description,
             fontWeight: 700,
-            fontFamily:'mont',
+            fontFamily: 'mont',
         },
-
         inputSearch: {
             display: 'flex',
             padding: 8,
             borderRadius: 8,
             width: 60,
+            color:Pallete.title,
             height: 30,
-            border: `1px solid ${themeApp.Pallete.lightGreyColor}`,
+            border: `1px solid ${Pallete.border}`,
             '&:before': {
                 content: 'none',
             },
@@ -68,7 +69,10 @@ const PlateSearchPlacesStyle = makeStyles()(() => {
             height: '100%',
             width: '100%'
         },
-    };
-});
+        SearchActionsBox:{
+            marginBottom:theme.spacing(4)
+        }
+    })
+);
 
 export default PlateSearchPlacesStyle

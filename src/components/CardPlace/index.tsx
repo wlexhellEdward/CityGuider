@@ -24,6 +24,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
     const isFavorite = favoriteItems.some(item => item.title == place.name)
     const map = useTypeSelector(state => state.map.mapRef)
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
 
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
     const handleClickMakeRoute = async () => {
@@ -57,7 +58,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
             console.log(e);
         }
     }
-    const useCardPlaceStyle = CardPlaceStyle()
+    const useCardPlaceStyle = CardPlaceStyle({Pallete:pallete})
 
     if (place != undefined) {
         return (

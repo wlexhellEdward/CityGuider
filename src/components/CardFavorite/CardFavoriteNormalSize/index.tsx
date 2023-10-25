@@ -2,7 +2,7 @@ import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mu
 import arrowMore from 'assets/img/CardFavoriteActions/arrowMore.svg'
 import FavoriteImg from 'assets/img/CardFavoriteActions/inFavorite.svg'
 import { Places } from 'components/Drawer/Places';
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
 import { addFavoriteItem } from 'store/reducers';
@@ -15,7 +15,9 @@ import { CardFavoritePropsNormalSize } from './interfaces.ts';
 const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
-    const useCardFavoriteStyle = CardFavoriteStyle(false, favoriteItem.img)()
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
+
+    const useCardFavoriteStyle = CardFavoriteStyle({ isOpen: false, url: favoriteItem.img, Pallete: pallete })
 
     return (
         <>
@@ -50,7 +52,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
                 </Container>
                 <CardActions disableSpacing className={useCardFavoriteStyle.classes.containerDownIcons}>
                     <img data-testid='delete-from-favorite' src={FavoriteImg} onClick={() => handleAddToFavorite(favoriteItem)} className={useCardFavoriteStyle.classes.icon} />
-                    <img data-testid='card-favorite-button-show-more' onClick={() => handleSetIsOpen(true)} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt=''/>
+                    <img data-testid='card-favorite-button-show-more' onClick={() => handleSetIsOpen(true)} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt='' />
                 </CardActions>
             </Card>
 

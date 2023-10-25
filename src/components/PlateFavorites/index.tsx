@@ -7,8 +7,10 @@ import { useTypeSelector } from "hooks/redux"
 import PlateFavoritesStyle from "./styled"
 
 export const PlateFavorites = () => {
-    const usePlateFavoriteStyle = PlateFavoritesStyle()
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const favoriteItems = useTypeSelector((state) => state.favoriteItems.favoriteItems)
+
+    const usePlateFavoriteStyle = PlateFavoritesStyle({Pallete:pallete})
 
     return (
         <>

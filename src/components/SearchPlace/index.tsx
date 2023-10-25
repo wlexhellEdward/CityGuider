@@ -11,7 +11,7 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
 
     const dispatch = useAppDispatch()
     const selectedItems = useTypeSelector((state) => state.searchSlice.selectedItems)
-
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
 
     const handleSetSelectedItemsArray = (type: string) => {
         if (!selectedItems.includes(type)) {
@@ -24,7 +24,7 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
 
 
 
-    const useSearchPlaceStyle = SearchPlaceStyle()
+    const useSearchPlaceStyle = SearchPlaceStyle({Pallete:pallete})
     return (
         <>
 

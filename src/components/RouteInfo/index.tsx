@@ -9,6 +9,7 @@ import RouteInfoStyle from "./styled"
 
 export const RouteInfo = () => {
     const dispatch = useAppDispatch()
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const map = useTypeSelector(state => state.map.mapRef)
     const { distance, distanceTraveled, placeGeometry, time } = useTypeSelector(state => state.map.travelInfo)
     const directionsRenderer = useTypeSelector(state => state.map.directionsRenderer)
@@ -21,7 +22,7 @@ export const RouteInfo = () => {
     }
 
 
-    const useRouteInfoStyle = RouteInfoStyle()
+    const useRouteInfoStyle = RouteInfoStyle({Pallete:pallete})
 
     useEffect(() => {
         const fetchDirections = async () => {

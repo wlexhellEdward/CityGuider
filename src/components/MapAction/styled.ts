@@ -1,14 +1,10 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
-
-
-
-const MapActionStyle = makeStyles()((theme) => {
-    return {
+const MapActionStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         wrapperMapActions: {
             position: 'absolute',
-            backgroundColor: themeApp.Pallete.blueColor,
             padding: theme.spacing(0.5, 1),
             borderRadius: theme.spacing(1),
             zIndex: 9,
@@ -18,7 +14,7 @@ const MapActionStyle = makeStyles()((theme) => {
             columnGap: theme.spacing(1),
             [theme.breakpoints.down('sm')]: {
                 right: theme.spacing(0.1),
-                columnGap:theme.spacing(0.5),
+                columnGap: theme.spacing(0.5),
             }
         },
         containerMapActions: {
@@ -26,11 +22,11 @@ const MapActionStyle = makeStyles()((theme) => {
             display: 'flex',
             columnGap: theme.spacing(1),
             [theme.breakpoints.down('sm')]: {
-                columnGap:theme.spacing(0.5),
+                columnGap: theme.spacing(0.5),
             }
         },
         switchThemeButton: {
-            border: `2px solid ${themeApp.Pallete.lightGreyColor}`,
+            border: `2px solid ${Pallete.border}`,
             position: 'relative',
             display: 'flex',
             justifyContent: 'center',
@@ -47,18 +43,18 @@ const MapActionStyle = makeStyles()((theme) => {
                 outline: 'none'
             },
             '&:hover': {
-                borderColor: themeApp.Pallete.lightGreyColor,
-                backgroundColor: themeApp.Pallete.lightGreyColor,
+                borderColor: Pallete.border,
+                backgroundColor: Pallete.border,
             },
             zIndex: 9,
-            backgroundColor: themeApp.Pallete.white,
+            backgroundColor: Pallete.background,
             color: 'white',
         },
 
         findMeButton: {
             position: 'relative',
-            border: `2px solid ${themeApp.Pallete.lightGreyColor}`,
-            backgroundColor: themeApp.Pallete.white,
+            border: `2px solid ${Pallete.border}`,
+            backgroundColor: Pallete.background,
             borderRadius: theme.spacing(1),
             '&>*': {
                 height: theme.spacing(2),
@@ -71,8 +67,8 @@ const MapActionStyle = makeStyles()((theme) => {
                 outline: 'none'
             },
             '&:hover': {
-                borderColor: themeApp.Pallete.lightGreyColor,
-                backgroundColor: themeApp.Pallete.lightGreyColor,
+                borderColor: Pallete.border,
+                backgroundColor: Pallete.border,
             },
         },
         containerMapActionsZoom: {
@@ -80,13 +76,13 @@ const MapActionStyle = makeStyles()((theme) => {
             display: 'flex',
             rowGap: '5px',
             zIndex: 9,
-            border: `2px solid ${themeApp.Pallete.lightGreyColor}`,
-            backgroundColor: themeApp.Pallete.white,
+            border: `2px solid ${Pallete.border}`,
+            backgroundColor: Pallete.background,
             borderRadius: theme.spacing(1),
         },
         buttonZoom: {
             font: 'mont',
-            color: themeApp.Pallete.greyColor,
+            color: Pallete.description,
             transition: '.3s linear all',
             '&:focus': {
                 outline: 'none'
@@ -95,13 +91,13 @@ const MapActionStyle = makeStyles()((theme) => {
                 outline: 'none'
             },
             '&:hover': {
-                backgroundColor: themeApp.Pallete.lightGreyColor,
+                backgroundColor: Pallete.border,
             },
         },
         buttonToggleAction: {
-            backgroundColor: themeApp.Pallete.white,
+            backgroundColor: Pallete.background,
             borderRadius: theme.spacing(1),
-            color: themeApp.Pallete.greyColor,
+            color: Pallete.description,
             minWidth: theme.spacing(1),
             minHeight: theme.spacing(4.4),
             '&:focus': {
@@ -111,11 +107,11 @@ const MapActionStyle = makeStyles()((theme) => {
                 outline: 'none'
             },
             "&:hover": {
-                backgroundColor: themeApp.Pallete.lightGreyColor
+                backgroundColor: Pallete.border
             },
         }
-    };
-});
+    })
+)
 
 
 export default MapActionStyle

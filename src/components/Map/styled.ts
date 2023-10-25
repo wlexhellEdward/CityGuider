@@ -1,9 +1,10 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
 
 
-const MapStyle = makeStyles()(() => {
-    return {
+const MapStyle = makeStyles<ThemeApp>()(
+    () => ({
         containerMap: {
             position: 'absolute',
             width: '100%',
@@ -12,8 +13,7 @@ const MapStyle = makeStyles()(() => {
             margin: 0,
 
         },
-        
-    };
-});
+    })
+);
 
 export default MapStyle

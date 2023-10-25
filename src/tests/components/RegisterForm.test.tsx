@@ -1,10 +1,11 @@
 import '@testing-library/jest-dom';
-import { BrowserRouter } from 'react-router-dom';
+
+import { initializeApp } from '@firebase/app';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { RegisterForm } from 'components/RegisterForm';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { store } from 'store/store';
-import { initializeApp } from '@firebase/app';
 
 describe('Тестирования формы регистрации', () => {
     beforeAll(() => {

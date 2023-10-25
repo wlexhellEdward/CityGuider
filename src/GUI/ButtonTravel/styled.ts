@@ -1,22 +1,18 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
-
-
-
-const ButtonTravelStyle = makeStyles()((theme) => {
-    return {
+const ButtonTravelStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         buttonTravel: {
             display: 'flex',
             alignItems: 'center',
-            textAlign:'center',
+            textAlign: 'center',
             justifyContent: 'center',
             width: 120,
             height: 30,
             color: 'white',
-            backgroundColor: themeApp.Pallete.blueColor,
+            backgroundColor: Pallete.main,
             borderRadius: theme.spacing(1),
-            gap: theme.spacing(2),
             '&:hover': {
                 backgroundColor: '#6495ed'
             },
@@ -25,17 +21,16 @@ const ButtonTravelStyle = makeStyles()((theme) => {
             }
         },
         buttonTravelTitle: {
-            fontFamily:'mont',
-
+            fontFamily: 'mont',
             [theme.breakpoints.down('sm')]: {
                 fontSize: 12,
-                display:'none'
+                display: 'none'
             }
         },
         iconTravel: {
-            display:'flex',
-            alignItems:'center',
-            justifyContent:'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
 
             '& > *': {
                 width: '16px',
@@ -46,8 +41,8 @@ const ButtonTravelStyle = makeStyles()((theme) => {
                 }
             },
         }
-    };
-});
+    })
+);
 
 
 export default ButtonTravelStyle

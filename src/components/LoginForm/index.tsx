@@ -19,6 +19,7 @@ export const LoginForm = () => {
     const dispatch = useAppDispatch()
     const redirectTo = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const isOpen = useTypeSelector(state => state.errorSlice.isOpen)
     const handleSetError = (isOpen: boolean, message: string, type: string) => {
         dispatch(setError({
@@ -59,7 +60,7 @@ export const LoginForm = () => {
             )
     };
 
-    const useLoginFormStyle = LoginFormStyle()
+    const useLoginFormStyle = LoginFormStyle({Pallete:pallete})
     return (
         <>
             <Box className={useLoginFormStyle.classes.containerRegister}>

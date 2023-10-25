@@ -1,9 +1,9 @@
+import { ThemeApp } from "models/IThemeApp";
 import { makeStyles } from "tss-react/mui";
-import { themeApp } from "utils/consts";
 
 
-const SearchPlaceStyle = makeStyles()((theme) => {
-    return {
+const SearchPlaceStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         containerPlace: {
             display: 'flex',
             justifyContent: 'start',
@@ -12,7 +12,7 @@ const SearchPlaceStyle = makeStyles()((theme) => {
             alignItems: 'center',
             cursor: 'pointer',
             '&:hover': {
-                backgroundColor: `${themeApp.Pallete.lightGreyColor}`
+                backgroundColor: Pallete.border
             }
         },
         imgPlace: {
@@ -21,22 +21,21 @@ const SearchPlaceStyle = makeStyles()((theme) => {
         },
         titlePlace: {
             fontSize: 14,
-            fontFamily:'mont',
-            color:'black',
+            fontFamily: 'mont',
+            color: Pallete.title,
         },
         titleSelectedPlace: {
             fontSize: 14,
-            fontFamily:'mont',
-            color:themeApp.Pallete.greyColor,
+            fontFamily: 'mont',
+            color: Pallete.description,
         },
-        imgSelectedPlace:{
+        imgSelectedPlace: {
             width: 30,
             height: 30,
-            opacity:.6
+            opacity: .6
         }
 
-    }
-
-})
+    })
+)
 
 export default SearchPlaceStyle

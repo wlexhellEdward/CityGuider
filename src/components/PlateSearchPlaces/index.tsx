@@ -15,6 +15,7 @@ export const PlateSearchPlaces = () => {
     const map = useTypeSelector(state => state.map.mapRef)
     const center = useTypeSelector(state => state.currentPosition.position)
     const selectedItems = useTypeSelector(state => state.searchSlice.selectedItems)
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
 
     const handleSetResults = (result: google.maps.places.PlaceResult[]) => dispatch(setResults(result))
     const dispatch = useAppDispatch()
@@ -67,7 +68,7 @@ export const PlateSearchPlaces = () => {
         }
         return result
     }
-    const usePlateSearchPlacesStyle = PlateSearchPlacesStyle()
+    const usePlateSearchPlacesStyle = PlateSearchPlacesStyle({Pallete:pallete})
     return (
         <Box data-testid='plate-search' className={usePlateSearchPlacesStyle.classes.platePlaces}>
             <Typography className={usePlateSearchPlacesStyle.classes.titleFavorite}>Искать: </Typography>
@@ -80,7 +81,7 @@ export const PlateSearchPlaces = () => {
                     )
                 })}
             </List>
-            <Box>
+            <Box className={usePlateSearchPlacesStyle.classes.SearchActionsBox}>
                 <Typography className={usePlateSearchPlacesStyle.classes.titleRadius}>В радиусе: </Typography>
                 <Box className={usePlateSearchPlacesStyle.classes.containerInputs} >
                     <Input onChange={handlerSetInputValue} value={inputValue} className={usePlateSearchPlacesStyle.classes.inputSearch} />

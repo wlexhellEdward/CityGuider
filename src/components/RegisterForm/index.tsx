@@ -21,7 +21,7 @@ export const RegisterForm = () => {
     const redirectTo = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const isOpen = useTypeSelector(state => state.errorSlice.isOpen)
-
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const handleSetIsLoading = () => {
         setIsLoading(prev => !prev)
     }
@@ -66,7 +66,7 @@ export const RegisterForm = () => {
             )
     };
 
-    const useRegisterFormStyle = RegisterFormStyle()
+    const useRegisterFormStyle = RegisterFormStyle({Pallete:pallete})
     return (
         <>
             <Box className={useRegisterFormStyle.classes.containerRegister}>

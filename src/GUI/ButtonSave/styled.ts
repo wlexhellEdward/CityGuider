@@ -1,28 +1,25 @@
+import { darken } from '@mui/system';
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
-
-
-
-const ButtonSaveStyle = makeStyles()((theme) => {
-    return {
+const ButtonSaveStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         btnSaved: {
-            border: `1px solid ${themeApp.Pallete.greyColor}`,
+            border: `1px solid ${Pallete.description}`,
             borderRadius: '8px',
             width: 120,
             height: 30,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            gap: theme.spacing(2),
             marginLeft: '0',
             cursor: 'pointer',
             '&:hover': {
-                backgroundColor: '#f5f5f5',
-                borderColor: themeApp.Pallete.greyColor
+                backgroundColor: darken(Pallete.border,0.1),
+                borderColor: Pallete.description
             },
             '& > *': {
-                color: themeApp.Pallete.black,
+                color: Pallete.title,
             },
             [theme.breakpoints.down('sm')]: {
                 gap: theme.spacing(0.5),
@@ -48,11 +45,11 @@ const ButtonSaveStyle = makeStyles()((theme) => {
             fontFamily: 'mont',
             [theme.breakpoints.down('sm')]: {
                 fontSize: 12,
-                display:'none'
+                display: 'none'
             }
         },
-    };
-});
+    })
+);
 
 
 export default ButtonSaveStyle

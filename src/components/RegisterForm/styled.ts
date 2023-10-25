@@ -1,10 +1,8 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
-
-
-
-const RegisterFormStyle = makeStyles()((theme) => {
-    return {
+const RegisterFormStyle = makeStyles<ThemeApp>()(
+    (theme) => ({
         containerRegister: {
             display: 'flex',
             flexDirection: 'column',
@@ -48,8 +46,8 @@ const RegisterFormStyle = makeStyles()((theme) => {
         supportActionTitle: {
             fontFamily: 'mont'
         }
-    };
-});
+    })
+);
 
 
 export default RegisterFormStyle

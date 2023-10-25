@@ -1,9 +1,10 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
 
 
-const ArrowBoxStyle = makeStyles()((theme) => {
-    return {
+const ArrowBoxStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         boxArrow: {
             width: theme.spacing(3),
             position: 'absolute',
@@ -15,7 +16,7 @@ const ArrowBoxStyle = makeStyles()((theme) => {
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: 'transparent',
-            [theme.breakpoints.down('sm')]:{
+            [theme.breakpoints.down('sm')]: {
                 left: theme.spacing(5),
             }
         },
@@ -34,17 +35,18 @@ const ArrowBoxStyle = makeStyles()((theme) => {
         containerArrow: {
             display: 'flex',
             alignItems: 'center',
-            padding:theme.spacing(4,0),
+            padding: theme.spacing(4, 0),
             boxShadow: '8px 0px 6px 2px rgba(200, 200, 200, 0.6)',
             width: 20,
             height: 40,
-            backgroundColor: 'white',
+            backgroundColor: Pallete.background,
             borderRadius: '0 8px 8px 0',
         },
         openDrawerArrow: {
             rotate: '180deg',
+            filter:'invert(1)'
         }
-    };
-});
+    })
+)
 
 export default ArrowBoxStyle

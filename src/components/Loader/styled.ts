@@ -1,16 +1,17 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
 
-const LoaderStyle = makeStyles()(() => {
-    return {
+const LoaderStyle = makeStyles<ThemeApp>()(
+    () => ({
         loaderContainer: {
             width: '100vw',
             height: '100vh',
-            alignItems:'center',
+            alignItems: 'center',
             display: 'flex',
             justifyContent: 'center',
         }
-    };
-});
+    })
+);
 
 export default LoaderStyle

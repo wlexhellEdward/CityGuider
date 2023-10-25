@@ -1,27 +1,28 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
-const PlateFavoritesStyle = makeStyles()(() => {
-    return {
+const PlateFavoritesStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         containerCardsFavorites: {
+            backgroundColor:Pallete.background,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
         },
         cardsFavorites: {
             display: 'flex',
+            backgroundColor:Pallete.background,
             flexDirection: 'column',
-            backgroundColor: 'white',
             minHeight: '85vh',
-            maxHeight: '85vh', 
+            maxHeight: '85vh',
         },
         titleFavorite: {
-            color: themeApp.Pallete.black,
+            color: Pallete.title,
             fontWeight: 700,
             fontSize: 18,
-            marginBottom: 20,
+            marginBottom: theme.spacing(2),
         },
-    };
-});
+    })
+);
 
 export default PlateFavoritesStyle

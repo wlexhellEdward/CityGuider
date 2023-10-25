@@ -1,7 +1,8 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
-const LoginFormStyle = makeStyles()((theme) => {
-    return {
+const LoginFormStyle = makeStyles<ThemeApp>()(
+    (theme) => ({
         containerRegister: {
             display: 'flex',
             flexDirection: 'column',
@@ -45,8 +46,8 @@ const LoginFormStyle = makeStyles()((theme) => {
         supportActionTitle: {
             fontFamily: 'mont'
         }
-    };
-});
+    }
+))
 
 
 export default LoginFormStyle

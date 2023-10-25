@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
-import { BrowserRouter } from 'react-router-dom';
+
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { LoginForm } from 'components/LoginForm';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { store } from 'store/store';
 
 describe('Тестирования формы авторизации', () => {

@@ -12,6 +12,7 @@ export const ModalFormError = () => {
     const isOpen = useTypeSelector(state => state.errorSlice.isOpen)
     const message = useTypeSelector(state => state.errorSlice.message)
     const type = useTypeSelector(state => state.errorSlice.type)
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
 
     const dispatch = useAppDispatch()
 
@@ -23,7 +24,7 @@ export const ModalFormError = () => {
         }))
     };
 
-    const useModalFormErrorStyle = ModalFormErrorStyle()
+    const useModalFormErrorStyle = ModalFormErrorStyle({Pallete:pallete})
 
     return (
         <Modal

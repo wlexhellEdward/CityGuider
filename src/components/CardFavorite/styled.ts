@@ -1,21 +1,22 @@
+import { darken } from '@mui/system/colorManipulator';
+import { ThemeAppCardFavorite } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
 
-const CardFavoriteStyle = (isOpen: boolean, url: string) => {
-    return makeStyles()((theme) => ({
+const CardFavoriteStyle = makeStyles<ThemeAppCardFavorite>()(
+    (theme, { Pallete, isOpen, url }) => ({
         icon: {
             cursor: 'pointer',
             transition: 'all .3s linear',
         },
         cardFavorite: {
             width: '300px',
-            boxShadow: " 0px 5px 10px 2px rgba(226, 226,226, 1);",
+            boxShadow: ` 0px 5px 10px 2px ${darken(Pallete.background,0.2)}`,
             padding: '20px 20px 0px 20px',
-            border: `1px solid ${themeApp.Pallete.lightGreyColor}`,
+            border: `1px solid ${Pallete.border}`,
             borderRadius: 8,
             marginBottom: theme.spacing(3),
-
+            backgroundColor:Pallete.background,
             [theme.breakpoints.down('sm')]: {
                 padding: '5px 10px',
                 width: '195px',
@@ -28,7 +29,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             minWidth: isOpen ? '100%' : '40%',
             alignItems: 'end',
             borderRadius: 8,
-            backgroundPosition:'center',
+            backgroundPosition: 'center',
             backgroundImage: `url('${url}')`,
             gap: 4,
             justifyContent: 'end',
@@ -72,8 +73,8 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
         },
         title: {
             fontSize: 'calc(16px + (24 - 16) * ((100vw - 375px) / (1920 - 375)/2))',
-            color: themeApp.Pallete.greyColorTitle,
-            fontFamily:'mont',
+            color: Pallete.title,
+            fontFamily: 'mont',
             fontWeight: 700
         },
         descriptionContainer: {
@@ -83,8 +84,8 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
         description: {
             opacity: 0.8,
             fontSize: 10,
-            fontFamily:'mont',
-
+            fontFamily: 'mont',
+            color:Pallete.description
         },
         containerDownIcons: {
             display: 'flex',
@@ -105,6 +106,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
             cursor: 'pointer',
             transition: 'all .6s linear',
             rotate: '90deg',
+            filter:'invert(1)',
             '&:hover': {
                 rotate: '270deg'
             },
@@ -114,6 +116,7 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
         },
         imgArrow: {
             cursor: 'pointer',
+            filter:'invert(1)',
             transition: 'all .3s linear',
             '&:hover': {
                 rotate: '90deg'
@@ -121,6 +124,6 @@ const CardFavoriteStyle = (isOpen: boolean, url: string) => {
         },
 
     }));
-};
+
 
 export default CardFavoriteStyle

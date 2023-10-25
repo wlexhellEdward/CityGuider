@@ -1,30 +1,28 @@
 import MuiDrawer from '@mui/material/Drawer';
 import { CSSObject, styled, Theme } from '@mui/material/styles';
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
 
 
-export const DrawerStyle = makeStyles()((theme) => {
-    const borderRadius = theme.spacing(1)
-    return {
+export const DrawerStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         apply: {
             marginRight: theme.spacing(2),
         },
         drawer: {
             position: "relative",
             transition: 'all .3s ease-in-out',
-
         },
         containerSearch: {
-            borderRadius: borderRadius,
-            border: `1px solid ${themeApp.Pallete.greyColor}`,
+            borderRadius: theme.spacing(1),
+            border: `1px solid ${Pallete.description}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
         },
         titleFavorite: {
-            color: 'black',
+            color: Pallete.title,
             fontWeight: 700,
             fontSize: 18,
             marginBottom: 20,
@@ -37,22 +35,15 @@ export const DrawerStyle = makeStyles()((theme) => {
         },
         drawerContent: {
             display: 'flex',
+            backgroundColor:Pallete.background,
             flexDirection: 'column',
             [theme.breakpoints.down('sm')]: {
                 maxHeight: '94vh'
             }
         },
-        
 
+    }))
 
-
-
-
-
-
-
-    };
-});
 
 const openedMixin = (theme: Theme): CSSObject => ({
     transition: theme.transitions.create('width', {
@@ -92,7 +83,8 @@ export const DrawerContent = styled('div')(({ theme }) => ({
     },
     '&::-webkit-scrollbar-thumb': {
         borderRadius: 4,
-        backgroundColor: `${themeApp.Pallete.greyColor}`
+        backgroundColor: 'transparent',
+        
     },
 }))
 export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(

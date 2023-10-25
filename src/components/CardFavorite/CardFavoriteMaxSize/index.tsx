@@ -20,8 +20,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => dispatch(addFavoriteItem(favoirteItem))
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
     const map = useTypeSelector(state => state.map.mapRef)
-
-    
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
 
     const handleClickRoute = async () => {
         try {
@@ -41,7 +40,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                 map: map,
                 directions: result
             })
-            
+
             dispatch(setTravelDistance(distance))
             dispatch(setTravelPlaceGeometry(favoriteItem.coordinates))
             dispatch(setTravelTime(time))
@@ -52,7 +51,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     }
 
 
-    const useCardFavoriteStyle = CardFavoriteStyle(true, favoriteItem.img)()
+    const useCardFavoriteStyle = CardFavoriteStyle({ isOpen: true, url: favoriteItem.img, Pallete: pallete })
     return (
         <>
             <Card data-testid='card-max-size' className={useCardFavoriteStyle.classes.cardFavorite}>
@@ -86,8 +85,8 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
                     <ButtonSave data-testid='delete-from-favorite' handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
-                    <ButtonTravel  handleFunction={handleClickRoute} />
-                        <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
+                    <ButtonTravel handleFunction={handleClickRoute} />
+                    <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>
 

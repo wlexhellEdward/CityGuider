@@ -153,21 +153,28 @@ export const DEFAULT_OPTIONS = {
     keyboardShortcuts: false,
     styles: MAP_THEME
 }
-export const themeApp = {
-    Pallete: {
-        lightGreyColor: '#EEEEEE',
-        greyColorTitle: '#373737',
-        greyColor: '#7D908C',
-        blueColor: '#5E7BC7',
-        darkBlue: '#405F7B',
-        black: 'black',
-        white: '#FFF'
-    }
-}
 
+export const LIGHT_THEME_APP = {
+    border: '#EEEEEE', 
+    title: '#373737', 
+    description: '#7D908C',      
+    main: '#5E7BC7',      
+    darkMain: '#405F7B',       
+    black: 'black',            
+    background: '#FFF'              
+}
+export const DARK_THEME_APP = {
+    border: '#EEEEEE', 
+    title: '#EBEBEB', 
+    description: '#7D908C',      
+    main: '#5E7BC7',      
+    darkMain: '#405F7B',       
+    black: 'black',            
+    background: '#22333B'              
+}
 export const CIRCLE_OPTIONS = {
-    fillColor: themeApp.Pallete.blueColor,
+    fillColor: LIGHT_THEME_APP.main,
     fillOpacity: 0.15,
-    strokeColor: themeApp.Pallete.blueColor,
+    strokeColor: LIGHT_THEME_APP.main,
     strokeOpacity: 0.8,
 }

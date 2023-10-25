@@ -1,22 +1,20 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
-
-
-
-const ButtonSearchStyle = makeStyles()(() => {
-    return {
-       buttonSearch: {
-            marginTop: 20,
+const ButtonSearchStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
+        buttonSearch: {
+            marginTop: theme.spacing(2.2),
+            color:Pallete.title,
             cursor: 'pointer',
-            backgroundColor: `${themeApp.Pallete.blueColor}`,
+            backgroundColor: `${Pallete.main}`,
             height: 60,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 8
         }
-    };
-});
+    })
+);
 
 export default ButtonSearchStyle

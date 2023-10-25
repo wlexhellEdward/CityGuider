@@ -1,25 +1,14 @@
-import { forwardRef } from 'react';
-import { useNavigate } from 'react-router';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import { signOut, getAuth } from "firebase/auth";
-import { TransitionProps } from '@mui/material/transitions';
+import { getAuth,signOut } from "firebase/auth";
+import { useNavigate } from 'react-router';
+
 import { ConfrimModalProps } from './interfaces';
 
-
-const Transition = forwardRef(function Transition(
-    props: TransitionProps & {
-        children: React.ReactElement<any, any>;
-    },
-    ref: React.Ref<unknown>,
-) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
 
 
 export const СonfirmModal = ({ isOpen, handleClose }: ConfrimModalProps) => {
@@ -36,7 +25,6 @@ export const СonfirmModal = ({ isOpen, handleClose }: ConfrimModalProps) => {
     return (
         <Dialog
             open={isOpen}
-            TransitionComponent={Transition}
             keepMounted
             aria-describedby="alert-dialog-slide-description"
         >

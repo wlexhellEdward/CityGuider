@@ -1,27 +1,28 @@
+import { darken } from "@mui/system/colorManipulator";
+import { ThemeApp } from "models/IThemeApp";
 import { makeStyles } from "tss-react/mui";
-import { themeApp } from "utils/consts";
 
 
-
-const AsideStyle = makeStyles()((theme) => {
-    return {
+const AsideStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         container: {
             display: 'flex',
             alignItems: 'start',
             justifyContent: 'start',
-            width: 'auto'
+            width: 'auto',
+            backgroundColor: Pallete.background,
         },
         asideContainer: {
             width: '100px',
             zIndex: 11,
+            backgroundColor: Pallete.background,
             margin: 0,
-            boxShadow: '8px 0px 5px -6px rgba(200, 200, 200, 0.6)',
+            boxShadow: `8px 0px 5px -6px ${darken(Pallete.background,0.1)}`,
             height: '100vh',
-            backgroundColor: 'white',
             justifyContent: 'space-between',
             display: 'flex',
             flexDirection: 'column',
-            color: themeApp.Pallete.black,
+            color: Pallete.black,
             [theme.breakpoints.down('sm')]: {
                 width: '50px',
             }
@@ -31,6 +32,7 @@ const AsideStyle = makeStyles()((theme) => {
             justifyContent: 'center',
             textAlign: 'center',
             marginBottom: 20,
+            
             marginTop: 10,
             [theme.breakpoints.down('sm')]: {
                 marginBottom: 5,
@@ -57,6 +59,7 @@ const AsideStyle = makeStyles()((theme) => {
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'column',
+            backgroundColor: Pallete.background,
             margin: 0,
             padding: 0,
             width: 100,
@@ -70,11 +73,13 @@ const AsideStyle = makeStyles()((theme) => {
             cursor: 'pointer',
             marginBottom: 12,
             transition: '.3s linear',
+            backgroundColor: Pallete.background,
         },
         profileOutter: {
             display: 'flex',
             justifyContent: 'center',
             marginBottom: theme.spacing(2),
+            backgroundColor: Pallete.background,
             cursor: 'pointer',
             [theme.breakpoints.down('sm')]: {
                 '&>*': {
@@ -86,6 +91,7 @@ const AsideStyle = makeStyles()((theme) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            backgroundColor: Pallete.background,
             '&>*': {
                 transition: 'all .3s linear'
             },
@@ -97,15 +103,17 @@ const AsideStyle = makeStyles()((theme) => {
         drawerAction: {
             display: 'flex',
             marginTop: 10,
-            
+            backgroundColor: Pallete.background,
+
             justifyContent: 'center',
-            alignItems:'center',
+            alignItems: 'center',
             textAlign: 'center'
         },
         buttonCloseDrawer: {
+            backgroundColor: Pallete.background,
             transition: 'all .3s linear',
-            fontSize:14,
-            color: themeApp.Pallete.greyColor,
+            fontSize: 14,
+            color: Pallete.description,
             '&:focus': {
                 outline: 'none'
             },
@@ -113,12 +121,11 @@ const AsideStyle = makeStyles()((theme) => {
                 outline: 'none'
             },
             '&:hover': {
-                borderColor: themeApp.Pallete.lightGreyColor,
+                borderColor: Pallete.border,
             },
         }
+    }))
 
-    }
 
-})
 
 export default AsideStyle

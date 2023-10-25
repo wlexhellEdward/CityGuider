@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import { СonfirmModal } from 'components/ConfirmModal'
 import { Box, Button, List, ListItem, ListItemIcon } from '@mui/material'
 import Logo from 'assets/img/Drawer/Logo.svg'
-import Profile from 'assets/img/Drawer/profile.svg'
+import Exit from 'assets/img/DrawerActions/exit.svg'
 import ArrowBox from 'components/ArrowBox'
+import { СonfirmModal } from 'components/ConfirmModal'
 import SideBar from 'components/Drawer'
 import Favorite from 'GUI/Favorite'
 import FavoriteSelected from 'GUI/Favorite/FavoriteSelected'
@@ -11,6 +10,7 @@ import Search from 'GUI/Search/Search';
 import SearchSelected from 'GUI/Search/SearchSelected'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import DoesntExistPhoto from 'public/doesntExist.png'
+import { useState } from 'react'
 import { setCurrentStatus } from 'store/reducers'
 
 import AsideStyle from './styled'
@@ -21,12 +21,12 @@ export default function Aside() {
     const currentStatus = useTypeSelector((state) => state.currentStatus.status)
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
-
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const handleCloseClick = () => { switchCurrentStatus('close') }
     const handleClickProfile = () => {
         setShowModal(prev => !prev)
     }
-    const useAsideStyle = AsideStyle()
+    const useAsideStyle = AsideStyle({ Pallete: pallete })
 
     return (
         <Box className={useAsideStyle.classes.container}>
@@ -63,7 +63,7 @@ export default function Aside() {
                 </List>
 
                 <Box className={useAsideStyle.classes.profileOutter}>
-                    <img onClick={handleClickProfile} src={Profile} alt={DoesntExistPhoto} title='img for profile' />
+                    <img onClick={handleClickProfile} src={Exit} alt={DoesntExistPhoto} title='img for profile' />
                 </Box>
                 {showModal ?
                     <СonfirmModal isOpen={showModal} handleClose={handleClickProfile} />

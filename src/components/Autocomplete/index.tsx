@@ -1,6 +1,6 @@
 import { Box, Input, List, ListItem, Typography } from '@mui/material'
 import searchSVG from 'assets/img/DrawerActions/searchInput.svg'
-import { useAppDispatch } from 'hooks/redux.ts';
+import { useAppDispatch, useTypeSelector } from 'hooks/redux.ts';
 import { useGoogleMaps } from 'hooks/useGoogleMapsLoader.ts';
 import { useOnClickOutside } from 'hooks/useOnClickOutside.ts';
 import DoesntExistPhoto from 'public/doesntExist.png'
@@ -16,7 +16,7 @@ import AutocompleteStyle from './styled.ts'
 
 export default function Autocomplete() {
     const isLoaded = useGoogleMaps()
-
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const dispatch = useAppDispatch()
     const ref = useRef<HTMLDivElement>(null);
     const handlerSetCenter = (object: object) => {
@@ -74,7 +74,7 @@ export default function Autocomplete() {
     useOnClickOutside(ref, handleClickOutside);
 
 
-    const useAutocompleteStyle = AutocompleteStyle()
+    const useAutocompleteStyle = AutocompleteStyle({ Pallete: pallete })
     const OK = "OK"
     return (
         <Box ref={ref} className={useAutocompleteStyle.classes.Autocomplete}>

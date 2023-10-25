@@ -1,9 +1,9 @@
+import { ThemeApp } from 'models/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
-import { themeApp } from 'utils/consts';
 
 
-const PageStyle = makeStyles()((theme) => {
-    return {
+const PageStyle = makeStyles<ThemeApp>()(
+    (theme, { Pallete }) => ({
         containerApp: {
             display: 'flex',
             width: '100vw',
@@ -26,7 +26,7 @@ const PageStyle = makeStyles()((theme) => {
         },
         description: {
             fontFamily: 'mont',
-            color: themeApp.Pallete.greyColor,
+            color: Pallete.description,
             fontSize: theme.spacing(1.5),
             marginBottom: theme.spacing(3)
         },
@@ -39,7 +39,7 @@ const PageStyle = makeStyles()((theme) => {
             alignItems: 'center',
         }
 
-    };
-});
+    })
+);
 
 export default PageStyle
