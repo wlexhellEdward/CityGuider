@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useState } from 'react'
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
 import PopUp from 'components/Pop-up';
 import ButtonSave from 'GUI/ButtonSave';
@@ -25,7 +25,6 @@ const CardPlace = ({ place }: CardPlaceProps) => {
     const { id } = useAuth()
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
     const favoriteItems = useTypeSelector(state => state.favoriteItems.favoriteItems)
-    // const [isFavorite, setIsFavorite] = useState(false)
     const isFavorite = () => {
         return favoriteItems.some(item => item.id == place.place_id)
     }

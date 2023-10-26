@@ -96,7 +96,7 @@ export const LoginForm = () => {
                             />
                         </Box>
                     </Box>
-                    <LoadingButton loading={isLoading} className={useLoginFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Войти</LoadingButton>
+                    <LoadingButton data-testid='btn-submit' loading={isLoading} className={useLoginFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Войти</LoadingButton>
                     <Box className={useLoginFormStyle.classes.featActionForm}>
                         <Box>
                             <Link className={useLoginFormStyle.classes.supportActionTitle} href="/register" variant="body2">

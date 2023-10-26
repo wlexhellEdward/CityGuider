@@ -1,4 +1,4 @@
-import { get, getDatabase, onChildAdded, push, ref, remove, set } from "firebase/database";
+import { get, getDatabase, push, ref, remove, set } from "firebase/database";
 import { IFavoriteItem } from "models/IFavoriteItem";
 
 const db = getDatabase();
@@ -56,6 +56,6 @@ export async function ReadFavoriteCardsUser(userId: number) {
         }
         return data;
     } catch (error) {
-        throw error; 
+        console.log(error);
     }
 }

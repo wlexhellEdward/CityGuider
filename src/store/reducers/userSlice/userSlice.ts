@@ -26,8 +26,8 @@ const userSlice = createSlice({
         setUser(state, action) {
             state.id = action.payload.id;
             state.token = action.payload.token;
-            state.firstName = action.payload.name;
-            state.lastName = action.payload.secondName;
+            state.firstName = action.payload.firstName;
+            state.lastName = action.payload.lastName;
             state.password = action.payload.password;
             state.email = action.payload.email
         },

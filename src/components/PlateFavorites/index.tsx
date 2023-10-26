@@ -3,12 +3,12 @@ import { Box } from "@mui/system"
 import CardFavorite from "components/CardFavorite/ToggleCardFavorite"
 import { Waiter } from "components/Waiter"
 import { useAppDispatch, useTypeSelector } from "hooks/redux"
-import { ReadFavoriteCardsUser } from 'utils/firebase'
 import { useAuth } from "hooks/useAuth"
+import { useEffect } from "react"
 import { setFavoriteItemIsLoading, setFavoriteItems } from "store/reducers"
+import { ReadFavoriteCardsUser } from 'utils/firebase'
 
 import PlateFavoritesStyle from "./styled"
-import { useEffect } from "react"
 
 export const PlateFavorites = () => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
