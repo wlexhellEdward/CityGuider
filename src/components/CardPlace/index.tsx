@@ -1,3 +1,4 @@
+import { memo, useEffect, useState } from 'react'
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
 import PopUp from 'components/Pop-up';
 import ButtonSave from 'GUI/ButtonSave';
@@ -6,7 +7,6 @@ import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { useAuth } from 'hooks/useAuth.ts';
 import { IFavoriteItem } from 'models/IFavoriteItem'
 import DoesntExistPhoto from 'public/doesntExist.png'
-import { memo, useState } from 'react'
 import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers'
 import { convertPlaceToFavorite } from 'utils/convert'
 import { AddFavoriteCard, DeleteFavoriteCard } from 'utils/firebase.ts';
@@ -24,25 +24,25 @@ const CardPlace = ({ place }: CardPlaceProps) => {
     const dispatch = useAppDispatch()
     const { id } = useAuth()
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
-    const favoriteItems = useTypeSelector(state => state.favoriteItems.favoriteItems).some(item => item.id == place.place_id)
-    const [isFavorite, setIsFavorite] = useState(favoriteItems)
-    const [isAdd, setIsAdd] = useState(false)
+    const favoriteItems = useTypeSelector(state => state.favoriteItems.favoriteItems)
+    // const [isFavorite, setIsFavorite] = useState(false)
+    const isFavorite = () => {
+        return favoriteItems.some(item => item.id == place.place_id)
+    }
+    const [isAdding, setIsAdding] = useState(false)
     const map = useTypeSelector(state => state.map.mapRef)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
-
-    const handleAddToFavorite = async (favoirteItem: IFavoriteItem) => {
-        setIsAdd(true)
+    const handleSetFavorite = async (favoirteItem: IFavoriteItem) => {
+        setIsAdding(true)
         if (id != null) {
-            if (!isFavorite) {
+            if (!isFavorite()) {
                 AddFavoriteCard(favoirteItem, id).then(() => {
-                    setIsAdd(false)
-                    setIsFavorite(true)
+                    setIsAdding(false)
                     dispatch(addFavoriteItem(favoirteItem))
                 })
-            } else if (isFavorite) {
+            } else if (isFavorite()) {
                 DeleteFavoriteCard(favoirteItem.id, id).then(() => {
-                    setIsFavorite(false)
-                    setIsAdd(false)
+                    setIsAdding(false)
                     dispatch(addFavoriteItem(favoirteItem))
                 })
             }
@@ -79,11 +79,12 @@ const CardPlace = ({ place }: CardPlaceProps) => {
             console.log(e);
         }
     }
+
     const useCardPlaceStyle = CardPlaceStyle({ Pallete: pallete })
 
     if (place != undefined) {
         return (
-            <Card className={useCardPlaceStyle.classes.cardPlace}>
+            <Card  className={useCardPlaceStyle.classes.cardPlace}>
                 <CardMedia>
                     <img
                         className={useCardPlaceStyle.classes.placePhoto}
@@ -97,7 +98,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                     <Typography className={useCardPlaceStyle.classes.placeAdress}>{place.vicinity}</Typography>
                 </CardContent>
                 <CardActions className={useCardPlaceStyle.classes.cardActions}>
-                    <ButtonSave handleFunction={() => handleAddToFavorite(convertPlaceToFavorite(place))} isLoading={isAdd} isFavorite={isFavorite} />
+                    <ButtonSave handleFunction={() => handleSetFavorite(convertPlaceToFavorite(place))} isLoading={isAdding} isFavorite={isFavorite()} />
                     <ButtonTravel handleFunction={() => {
                         if (place.geometry?.location != null && map != null) {
                             handleClickMakeRoute()

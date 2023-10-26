@@ -5,13 +5,13 @@ import { IFavoriteItem } from "../../../models/IFavoriteItem";
 
 interface FavoriteItemsState {
     favoriteItems: IFavoriteItem[];
-    isLoaded: boolean,
+    isLoading: boolean,
     error: string
 }
 
 const initialState: FavoriteItemsState = {
     favoriteItems: [],
-    isLoaded: false,
+    isLoading: false,
     error: ''
 }
 
@@ -21,7 +21,6 @@ const FavoriteItemSlice = createSlice({
     reducers: {
         setFavoriteItems(state, action) {
             state.favoriteItems = action.payload
-            state.isLoaded = true
         },
         addFavoriteItem(state, action) {
             const existingItemIndex = state.favoriteItems.findIndex(item => item.title === action.payload.title);
@@ -31,10 +30,13 @@ const FavoriteItemSlice = createSlice({
                 state.favoriteItems.push(action.payload);
             }
         },
+        setFavoriteItemIsLoading(state, action) {
+            state.isLoading = action.payload
+        }
     }
 })
 
-export const { setFavoriteItems, addFavoriteItem } = FavoriteItemSlice.actions
+export const { setFavoriteItems, setFavoriteItemIsLoading, addFavoriteItem } = FavoriteItemSlice.actions
 
 export default FavoriteItemSlice.reducer
 

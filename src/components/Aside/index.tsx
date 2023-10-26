@@ -9,11 +9,9 @@ import FavoriteSelected from 'GUI/Favorite/FavoriteSelected'
 import Search from 'GUI/Search/Search';
 import SearchSelected from 'GUI/Search/SearchSelected'
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
-import { useAuth } from 'hooks/useAuth'
 import DoesntExistPhoto from 'public/doesntExist.png'
 import { useState } from 'react'
-import { setCurrentStatus, setFavoriteItems } from 'store/reducers'
-import { ReadFavoriteCardsUser } from 'utils/firebase'
+import { setCurrentStatus } from 'store/reducers'
 
 import AsideStyle from './styled'
 
@@ -29,18 +27,12 @@ export default function Aside() {
     const handleClickProfile = () => {
         setShowModal(prev => !prev)
     }
-    const { id } = useAuth()
-
-    const handleOnLoad = () => {
-        if (id != null) {
-            dispatch(setFavoriteItems(ReadFavoriteCardsUser(id)))
-        }
-    }
+    
 
     const useAsideStyle = AsideStyle({ Pallete: pallete })
 
     return (
-        <Box onLoad={handleOnLoad} className={useAsideStyle.classes.container}>
+        <Box className={useAsideStyle.classes.container}>
             <Box data-testid='aside' className={useAsideStyle.classes.asideContainer}>
                 <List className={useAsideStyle.classes.listItems}>
                     {currentStatus !== 'close' ?

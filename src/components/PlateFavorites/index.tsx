@@ -1,33 +1,57 @@
-import { Typography } from "@mui/material"
+import { CircularProgress, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import CardFavorite from "components/CardFavorite/ToggleCardFavorite"
 import { Waiter } from "components/Waiter"
-import {useTypeSelector } from "hooks/redux"
+import { useAppDispatch, useTypeSelector } from "hooks/redux"
+import { ReadFavoriteCardsUser } from 'utils/firebase'
+import { useAuth } from "hooks/useAuth"
+import { setFavoriteItemIsLoading, setFavoriteItems } from "store/reducers"
 
 import PlateFavoritesStyle from "./styled"
+import { useEffect } from "react"
 
 export const PlateFavorites = () => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const favoriteItems = useTypeSelector(state => state.favoriteItems.favoriteItems)
-   
+    const dispatch = useAppDispatch()
+    const favoriteIsLoading = useTypeSelector(state => state.favoriteItems.isLoading)
+    const { id } = useAuth()
+
+    useEffect(() => {
+        if (id != null) {
+            dispatch(setFavoriteItemIsLoading(true))
+            ReadFavoriteCardsUser(id).then((response) => {
+                dispatch(setFavoriteItemIsLoading(false))
+                dispatch(setFavoriteItems(response))
+            })
+        }
+    }, [])
+
     const usePlateFavoriteStyle = PlateFavoritesStyle({ Pallete: pallete })
     return (
         <>
             <Box data-testid='plate-favorite' className={usePlateFavoriteStyle.classes.cardsFavorites}>
                 <Typography className={usePlateFavoriteStyle.classes.titleFavorite}>Избранное:</Typography>
                 <Box className={usePlateFavoriteStyle.classes.containerCardsFavorites}>
-                    {favoriteItems.length > 0 ?
-                        favoriteItems.map((item) => {
-                            return (
-                                <>
-                                    <CardFavorite key={item.id} favoriteItem={item} />
-                                </>)
-                        })
+                    {favoriteIsLoading ?
+                        <CircularProgress />
                         :
                         <>
-                            <Waiter text={" Попробуйте что-нибудь добавить"} />
+                            {favoriteItems.length > 0 ?
+                                favoriteItems.map((item) => {
+                                    return (
+                                        <>
+                                            <CardFavorite key={item.id} favoriteItem={item} />
+                                        </>)
+                                })
+                                :
+                                <>
+                                    <Waiter text={" Попробуйте что-нибудь добавить"} />
+                                </>
+                            }
                         </>
                     }
+
                 </Box>
             </Box>
         </>

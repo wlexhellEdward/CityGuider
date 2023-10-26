@@ -49,7 +49,7 @@ export const RegisterForm = () => {
                 dispatch(setUser({
                     email: user.email,
                     id: user.uid,
-                    token: user.getIdToken(),
+                    token: user.refreshToken,
                     password: password,
                     firstName: firstName,
                     lastName: lastName

@@ -7,7 +7,7 @@ import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useAuth } from 'hooks/useAuth';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React, { useState } from 'react'
-import { clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
+import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
 import { DeleteFavoriteCard } from 'utils/firebase';
 import { getDirections } from 'utils/route';
 
@@ -21,9 +21,10 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     const { id } = useAuth()
     const [isAdd, setIsAdd] = useState(false)
     const dispatch = useAppDispatch()
-    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => {
+    const handleDeleteFavorite = (favoirteItem: IFavoriteItem) => {
         setIsAdd(true)
         if (id != null) {
+            dispatch(addFavoriteItem(favoirteItem))
             DeleteFavoriteCard(favoirteItem.id, id).then(() => setIsAdd(false))
         }
     }
@@ -93,7 +94,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <ButtonSave data-testid='delete-from-favorite' isLoading={isAdd} handleFunction={() => handleAddToFavorite(favoriteItem)} isFavorite={true} />
+                    <ButtonSave data-testid='delete-from-favorite' isLoading={isAdd} handleFunction={() => handleDeleteFavorite(favoriteItem)} isFavorite={true} />
                     <ButtonTravel handleFunction={handleClickRoute} />
                     <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
