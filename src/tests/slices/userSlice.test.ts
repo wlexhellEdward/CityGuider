@@ -8,7 +8,7 @@ describe('Тестирование "userSlice"', () => {
     it('Смена данных пользователя "setUser" action с пустыми данными', () => {
         const mockState = {
             token: "",
-            id: 2,
+            id: "2",
             email: "",
             password: "",
             firstName: "",
@@ -16,7 +16,7 @@ describe('Тестирование "userSlice"', () => {
         }
         const mockResult = {
             token: "",
-            id: 2,
+            id: "2",
             email: "",
             password: "",
             firstName: "",
@@ -29,7 +29,7 @@ describe('Тестирование "userSlice"', () => {
     it('Смена данных пользователя "setUser" action с заполнеными данными', () => {
         const mockState = {
             token: "",
-            id: 2,
+            id: "2",
             email: "",
             password: "",
             firstName: "",
@@ -50,7 +50,7 @@ describe('Тестирование "userSlice"', () => {
     it('Удаление данных пользователя при вызове "removeUser" action', () => {
         const mockState = {
             token: "",
-            id: 2,
+            id: "2",
             email: "",
             password: "",
             firstName: "",

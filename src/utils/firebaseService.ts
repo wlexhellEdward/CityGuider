@@ -3,7 +3,7 @@ import { IFavoriteItem } from "models/IFavoriteItem";
 
 const db = getDatabase();
 
-export function AddFavoriteCard(favorites: IFavoriteItem, userId: number) {
+export function AddFavoriteCard(favorites: IFavoriteItem, userId: string) {
     return new Promise((resolve, rejects) => {
         const favoritesArray = ref(db, `favorites/${userId}`);
         const newFavoritesArray = push(favoritesArray);
@@ -23,7 +23,7 @@ export function AddFavoriteCard(favorites: IFavoriteItem, userId: number) {
             })
     })
 }
-export function DeleteFavoriteCard(idFavorite: string | undefined, userId: number) {
+export function DeleteFavoriteCard(idFavorite: string | undefined, userId: string) {
     return new Promise((resolve, reject) => {
         const favoritesRef = ref(db, `favorites/${userId}`);
         get(favoritesRef).then((querySnapshot) => {
@@ -44,7 +44,7 @@ export function DeleteFavoriteCard(idFavorite: string | undefined, userId: numbe
     });
 }
 
-export async function ReadFavoriteCardsUser(userId: number) {
+export async function ReadFavoriteCardsUser(userId: string) {
     try {
         const starCountRef = ref(db, `favorites/${userId}`);
         const snapshot = await get(starCountRef);
@@ -54,6 +54,7 @@ export async function ReadFavoriteCardsUser(userId: number) {
                 data.push(childSnapshot.val());
             });
         }
+        console.log(data)
         return data;
     } catch (error) {
         console.log(error);

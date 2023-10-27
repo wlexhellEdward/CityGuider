@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface userSlice {
     token: string,
-    id: number | null,
+    id: string | null,
     email: string,
     password: string,
     firstName: string,
@@ -11,7 +11,7 @@ interface userSlice {
 
 const initialState: userSlice = {
     token: "",
-    id: 0,
+    id: "",
     email: "",
     password: "",
     firstName: "",

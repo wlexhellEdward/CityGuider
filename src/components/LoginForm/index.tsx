@@ -36,7 +36,7 @@ export const LoginForm = () => {
         handleSetIsLoading()
         const auth = getAuth()
         const formElement = event.target as HTMLFormElement;
-        const [email, password,] = [
+        const [email, password] = [
             formElement.email.value,
             formElement.password.value,
         ]

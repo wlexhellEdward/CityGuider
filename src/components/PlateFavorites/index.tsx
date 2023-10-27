@@ -6,7 +6,7 @@ import { useAppDispatch, useTypeSelector } from "hooks/redux"
 import { useAuth } from "hooks/useAuth"
 import { useEffect } from "react"
 import { setFavoriteItemIsLoading, setFavoriteItems } from "store/reducers"
-import { ReadFavoriteCardsUser } from 'utils/firebase'
+import { ReadFavoriteCardsUser } from 'utils/firebaseService'
 
 import PlateFavoritesStyle from "./styled"
 
@@ -37,7 +37,7 @@ export const PlateFavorites = () => {
                         <CircularProgress />
                         :
                         <>
-                            {favoriteItems.length > 0 ?
+                            {favoriteItems?.length > 0 ?
                                 favoriteItems.map((item) => {
                                     return (
                                         <>

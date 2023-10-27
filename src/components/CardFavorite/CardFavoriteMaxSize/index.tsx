@@ -8,7 +8,7 @@ import { useAuth } from 'hooks/useAuth';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React, { useState } from 'react'
 import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
-import { DeleteFavoriteCard } from 'utils/firebase';
+import { DeleteFavoriteCard } from 'utils/firebaseService';
 import { getDirections } from 'utils/route';
 
 import DoesntExistPhoto from '/public/doesntExist.png'

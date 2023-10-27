@@ -7,7 +7,7 @@ import { useAuth } from 'hooks/useAuth.ts';
 import { IFavoriteItem } from 'models/IFavoriteItem';
 import React from 'react'
 import { addFavoriteItem } from 'store/reducers/index.ts';
-import { DeleteFavoriteCard } from 'utils/firebase.ts';
+import { DeleteFavoriteCard } from 'utils/firebaseService.ts';
 import { refactorString } from 'utils/textRefactors.ts';
 
 import DoesntExistPhoto from '/public/doesntExist.png'

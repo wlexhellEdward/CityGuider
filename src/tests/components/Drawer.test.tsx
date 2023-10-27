@@ -11,10 +11,10 @@ jest.mock('firebase/app', () => {
 });
 
 jest.mock('firebase/database', () => {
+  const original = jest.requireActual('firebase/database');
   return {
-    database: jest.fn(() => ({
-      ref: jest.fn(),
-    })),
+      ...original,
+      getDatabase: jest.fn(),
   };
 });
 
