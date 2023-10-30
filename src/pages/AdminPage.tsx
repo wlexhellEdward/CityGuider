@@ -16,9 +16,7 @@ export function AdminPage() {
         <Box>
             <Bar />
             <DrawerAdmin open={open} handleDrawerClose={handleTogleDrawerOpen} />
-            <Box component="main">
-            <AdminContent/>
-            </Box>
+            <AdminContent />
         </Box>
     );
 }

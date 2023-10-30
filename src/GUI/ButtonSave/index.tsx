@@ -14,7 +14,7 @@ export default function ButtonSave({ handleFunction, isLoading, isFavorite }: Bu
     const useButtonSaveStyle = ButtonSaveStyle({ Pallete: pallete })
     return (
         <>
-            <LoadingButton loading={isLoading} onClick={() => handleFunction()} className={useButtonSaveStyle.classes.btnSaved}>
+            <LoadingButton loading={isLoading} onClick={handleFunction} className={useButtonSaveStyle.classes.btnSaved}>
                 {!isLoading ?
                     <>
                         <Icon className={useButtonSaveStyle.classes.icon}>
