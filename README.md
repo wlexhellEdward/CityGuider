@@ -44,3 +44,23 @@ $ npm run dev
 ```shell
 $ npm build
 ```
+
+## Environment Variables
+
+To run this project, you need to set up the following environment variables. You can do this by creating a `.env` file in the root directory of your project and adding the following values:
+
+- **REACT_APP_GOOGLE_MAPS_API_KEY** = *your_google_maps_api_key*
+- **REACT_APP_FIREBASE_API_KEY** = *your_firebase_api_key*
+- **REACT_APP_FIREBASE_AUTH_DOMAIN** = *your_firebase_auth_domain*
+- **REACT_APP_FIREBASE_PROJECT_ID** = *your_firebase_project_id*
+- **REACT_APP_FIREBASE_STORAGE_BUCKET** = *your_firebase_storage_bucket*
+- **REACT_APP_FIREBASE_MESSAGING_SENDER_ID** = *your_firebase_messaging_sender_id*
+- **REACT_APP_FIREBASE_APP_ID** = *your_firebase_app_id*
+
+
+Make sure to replace `your_google_maps_api_key`, `your_firebase_api_key`, and other placeholders with your actual environment variable values.
+
+You can then access these environment variables in your React application using `process.env.<VARIABLE_NAME>`. For example, to access your Google Maps API key, you can use `process.env.REACT_APP_GOOGLE_MAPS_API_KEY`.
+
+Please make sure to keep your environment variables secret and not to commit them to your version control system for security reasons.
+
