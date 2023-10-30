@@ -54,7 +54,6 @@ export async function ReadFavoriteCardsUser(userId: string) {
                 data.push(childSnapshot.val());
             });
         }
-        console.log(data)
         return data;
     } catch (error) {
         console.log(error);

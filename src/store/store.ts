@@ -11,7 +11,7 @@ import storage from 'redux-persist/lib/storage';
 
 import appSlice from './reducers/appSlice/appSlice';
 import centerSlice from './reducers/centerSlice/centerSlice';
-import currentStatusSlice from './reducers/currentStatus/currentStatusSlice';
+import currentStatusSlice from './reducers/currentStatusSlice/currentStatusSlice';
 import errorSlice from './reducers/errorSlice/errorSlice';
 import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice';
 import mapSlice from './reducers/mapSlice/mapSlice';
