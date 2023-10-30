@@ -1,12 +1,32 @@
+import { LatLng } from '@googlemaps/jest-mocks';
 import '@testing-library/jest-dom'
 
-import { fireEvent,render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Aside from 'components/Aside';
 import { Provider } from 'react-redux';
+import { setFavoriteItems } from 'store/reducers';
 import { store } from 'store/store';
 
+jest.mock('firebase/database', () => {
+    const original = jest.requireActual('firebase/database');
+    return {
+        ...original,
+        getDatabase: jest.fn(),
+    };
+});
 
 describe('Тестирование Aside', () => {
+    beforeEach(() => {
+        const favoriteItem = {
+            id: "test",
+            type: ['test', 'test'],
+            img: 'test',
+            coordinates: new LatLng(1, 2),
+            title: 'test',
+            description: 'test',
+        }
+        store.dispatch(setFavoriteItems([favoriteItem]))
+    })
     test('Проверка отображение Aside на странице', () => {
         render(
             <Provider store={store}>
@@ -22,6 +42,7 @@ describe('Тестирование Aside', () => {
                 <Aside />
             </Provider>
         );
+
         const btnSearch = screen.getByTestId(/button-search/i);
         fireEvent.click(btnSearch)
         const drawerContent = screen.getByPlaceholderText(/Место, адрес.../i);
@@ -33,6 +54,7 @@ describe('Тестирование Aside', () => {
                 <Aside />
             </Provider>
         );
+
         const btnSearch = screen.getByTestId(/button-favorite/i);
         fireEvent.click(btnSearch)
         const drawerContentFavoritePlate = screen.getByTestId(/plate-favorite/i);

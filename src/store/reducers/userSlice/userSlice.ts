@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface userSlice {
     token: string,
-    id: number | null,
+    id: string | null,
     email: string,
     password: string,
     firstName: string,
@@ -11,7 +11,7 @@ interface userSlice {
 
 const initialState: userSlice = {
     token: "",
-    id: 0,
+    id: "",
     email: "",
     password: "",
     firstName: "",
@@ -26,8 +26,8 @@ const userSlice = createSlice({
         setUser(state, action) {
             state.id = action.payload.id;
             state.token = action.payload.token;
-            state.firstName = action.payload.name;
-            state.lastName = action.payload.secondName;
+            state.firstName = action.payload.firstName;
+            state.lastName = action.payload.lastName;
             state.password = action.payload.password;
             state.email = action.payload.email
         },
