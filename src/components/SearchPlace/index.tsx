@@ -22,8 +22,6 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
         }
     }
 
-
-
     const useSearchPlaceStyle = SearchPlaceStyle({Pallete:pallete})
     return (
         <>
