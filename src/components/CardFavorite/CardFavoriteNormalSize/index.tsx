@@ -4,10 +4,10 @@ import FavoriteImg from 'assets/img/CardFavoriteActions/inFavorite.svg'
 import { Places } from 'components/Drawer/Places';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useAuth } from 'hooks/useAuth.ts';
-import { IFavoriteItem } from 'models/IFavoriteItem';
+import { IFavoriteItem } from 'interfaces/IFavoriteItem.ts';
 import React from 'react'
 import { addFavoriteItem } from 'store/reducers/index.ts';
-import { DeleteFavoriteCard } from 'utils/firebaseService.ts';
+import { deleteFavoriteCard } from 'utils/firebaseService.ts';
 import { refactorString } from 'utils/textRefactors.ts';
 
 import DoesntExistPhoto from '/public/doesntExist.png'
@@ -22,7 +22,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
 
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => {
         if (id != null) {
-            DeleteFavoriteCard(favoirteItem.id, id)
+            deleteFavoriteCard(favoirteItem.id, id)
         }
         dispatch(addFavoriteItem(favoirteItem))
     }

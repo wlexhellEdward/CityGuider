@@ -1,4 +1,4 @@
-import { ThemeApp } from 'models/IThemeApp';
+import { ThemeApp } from 'interfaces/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
 const ModalFormErrorStyle = makeStyles<ThemeApp>()(

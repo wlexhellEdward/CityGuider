@@ -1,9 +1,11 @@
 import { get, getDatabase, push, ref, remove, set } from "firebase/database";
-import { IFavoriteItem } from "models/IFavoriteItem";
+import { IFavoriteItem } from "interfaces/IFavoriteItem";
+import { IUser } from "interfaces/IUser";
+import { getMessageError } from "./errorFinder";
 
 const db = getDatabase();
 
-export function AddFavoriteCard(favorites: IFavoriteItem, userId: string) {
+export function addFavoriteCard(favorites: IFavoriteItem, userId: string) {
     return new Promise((resolve, rejects) => {
         const favoritesArray = ref(db, `favorites/${userId}`);
         const newFavoritesArray = push(favoritesArray);
@@ -23,7 +25,7 @@ export function AddFavoriteCard(favorites: IFavoriteItem, userId: string) {
             })
     })
 }
-export function DeleteFavoriteCard(idFavorite: string | undefined, userId: string) {
+export function deleteFavoriteCard(idFavorite: string | undefined, userId: string) {
     return new Promise((resolve, reject) => {
         const favoritesRef = ref(db, `favorites/${userId}`);
         get(favoritesRef).then((querySnapshot) => {
@@ -44,7 +46,7 @@ export function DeleteFavoriteCard(idFavorite: string | undefined, userId: strin
     });
 }
 
-export async function ReadFavoriteCardsUser(userId: string) {
+export async function getFavoriteCardsUser(userId: string) {
     try {
         const starCountRef = ref(db, `favorites/${userId}`);
         const snapshot = await get(starCountRef);
@@ -56,6 +58,37 @@ export async function ReadFavoriteCardsUser(userId: string) {
         }
         return data;
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
+}
+
+export function getListAllUsers() {
+    return new Promise(async (resolve, reject) => {
+        const starCountRef = ref(db, `users/`);
+        const snapshot = await get(starCountRef);
+        const data: IUser[] = [];
+        if (snapshot.exists()) {
+            snapshot.forEach((childSnapshot) => {
+                data.push(childSnapshot.val());
+            });
+        }
+        if (data.length > 0) {
+            resolve(data);
+        } else {
+            reject('Error method')
+        }
+    })
+}
+
+export function deleteUserById(id: string) {
+    const userRef = ref(db, `users/${id}`);
+    return new Promise((resolve, reject) => {
+        remove(userRef)
+            .then(() => {
+                resolve('succes')
+            })
+            .catch((error) => {
+                reject(error)
+            });
+    })
 }

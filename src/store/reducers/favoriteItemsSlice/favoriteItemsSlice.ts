@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { IFavoriteItem } from "../../../models/IFavoriteItem";
+import { IFavoriteItem } from "../../../interfaces/IFavoriteItem";
 
 
 interface FavoriteItemsState {

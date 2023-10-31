@@ -1,5 +1,5 @@
 import { darken } from "@mui/system/colorManipulator";
-import { ThemeApp } from "models/IThemeApp";
+import { ThemeApp } from "interfaces/IThemeApp";
 import { makeStyles } from "tss-react/mui";
 
 
@@ -32,7 +32,6 @@ const AsideStyle = makeStyles<ThemeApp>()(
             justifyContent: 'center',
             textAlign: 'center',
             marginBottom: 20,
-            
             marginTop: 10,
             [theme.breakpoints.down('sm')]: {
                 marginBottom: 5,

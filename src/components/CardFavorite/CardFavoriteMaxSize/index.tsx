@@ -5,10 +5,10 @@ import ButtonSave from 'GUI/ButtonSave';
 import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useAuth } from 'hooks/useAuth';
-import { IFavoriteItem } from 'models/IFavoriteItem';
+import { IFavoriteItem } from 'interfaces/IFavoriteItem';
 import React, { useState } from 'react'
 import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
-import { DeleteFavoriteCard } from 'utils/firebaseService';
+import { deleteFavoriteCard } from 'utils/firebaseService';
 import { getDirections } from 'utils/route';
 
 import DoesntExistPhoto from '/public/doesntExist.png'
@@ -25,7 +25,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
         setIsAdd(true)
         if (id != null) {
             dispatch(addFavoriteItem(favoirteItem))
-            DeleteFavoriteCard(favoirteItem.id, id).then(() => setIsAdd(false))
+            deleteFavoriteCard(favoirteItem.id, id).then(() => setIsAdd(false))
         }
     }
     const center = useTypeSelector(state => state.currentPosition.humanPosition)

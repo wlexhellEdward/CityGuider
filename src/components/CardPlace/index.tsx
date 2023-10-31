@@ -5,11 +5,11 @@ import ButtonSave from 'GUI/ButtonSave';
 import ButtonTravel from 'GUI/ButtonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { useAuth } from 'hooks/useAuth.ts';
-import { IFavoriteItem } from 'models/IFavoriteItem'
+import { IFavoriteItem } from 'interfaces/IFavoriteItem.ts'
 import DoesntExistPhoto from 'public/doesntExist.png'
 import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers'
 import { convertPlaceToFavorite } from 'utils/convert'
-import { AddFavoriteCard, DeleteFavoriteCard } from 'utils/firebaseService.ts';
+import { addFavoriteCard, deleteFavoriteCard } from 'utils/firebaseService.ts';
 import { getDirections } from 'utils/route';
 
 import { CardPlaceProps } from './interfaces.ts';
@@ -35,12 +35,12 @@ const CardPlace = ({ place }: CardPlaceProps) => {
         setIsAdding(true)
         if (id != null) {
             if (!isFavorite()) {
-                AddFavoriteCard(favoirteItem, id).then(() => {
+                addFavoriteCard(favoirteItem, id).then(() => {
                     setIsAdding(false)
                     dispatch(addFavoriteItem(favoirteItem))
                 })
             } else if (isFavorite()) {
-                DeleteFavoriteCard(favoirteItem.id, id).then(() => {
+                deleteFavoriteCard(favoirteItem.id, id).then(() => {
                     setIsAdding(false)
                     dispatch(addFavoriteItem(favoirteItem))
                 })

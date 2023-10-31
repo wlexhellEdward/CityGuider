@@ -1,4 +1,4 @@
-import { ThemeApp } from 'models/IThemeApp';
+import { ThemeApp } from 'interfaces/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
 
@@ -8,29 +8,30 @@ const adminContentStyle = makeStyles<ThemeApp>()(
             display: 'flex',
             font: 'mont',
             justifyContent: 'center',
-            marginBottom: theme.spacing(5)
         },
         content: {
-            margin: theme.spacing(10, 0, 10, 0),
+            margin: theme.spacing(12, 0, 10, 2),
             font: 'mont',
             color: 'black',
         },
         userContent: {
             display: 'flex',
-            flexDirection:'column',
+            flexDirection: 'column',
             justifyContent: 'center',
-            alignItems:'center',
-            overflow:'hidden'
+            alignItems: 'center',
+            overflow: 'hidden'
         },
         cardsUsers: {
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
             gap: theme.spacing(2),
+            marginLeft: theme.spacing(8),
+            minHeight: theme.spacing(70)
         },
         cardUser: {
             color: Pallete.title,
-            maxHeight:theme.spacing(30),
+            maxHeight: theme.spacing(35)
         },
         cardMedia: {
             height: theme.spacing(5),
@@ -50,26 +51,23 @@ const adminContentStyle = makeStyles<ThemeApp>()(
             display: 'flex',
             justifyContent: 'space-between',
             columnGap: theme.spacing(5),
-            '&>*':{
-                fontSize:theme.spacing(1.4)
-            }
+            padding: 0,
         },
         cardContent: {
-            padding: 0,
-            '&>*':{
-                padding:theme.spacing(0.5,2,0,2)
-            },
-            '&>last-child':{
-                padding:0,
+            padding: theme.spacing(0.5, 2, 0, 2),
+            '&>*': {
+                padding: theme.spacing(0),
+                fontSize: theme.spacing(1.4),
             }
         },
         cardActions: {
             display: 'flex',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginTop: theme.spacing(-2.8),
         },
-        pagination:{
-            font:'mont',
-            margin:theme.spacing(2,0,5,0),
+        pagination: {
+            font: 'mont',
+            margin: theme.spacing(2, 0, 5, 0),
         }
 
     })

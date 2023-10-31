@@ -1,5 +1,5 @@
 import { darken } from '@mui/system/colorManipulator';
-import { ThemeAppCardFavorite } from 'models/IThemeApp';
+import { ThemeAppCardFavorite } from 'interfaces/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
 

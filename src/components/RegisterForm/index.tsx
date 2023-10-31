@@ -15,6 +15,7 @@ import { setUser } from 'store/reducers/userSlice/userSlice';
 import { getMessageError } from 'utils/errorFinder';
 
 import RegisterFormStyle from './styled';
+import { getDatabase, ref, set } from 'firebase/database';
 
 export const RegisterForm = () => {
     const dispatch = useAppDispatch()
@@ -37,6 +38,7 @@ export const RegisterForm = () => {
         event.preventDefault();
         const auth = getAuth()
         handleSetIsLoading()
+        const db = getDatabase()
         const formElement = event.target as HTMLFormElement;
         const [email, password, firstName, lastName] = [
             formElement.email.value,
@@ -54,6 +56,15 @@ export const RegisterForm = () => {
                     firstName: firstName,
                     lastName: lastName
                 }))
+                const date = new Date()
+                set(ref(db, 'users/' + user.uid), {
+                    id:user.uid,
+                    email: email,
+                    registered: date.toLocaleDateString(),
+                    lastLogin:date.toLocaleDateString(),
+                    firstName:firstName,
+                    lastName:lastName
+                })
                 redirectTo('/');
                 handleSetIsLoading()
             })
@@ -66,7 +77,7 @@ export const RegisterForm = () => {
             )
     };
 
-    const useRegisterFormStyle = RegisterFormStyle({Pallete:pallete})
+    const useRegisterFormStyle = RegisterFormStyle({ Pallete: pallete })
     return (
         <>
             <Box className={useRegisterFormStyle.classes.containerRegister}>

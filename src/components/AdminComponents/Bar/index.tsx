@@ -10,7 +10,7 @@ export const Bar = () => {
     return (
         <AppBar className={useBarStyle.classes.barBox}>
             <Toolbar>
-                <Typography variant="h6">
+                <Typography>
                     Админ панель City Guider
                 </Typography>
             </Toolbar>

@@ -17,6 +17,7 @@ import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice
 import mapSlice from './reducers/mapSlice/mapSlice';
 import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
 import userSlice from './reducers/userSlice/userSlice';
+import adminSlice from './reducers/adminSlice/adminSlice';
 
 
 const rootReducer = combineReducers({
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
     currentPosition: centerSlice,
     searchSlice: searchSlice,
     favoriteItems: favoriteItemsSlice,
-    map: mapSlice
+    map: mapSlice,
+    adminSlice:adminSlice
 })
 
 

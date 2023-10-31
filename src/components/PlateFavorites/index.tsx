@@ -6,7 +6,7 @@ import { useAppDispatch, useTypeSelector } from "hooks/redux"
 import { useAuth } from "hooks/useAuth"
 import { useEffect } from "react"
 import { setFavoriteItemIsLoading, setFavoriteItems } from "store/reducers"
-import { ReadFavoriteCardsUser } from 'utils/firebaseService'
+import { getFavoriteCardsUser } from 'utils/firebaseService'
 
 import PlateFavoritesStyle from "./styled"
 
@@ -20,7 +20,7 @@ export const PlateFavorites = () => {
     useEffect(() => {
         if (id != null) {
             dispatch(setFavoriteItemIsLoading(true))
-            ReadFavoriteCardsUser(id).then((response) => {
+            getFavoriteCardsUser(id).then((response) => {
                 dispatch(setFavoriteItemIsLoading(false))
                 dispatch(setFavoriteItems(response))
             })

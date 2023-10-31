@@ -14,6 +14,7 @@ import { setUser } from 'store/reducers/userSlice/userSlice';
 import { getMessageError } from 'utils/errorFinder';
 
 import LoginFormStyle from './styled';
+import { getDatabase, ref, update } from 'firebase/database';
 
 export const LoginForm = () => {
     const dispatch = useAppDispatch()
@@ -34,6 +35,7 @@ export const LoginForm = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         handleSetIsLoading()
+        const db = getDatabase()
         const auth = getAuth()
         const formElement = event.target as HTMLFormElement;
         const [email, password] = [
@@ -42,12 +44,16 @@ export const LoginForm = () => {
         ]
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
+                const dt = new Date();
                 dispatch(setUser({
                     email: user.email,
                     id: user.uid,
                     token: user.getIdToken(),
                     password: password,
                 }))
+                update(ref(db, 'users/' + user.uid), {
+                    lastLogin: dt.toLocaleDateString()
+                })
                 redirectTo('/');
                 handleSetIsLoading();
             })
@@ -60,7 +66,7 @@ export const LoginForm = () => {
             )
     };
 
-    const useLoginFormStyle = LoginFormStyle({Pallete:pallete})
+    const useLoginFormStyle = LoginFormStyle({ Pallete: pallete })
     return (
         <>
             <Box className={useLoginFormStyle.classes.containerRegister}>
