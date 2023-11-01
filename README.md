@@ -34,19 +34,20 @@ You can access the live version of the application [here](https://dapper-kataifi
 ## Setup
 
 ```shell
-To run client part
 
 $ git clone https://github.com/wlexhellEdward/TestTask
+
+To run client part
+
 $ cd client
 $ npm i
 $ npm run dev
 
 To run server part
 
-$ git clone https://github.com/wlexhellEdward/TestTask
-$ cd client
-$ npm i
-$ npm run dev
+$ cd server
+$ node i
+$ node server.js
 ```
 
 ## Build
