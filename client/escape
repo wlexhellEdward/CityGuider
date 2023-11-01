@@ -1,0 +1,188 @@
+[33mcommit 1b7f4144334745b81848dd638eed403ccf8cd89f[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m
+Merge: 126eab3 bc621bc
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 16 15:52:05 2023 +0300
+
+    Merge branch 'feature/refactor-from-the-review' into develop
+
+[33mcommit bc621bc77abeb0fae7c24d8ba5ad74cabff11f63[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 16 15:51:32 2023 +0300
+
+    Add custom hook useOnClickOuside
+
+[33mcommit 7a4a08e65ab96a81e8487be7d31d0243ae4551a3[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 16 11:19:42 2023 +0300
+
+    some fixes
+
+[33mcommit 109e43319de27eeba59712f35e489677ca2ba354[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 16 09:53:54 2023 +0300
+
+    Some fixes
+
+[33mcommit 166b5a117afb96e64c2a23f18627da67aaf1c6d3[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 16 09:21:31 2023 +0300
+
+    Creating a dictionary with a palette of colors
+
+[33mcommit e1260ad93b0223eae82b73908f7a74d8c58dee16[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 16 09:07:03 2023 +0300
+
+    Rename iterfaceProps to interfaces
+
+[33mcommit 126eab3b1eea416c467d7fb5b245e2ae0cd54357[m
+Merge: 3cc488d 408983e
+Author: wlex <lllvalerall@mail.ru>
+Date:   Fri Oct 13 18:36:57 2023 +0300
+
+    Merge branch 'feature/mobile-optimization' into develop
+
+[33mcommit 408983e94a9a81d3128c18570f682ccc1ce81358[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Fri Oct 13 18:34:24 2023 +0300
+
+    Added the adaptive, adjusted the font, corrected the layout
+
+[33mcommit 363a126c2cf24a116461167daf14d7f185b3cfdc[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Thu Oct 12 19:40:06 2023 +0300
+
+    Spread across the Sidebar components, fixed styles, fixed layout
+
+[33mcommit 6277828c02c599a79a31ae9d3cb973987fc86bd2[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Thu Oct 12 13:48:04 2023 +0300
+
+    wrote adaptive, broke the layout
+
+[33mcommit 82f0f9bb84016f9dcdfded615d5558acb411b45d[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Thu Oct 12 12:00:52 2023 +0300
+
+    Optimized the route code
+
+[33mcommit 3cc488d9be51e2e01057b0885bae9b17d3b44790[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Wed Oct 11 17:57:25 2023 +0300
+
+    confirm optimized-app
+
+[33mcommit 34015ad1341efe5388c6ea6ff5ea822c657e4e8d[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Wed Oct 11 15:48:55 2023 +0300
+
+    stylization progress bar of route info
+
+[33mcommit 8e1e53e674b387618ce763167162ce31734dee19[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Tue Oct 10 20:00:59 2023 +0300
+
+    add route enhancements
+
+[33mcommit dc785e992337cc30203f3e740c23fd2887137072[m
+Merge: cb050eb bbbe9f2
+Author: wlex <lllvalerall@mail.ru>
+Date:   Tue Oct 10 19:25:06 2023 +0300
+
+    Merge branch 'feature/refactor-after-the-review' into develop
+
+[33mcommit bbbe9f2b3df81713122f9820ce0a26781366da76[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Tue Oct 10 19:24:57 2023 +0300
+
+    some fixes
+
+[33mcommit 6ea80a2c7464d87c9f2c31b80740b84db0d7ee65[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 9 19:04:02 2023 +0300
+
+    Adding alias, sorting imports, removing interfaces
+
+[33mcommit 5fd4e9c3a70c4ef02c6c9c52b1ce18ee5954ac84[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 9 15:35:54 2023 +0300
+
+    Adding the alt/title attribute to the img tag
+
+[33mcommit cb050eb8d906b2fb8a09c60e674473c2e1d69607[m[33m ([m[1;32mmain[m[33m)[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 9 15:16:05 2023 +0300
+
+    Renaming files of components
+
+[33mcommit 6ed83b3df9d40560946c7e0466e662d2c626335f[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Thu Oct 5 20:41:27 2023 +0300
+
+    Added route construction
+
+[33mcommit 94eccbbade09971401fb2a914584887f68bb856f[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Thu Oct 5 14:02:50 2023 +0300
+
+    Some fixes
+
+[33mcommit d1596a684d7981452ae0a598f93cf77990ce6c29[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Thu Oct 5 13:04:46 2023 +0300
+
+    Adding redux persist, configuring it, the logic of adding/removing favorite places is done
+
+[33mcommit ab4a63ec0a1cca93a369a9d280ecf6b3db9f774d[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Wed Oct 4 22:17:16 2023 +0300
+
+    Displaying a card with detailed information when clicking on a place
+
+[33mcommit b7bbd9856963d42c677bbfce512e31c967f5f32e[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Wed Oct 4 17:06:30 2023 +0300
+
+    Fixed the display of icons and the correct output of establishments by type
+
+[33mcommit 88f8a124113bc7a74526166a9e388b90daea5bf1[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Tue Oct 3 14:16:09 2023 +0300
+
+    Completely get rid of props drilling in the proje
+
+[33mcommit b7cb620b515337997ffc1572d8e0459764fc53e1[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 2 23:31:08 2023 +0300
+
+    Adding redux and removing props drilling
+
+[33mcommit 043cc5a87c6bff926c1a48d2151bee3110c42dab[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Mon Oct 2 12:37:40 2023 +0300
+
+    Setting up the autocomplete and styling suggestions
+
+[33mcommit 1e439a6f895f188344981b9976ab10c0806bdad1[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Sat Sep 30 16:03:48 2023 +0300
+
+    Adding geo definition and marker
+
+[33mcommit e1b4ba7ee12649547cd040443dbb70235026a9d9[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Sat Sep 30 15:09:13 2023 +0300
+
+    Add autocomplete component and its stylization
+
+[33mcommit 86015c21771590ecb58ddd3cb406154c323f9015[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Fri Sep 29 14:34:18 2023 +0300
+
+    Add style for Map
+
+[33mcommit c51faad5a1ca62291c699fa88bec6941564ac7cf[m
+Author: wlex <lllvalerall@mail.ru>
+Date:   Thu Sep 28 21:53:30 2023 +0300
+
+    Rebooting the project due to problems with package.json
