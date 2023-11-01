@@ -34,7 +34,17 @@ You can access the live version of the application [here](https://dapper-kataifi
 ## Setup
 
 ```shell
+To run client part
+
 $ git clone https://github.com/wlexhellEdward/TestTask
+$ cd client
+$ npm i
+$ npm run dev
+
+To run server part
+
+$ git clone https://github.com/wlexhellEdward/TestTask
+$ cd client
 $ npm i
 $ npm run dev
 ```
@@ -42,6 +52,8 @@ $ npm run dev
 ## Build
 
 ```shell
+for client part
+
 $ npm build
 ```
 
@@ -61,6 +73,24 @@ To run this project, you need to set up the following environment variables. You
 Make sure to replace `your_google_maps_api_key`, `your_firebase_api_key`, and other placeholders with your actual environment variable values.
 
 You can then access these environment variables in your React application using `process.env.<VARIABLE_NAME>`. For example, to access your Google Maps API key, you can use `process.env.REACT_APP_GOOGLE_MAPS_API_KEY`.
+
+For the server part, where Firebase Admin SDK is used, you can store your credentials in a JSON file. Follow these steps:
+
+1. Create a JSON file (e.g., `firebase-admin-credentials.json`) containing your Firebase Admin SDK credentials. Place this file in the root directory of your server.
+
+2. In your server code, load the credentials from the JSON file to configure Firebase Admin SDK. Here's an example in Node.js:
+
+   ```javascript
+   const admin = require('firebase-admin');
+   const serviceAccount = require('./firebase-admin-credentials.json'); // Path to your JSON file
+
+   admin.initializeApp({
+     credential: admin.credential.cert(serviceAccount),
+     // Other settings
+   });
+Ensure that firebase-admin-credentials.json is stored securely and not committed to your version control system (e.g., add it to your .gitignore file) to protect it from unauthorized access.
+
+You can follow a similar approach for other confidential data or settings that you need to store in JSON files.
 
 Please make sure to keep your environment variables secret and not to commit them to your version control system for security reasons.
 
