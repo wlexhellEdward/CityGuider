@@ -1,18 +1,20 @@
-import { Box, Input, List, ListItem, Typography } from '@mui/material'
-import searchSVG from 'assets/img/DrawerActions/searchInput.svg'
-import { useAppDispatch, useTypeSelector } from 'hooks/redux.ts';
-import { useGoogleMaps } from 'hooks/useGoogleMapsLoader.ts';
-import { useOnClickOutside } from 'hooks/useOnClickOutside.ts';
-import DoesntExistPhoto from 'public/doesntExist.png'
 import { useEffect, useRef } from 'react';
-import { setCenter } from 'store/reducers/index.ts';
+
+import { Box, Input, List, ListItem, Typography } from '@mui/material'
+
+import searchSVG from '@/assets/img/DrawerActions/searchInput.svg'
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
+import { useGoogleMaps } from '@/hooks/useGoogleMapsLoader.ts';
+import { useOnClickOutside } from '@/hooks/useOnClickOutside.ts';
+import { setCenter } from '@/store/reducers/index.ts';
+import { refactorString } from '@/utils/textRefactors.ts';
+
+import AutocompleteStyle from './styled.ts'
+import DoesntExistPhoto from '/public/doesntExist.png'
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
 } from "use-places-autocomplete";
-import { refactorString } from 'utils/textRefactors.ts';
-
-import AutocompleteStyle from './styled.ts'
 
 export default function Autocomplete() {
     const isLoaded = useGoogleMaps()

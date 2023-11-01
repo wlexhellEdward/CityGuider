@@ -1,10 +1,11 @@
 import { Box, Container } from '@mui/system';
-import openDrawerArrow from 'assets/img/DrawerActions/CloseDrawerButton/arrowDisableDrawer.svg'
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import DoesntExistPhoto from 'public/doesntExist.png'
-import { setCurrentStatus } from 'store/reducers';
+
+import openDrawerArrow from '@/assets/img/DrawerActions/CloseDrawerButton/arrowDisableDrawer.svg'
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { setCurrentStatus } from '@/store/reducers';
 
 import ArrowBoxStyle from './styled';
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 function ArrowBox() {
     const dispatch = useAppDispatch()

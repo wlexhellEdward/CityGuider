@@ -4,9 +4,9 @@ import { makeStyles } from 'tss-react/mui';
 
 const paginationBarStyle = makeStyles<ThemeApp>()(
     (theme, { Pallete }) => ({
-        
         pagination: {
             font: 'mont',
+            color: Pallete.title,
             margin: theme.spacing(2, 0, 5, 0),
         }
 

@@ -1,7 +1,6 @@
 import userReducer, {
-    setUser,
-    removeUser
-} from "store/reducers/userSlice/userSlice"
+    removeUser,
+    setUser} from "store/reducers/userSlice/userSlice"
 
 
 describe('Тестирование "userSlice"', () => {

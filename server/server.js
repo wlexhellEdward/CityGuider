@@ -5,12 +5,11 @@ const app = express();
 const port = 3000;
 
 const { initializeFirebase } = require("./firebaseConfig");
-const { allowedPort } = require('./utils/consts.json')
 const userRoutes = require("./routes/userRoutes");
 
 initializeFirebase(admin);
 
-
+app.use(express.json());
 app.use(cors());
 app.use("/api/users", userRoutes);
 

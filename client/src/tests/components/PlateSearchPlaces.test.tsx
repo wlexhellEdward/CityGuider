@@ -1,9 +1,10 @@
-import '@testing-library/jest-dom'
-
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { PlateSearchPlaces } from 'components/plateSearchPlaces';
 import { Provider } from 'react-redux';
-import { store } from 'store/store';
+
+import { PlateSearchPlaces } from '@/components/plateSearchPlaces';
+import { store } from '@/store/store';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+
+import '@testing-library/jest-dom'
 
 
 describe('Тестирование PlateSearchPlaces', () => {

@@ -1,7 +1,6 @@
 import centerRducer, {
     setCenter,
     setHumanPosition
-
 } from "store/reducers/centerSlice/centerSlice";
 
 describe('Тестирование "centerSlice" ', () => {

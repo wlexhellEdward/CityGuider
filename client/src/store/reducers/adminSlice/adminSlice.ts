@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { IUser } from "interfaces/IUser";
 
 interface adminState {
@@ -17,11 +18,11 @@ const adminSlice = createSlice({
             state.users = action.payload
         },
         deleteUser(state, action) {
-            state.users = state.users.filter(user => user.id != action.payload)
+            state.users = state.users.filter(user => user.uid != action.payload)
         },
         editUser(state, action) {
             const editedUser = action.payload;
-            const userIndex = state.users.findIndex(user => user.id === editedUser.id);
+            const userIndex = state.users.findIndex(user => user.uid === editedUser.uid);
             if (userIndex !== -1) {
                 state.users[userIndex] = editedUser;
             }

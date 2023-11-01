@@ -1,4 +1,3 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import {
     FLUSH,
     PAUSE,
@@ -9,6 +8,9 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+
+import adminSlice from './reducers/adminSlice/adminSlice';
 import appSlice from './reducers/appSlice/appSlice';
 import centerSlice from './reducers/centerSlice/centerSlice';
 import currentStatusSlice from './reducers/currentStatusSlice/currentStatusSlice';
@@ -17,7 +19,6 @@ import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice
 import mapSlice from './reducers/mapSlice/mapSlice';
 import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
 import userSlice from './reducers/userSlice/userSlice';
-import adminSlice from './reducers/adminSlice/adminSlice';
 
 
 const rootReducer = combineReducers({

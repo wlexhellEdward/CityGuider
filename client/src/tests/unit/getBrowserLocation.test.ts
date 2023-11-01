@@ -1,4 +1,4 @@
-import { getBrowserLocation } from "utils/geo";
+import { getBrowserLocation } from "@/utils/geo";
 
 
 describe('Проверка работы метода getBrowserLocation', () => {

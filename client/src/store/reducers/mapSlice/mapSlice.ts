@@ -1,5 +1,5 @@
+import { MAP_THEME } from "@/utils/consts";
 import { createSlice } from "@reduxjs/toolkit";
-import { MAP_THEME } from "utils/consts";
 
 interface mapState {
     mapRef: google.maps.Map | null,

@@ -1,21 +1,22 @@
+import * as React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { LoadingButton } from '@mui/lab';
 import {
     Avatar, Box,
     Link, TextField, Typography
 } from '@mui/material';
-import { ModalFormError } from 'components/modalFormError';
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import * as React from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
-import { setError } from 'store/reducers/errorSlice/errorSlice';
-import { setUser } from 'store/reducers/userSlice/userSlice';
-import { getMessageError } from 'utils/errorFinder';
+
+import { ModalFormError } from '@/components/modalFormError';
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { setError } from '@/store/reducers/errorSlice/errorSlice';
+import { setUser } from '@/store/reducers/userSlice/userSlice';
+import { getMessageError } from '@/utils/errorFinder';
 
 import RegisterFormStyle from './styled';
-import { getDatabase, ref, set } from 'firebase/database';
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 export const RegisterForm = () => {
     const dispatch = useAppDispatch()
@@ -37,13 +38,10 @@ export const RegisterForm = () => {
         event.preventDefault();
         const auth = getAuth()
         handleSetIsLoading()
-        const db = getDatabase()
         const formElement = event.target as HTMLFormElement;
-        const [email, password, firstName, lastName] = [
+        const [email, password] = [
             formElement.email.value,
             formElement.password.value,
-            formElement.firstName.value,
-            formElement.lastName.value
         ]
         createUserWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
@@ -52,18 +50,7 @@ export const RegisterForm = () => {
                     id: user.uid,
                     token: user.refreshToken,
                     password: password,
-                    firstName: firstName,
-                    lastName: lastName
                 }))
-                const date = new Date()
-                set(ref(db, 'users/' + user.uid), {
-                    id:user.uid,
-                    email: email,
-                    registered: date.toLocaleDateString(),
-                    lastLogin:date.toLocaleDateString(),
-                    firstName:firstName,
-                    lastName:lastName
-                })
                 redirectTo('/');
                 handleSetIsLoading()
             })
@@ -88,42 +75,17 @@ export const RegisterForm = () => {
                 </Typography>
                 <Box component="form" noValidate onSubmit={handleSubmit}>
                     <Box className={useRegisterFormStyle.classes.containerInputsForm}>
+                        <TextField
+                            required
+                            fullWidth
+                            className={useRegisterFormStyle.classes.inputRegister}
+                            id="email"
+                            label="Email адресс"
+                            data-testid='input'
+                            name="email"
+                            autoComplete="email"
+                        />
                         <Box className={useRegisterFormStyle.classes.containerInputsLine}>
-                            <TextField
-                                autoComplete="given-name"
-                                name="firstName"
-                                className={useRegisterFormStyle.classes.inputRegister}
-                                required
-                                fullWidth
-                                data-testid='input'
-                                id="firstName"
-                                label="Имя"
-                                autoFocus
-                            />
-                            <TextField
-                                required
-                                fullWidth
-                                className={useRegisterFormStyle.classes.inputRegister}
-                                id="lastName"
-                                label="Фамлия"
-                                data-testid='input'
-                                name="lastName"
-                                autoComplete="family-name"
-                            />
-                        </Box>
-                        <Box >
-                            <TextField
-                                required
-                                fullWidth
-                                className={useRegisterFormStyle.classes.inputRegister}
-                                id="email"
-                                label="Email адресс"
-                                data-testid='input'
-                                name="email"
-                                autoComplete="email"
-                            />
-                        </Box>
-                        <Box >
                             <TextField
                                 required
                                 fullWidth
@@ -134,6 +96,17 @@ export const RegisterForm = () => {
                                 data-testid='input'
                                 id="password"
                                 autoComplete="new-password"
+                            />
+                            <TextField
+                                required
+                                fullWidth
+                                className={useRegisterFormStyle.classes.inputRegister}
+                                name="confirm"
+                                label="Повторите пароль"
+                                type="password"
+                                data-testid='input'
+                                id="confirm"
+                                autoComplete="confirm-password"
                             />
                         </Box>
                     </Box>

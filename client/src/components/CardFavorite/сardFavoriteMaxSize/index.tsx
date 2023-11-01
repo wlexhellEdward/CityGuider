@@ -1,20 +1,21 @@
-import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
-import arrowMore from 'assets/img/CardFavoriteActions/arrowMore.svg'
-import { Places } from 'components/drawer/Places';
-import { ButtonSave } from 'ui/buttonSave';
-import { ButtonTravel } from 'ui/buttonTravel';
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import { useAuth } from 'hooks/useAuth';
-import { IFavoriteItem } from 'interfaces/IFavoriteItem';
 import React, { useState } from 'react'
-import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers';
-import { deleteFavoriteCard } from 'utils/firebaseService';
-import { getDirections } from 'utils/route';
 
-import DoesntExistPhoto from '/public/doesntExist.png'
+import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
+
+import arrowMore from '@/assets/img/CardFavoriteActions/arrowMore.svg'
+import { Places } from '@/components/drawer/Places';
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { useAuth } from '@/hooks/useAuth';
+import { IFavoriteItem } from '@/interfaces/IFavoriteItem';
+import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from '@/store/reducers';
+import { ButtonSave } from '@/ui/buttonSave';
+import { ButtonTravel } from '@/ui/buttonTravel';
+import { deleteFavoriteCard } from '@/utils/firebaseService';
+import { getDirections } from '@/utils/route';
 
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {

@@ -1,4 +1,4 @@
-import { setArray } from "utils/arrayRefactor"
+import { setArray } from "@/utils/arrayRefactor"
 
 describe('Проверка метода ArraySet', () => {
     test('Проверка на значение null', () => {

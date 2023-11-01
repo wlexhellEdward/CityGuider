@@ -1,6 +1,7 @@
-import { HomePage } from 'pages/HomePage';
 import { Route, Routes } from 'react-router-dom';
-import { ROUTES_NOT_AUTH } from 'utils/consts';
+
+import { HomePage } from '@/pages/HomePage';
+import { ROUTES_NOT_AUTH } from '@/utils/consts';
 
 function App() {
   return (

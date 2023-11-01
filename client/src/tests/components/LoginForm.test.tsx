@@ -1,11 +1,13 @@
-import '@testing-library/jest-dom';
-
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { LoginForm } from 'components/loginForm';
-import { initializeApp } from 'firebase/app';
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from 'store/store';
+
+import { Provider } from 'react-redux';
+
+import { LoginForm } from '@/components/loginForm';
+import { store } from '@/store/store';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+
+import '@testing-library/jest-dom';
+import { initializeApp } from 'firebase/app';
 
 jest.mock('firebase/auth', () => {
     return {

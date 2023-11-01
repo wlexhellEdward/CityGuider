@@ -1,5 +1,6 @@
 import { Container,Typography } from '@mui/material'
-import { useTypeSelector } from 'hooks/redux'
+
+import { useTypeSelector } from '@/hooks/redux'
 
 import { WaiterProps } from './interfaces'
 import WaiterStyle from './styled'

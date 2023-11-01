@@ -1,19 +1,21 @@
 import { memo, useState } from 'react'
+
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
-import { PopUp } from 'components/pop-up';
-import { ButtonSave } from 'ui/buttonSave';
-import { ButtonTravel } from 'ui/buttonTravel';
-import { useAppDispatch, useTypeSelector } from 'hooks/redux'
-import { useAuth } from 'hooks/useAuth.ts';
-import { IFavoriteItem } from 'interfaces/IFavoriteItem.ts'
-import DoesntExistPhoto from 'public/doesntExist.png'
-import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from 'store/reducers'
-import { convertPlaceToFavorite } from 'utils/convert'
-import { addFavoriteCard, deleteFavoriteCard } from 'utils/firebaseService.ts';
-import { getDirections } from 'utils/route';
+
+import { PopUp } from '@/components/pop-up';
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
+import { useAuth } from '@/hooks/useAuth.ts';
+import { IFavoriteItem } from '@/interfaces/IFavoriteItem.ts'
+import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from '@/store/reducers'
+import { ButtonSave } from '@/ui/buttonSave';
+import { ButtonTravel } from '@/ui/buttonTravel';
+import { convertPlaceToFavorite } from '@/utils/convert'
+import { addFavoriteCard, deleteFavoriteCard } from '@/utils/firebaseService.ts';
+import { getDirections } from '@/utils/route';
 
 import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {

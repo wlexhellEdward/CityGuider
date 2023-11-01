@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Bar } from 'components/adminComponents/bar';
-import { DrawerAdmin } from 'components/adminComponents/drawer';
+
 import { Box } from '@mui/material';
-import { AdminContent } from 'components/adminComponents/mainContent';
+
+import { Bar } from '@/components/adminComponents/bar';
+import { DrawerAdmin } from '@/components/adminComponents/drawer';
+import { AdminContent } from '@/components/adminComponents/mainContent';
 
 
 export function AdminPage() {

@@ -1,7 +1,8 @@
 import { AppBar, Toolbar, Typography } from '@mui/material';
-import BarStyle from './styled';
-import { useTypeSelector } from 'hooks/redux';
 
+import { useTypeSelector } from '@/hooks/redux';
+
+import BarStyle from './styled';
 
 
 export const Bar = () => {

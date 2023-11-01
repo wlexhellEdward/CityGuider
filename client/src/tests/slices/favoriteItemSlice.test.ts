@@ -1,9 +1,9 @@
-import favoriteItemsReducer, {
-    setFavoriteItems,
-    addFavoriteItem,
-    setFavoriteItemIsLoading
-} from "store/reducers/favoriteItemsSlice/favoriteItemsSlice";
 import { LatLng } from "@googlemaps/jest-mocks";
+
+import favoriteItemsReducer, {
+    addFavoriteItem,
+    setFavoriteItemIsLoading,
+    setFavoriteItems} from "store/reducers/favoriteItemsSlice/favoriteItemsSlice";
 
 describe('Тестирование FavoriteItemsSlice', () => {
     it('Смена значения "favoriteItems[]" при вызове "setFavoriteItems" action с пустыми данными ', () => {

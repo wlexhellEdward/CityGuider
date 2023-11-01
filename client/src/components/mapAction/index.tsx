@@ -1,18 +1,19 @@
-import { Box, Button, IconButton } from "@mui/material";
-import FindMe from 'assets/img/MapActions/ButtonFindMe/findMe.svg'
-import Moon from 'assets/img/MapActions/ButtonSwitchTheme/moon.svg'
-import Sun from 'assets/img/MapActions/ButtonSwitchTheme/sun.svg'
-import { useAppDispatch, useTypeSelector } from "hooks/redux"
 import { useState } from "react"
-import { setCenter } from "store/reducers";
-import { setAppTheme } from "store/reducers/appSlice/appSlice";
-import { decreaseZoom, increaseZoom, setMapTheme } from 'store/reducers/mapSlice/mapSlice';
-import { DARK_THEME_APP, LIGHT_THEME_APP, MAP_DARK_THEME, MAP_THEME } from 'utils/consts';
-import { getBrowserLocation } from "utils/geo";
 
-import DoesntExistPhoto from '/public/doesntExist.png'
+import { Box, Button, IconButton } from "@mui/material";
+
+import FindMe from '@/assets/img/MapActions/ButtonFindMe/findMe.svg'
+import Moon from '@/assets/img/MapActions/ButtonSwitchTheme/moon.svg'
+import Sun from '@/assets/img/MapActions/ButtonSwitchTheme/sun.svg'
+import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
+import { setCenter } from "@/store/reducers";
+import { setAppTheme } from "@/store/reducers/appSlice/appSlice";
+import { decreaseZoom, increaseZoom, setMapTheme } from '@/store/reducers/mapSlice/mapSlice';
+import { DARK_THEME_APP, LIGHT_THEME_APP, MAP_DARK_THEME, MAP_THEME } from '@/utils/consts';
+import { getBrowserLocation } from "@/utils/geo";
 
 import MapActionStyle from "./styled"
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 
 export const MapAction = () => {

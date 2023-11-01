@@ -1,6 +1,6 @@
 
 export interface ButtonSaveProps {
-    handleFunction: () => void,
+    handleClick: () => void,
     isFavorite: boolean,
     isLoading:boolean
 }

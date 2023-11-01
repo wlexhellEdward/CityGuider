@@ -1,8 +1,9 @@
 export interface IUser {
-    id:string,
-    email:string,
-    firstName:string,
-    lastName:string,
-    registered:string,
-    lastLogin:string
+    uid: string,
+    email: string,
+    passwordHash: string,
+    metadata: {
+        creationTime: string,
+        lastSignInTime: string
+    }
 }

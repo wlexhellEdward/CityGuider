@@ -1,19 +1,21 @@
-import { Box, Button, List, ListItem, ListItemIcon } from '@mui/material'
-import Logo from 'assets/img/Drawer/Logo.svg'
-import Exit from 'assets/img/DrawerActions/exit.svg'
-import ArrowBox from 'components/arrowBox'
-import { СonfirmModal } from 'components/confirmModal'
-import SideBar from 'components/drawer'
-import Favorite from 'ui/Favorite'
-import FavoriteSelected from 'ui/Favorite/favoriteSelected'
-import Search from 'ui/Search/Search';
-import SearchSelected from 'ui/Search/SearchSelected'
-import { useAppDispatch, useTypeSelector } from 'hooks/redux'
-import DoesntExistPhoto from 'public/doesntExist.png'
 import { useState } from 'react'
-import { setCurrentStatus } from 'store/reducers'
+
+import { Box, Button, List, ListItem, ListItemIcon } from '@mui/material'
+
+import Logo from '@/assets/img/Drawer/Logo.svg'
+import Exit from '@/assets/img/DrawerActions/exit.svg'
+import ArrowBox from '@/components/arrowBox'
+import { СonfirmModal } from '@/components/confirmModal'
+import SideBar from '@/components/drawer'
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
+import { setCurrentStatus } from '@/store/reducers'
+import Favorite from '@/ui/Favorite'
+import FavoriteSelected from '@/ui/Favorite/favoriteSelected'
+import Search from '@/ui/Search/Search';
+import SearchSelected from '@/ui/Search/SearchSelected'
 
 import AsideStyle from './styled'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 
 export default function Aside() {

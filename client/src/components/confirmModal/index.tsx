@@ -1,13 +1,14 @@
+import { useNavigate } from 'react-router';
+
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { getAuth,signOut } from "firebase/auth";
-import { useNavigate } from 'react-router';
 
 import { ConfrimModalProps } from './interfaces';
+import { getAuth,signOut } from "firebase/auth";
 
 
 

@@ -1,5 +1,5 @@
 import MuiDrawer from '@mui/material/Drawer';
-import { styled, Theme, CSSObject } from '@mui/material/styles';
+import { CSSObject,styled, Theme } from '@mui/material/styles';
 const drawerWidth = 240;
 
 export const openedMixin = (theme: Theme): CSSObject => ({

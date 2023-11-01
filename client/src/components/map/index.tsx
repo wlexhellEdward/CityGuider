@@ -1,18 +1,21 @@
-import { Box, } from "@mui/material";
+import { useCallback, useRef, useState } from 'react';
+
 import { InfoWindow } from '@react-google-maps/api';
 import { Circle, GoogleMap, Marker } from "@react-google-maps/api";
-import CardPlace from "components/cardPlace";
-import { CurrentLocationMarker } from "components/currentLocationMarker";
-import { Loader } from "components/loader";
-import { MapAction } from 'components/mapAction';
-import { RouteInfo } from "components/routeInfo";
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
-import { useCallback, useRef, useState } from 'react';
-import { setCenter, setHumanPosition } from 'store/reducers';
-import { clearDirection, setMap, setRadius } from 'store/reducers/mapSlice/mapSlice';
-import { CIRCLE_OPTIONS, DEFAULT_OPTIONS } from 'utils/consts';
-import { getBrowserLocation } from 'utils/geo';
+
+import { Box, } from "@mui/material";
+
+import CardPlace from "@/components/cardPlace";
+import { CurrentLocationMarker } from "@/components/currentLocationMarker";
+import { Loader } from "@/components/loader";
+import { MapAction } from '@/components/mapAction';
+import { RouteInfo } from "@/components/routeInfo";
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { useGoogleMaps } from "@/hooks/useGoogleMapsLoader";
+import { setCenter, setHumanPosition } from '@/store/reducers';
+import { clearDirection, setMap, setRadius } from '@/store/reducers/mapSlice/mapSlice';
+import { CIRCLE_OPTIONS, DEFAULT_OPTIONS } from '@/utils/consts';
+import { getBrowserLocation } from '@/utils/geo';
 
 import MapStyle from './styled';
 

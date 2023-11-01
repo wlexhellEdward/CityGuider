@@ -1,5 +1,6 @@
 import { CircularProgress, Container } from '@mui/material'
-import { useTypeSelector } from 'hooks/redux'
+
+import { useTypeSelector } from '@/hooks/redux'
 
 import LoaderStyle from './styled'
 

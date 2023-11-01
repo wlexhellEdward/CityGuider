@@ -1,6 +1,8 @@
-import { Container, Modal, Typography } from '@mui/material';
-import { useTypeSelector } from 'hooks/redux';
 import { useState } from "react"
+
+import { Container, Modal, Typography } from '@mui/material';
+
+import { useTypeSelector } from '@/hooks/redux';
 
 import { PopUpProps } from './interfaces';
 import PopUpStyle from './styled';

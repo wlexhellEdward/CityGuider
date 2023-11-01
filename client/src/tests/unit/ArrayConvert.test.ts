@@ -1,5 +1,5 @@
+import { convertPlaceToFavorite } from "@/utils/convert";
 import { LatLng } from "@googlemaps/jest-mocks"
-import { convertPlaceToFavorite } from "utils/convert";
 interface PlaceResult {
     geometry: {
         location: google.maps.LatLng;

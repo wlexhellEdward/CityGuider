@@ -1,10 +1,11 @@
-import '@testing-library/jest-dom'
-
-import { render, screen } from '@testing-library/react';
-import { RouteInfo } from 'components/routeInfo';
 import { Provider } from 'react-redux';
-import { setTravelTime } from 'store/reducers';
-import { store } from 'store/store';
+
+import { RouteInfo } from '@/components/routeInfo';
+import { setTravelTime } from '@/store/reducers';
+import { store } from '@/store/store';
+import { render, screen } from '@testing-library/react';
+
+import '@testing-library/jest-dom'
 
 
 describe('Тестирование RouteInfo', () => {

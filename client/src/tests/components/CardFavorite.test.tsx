@@ -1,12 +1,13 @@
-import '@testing-library/jest-dom'
+import { Provider } from 'react-redux';
 
+import ArrowBox from '@/components/arrowBox';
+import Aside from '@/components/aside';
+import CardFavorite from '@/components/CardFavorite/toggleCardFavorite';
+import { store } from '@/store/store';
 import { LatLng } from "@googlemaps/jest-mocks"
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import ArrowBox from 'components/arrowBox';
-import Aside from 'components/aside';
-import CardFavorite from 'components/CardFavorite/toggleCardFavorite';
-import { Provider } from 'react-redux';
-import { store } from 'store/store';
+
+import '@testing-library/jest-dom'
 
 jest.mock('firebase/database', () => {
     const original = jest.requireActual('firebase/database');

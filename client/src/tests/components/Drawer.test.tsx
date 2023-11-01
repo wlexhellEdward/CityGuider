@@ -1,8 +1,10 @@
-import '@testing-library/jest-dom';
-import { render, screen, waitFor } from '@testing-library/react';
-import SideBar from 'components/drawer';
 import { Provider } from 'react-redux';
-import { store } from 'store/store';
+
+import SideBar from '@/components/drawer';
+import { store } from '@/store/store';
+import { render, screen, waitFor } from '@testing-library/react';
+
+import '@testing-library/jest-dom';
 
 jest.mock('firebase/app', () => {
   return {

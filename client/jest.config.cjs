@@ -10,7 +10,7 @@ module.exports = {
     '^components/(.*)$': '<rootDir>/src/components/$1',
     '^hooks/(.*)$': '<rootDir>/src/hooks/$1',
     '^store/(.*)$': '<rootDir>/src/store/$1',
-    '^GUI/(.*)$': '<rootDir>/src/GUI/$1',
+    '^ui/(.*)$': '<rootDir>/src/ui/$1',
     '^models/(.*)$': '<rootDir>/src/models/$1',
     '^assets/(.*)$': '<rootDir>/src/assets/$1',
     '^public/(.*)$': '<rootDir>/public/$1',

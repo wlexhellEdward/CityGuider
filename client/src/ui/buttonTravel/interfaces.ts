@@ -1,3 +1,3 @@
 export interface ButtonTravelProps {
-    handleFunction: () => void,
+    handleClick: () => void,
 }

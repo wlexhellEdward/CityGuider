@@ -1,4 +1,4 @@
-import DoesntExistPhoto from 'public/doesntExist.png'
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 
 export const convertPlaceToFavorite = (place: google.maps.places.PlaceResult) => {

@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
-import { Box } from '@mui/material'
-import Aside from 'components/aside'
-import Map from 'components/map'
-import { useTypeSelector } from 'hooks/redux'
-import { useAuth } from 'hooks/useAuth'
 import { useNavigate } from 'react-router'
+
+import { Box } from '@mui/material'
+
+import Aside from '@/components/aside'
+import Map from '@/components/map'
+import { useTypeSelector } from '@/hooks/redux'
+import { useAuth } from '@/hooks/useAuth'
 
 import HomePageStyle from './styled'
 

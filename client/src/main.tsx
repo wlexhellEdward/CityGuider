@@ -1,14 +1,15 @@
-import './index.css'
-import '../firebase.ts'
-
 import ReactDOM from 'react-dom/client'
-import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
+
+import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
+import { basePath } from '@/utils/basePath.ts'
+
+import './index.css'
+import '../firebase.ts'
 import App from './App.tsx'
 import { persistor, store } from './store/store.ts'
-import { basePath } from 'utils/basePath.ts'
 
    
 

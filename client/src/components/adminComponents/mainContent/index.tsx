@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react"
-import { useAppDispatch, useTypeSelector } from "hooks/redux"
-import { Box, CircularProgress } from '@mui/material';
-import { getListAllUsers } from "utils/firebaseService";
-import { setAllUsers } from "store/reducers/adminSlice/adminSlice";
-import { CardUser } from "components/adminComponents/cardUser";
-import { ModalToEdit } from "components/adminComponents/modalToEdit";
 
-import { IUser } from "interfaces/IUser";
+import { Box, CircularProgress } from '@mui/material';
+
+import { CardUser } from "@/components/adminComponents/cardUser";
+import { ModalToEdit } from "@/components/adminComponents/modalToEdit";
+import { PaginationBar } from "@/components/pagination";
+import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
+import { IUser } from "@/interfaces/IUser";
+import { setAllUsers } from "@/store/reducers/adminSlice/adminSlice";
+import { getListAllUsers } from "@/utils/firebaseService";
+
 import adminContentStyle from "./styled"
-import { PaginationBar } from "components/pagination";
 
 
 export const AdminContent = () => {

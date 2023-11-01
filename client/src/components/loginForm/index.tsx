@@ -1,19 +1,21 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { LoadingButton } from '@mui/lab';
 import {
     Avatar, Box,
     Link, TextField, Typography
 } from '@mui/material';
-import { ModalFormError } from 'components/modalFormError';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { setError } from 'store/reducers/errorSlice/errorSlice';
-import { setUser } from 'store/reducers/userSlice/userSlice';
-import { getMessageError } from 'utils/errorFinder';
+
+import { ModalFormError } from '@/components/modalFormError';
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { setError } from '@/store/reducers/errorSlice/errorSlice';
+import { setUser } from '@/store/reducers/userSlice/userSlice';
+import { getMessageError } from '@/utils/errorFinder';
 
 import LoginFormStyle from './styled';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, update } from 'firebase/database';
 
 export const LoginForm = () => {

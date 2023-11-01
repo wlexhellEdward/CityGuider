@@ -1,9 +1,10 @@
-import '@testing-library/jest-dom';
-
-import { fireEvent,render, screen } from '@testing-library/react';
-import Autocomplete from 'components/autocomplete';
 import { Provider } from 'react-redux';
-import { store } from 'store/store';
+
+import Autocomplete from '@/components/autocomplete';
+import { store } from '@/store/store';
+import { fireEvent,render, screen } from '@testing-library/react';
+
+import '@testing-library/jest-dom';
 
 describe('Тестирование Autocomplete', () => {
     test('Проверка на отображение корректного текста при вводе в autocomplete', () => {

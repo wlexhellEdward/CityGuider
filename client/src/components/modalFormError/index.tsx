@@ -2,8 +2,9 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import { setError } from 'store/reducers/errorSlice/errorSlice';
+
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { setError } from '@/store/reducers/errorSlice/errorSlice';
 
 import ModalFormErrorStyle from './styled';
 

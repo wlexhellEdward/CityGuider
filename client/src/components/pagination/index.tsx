@@ -1,8 +1,10 @@
 
-import { Stack, Pagination, Box } from '@mui/material';
-import { useTypeSelector } from 'hooks/redux';
-import paginationBarStyle from './styled';
+import { Box,Pagination, Stack } from '@mui/material';
+
+import { useTypeSelector } from '@/hooks/redux';
+
 import { paginationProps } from './interfaces';
+import paginationBarStyle from './styled';
 
 
 export const PaginationBar = ({ itemsPerPage, currentPage, handleSetCurrentPage }: paginationProps) => {

@@ -1,19 +1,20 @@
-import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
-import arrowMore from 'assets/img/CardFavoriteActions/arrowMore.svg'
-import FavoriteImg from 'assets/img/CardFavoriteActions/inFavorite.svg'
-import { Places } from 'components/drawer/Places.ts';
-import { useAppDispatch, useTypeSelector } from 'hooks/redux';
-import { useAuth } from 'hooks/useAuth.ts';
-import { IFavoriteItem } from 'interfaces/IFavoriteItem.ts';
 import React from 'react'
-import { addFavoriteItem } from 'store/reducers/index.ts';
-import { deleteFavoriteCard } from 'utils/firebaseService.ts';
-import { refactorString } from 'utils/textRefactors.ts';
 
-import DoesntExistPhoto from '/public/doesntExist.png'
+import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
+
+import arrowMore from '@/assets/img/CardFavoriteActions/arrowMore.svg'
+import FavoriteImg from '@/assets/img/CardFavoriteActions/inFavorite.svg'
+import { Places } from '@/components/drawer/Places.ts';
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { useAuth } from '@/hooks/useAuth.ts';
+import { IFavoriteItem } from '@/interfaces/IFavoriteItem.ts';
+import { addFavoriteItem } from '@/store/reducers/index.ts';
+import { deleteFavoriteCard } from '@/utils/firebaseService.ts';
+import { refactorString } from '@/utils/textRefactors.ts';
 
 import CardFavoriteStyle from '../styled.ts';
 import { CardFavoritePropsNormalSize } from './interfaces.ts.ts';
+import DoesntExistPhoto from '/public/doesntExist.png'
 
 const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()

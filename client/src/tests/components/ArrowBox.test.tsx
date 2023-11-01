@@ -1,9 +1,10 @@
-import '@testing-library/jest-dom'
-
-import { render, screen } from '@testing-library/react';
-import ArrowBox from 'components/arrowBox';
 import { Provider } from 'react-redux';
-import { store } from 'store/store';
+
+import ArrowBox from '@/components/arrowBox';
+import { store } from '@/store/store';
+import { render, screen } from '@testing-library/react';
+
+import '@testing-library/jest-dom'
 
 
 describe('Тестирование ArrowBox', () => {

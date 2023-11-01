@@ -1,7 +1,7 @@
-import { get, getDatabase, push, ref, remove, set, update } from "firebase/database";
+import axios from 'axios'
+import { get, getDatabase, push, ref, remove, set } from "firebase/database";
 import { IFavoriteItem } from "interfaces/IFavoriteItem";
 import { IUser } from "interfaces/IUser";
-import axios from 'axios'
 
 const db = getDatabase();
 
@@ -46,9 +46,9 @@ export function deleteFavoriteCard(idFavorite: string | undefined, userId: strin
     });
 }
 
-export async function getFavoriteCardsUser(userId: string) {
+export async function getFavoriteCardsUser(uid: string) {
     try {
-        const starCountRef = ref(db, `favorites/${userId}`);
+        const starCountRef = ref(db, `favorites/${uid}`);
         const snapshot = await get(starCountRef);
         const data: IFavoriteItem[] = [];
         if (snapshot.exists()) {
@@ -78,9 +78,9 @@ export function getListAllUsers() {
     })
 }
 
-export async function deleteUserById(id: string) {
+export async function deleteUserById(uid: string) {
     return new Promise((resolve, reject) => {
-        axios.delete(`http://localhost:3000/api/users/delete/${id}`)
+        axios.delete(`http://localhost:3000/api/users/delete/${uid}`)
             .then(response => {
                 if (response.status == 200) {
                     resolve("success")
@@ -95,17 +95,14 @@ export async function deleteUserById(id: string) {
 }
 
 export function editUserInfo(user: IUser) {
-    const userRef = ref(db, `users/${user.id}`);
+    const uid = user.uid
     return new Promise((resolve, reject) => {
-        update(userRef, {
-            id: user.id,
-            email: user.email,
-            lastName: user.lastName,
-            lastLogin: user.lastLogin,
-            firstName: user.firstName,
-            registered: user.registered
-        })
-            .then(() => resolve('succes'))
-            .catch((error) => reject(error))
+        axios.post(`http://localhost:3000/api/users/edit/${uid}`, user)
+            .then(() => {
+                resolve('succes')
+            })
+            .catch((err) => {
+                reject(err)
+            })
     })
 }

@@ -1,5 +1,6 @@
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from '@/firebase/auth';
+
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { FirebaseApp } from 'firebase/app';
 import { Auth, UserCredential } from 'firebase/auth';
 

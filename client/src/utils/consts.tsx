@@ -1,6 +1,6 @@
-import { AdminPage } from "pages/AdminPage"
-import { LoginPage } from "pages/LoginPage"
-import { RegisterPage } from "pages/RegisterPage"
+import { AdminPage } from "@/pages/AdminPage"
+import { LoginPage } from "@/pages/LoginPage"
+import { RegisterPage } from "@/pages/RegisterPage"
 
 export const MAP_THEME =
     [

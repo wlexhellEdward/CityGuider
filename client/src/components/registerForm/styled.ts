@@ -20,6 +20,7 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
             }
         },
         containerInputsForm: {
+            gap:theme.spacing(0.5),
             display: 'flex',
             flexDirection: 'column',
             '&>*': {
@@ -28,7 +29,10 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
         },
         containerInputsLine: {
             display: 'flex',
-            gap: theme.spacing(2)
+            gap: theme.spacing(2),
+            [theme.breakpoints.down('sm')]:{
+                flexDirection:'column'
+            }
         },
         buttonSubmit: {
             margin: theme.spacing(2, 0),
