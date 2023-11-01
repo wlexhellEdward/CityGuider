@@ -1,6 +1,6 @@
 import currentStatusReducer, {
     setCurrentStatus
-} from "store/reducers/currentStatusSlice/currentStatusSlice"
+} from "@/store/reducers/currentStatusSlice/currentStatusSlice"
 
 
 describe('Тестирование "currentStatusSlice"', () => {

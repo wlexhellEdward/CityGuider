@@ -1,6 +1,5 @@
+import { IUser } from "@/interfaces/IUser";
 import { createSlice } from "@reduxjs/toolkit";
-
-import { IUser } from "interfaces/IUser";
 
 interface adminState {
     users: IUser[],

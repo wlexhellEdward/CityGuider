@@ -6,6 +6,14 @@ import { fireEvent,render, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 
+jest.mock('firebase/database', () => {
+    const original = jest.requireActual('firebase/database');
+    return {
+        ...original,
+        getDatabase: jest.fn(),
+    };
+});
+
 describe('Тестирование Autocomplete', () => {
     test('Проверка на отображение корректного текста при вводе в autocomplete', () => {
         render(

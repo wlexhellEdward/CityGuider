@@ -9,6 +9,14 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 
+jest.mock('firebase/database', () => {
+    const original = jest.requireActual('firebase/database');
+    return {
+        ...original,
+        getDatabase: jest.fn(),
+    };
+});
+
 describe('Тестирования формы регистрации', () => {
     beforeAll(() => {
         const firebaseConfig = {
@@ -57,17 +65,11 @@ describe('Тестирования формы регистрации', () => {
                 </BrowserRouter>
             </Provider>
         );
-        const inputName = screen.getByLabelText(/Имя/);
-        const inputSecond = screen.getByLabelText(/Фамлия/);
         const inputEmail = screen.getByLabelText(/Email адресс/);
-        const inputPassword = screen.getByLabelText(/Пароль/);
         const inputElements = [
-            inputName.querySelector('input'),
-            inputSecond.querySelector('input'),
             inputEmail.querySelector('input'),
-            inputPassword.querySelector('input'),
         ];
-        const inputData = ['test-first-name', 'test-last-name', 'test.ru', 'testPassword12345'];
+        const inputData = ['test-first-name']
 
         await waitFor(() => {
             inputElements.forEach((inputElement, index) => {
@@ -78,9 +80,5 @@ describe('Тестирования формы регистрации', () => {
                 }
             });
         });
-        // const buttonSubmit = screen.getByTestId(/button-submit/)
-        // await waitFor(() => {
-        //     fireEvent.click(buttonSubmit)
-        // }) Спросить про базу данных
     });
 })

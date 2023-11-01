@@ -6,6 +6,13 @@ import { render, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
 
+jest.mock('firebase/database', () => {
+    const original = jest.requireActual('firebase/database');
+    return {
+        ...original,
+        getDatabase: jest.fn(),
+    };
+});
 
 describe('Тестирование ArrowBox', () => {
     test('Проверка отображение Arrow Box на странице', () => {

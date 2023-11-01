@@ -4,7 +4,6 @@ const router = express.Router();
 
 router.delete("/delete/:uid", async (req, res) => {
     const userId = req.params.uid;
-    console.log("USERID" + userId)
     try {
         await admin.auth().deleteUser(userId);
         return res.status(200).send("Пользователь успешно удален.");

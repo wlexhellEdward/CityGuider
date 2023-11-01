@@ -1,6 +1,7 @@
 import { darken } from '@mui/system';
 
-import { ThemeApp } from 'interfaces/IThemeApp';
+import { ThemeApp } from '@/interfaces/IThemeApp';
+
 import { makeStyles } from 'tss-react/mui';
 
 const ButtonSaveStyle = makeStyles<ThemeApp>()(

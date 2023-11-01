@@ -1,7 +1,8 @@
+import { IFavoriteItem } from "@/interfaces/IFavoriteItem";
+import { IUser } from "@/interfaces/IUser";
+
 import axios from 'axios'
 import { get, getDatabase, push, ref, remove, set } from "firebase/database";
-import { IFavoriteItem } from "interfaces/IFavoriteItem";
-import { IUser } from "interfaces/IUser";
 
 const db = getDatabase();
 

@@ -6,6 +6,13 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
 
+jest.mock('firebase/database', () => {
+    const original = jest.requireActual('firebase/database');
+    return {
+        ...original,
+        getDatabase: jest.fn(),
+    };
+});
 
 describe('Тестирование PlateSearchPlaces', () => {
     test('Проверка отображение PlateSearchPlaces на странице', () => {

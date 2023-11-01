@@ -1,7 +1,7 @@
 import centerRducer, {
     setCenter,
     setHumanPosition
-} from "store/reducers/centerSlice/centerSlice";
+} from "@/store/reducers/centerSlice/centerSlice";
 
 describe('Тестирование "centerSlice" ', () => {
     it('Смена значения центра карты при вызове "setCenter" action с пустыми данными', () => {

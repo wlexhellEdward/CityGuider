@@ -1,6 +1,6 @@
 import errorReducer, {
     setError
-} from "store/reducers/errorSlice/errorSlice";
+} from "@/store/reducers/errorSlice/errorSlice";
 
 describe('Тестирование "errorSlice"', () => {
     it('Смена обьекта ошибки при вызове "setError" action с пустыми данными', () => {

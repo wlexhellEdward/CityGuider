@@ -95,8 +95,8 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <ButtonSave data-testid='delete-from-favorite' isLoading={isAdd} handleFunction={() => handleDeleteFavorite(favoriteItem)} isFavorite={true} />
-                    <ButtonTravel handleFunction={handleClickRoute} />
+                    <ButtonSave data-testid='delete-from-favorite' isLoading={isAdd} handleClick={() => handleDeleteFavorite(favoriteItem)} isFavorite={true} />
+                    <ButtonTravel handleClick={handleClickRoute} />
                     <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>

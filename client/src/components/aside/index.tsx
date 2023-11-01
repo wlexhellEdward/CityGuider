@@ -9,10 +9,10 @@ import { СonfirmModal } from '@/components/confirmModal'
 import SideBar from '@/components/drawer'
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
 import { setCurrentStatus } from '@/store/reducers'
-import Favorite from '@/ui/Favorite'
-import FavoriteSelected from '@/ui/Favorite/favoriteSelected'
-import Search from '@/ui/Search/Search';
-import SearchSelected from '@/ui/Search/SearchSelected'
+import Favorite from '@/ui/favorite'
+import FavoriteSelected from '@/ui/favorite/favoriteSelected'
+import Search from '@/ui/search/Search';
+import SearchSelected from '@/ui/search/SearchSelected'
 
 import AsideStyle from './styled'
 import DoesntExistPhoto from '/public/doesntExist.png'

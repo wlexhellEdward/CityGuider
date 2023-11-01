@@ -23,6 +23,13 @@ jest.mock('firebase/auth', () => {
         })),
     };
 });
+jest.mock('firebase/database', () => {
+    const original = jest.requireActual('firebase/database');
+    return {
+        ...original,
+        getDatabase: jest.fn(),
+    };
+});
 
 
 describe('Тестирования формы авторизации', () => {
