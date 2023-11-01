@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { PlateSearchPlaces } from 'components/PlateSearchPlaces';
+import { PlateSearchPlaces } from 'components/plateSearchPlaces';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
 

@@ -24,7 +24,7 @@
       "hooks/*":["hooks/*"],
       "store/*":["store/*"],
       "utils/*":["utils/*"],
-      "GUI/*":["GUI/*"],
+      "ui/*":["ui/*"],
       "public/*":["public/*"],
       "models/*":["models/*"],
       "assets/*":["assets/*"]

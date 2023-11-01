@@ -1,6 +1,6 @@
 import { Box, CssBaseline, Typography } from '@mui/material';
 import { Container } from '@mui/material';
-import { LoginForm } from 'components/LoginForm';
+import { LoginForm } from 'components/loginForm';
 import { useTypeSelector } from 'hooks/redux';
 
 import LoginPageStyle from './styled';

@@ -14,7 +14,7 @@ export default {
       "hooks": "/src/hooks",
       "store": "/src/store",
       "utils": "/src/utils",
-      "GUI": "/src/GUI",
+      "ui": "/src/ui",
       "models": "/src/models",
       "assets": "/src/assets",
       "public": "/public",

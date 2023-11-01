@@ -4,7 +4,7 @@ import {
     Avatar, Box,
     Link, TextField, Typography
 } from '@mui/material';
-import { ModalFormError } from 'components/ModalFormError';
+import { ModalFormError } from 'components/modalFormError';
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import * as React from 'react';
@@ -27,7 +27,6 @@ export const RegisterForm = () => {
         setIsLoading(prev => !prev)
     }
     const handleSetError = (isOpen: boolean, message: string, type: string) => {
-        console.log(message)
         dispatch(setError({
             isOpen: isOpen,
             message: message,

@@ -1,8 +1,8 @@
 import { memo, useState } from 'react'
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
-import PopUp from 'components/Pop-up';
-import ButtonSave from 'GUI/ButtonSave';
-import ButtonTravel from 'GUI/ButtonTravel';
+import { PopUp } from 'components/pop-up';
+import { ButtonSave } from 'ui/buttonSave';
+import { ButtonTravel } from 'ui/buttonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux'
 import { useAuth } from 'hooks/useAuth.ts';
 import { IFavoriteItem } from 'interfaces/IFavoriteItem.ts'
@@ -13,7 +13,7 @@ import { addFavoriteCard, deleteFavoriteCard } from 'utils/firebaseService.ts';
 import { getDirections } from 'utils/route';
 
 import { CardPlaceProps } from './interfaces.ts';
-import CardPlaceStyle from './styled'
+import CardPlaceStyle from './styled.ts'
 
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
@@ -83,7 +83,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
 
     if (place != undefined) {
         return (
-            <Card  className={useCardPlaceStyle.classes.cardPlace}>
+            <Card className={useCardPlaceStyle.classes.cardPlace}>
                 <CardMedia>
                     <img
                         className={useCardPlaceStyle.classes.placePhoto}

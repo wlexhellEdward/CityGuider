@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 
 import { fireEvent,render, screen } from '@testing-library/react';
-import Autocomplete from 'components/Autocomplete';
+import Autocomplete from 'components/autocomplete';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
 

@@ -18,10 +18,17 @@ const adminSlice = createSlice({
         },
         deleteUser(state, action) {
             state.users = state.users.filter(user => user.id != action.payload)
+        },
+        editUser(state, action) {
+            const editedUser = action.payload;
+            const userIndex = state.users.findIndex(user => user.id === editedUser.id);
+            if (userIndex !== -1) {
+                state.users[userIndex] = editedUser;
+            }
         }
     }
 })
 
-export const { setAllUsers, deleteUser } = adminSlice.actions
+export const { setAllUsers, deleteUser, editUser } = adminSlice.actions
 
 export default adminSlice.reducer

@@ -1,11 +1,11 @@
 import { Box, } from "@mui/material";
 import { InfoWindow } from '@react-google-maps/api';
 import { Circle, GoogleMap, Marker } from "@react-google-maps/api";
-import CardPlace from "components/CardPlace";
-import { CurrentLocationMarker } from "components/CurrentLocationMarker";
-import { Loader } from "components/Loader";
-import { MapAction } from 'components/MapAction';
-import { RouteInfo } from "components/RouteInfo";
+import CardPlace from "components/cardPlace";
+import { CurrentLocationMarker } from "components/currentLocationMarker";
+import { Loader } from "components/loader";
+import { MapAction } from 'components/mapAction';
+import { RouteInfo } from "components/routeInfo";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useGoogleMaps } from "hooks/useGoogleMapsLoader";
 import { useCallback, useRef, useState } from 'react';

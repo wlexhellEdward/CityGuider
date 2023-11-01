@@ -2,7 +2,7 @@ import { LatLng } from '@googlemaps/jest-mocks';
 import '@testing-library/jest-dom'
 
 import { fireEvent, render, screen } from '@testing-library/react';
-import Aside from 'components/Aside';
+import Aside from 'components/aside';
 import { Provider } from 'react-redux';
 import { setFavoriteItems } from 'store/reducers';
 import { store } from 'store/store';

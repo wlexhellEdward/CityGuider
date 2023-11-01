@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Bar } from 'components/AdminComponents/Bar';
-import { DrawerAdmin } from 'components/AdminComponents/Drawer';
+import { Bar } from 'components/adminComponents/bar';
+import { DrawerAdmin } from 'components/adminComponents/drawer';
 import { Box } from '@mui/material';
-import { AdminContent } from 'components/AdminComponents/AdminContent';
+import { AdminContent } from 'components/adminComponents/mainContent';
 
 
 export function AdminPage() {
@@ -10,7 +10,6 @@ export function AdminPage() {
     const handleTogleDrawerOpen = () => {
         setOpen(prev => !prev);
     };
-
 
     return (
         <Box>

@@ -7,10 +7,10 @@ import DoesntExistPhoto from '/public/doesntExist.png'
 import { ButtonTravelProps } from './interfaces'
 import ButtonTravelStyle from './styled'
 
-export default function ButtonTravel({ handleFunction }: ButtonTravelProps) {
+export const ButtonTravel = ({ handleFunction }: ButtonTravelProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
 
-    const useButtonTravelStyle = ButtonTravelStyle({Pallete:pallete})
+    const useButtonTravelStyle = ButtonTravelStyle({ Pallete: pallete })
     return (
         <>
             <Button data-testid='make-route' onClick={handleFunction} className={useButtonTravelStyle.classes.buttonTravel}>

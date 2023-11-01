@@ -1,8 +1,8 @@
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
 import arrowMore from 'assets/img/CardFavoriteActions/arrowMore.svg'
-import { Places } from 'components/Drawer/Places';
-import ButtonSave from 'GUI/ButtonSave';
-import ButtonTravel from 'GUI/ButtonTravel';
+import { Places } from 'components/drawer/Places';
+import { ButtonSave } from 'ui/buttonSave';
+import { ButtonTravel } from 'ui/buttonTravel';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useAuth } from 'hooks/useAuth';
 import { IFavoriteItem } from 'interfaces/IFavoriteItem';

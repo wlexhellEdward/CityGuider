@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { LoginForm } from 'components/LoginForm';
+import { LoginForm } from 'components/loginForm';
 import { initializeApp } from 'firebase/app';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';

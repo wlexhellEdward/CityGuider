@@ -1,7 +1,7 @@
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
 import arrowMore from 'assets/img/CardFavoriteActions/arrowMore.svg'
 import FavoriteImg from 'assets/img/CardFavoriteActions/inFavorite.svg'
-import { Places } from 'components/Drawer/Places';
+import { Places } from 'components/drawer/Places.ts';
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import { useAuth } from 'hooks/useAuth.ts';
 import { IFavoriteItem } from 'interfaces/IFavoriteItem.ts';
@@ -12,8 +12,8 @@ import { refactorString } from 'utils/textRefactors.ts';
 
 import DoesntExistPhoto from '/public/doesntExist.png'
 
-import CardFavoriteStyle from '../styled';
-import { CardFavoritePropsNormalSize } from './interfaces.ts';
+import CardFavoriteStyle from '../styled.ts';
+import { CardFavoritePropsNormalSize } from './interfaces.ts.ts';
 
 const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()

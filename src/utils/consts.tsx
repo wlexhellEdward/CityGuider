@@ -1,3 +1,6 @@
+import { AdminPage } from "pages/AdminPage"
+import { LoginPage } from "pages/LoginPage"
+import { RegisterPage } from "pages/RegisterPage"
 
 export const MAP_THEME =
     [
@@ -155,22 +158,22 @@ export const DEFAULT_OPTIONS = {
 }
 
 export const LIGHT_THEME_APP = {
-    border: '#EEEEEE', 
-    title: '#373737', 
-    description: '#7D908C',      
-    main: '#5E7BC7',      
-    darkMain: '#405F7B',       
-    black: 'black',            
-    background: '#FFF'              
+    border: '#EEEEEE',
+    title: '#373737',
+    description: '#7D908C',
+    main: '#5E7BC7',
+    darkMain: '#405F7B',
+    black: 'black',
+    background: '#FFF'
 }
 export const DARK_THEME_APP = {
-    border: '#EEEEEE', 
-    title: '#EBEBEB', 
-    description: '#7D908C',      
-    main: '#5E7BC7',      
-    darkMain: '#405F7B',       
-    black: 'black',            
-    background: '#22333B'              
+    border: '#EEEEEE',
+    title: '#EBEBEB',
+    description: '#7D908C',
+    main: '#5E7BC7',
+    darkMain: '#405F7B',
+    black: 'black',
+    background: '#22333B'
 }
 export const CIRCLE_OPTIONS = {
     fillColor: LIGHT_THEME_APP.main,
@@ -178,3 +181,18 @@ export const CIRCLE_OPTIONS = {
     strokeColor: LIGHT_THEME_APP.main,
     strokeOpacity: 0.8,
 }
+
+export const ROUTES_NOT_AUTH = [
+    { url: '/login', component: <LoginPage /> },
+    { url: '/register', component: <RegisterPage /> },
+    { url: '/admin', component: <AdminPage /> },
+]
+
+export const FIREBASE_CONFIG = {
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY ,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
+};

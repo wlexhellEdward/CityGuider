@@ -2,9 +2,9 @@ import '@testing-library/jest-dom'
 
 import { LatLng } from "@googlemaps/jest-mocks"
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import ArrowBox from 'components/ArrowBox';
-import Aside from 'components/Aside';
-import CardFavorite from 'components/CardFavorite/ToggleCardFavorite';
+import ArrowBox from 'components/arrowBox';
+import Aside from 'components/aside';
+import CardFavorite from 'components/CardFavorite/toggleCardFavorite';
 import { Provider } from 'react-redux';
 import { store } from 'store/store';
 

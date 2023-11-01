@@ -4,7 +4,7 @@ import {
     Avatar, Box,
     Link, TextField, Typography
 } from '@mui/material';
-import { ModalFormError } from 'components/ModalFormError';
+import { ModalFormError } from 'components/modalFormError';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useAppDispatch, useTypeSelector } from 'hooks/redux';
 import React, { useState } from 'react';

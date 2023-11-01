@@ -1,7 +1,7 @@
 import { Box, Input, List, Typography } from "@mui/material"
-import { Places } from 'components/Drawer/Places.ts';
-import SearchPlace from 'components/SearchPlace/index.tsx';
-import { ButtonSearch } from "GUI/ButtonSearch"
+import { Places } from 'components/drawer/Places';
+import SearchPlace from 'components/searchPlace';
+import { ButtonSearch } from "ui/buttonSearch"
 import { useAppDispatch, useTypeSelector } from 'hooks/redux.ts';
 import { useState } from 'react'
 import { clearResults, setRadius, setResults } from 'store/reducers/index.ts';

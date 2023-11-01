@@ -1,17 +1,16 @@
-import { AdminPage } from 'pages/AdminPage';
 import { HomePage } from 'pages/HomePage';
-import { LoginPage } from 'pages/LoginPage';
-import { RegisterPage } from 'pages/RegisterPage';
 import { Route, Routes } from 'react-router-dom';
-
+import { ROUTES_NOT_AUTH } from 'utils/consts';
 
 function App() {
   return (
     <Routes>
+      {ROUTES_NOT_AUTH.map((route) => {
+        return (
+          <Route path={route.url} element={route.component} />
+        )
+      })}
       <Route path='/' Component={HomePage} />
-      <Route path='/login' Component={LoginPage} />
-      <Route path='/register' Component={RegisterPage} />
-      <Route path='/admin' Component={AdminPage} />
     </Routes>
   );
 }

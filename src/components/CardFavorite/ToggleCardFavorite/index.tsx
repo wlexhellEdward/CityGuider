@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import CardFavoriteMaxSize from '../CardFavoriteMaxSize';
-import CardFavoriteNormalSize from '../CardFavoriteNormalSize';
+import CardFavoriteMaxSize from '../сardFavoriteMaxSize';
+import CardFavoriteNormalSize from '../сardFavoriteNormalSize';
 import { CardFavoriteProps } from './interfaces';
 
 const CardFavorite = ({ favoriteItem }: CardFavoriteProps) => {

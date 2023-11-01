@@ -1,7 +1,6 @@
-import { get, getDatabase, push, ref, remove, set } from "firebase/database";
+import { get, getDatabase, push, ref, remove, set, update } from "firebase/database";
 import { IFavoriteItem } from "interfaces/IFavoriteItem";
 import { IUser } from "interfaces/IUser";
-import { getMessageError } from "./errorFinder";
 
 const db = getDatabase();
 
@@ -90,5 +89,21 @@ export function deleteUserById(id: string) {
             .catch((error) => {
                 reject(error)
             });
+    })
+}
+
+export function editUserInfo(user: IUser) {
+    const userRef = ref(db, `users/${user.id}`);
+    return new Promise((resolve, reject) => {
+        update(userRef, {
+            id: user.id,
+            email: user.email,
+            lastName: user.lastName,
+            lastLogin: user.lastLogin,
+            firstName: user.firstName,
+            registered: user.registered
+        })
+            .then(() => resolve('succes'))
+            .catch((error) => reject(error))
     })
 }

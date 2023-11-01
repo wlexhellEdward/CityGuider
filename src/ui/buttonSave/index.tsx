@@ -9,7 +9,7 @@ import DoesntExistPhoto from '/public/doesntExist.png'
 import { ButtonSaveProps } from './interfaces'
 import ButtonSaveStyle from './styled'
 
-export default function ButtonSave({ handleFunction, isLoading, isFavorite }: ButtonSaveProps) {
+export const ButtonSave = ({ handleFunction, isLoading, isFavorite }: ButtonSaveProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const useButtonSaveStyle = ButtonSaveStyle({ Pallete: pallete })
     return (
