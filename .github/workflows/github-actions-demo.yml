@@ -14,13 +14,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: change folder
-        run: cd client
       - name: install modules
-        run: npm install
+        working-directory: ./client
+        run : npm install
       - name: build project
-        run: npm run build
+        working-directory: ./client
+        run : npm run build
       - name: eslint test
+        working-directory: ./client
         run : npm run lint:fix 
       - name: component test
+        working-directory: ./client
         run: npm run test
