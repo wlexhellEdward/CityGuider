@@ -19,9 +19,11 @@ const adminContentStyle = makeStyles<ThemeApp>()(
             justifyContent: 'center',
         },
         content: {
-            margin: theme.spacing(12, 0, 10, 2),
+            margin: theme.spacing(12, 0, 0, -4),
             font: 'mont',
             color: 'black',
+            width: '100vw',
+            height: '100vh',
         },
         userContent: {
             display: 'flex',
@@ -38,7 +40,6 @@ const adminContentStyle = makeStyles<ThemeApp>()(
             marginLeft: theme.spacing(8),
             minHeight: theme.spacing(70)
         },
-
         pagination: {
             font: 'mont',
             margin: theme.spacing(2, 0, 5, 0),

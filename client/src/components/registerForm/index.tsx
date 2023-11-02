@@ -17,6 +17,7 @@ import { getMessageError } from '@/utils/errorFinder';
 
 import RegisterFormStyle from './styled';
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { checkUserRole } from '@/utils/firebaseService';
 
 export const RegisterForm = () => {
     const dispatch = useAppDispatch()
@@ -39,20 +40,25 @@ export const RegisterForm = () => {
         const auth = getAuth()
         handleSetIsLoading()
         const formElement = event.target as HTMLFormElement;
-        const [email, password] = [
+        const [email, password,] = [
             formElement.email.value,
             formElement.password.value,
         ]
         createUserWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
+                const uid = user.uid
+                let role;
+                role = 0
                 dispatch(setUser({
                     email: user.email,
-                    id: user.uid,
+                    id: uid,
                     token: user.refreshToken,
                     password: password,
+                    role: role
                 }))
                 redirectTo('/');
                 handleSetIsLoading()
+
             })
             .catch(
                 (error) => {
@@ -67,7 +73,7 @@ export const RegisterForm = () => {
     return (
         <>
             <Box className={useRegisterFormStyle.classes.containerRegister}>
-                <Avatar>
+                <Avatar className={useRegisterFormStyle.classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography className={useRegisterFormStyle.classes.titleForm} component="h1" variant="h5">

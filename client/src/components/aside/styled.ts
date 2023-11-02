@@ -29,6 +29,13 @@ const AsideStyle = makeStyles<ThemeApp>()(
                 width: '50px',
             }
         },
+        adminIcon:{
+            width:theme.spacing(8),
+            height:theme.spacing(8),
+            backgroundColor:Pallete.main,
+            borderRadius:theme.spacing(1),
+            color:'white',
+        },
         logo: {
             display: 'flex',
             justifyContent: 'center',

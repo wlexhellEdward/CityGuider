@@ -2,7 +2,6 @@ import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
-
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux";
 import { IUser } from "@/interfaces/IUser";
 import { deleteUser } from "@/store/reducers/adminSlice/adminSlice";

@@ -66,23 +66,4 @@ describe('Тестирования формы авторизации', () => {
             }
         });
     });
-    // test('Проверка на вход с невалидными данными', async () => {
-    //     render(
-    //         <Provider store={store}>
-    //             <BrowserRouter>
-    //                 <LoginForm />
-    //             </BrowserRouter>
-    //         </Provider>
-    //     );
-    //     const emailInput = screen.getByPlaceholderText('Email адресс');
-    //     const passwordInput = screen.getByPlaceholderText('Пароль');
-    //     fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
-    //     fireEvent.change(passwordInput, { target: { value: 'invalid-password' } });
-    //     const buttonSubmit = screen.getByTestId(/btn-submit/i);
-    //     fireEvent.click(buttonSubmit);
-
-    //     await waitFor(() => {
-    //         expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
-    //     });
-    // });
 })

@@ -10,15 +10,14 @@ import { IUser } from "@/interfaces/IUser";
 import { setAllUsers } from "@/store/reducers/adminSlice/adminSlice";
 import { getListAllUsers } from "@/utils/firebaseService";
 
-import adminContentStyle from "./styled"
+import userContentStyle from "./styled"
 
 
-export const AdminContent = () => {
+export const MainContent = () => {
     const [editUser, setEditUser] = useState<IUser>();
     const dispatch = useAppDispatch()
     const users = useTypeSelector(state => state.adminSlice.users)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
-    const useAdminContentStyle = adminContentStyle({ Pallete: pallete });
     const itemsPerPage = 6
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -42,12 +41,15 @@ export const AdminContent = () => {
         const endIndex = startIndex + itemsPerPage;
         return users.slice(startIndex, endIndex);
     };
+
+    const useUserContentStyle = userContentStyle({ Pallete: pallete });
+
     return (
         <>
             {users.length ?
-                <Box className={useAdminContentStyle.classes.content}>
-                    <Box className={useAdminContentStyle.classes.userContent}>
-                        <Box className={useAdminContentStyle.classes.cardsUsers}>
+                <Box className={useUserContentStyle.classes.content}>
+                    <Box className={useUserContentStyle.classes.userContent}>
+                        <Box className={useUserContentStyle.classes.cardsUsers}>
                             {getItemsForPage().map(user => {
                                 return (
                                     <CardUser user={user} onClickEditUser={handleSetUserToEdit} />
@@ -63,7 +65,7 @@ export const AdminContent = () => {
                     </Box>
                 </Box>
                 :
-                <CircularProgress className={useAdminContentStyle.classes.loader} />
+                <CircularProgress className={useUserContentStyle.classes.loader} />
             }
         </>
     )

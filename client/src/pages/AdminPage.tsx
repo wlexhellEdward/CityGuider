@@ -1,23 +1,27 @@
-import { useState } from 'react';
-
-import { Box } from '@mui/material';
-
+import { Box, Typography } from '@mui/material';
 import { Bar } from '@/components/adminComponents/bar';
-import { DrawerAdmin } from '@/components/adminComponents/drawer';
-import { AdminContent } from '@/components/adminComponents/mainContent';
+import { MainContent } from '@/components/adminComponents/mainContent';
+import { useTypeSelector } from '@/hooks/redux';
+import PageStyle from './styled';
 
 
 export function AdminPage() {
-    const [open, setOpen] = useState(false);
-    const handleTogleDrawerOpen = () => {
-        setOpen(prev => !prev);
-    };
+    const admin = useTypeSelector(state => state.userSlice.role)
+    const pallete = useTypeSelector(state => state.appSlice.Pallete)
+    const usePageStyle = PageStyle({ Pallete: pallete })
+    if (admin) {
+        return (
+            <Box>
+                <Bar />
+                <MainContent />
+            </Box >
+        )
+    } else {
+        return (
+            <Box className={usePageStyle.classes.containerCatcher}>
+                <Typography>Вы точно должны быть здесь?</Typography>
+            </Box>
+        )
+    }
 
-    return (
-        <Box>
-            <Bar />
-            <DrawerAdmin open={open} handleDrawerClose={handleTogleDrawerOpen} />
-            <AdminContent />
-        </Box>
-    );
 }

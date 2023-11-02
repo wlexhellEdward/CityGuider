@@ -107,3 +107,17 @@ export function editUserInfo(user: IUser) {
             })
     })
 }
+
+export function checkUserRole(uid: string) {
+    return new Promise((resolve, reject) => {
+        axios.get(`http://localhost:3000/api/users/check-role/${uid}`)
+            .then((response) => {
+                resolve(response.data)
+            })
+            .catch((error) => {
+                reject(error);
+            });
+    })
+
+}
+

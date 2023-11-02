@@ -99,8 +99,8 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                     <Typography className={useCardPlaceStyle.classes.placeAdress}>{place.vicinity}</Typography>
                 </CardContent>
                 <CardActions className={useCardPlaceStyle.classes.cardActions}>
-                    <ButtonSave handleFunction={() => handleSetFavorite(convertPlaceToFavorite(place))} isLoading={isAdding} isFavorite={isFavorite()} />
-                    <ButtonTravel handleFunction={() => {
+                    <ButtonSave handleClick={() => handleSetFavorite(convertPlaceToFavorite(place))} isLoading={isAdding} isFavorite={isFavorite()} />
+                    <ButtonTravel handleClick={() => {
                         if (place.geometry?.location != null && map != null) {
                             handleClickMakeRoute()
                         } else {

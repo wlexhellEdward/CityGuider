@@ -16,7 +16,8 @@ import { getMessageError } from '@/utils/errorFinder';
 
 import LoginFormStyle from './styled';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, ref, update } from 'firebase/database';
+import { editUser } from '@/store/reducers/adminSlice/adminSlice';
+import { checkUserRole } from '@/utils/firebaseService';
 
 export const LoginForm = () => {
     const dispatch = useAppDispatch()
@@ -37,7 +38,6 @@ export const LoginForm = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         handleSetIsLoading()
-        const db = getDatabase()
         const auth = getAuth()
         const formElement = event.target as HTMLFormElement;
         const [email, password] = [
@@ -47,17 +47,20 @@ export const LoginForm = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 const dt = new Date();
-                dispatch(setUser({
-                    email: user.email,
-                    id: user.uid,
-                    token: user.getIdToken(),
-                    password: password,
-                }))
-                update(ref(db, 'users/' + user.uid), {
-                    lastLogin: dt.toLocaleDateString()
+                const uid = user.uid
+                checkUserRole(uid).then(response => {
+                    dispatch(setUser({
+                        email: user.email,
+                        id: user.uid,
+                        token: user.getIdToken(),
+                        password: password,
+                        role: response
+                    }))
+                    const metadata = { lastSignInTime: dt }
+                    editUser(metadata)
+                    redirectTo('/');
+                    handleSetIsLoading();
                 })
-                redirectTo('/');
-                handleSetIsLoading();
             })
             .catch(
                 (error) => {

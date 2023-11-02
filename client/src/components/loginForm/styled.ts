@@ -14,6 +14,9 @@ const LoginFormStyle = makeStyles<ThemeApp>()(
         },
         titleForm: {
             margin: theme.spacing(2, 4),
+            [theme.breakpoints.down('sm')]: {
+                fontSize: theme.spacing(1.6),
+            }
         },
         inputRegister: {
             '&>*': {

@@ -12,8 +12,16 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
                 fontFamily: 'mont'
             }
         },
+        avatar:{
+            [theme.breakpoints.down('sm')]: {
+                display:'none'
+            }
+        },
         titleForm: {
             margin: theme.spacing(2, 4),
+            [theme.breakpoints.down('sm')]: {
+                fontSize: theme.spacing(2),
+            }
         },
         inputRegister: {
             '&>*': {
@@ -21,18 +29,21 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
             }
         },
         containerInputsForm: {
-            gap:theme.spacing(0.5),
+            gap: theme.spacing(0.6),
             display: 'flex',
             flexDirection: 'column',
             '&>*': {
                 marginBottom: theme.spacing(2)
+            },
+            [theme.breakpoints.down('sm')]: {
+                gap: theme.spacing(0.3),
             }
         },
         containerInputsLine: {
             display: 'flex',
             gap: theme.spacing(2),
-            [theme.breakpoints.down('sm')]:{
-                flexDirection:'column'
+            [theme.breakpoints.down('sm')]: {
+                flexDirection: 'column'
             }
         },
         buttonSubmit: {

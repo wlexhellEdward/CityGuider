@@ -15,21 +15,33 @@ const PageStyle = makeStyles<ThemeApp>()(
             flexDirection: 'column',
             alignItems: 'center',
             textAlign: 'center',
-
+        },
+        containerCatcher:{
+            width:'100vw',
+            display:'flex',
+            height:'100vh',
+            color:Pallete.title,
+            justifyContent:'center',
+            alignContent:'center',
+            alignItems:'center'
         },
         title: {
             fontFamily: 'mont',
             fontSize: theme.spacing(5),
             marginBottom: theme.spacing(1),
             [theme.breakpoints.down('sm')]: {
-                marginTop: theme.spacing(2)
+                marginTop: theme.spacing(2),
+                fontSize:theme.spacing(2)
             }
         },
         description: {
             fontFamily: 'mont',
             color: Pallete.description,
             fontSize: theme.spacing(1.5),
-            marginBottom: theme.spacing(3)
+            marginBottom: theme.spacing(3),
+            [theme.breakpoints.down('sm')]: {
+                fontSize:theme.spacing(1)
+            }
         },
         containerPageForm: {
             minWidth: '100vw',

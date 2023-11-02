@@ -11,7 +11,6 @@ import { DrawerContent, DrawerStyle } from './styled.ts'
 export default function SideBar({ currentStatus }: SideBarProps) {
   const pallete = useTypeSelector(state => state.appSlice.Pallete)
   const useDrawerStyle = DrawerStyle({Pallete:pallete})
-  
   return (
     <>
       <DrawerContent className={useDrawerStyle.classes.drawerContent}>

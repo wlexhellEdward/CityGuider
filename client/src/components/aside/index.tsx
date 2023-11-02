@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Box, Button, List, ListItem, ListItemIcon } from '@mui/material'
-
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import Logo from '@/assets/img/Drawer/Logo.svg'
 import Exit from '@/assets/img/DrawerActions/exit.svg'
 import ArrowBox from '@/components/arrowBox'
@@ -16,6 +16,7 @@ import SearchSelected from '@/ui/search/SearchSelected'
 
 import AsideStyle from './styled'
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { Link } from 'react-router-dom'
 
 
 export default function Aside() {
@@ -24,12 +25,14 @@ export default function Aside() {
     const currentStatus = useTypeSelector((state) => state.currentStatus.status)
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
+    const role = useTypeSelector(state => state.userSlice.role)
+    console.log(role)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const handleCloseClick = () => { switchCurrentStatus('close') }
     const handleClickProfile = () => {
         setShowModal(prev => !prev)
     }
-    
+
 
     const useAsideStyle = AsideStyle({ Pallete: pallete })
 
@@ -62,6 +65,15 @@ export default function Aside() {
                                 <Search />
                                 :
                                 <SearchSelected />
+                            }
+                        </Box>
+                        <Box data-testid='button-search' className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('search')}>
+                            {role ?
+                                <Link to='/admin'>
+                                    <AdminPanelSettingsIcon  className={useAsideStyle.classes.adminIcon}/>
+                                </Link>
+                                :
+                                null
                             }
                         </Box>
                     </ListItem>

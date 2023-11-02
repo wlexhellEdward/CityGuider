@@ -38,7 +38,8 @@ const CardUserStyle = makeStyles<ThemeApp>()(
         },
         cardActions: {
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
+            columnGap:theme.spacing(16),
             marginTop: theme.spacing(-2.8),
         },
     })

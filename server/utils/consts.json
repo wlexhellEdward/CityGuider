@@ -1,3 +1,15 @@
 {
-    "allowed_port":"http://localhost:5173"
+    "allowed_port": "http://localhost:5173",
+    "server_answer": {
+        "success": 200,
+        "error": 500
+    },
+    "admins": {
+        "CApC4cRu07agWgYIYp3mA5fI9W62": {
+            "level": "admin"
+        },
+        "sD8dpeI8gQSnRSl7460FiLgmkjg2": {
+            "level": "moderator"
+        }
+    }
 }

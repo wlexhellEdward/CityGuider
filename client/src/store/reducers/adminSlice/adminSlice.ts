@@ -6,7 +6,7 @@ interface adminState {
 }
 
 const initialState: adminState = {
-    users: []
+    users: [],
 }
 
 const adminSlice = createSlice({

@@ -12,13 +12,12 @@ export const ButtonTravel = ({ handleClick }: ButtonTravelProps) => {
 
     const useButtonTravelStyle = ButtonTravelStyle({ Pallete: pallete })
     return (
-        <>
-            <Button data-testid='make-route' onClick={handleClick} className={useButtonTravelStyle.classes.buttonTravel}>
-                <Icon className={useButtonTravelStyle.classes.iconTravel}>
-                    <img src={travel} alt={DoesntExistPhoto} title="travel button photo" />
-                </Icon>
-                <Typography className={useButtonTravelStyle.classes.buttonTravelTitle}>Маршрут</Typography>
-            </Button></>
+        <Button data-testid='make-route' onClick={handleClick} className={useButtonTravelStyle.classes.buttonTravel}>
+            <Icon className={useButtonTravelStyle.classes.iconTravel}>
+                <img src={travel} alt={DoesntExistPhoto} title="travel button photo" />
+            </Icon>
+            <Typography className={useButtonTravelStyle.classes.buttonTravelTitle}>Маршрут</Typography>
+        </Button>
     )
 }
 
