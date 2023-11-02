@@ -7,7 +7,8 @@ const CardUserStyle = makeStyles<ThemeApp>()(
     (theme, { Pallete }) => ({
         cardUser: {
             color: Pallete.title,
-            maxHeight: theme.spacing(35)
+            maxHeight: theme.spacing(35),
+            backgroundColor:Pallete.background
         },
         cardMedia: {
             height: theme.spacing(5),

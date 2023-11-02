@@ -26,13 +26,11 @@ export default function Aside() {
     const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
     const [favorites, search] = ['favorites', 'search']
     const role = useTypeSelector(state => state.userSlice.role)
-    console.log(role)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const handleCloseClick = () => { switchCurrentStatus('close') }
     const handleClickProfile = () => {
         setShowModal(prev => !prev)
     }
-
 
     const useAsideStyle = AsideStyle({ Pallete: pallete })
 

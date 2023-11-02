@@ -11,7 +11,7 @@ export function AdminPage() {
     const usePageStyle = PageStyle({ Pallete: pallete })
     if (admin) {
         return (
-            <Box>
+            <Box className={usePageStyle.classes.containerApp}>
                 <Bar />
                 <MainContent />
             </Box >

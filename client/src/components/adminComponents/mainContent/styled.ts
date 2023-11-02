@@ -19,11 +19,12 @@ const adminContentStyle = makeStyles<ThemeApp>()(
             justifyContent: 'center',
         },
         content: {
-            margin: theme.spacing(12, 0, 0, -4),
+            padding:theme.spacing(10,0),
             font: 'mont',
             color: 'black',
             width: '100vw',
             height: '100vh',
+            backgroundColor:Pallete.background
         },
         userContent: {
             display: 'flex',

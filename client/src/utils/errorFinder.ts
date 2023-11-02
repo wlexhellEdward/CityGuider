@@ -5,10 +5,13 @@ export const getMessageError = (error: Error) => {
             errorMessage = 'Ошибка: Неверный email или пароль';
             break;
         case 'Firebase: Error (auth/invalid-email).':
-            errorMessage='Email должен быть формата example@mail.ru'
+            errorMessage = 'Email должен быть формата example@mail.ru'
             break;
         case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
-            errorMessage='Длина пароля должна быть больше 6 символов'
+            errorMessage = 'Длина пароля должна быть больше 6 символов'
+            break;
+        case 'Firebase: Error (auth/email-already-in-use).':
+            errorMessage = 'Данный email уже занят, попробуйте другой'
             break;
         default:
             errorMessage = `Неизвестная ошибка`;

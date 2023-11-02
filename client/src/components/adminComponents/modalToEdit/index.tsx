@@ -23,17 +23,18 @@ export const ModalToEdit = ({ user, onClose }: ModalProps) => {
     const useModalToEditStyle = modalToEditStyle({ Pallete: pallete })
 
     return (
-        <Dialog open={true} onClose={onClose}>
-            <DialogTitle>Редактирование пользователя</DialogTitle>
+        <Dialog  open={true} onClose={onClose}>
+            <DialogTitle className={useModalToEditStyle.classes.dialogTitle}>Редактирование пользователя</DialogTitle>
             <Box></Box>
             <DialogContent className={useModalToEditStyle.classes.dialogContent}>
                 <TextField
+                    className={useModalToEditStyle.classes.inputs}
                     label="Почта"
                     value={editedUser.email}
                     onChange={(e) => setEditedUser({ ...editedUser, email: e.target.value })}
                 />
             </DialogContent>
-            <DialogActions>
+            <DialogActions className={useModalToEditStyle.classes.dialogActions}>
                 <Button color='error' variant="contained" onClick={onClose}>Отмена</Button>
                 <Button color='success' variant="contained" onClick={handleSave}>Сохранить</Button>
             </DialogActions>

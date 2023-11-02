@@ -64,6 +64,7 @@ export const LoginForm = () => {
             })
             .catch(
                 (error) => {
+                    console.log(error)
                     const message = getMessageError(error)
                     handleSetError(true, message, 'Ошибка авторизации')
                     handleSetIsLoading()
