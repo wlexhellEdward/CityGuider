@@ -45,8 +45,6 @@ const Map = () => {
                 dispatch(setHumanPosition(defaultLocation))
             });
     }, [])
-
-
     const handleClickClose = () => {
         setSelectedPlace(undefined)
         dispatch(clearDirection())
@@ -57,14 +55,12 @@ const Map = () => {
         height: '100%',
 
     };
-
     return (
         <>
             <Box ref={mapContainerRef} className={useMapStyle.classes.containerMap}>
                 <MapAction />
                 {isLoaded ? (
                     <>
-
                         <GoogleMap
                             onLoad={onLoad}
                             mapContainerStyle={containerStyle}
@@ -108,5 +104,3 @@ const Map = () => {
 }
 
 export default Map;
-
-

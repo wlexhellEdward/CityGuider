@@ -14,9 +14,7 @@ export const ModalFormError = () => {
     const message = useTypeSelector(state => state.errorSlice.message)
     const type = useTypeSelector(state => state.errorSlice.type)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
-
     const dispatch = useAppDispatch()
-
     const handleClose = () => {
         dispatch(setError({
             isOpen: false,
@@ -24,9 +22,7 @@ export const ModalFormError = () => {
             type: type
         }))
     };
-
     const useModalFormErrorStyle = ModalFormErrorStyle({Pallete:pallete})
-
     return (
         <Modal
             open={isOpen}

@@ -6,7 +6,10 @@ import { PopUp } from '@/components/pop-up';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
 import { useAuth } from '@/hooks/useAuth.ts';
 import { IFavoriteItem } from '@/interfaces/IFavoriteItem.ts'
-import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from '@/store/reducers'
+import {
+    addFavoriteItem, clearDirection, setDirectionRenderer,
+    setTravelDistance, setTravelPlaceGeometry, setTravelTime
+} from '@/store/reducers'
 import { ButtonSave } from '@/ui/buttonSave';
 import { ButtonTravel } from '@/ui/buttonTravel';
 import { convertPlaceToFavorite } from '@/utils/convert'
@@ -16,7 +19,6 @@ import { getDirections } from '@/utils/route';
 import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
-
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
     return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : DoesntExistPhoto
@@ -56,17 +58,14 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                 lat: place.geometry?.location?.lat() || 0,
                 lng: place.geometry?.location?.lng() || 0
             }
-
             const directionRequest = {
                 origin: center,
                 destination: placeLocation,
                 travelMode: google.maps.TravelMode.WALKING
             }
-
             const result = await getDirections(directionRequest)
             const distance = result?.routes[0].legs[0].distance?.value || 0
             const time = result?.routes[0].legs[0].duration?.text || ''
-
             const directionsRenderer = new google.maps.DirectionsRenderer({
                 map: map,
                 directions: result
@@ -75,7 +74,6 @@ const CardPlace = ({ place }: CardPlaceProps) => {
             dispatch(setTravelPlaceGeometry(placeLocation))
             dispatch(setTravelTime(time))
             dispatch(setDirectionRenderer(directionsRenderer))
-
         } catch (e) {
             console.log(e);
         }

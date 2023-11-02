@@ -39,6 +39,7 @@
     "sccs": "^0.4.3",
     "styled-components": "^5.3.11",
     "tss-react": "^4.9.2",
+    "ui-city-guide": "^1.0.0",
     "use-places-autocomplete": "^4.0.1"
   },
   "devDependencies": {

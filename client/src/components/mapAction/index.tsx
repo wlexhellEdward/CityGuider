@@ -23,7 +23,6 @@ export const MapAction = () => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const dispatch = useAppDispatch()
     const defaultThemeMap = useTypeSelector(state => state.map.options.theme)
-
     const handleClickSetIsOpenActionMap = () => {
         setIsOpenActionMap(prev => prev = !prev)
     }
@@ -49,7 +48,6 @@ export const MapAction = () => {
             dispatch(setCenter(location))
         })
     }
-
     const useMapActionStyle = MapActionStyle({Pallete:pallete})
     return (
         <>
@@ -76,7 +74,6 @@ export const MapAction = () => {
                     <Button onClick={handleClickSetIsOpenActionMap} className={useMapActionStyle.classes.buttonToggleAction}>{'<'}</Button>
                 }
             </Box>
-
         </>
     )
 }

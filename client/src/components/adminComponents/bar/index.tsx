@@ -1,7 +1,9 @@
-import { AppBar, Toolbar, Typography, Box } from '@mui/material';
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import { useTypeSelector } from '@/hooks/redux';
 import { Link } from 'react-router-dom';
+
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import { AppBar, Box,Toolbar, Typography } from '@mui/material';
+
+import { useTypeSelector } from '@/hooks/redux';
 
 import BarStyle from './styled';
 

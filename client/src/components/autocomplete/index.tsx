@@ -24,17 +24,9 @@ export default function Autocomplete() {
     const handlerSetCenter = (object: object) => {
         dispatch(setCenter(object))
     }
-    const {
-        ready,
-        value,
-        suggestions: { status, data },
-        setValue,
-        init,
-        clearSuggestions,
-    } = usePlacesAutocomplete({
-        initOnMount: false,
-        debounce: 300,
-    });
+    const { ready, value, suggestions: { status, data },
+        setValue, init, clearSuggestions,
+    } = usePlacesAutocomplete({ initOnMount: false, debounce: 300, });
     useEffect(() => {
         if (isLoaded) {
             init()

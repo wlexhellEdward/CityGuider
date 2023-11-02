@@ -7,7 +7,10 @@ import { Places } from '@/components/drawer/Places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth';
 import { IFavoriteItem } from '@/interfaces/IFavoriteItem';
-import { addFavoriteItem, clearDirection, setDirectionRenderer, setTravelDistance, setTravelPlaceGeometry, setTravelTime } from '@/store/reducers';
+import {
+    addFavoriteItem, clearDirection, setDirectionRenderer,
+    setTravelDistance, setTravelPlaceGeometry, setTravelTime
+} from '@/store/reducers';
 import { ButtonSave } from '@/ui/buttonSave';
 import { ButtonTravel } from '@/ui/buttonTravel';
 import { deleteFavoriteCard } from '@/utils/firebaseService';
@@ -32,26 +35,21 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     const center = useTypeSelector(state => state.currentPosition.humanPosition)
     const map = useTypeSelector(state => state.map.mapRef)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
-
     const handleClickRoute = async () => {
         try {
             dispatch(clearDirection())
-
             const directionRequest = {
                 origin: center,
                 destination: favoriteItem.coordinates,
                 travelMode: google.maps.TravelMode.WALKING
             }
-
             const result = await getDirections(directionRequest)
             const distance = result?.routes[0].legs[0].distance?.value || 0
             const time = result?.routes[0].legs[0].duration?.text || ''
-
             const directionsRenderer = new google.maps.DirectionsRenderer({
                 map: map,
                 directions: result
             })
-
             dispatch(setTravelDistance(distance))
             dispatch(setTravelPlaceGeometry(favoriteItem.coordinates))
             dispatch(setTravelTime(time))
@@ -90,7 +88,6 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                         </Box>
                     </CardContent>
                 </Box>
-
                 <Container className={useCardFavoriteStyle.classes.descriptionContainer} disableGutters>
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>

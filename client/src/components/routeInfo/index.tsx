@@ -9,6 +9,7 @@ import { getDirections } from '@/utils/route';
 
 import RouteInfoStyle from "./styled"
 
+
 export const RouteInfo = () => {
     const dispatch = useAppDispatch()
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
@@ -22,10 +23,7 @@ export const RouteInfo = () => {
         dispatch(deleteTravel())
         dispatch(clearDirection())
     }
-
-
     const useRouteInfoStyle = RouteInfoStyle({Pallete:pallete})
-
     useEffect(() => {
         const fetchDirections = async () => {
             const directionRequest = {
@@ -42,10 +40,8 @@ export const RouteInfo = () => {
             dispatch(setTravelTime(time))
             dispatch(setDirectionRenderer(directionsRenderer))
         }
-
         placeGeometry && map && fetchDirections()
     }, [center])
-
     return (
         <Container data-testid='route-info' className={useRouteInfoStyle.classes.routeContainer}>
             <Box>

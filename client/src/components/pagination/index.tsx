@@ -1,4 +1,3 @@
-
 import { Box,Pagination, Stack } from '@mui/material';
 
 import { useTypeSelector } from '@/hooks/redux';
@@ -8,11 +7,8 @@ import paginationBarStyle from './styled';
 
 
 export const PaginationBar = ({ itemsPerPage, currentPage, handleSetCurrentPage }: paginationProps) => {
-
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const users = useTypeSelector(state => state.adminSlice.users)
-
-
     const usePaginationBarStyle = paginationBarStyle({ Pallete: pallete })
     return (
         <Box>

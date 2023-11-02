@@ -1,33 +1,22 @@
 import { useState } from 'react'
 
-import { Box, Button, List, ListItem, ListItemIcon } from '@mui/material'
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import Logo from '@/assets/img/Drawer/Logo.svg'
+import { Box } from '@mui/material'
+
 import Exit from '@/assets/img/DrawerActions/exit.svg'
 import ArrowBox from '@/components/arrowBox'
+import { AsideListItems } from '@/components/asideListItems';
 import { СonfirmModal } from '@/components/confirmModal'
 import SideBar from '@/components/drawer'
-import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
-import { setCurrentStatus } from '@/store/reducers'
-import Favorite from '@/ui/favorite'
-import FavoriteSelected from '@/ui/favorite/favoriteSelected'
-import Search from '@/ui/search/Search';
-import SearchSelected from '@/ui/search/SearchSelected'
+import { useTypeSelector } from '@/hooks/redux'
 
 import AsideStyle from './styled'
 import DoesntExistPhoto from '/public/doesntExist.png'
-import { Link } from 'react-router-dom'
 
 
 export default function Aside() {
-    const dispatch = useAppDispatch()
     const [showModal, setShowModal] = useState(false)
     const currentStatus = useTypeSelector((state) => state.currentStatus.status)
-    const switchCurrentStatus = (status: string) => dispatch(setCurrentStatus(status))
-    const [favorites, search] = ['favorites', 'search']
-    const role = useTypeSelector(state => state.userSlice.role)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
-    const handleCloseClick = () => { switchCurrentStatus('close') }
     const handleClickProfile = () => {
         setShowModal(prev => !prev)
     }
@@ -37,46 +26,7 @@ export default function Aside() {
     return (
         <Box className={useAsideStyle.classes.container}>
             <Box data-testid='aside' className={useAsideStyle.classes.asideContainer}>
-                <List className={useAsideStyle.classes.listItems}>
-                    {currentStatus !== 'close' ?
-                        <Box className={useAsideStyle.classes.drawerAction}>
-                            <Button data-testid='button-close' className={useAsideStyle.classes.buttonCloseDrawer} onClick={handleCloseClick}>{'<'}</Button>
-                        </Box>
-                        :
-                        null
-                    }
-                    <ListItem className={useAsideStyle.classes.logo}>
-                        <ListItemIcon onClick={handleCloseClick} className={useAsideStyle.classes.logo}>
-                            <img title='icon for closing drawer' src={Logo} alt={DoesntExistPhoto} />
-                        </ListItemIcon>
-                    </ListItem>
-                    <ListItem className={useAsideStyle.classes.listItemButton}>
-                        <Box data-testid='button-favorite' className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('favorites')}>
-                            {currentStatus !== favorites ?
-                                <Favorite />
-                                :
-                                <FavoriteSelected />
-                            }
-                        </Box>
-                        <Box data-testid='button-search' className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('search')}>
-                            {currentStatus !== search ?
-                                <Search />
-                                :
-                                <SearchSelected />
-                            }
-                        </Box>
-                        <Box data-testid='button-search' className={useAsideStyle.classes.containerButton} onClick={() => switchCurrentStatus('search')}>
-                            {role ?
-                                <Link to='/admin'>
-                                    <AdminPanelSettingsIcon  className={useAsideStyle.classes.adminIcon}/>
-                                </Link>
-                                :
-                                null
-                            }
-                        </Box>
-                    </ListItem>
-                </List>
-
+                <AsideListItems />
                 <Box className={useAsideStyle.classes.profileOutter}>
                     <img onClick={handleClickProfile} src={Exit} alt={DoesntExistPhoto} title='img for profile' />
                 </Box>

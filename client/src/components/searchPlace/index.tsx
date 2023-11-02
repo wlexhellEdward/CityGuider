@@ -7,12 +7,11 @@ import { SearchPlaceProps } from './interfaces'
 import SearchPlaceStyle from './styled'
 import DoesntExistPhoto from '/public/doesntExist.png'
 
-const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) => {
 
+const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) => {
     const dispatch = useAppDispatch()
     const selectedItems = useTypeSelector((state) => state.searchSlice.selectedItems)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
-
     const handleSetSelectedItemsArray = (type: string) => {
         if (!selectedItems.includes(type)) {
             dispatch(addItem(type))
@@ -21,7 +20,6 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({ searchPlace, isSelected }) =>
             dispatch(deleteItem(type))
         }
     }
-
     const useSearchPlaceStyle = SearchPlaceStyle({Pallete:pallete})
     return (
         <>

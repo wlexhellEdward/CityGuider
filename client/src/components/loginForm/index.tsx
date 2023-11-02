@@ -10,14 +10,14 @@ import {
 
 import { ModalFormError } from '@/components/modalFormError';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { editUser } from '@/store/reducers/adminSlice/adminSlice';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
 import { getMessageError } from '@/utils/errorFinder';
+import { checkUserRole } from '@/utils/firebaseService';
 
 import LoginFormStyle from './styled';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { editUser } from '@/store/reducers/adminSlice/adminSlice';
-import { checkUserRole } from '@/utils/firebaseService';
 
 export const LoginForm = () => {
     const dispatch = useAppDispatch()

@@ -13,9 +13,10 @@ import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
 import { getMessageError } from '@/utils/errorFinder';
-import RegisterFormStyle from './styled';
-import { createUserWithEmailAndPassword, Auth, getAuth } from "firebase/auth";
+
 import { FormValues } from './interfaces';
+import RegisterFormStyle from './styled';
+import { Auth, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 
 export const RegisterForm: React.FC = () => {
@@ -44,11 +45,9 @@ export const RegisterForm: React.FC = () => {
         setFormValues({ ...formValues, confirm });
     };
     const isFormValid = () => emailValid && passwordValid && confirmValid;
-
     const handleSetIsLoading = () => {
         setIsLoading(prev => !prev);
     };
-
     const handleSetError = (isOpen: boolean, message: string, type: string) => {
         dispatch(
             setError({
@@ -58,7 +57,6 @@ export const RegisterForm: React.FC = () => {
             })
         );
     };
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const auth: Auth = getAuth();
@@ -67,7 +65,7 @@ export const RegisterForm: React.FC = () => {
             createUserWithEmailAndPassword(auth, formValues.email, formValues.password)
                 .then(({ user }) => {
                     const uid = user.uid;
-                    let role = 0;
+                    const role = 0;
                     dispatch(
                         setUser({
                             email: user.email,
@@ -87,7 +85,6 @@ export const RegisterForm: React.FC = () => {
                 });
         }
     };
-
     const useRegisterFormStyle = RegisterFormStyle({ Pallete: pallete });
 
     return (

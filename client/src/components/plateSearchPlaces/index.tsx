@@ -18,7 +18,6 @@ export const PlateSearchPlaces = () => {
     const center = useTypeSelector(state => state.currentPosition.position)
     const selectedItems = useTypeSelector(state => state.searchSlice.selectedItems)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
-
     const handleSetResults = (result: google.maps.places.PlaceResult[]) => dispatch(setResults(result))
     const dispatch = useAppDispatch()
     const handleSetRadius = (radius: number) => dispatch(setRadius(radius))
@@ -27,7 +26,6 @@ export const PlateSearchPlaces = () => {
         setInputValue(newValue);
         handleSetRadius(parseFloat(newValue) * 1000);
     }
-
     const handleSetSearchButtonIsClicked = () => {
         dispatch(clearResults())
         if (inputValue.length > 0) {
@@ -62,7 +60,6 @@ export const PlateSearchPlaces = () => {
             alert('Введите радиус в км...')
         }
     }
-
     function testIsSelected(type: string) {
         let result = true;
         if (!itemsArray.includes(type)) {
