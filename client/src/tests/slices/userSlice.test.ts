@@ -12,6 +12,7 @@ describe('Тестирование "userSlice"', () => {
             password: "",
             firstName: "",
             lastName: "",
+            role:""
         }
         const mockResult = {
             token: "",
@@ -20,6 +21,7 @@ describe('Тестирование "userSlice"', () => {
             password: "",
             firstName: "",
             lastName: "",
+            role:""
         }
         const action = { type: setUser.type, payload: mockResult }
         const result = userReducer(mockState, action)
@@ -33,6 +35,7 @@ describe('Тестирование "userSlice"', () => {
             password: "",
             firstName: "",
             lastName: "",
+            role:""
         }
         const mockResult = {
             token: "test",
@@ -41,6 +44,7 @@ describe('Тестирование "userSlice"', () => {
             password: "test",
             firstName: "test",
             lastName: "test",
+            role:""
         }
         const action = { type: setUser.type, payload: mockResult }
         const result = userReducer(mockState, action)
@@ -54,6 +58,7 @@ describe('Тестирование "userSlice"', () => {
             password: "",
             firstName: "",
             lastName: "",
+            role:""
         }
         const mockResult = {
             token: "",
@@ -62,6 +67,7 @@ describe('Тестирование "userSlice"', () => {
             password: "",
             firstName: "",
             lastName: "",
+            role:""
         }
         const action = { type: removeUser.type}
         const result = userReducer(mockState, action)

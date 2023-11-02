@@ -44,7 +44,7 @@ describe('Тестирование Aside', () => {
             </Provider>
         );
 
-        const btnSearch = screen.getByTestId(/button-search/i);
+        const btnSearch = screen.getAllByTestId(/button-search/i)[0];
         fireEvent.click(btnSearch)
         const drawerContent = screen.getByPlaceholderText(/Место, адрес.../i);
         expect(drawerContent).toBeInTheDocument();
@@ -84,10 +84,10 @@ describe('Тестирование Aside', () => {
             </Provider>
         );
 
-        const btnSearch = screen.getByTestId(/button-search/i);
+        const btnSearch = screen.getAllByTestId(/button-search/i)[0];
         fireEvent.click(btnSearch)
 
-        const btnFavorite = screen.getByTestId(/button-favorite/i);
+        const btnFavorite = screen.getAllByTestId(/button-favorite/i)[0];
         fireEvent.click(btnFavorite);
 
         const drawerContentFavoritePlate = screen.getByTestId(/plate-favorite/);
@@ -99,10 +99,11 @@ describe('Тестирование Aside', () => {
                 <Aside />
             </Provider>
         );
-        const btnClose = screen.getByTestId(/button-close/i);
+
+        const btnClose = screen.getAllByTestId(/button-close/i)[0];
         fireEvent.click(btnClose);
 
-        const btnShowMore = screen.getByTestId(/drawer-arrow-show-more/i);
+        const btnShowMore = screen.getAllByTestId(/drawer-arrow-show-more/i)[0];
         expect(btnShowMore).toBeInTheDocument();
     });
     test('Проверка на скрытие кнопки развернуть при открытии drawer', () => {

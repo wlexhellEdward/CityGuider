@@ -17,7 +17,6 @@ import { getMessageError } from '@/utils/errorFinder';
 
 import RegisterFormStyle from './styled';
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { checkUserRole } from '@/utils/firebaseService';
 
 export const RegisterForm = () => {
     const dispatch = useAppDispatch()
