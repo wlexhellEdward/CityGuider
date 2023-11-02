@@ -53,7 +53,7 @@ $ node server.js
 ## Build
 
 ```shell
-for client part
+To run build client part
 
 $ npm build
 ```

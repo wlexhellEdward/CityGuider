@@ -18,12 +18,17 @@ const AsideStyle = makeStyles<ThemeApp>()(
                 }
             },
         },
-        adminIcon:{
-            width:theme.spacing(8),
-            height:theme.spacing(8),
-            backgroundColor:Pallete.main,
-            borderRadius:theme.spacing(1),
-            color:'white',
+        adminIcon: {
+            width: theme.spacing(8),
+            height: theme.spacing(8),
+            backgroundColor: Pallete.main,
+            borderRadius: theme.spacing(1),
+            color: 'white',
+            [theme.breakpoints.down('sm')]: {
+                borderRadius: theme.spacing(0.5),
+                width: theme.spacing(4.5),
+                height: theme.spacing(4.5),
+            }
         },
         containerButton: {
             display: 'flex',

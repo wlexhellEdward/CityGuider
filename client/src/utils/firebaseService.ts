@@ -4,6 +4,7 @@ import { IUser } from "@/interfaces/IUser";
 import axios from 'axios'
 import { get, getDatabase, push, ref, remove, set } from "firebase/database";
 
+const host = process.env.REACT_APP_API_PATH?.toString()
 const db = getDatabase();
 
 export function addFavoriteCard(favorites: IFavoriteItem, userId: string) {
@@ -65,10 +66,10 @@ export async function getFavoriteCardsUser(uid: string) {
 
 export function getListAllUsers() {
     return new Promise((resolve, reject) => {
-        axios.get(`api/users/get`)
+        axios.get(`${host}api/users/get`)
             .then(response => {
                 if (response.status == 200) {
-                    resolve(response.data.users)
+                    resolve(response.data.user)
                 } else {
                     console.error('Произошла ошибка при удалении пользователя');
                 }
@@ -81,7 +82,7 @@ export function getListAllUsers() {
 
 export async function deleteUserById(uid: string) {
     return new Promise((resolve, reject) => {
-        axios.delete(`api/users/delete/${uid}`)
+        axios.delete(`${host}api/users/delete/${uid}`)
             .then(response => {
                 if (response.status == 200) {
                     resolve("success")
@@ -98,7 +99,7 @@ export async function deleteUserById(uid: string) {
 export function editUserInfo(user: IUser) {
     const uid = user.uid
     return new Promise((resolve, reject) => {
-        axios.post(`api/users/edit/${uid}`, user)
+        axios.post(`${host}api/users/edit/${uid}`, user)
             .then(() => {
                 resolve('succes')
             })
@@ -110,7 +111,7 @@ export function editUserInfo(user: IUser) {
 
 export function checkUserRole(uid: string) {
     return new Promise((resolve, reject) => {
-        axios.get(`api/users/check-role/${uid}`)
+        axios.get(`${host}api/users/check-role/${uid}`)
             .then((response) => {
                 resolve(response.data)
             })

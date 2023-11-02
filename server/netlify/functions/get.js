@@ -4,7 +4,6 @@ const { server_answer } = require('../../utils/consts.json');
 exports.handler = async (event, context) => {
   try {
     const response = await admin.auth().listUsers();
-
     return {
       statusCode: server_answer.success,
       body: JSON.stringify(response),
