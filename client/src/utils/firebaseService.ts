@@ -4,7 +4,7 @@ import { IUser } from "@/interfaces/IUser";
 import axios from 'axios'
 import { get, getDatabase, push, ref, remove, set } from "firebase/database";
 
-const host = process.env.REACT_APP_API_PATH?.toString()
+const host = process.env.REACT_APP_API_PATH?.toString() || ''
 const db = getDatabase();
 
 export function addFavoriteCard(favorites: IFavoriteItem, userId: string) {
@@ -69,7 +69,7 @@ export function getListAllUsers() {
         axios.get(`${host}api/users/get`)
             .then(response => {
                 if (response.status == 200) {
-                    resolve(response.data.user)
+                    resolve(response.data.users)
                 } else {
                     console.error('Произошла ошибка при удалении пользователя');
                 }
