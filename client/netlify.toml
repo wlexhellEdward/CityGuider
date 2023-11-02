@@ -1,10 +1,9 @@
 [build]
-publish = "client" 
 command = "npm run build" 
 
 [context.server]
 command = "node server.js"
-publish = "server" 
+publish = "../server" 
 
 [[redirects]]
   from = "/*"
