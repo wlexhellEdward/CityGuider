@@ -65,7 +65,7 @@ export async function getFavoriteCardsUser(uid: string) {
 
 export function getListAllUsers() {
     return new Promise((resolve, reject) => {
-        axios.get(`http://localhost:3000/api/users/get`)
+        axios.get(`api/users/get`)
             .then(response => {
                 if (response.status == 200) {
                     resolve(response.data.users)
@@ -81,7 +81,7 @@ export function getListAllUsers() {
 
 export async function deleteUserById(uid: string) {
     return new Promise((resolve, reject) => {
-        axios.delete(`http://localhost:3000/api/users/delete/${uid}`)
+        axios.delete(`api/users/delete/${uid}`)
             .then(response => {
                 if (response.status == 200) {
                     resolve("success")
@@ -98,7 +98,7 @@ export async function deleteUserById(uid: string) {
 export function editUserInfo(user: IUser) {
     const uid = user.uid
     return new Promise((resolve, reject) => {
-        axios.post(`http://localhost:3000/api/users/edit/${uid}`, user)
+        axios.post(`api/users/edit/${uid}`, user)
             .then(() => {
                 resolve('succes')
             })
@@ -110,7 +110,7 @@ export function editUserInfo(user: IUser) {
 
 export function checkUserRole(uid: string) {
     return new Promise((resolve, reject) => {
-        axios.get(`http://localhost:3000/api/users/check-role/${uid}`)
+        axios.get(`api/users/check-role/${uid}`)
             .then((response) => {
                 resolve(response.data)
             })
