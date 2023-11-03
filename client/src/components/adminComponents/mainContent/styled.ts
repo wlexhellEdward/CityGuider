@@ -8,9 +8,8 @@ const adminContentStyle = makeStyles<ThemeApp>()(
         loader: {
             zIndex: 10,
             position: 'relative',
-            left: theme.spacing(92),
-            width: '100vw',
-            height: '100vh',
+            left: theme.spacing(93),
+            top:theme.spacing(42)
         },
         title: {
             display: 'flex',

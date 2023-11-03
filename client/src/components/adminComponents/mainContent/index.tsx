@@ -43,7 +43,6 @@ export const MainContent = () => {
     };
 
     const useUserContentStyle = userContentStyle({ Pallete: pallete });
-
     return (
         <>
             {users.length ?

@@ -91,5 +91,4 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
     )
 }
 
-
 export default CardFavoriteMaxSize
