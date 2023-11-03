@@ -1,11 +1,11 @@
-require('dotenv').config();
+const keys = require('./keys/firebaseKey.json')
 
 function initializeFirebase(admin) {
     const config = {
         credential: admin.credential.cert({
-            projectId: process.env.FIREBASE_PROJECT_ID,
-            clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-            privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'), 
+            projectId: keys.project_id,
+            clientEmail: keys.client_email,
+            privateKey: keys.private_key.replace(/\\n/g, '\n'), 
         }),
         databaseURL: process.env.FIREBASE_DATABASE_URL
     }
