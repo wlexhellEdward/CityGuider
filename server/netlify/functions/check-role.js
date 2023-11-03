@@ -1,4 +1,3 @@
-const admin = require("firebase-admin");
 const { server_answer } = require('../../utils/consts.json');
 const { admins } = require('../../utils/consts.json');
 
