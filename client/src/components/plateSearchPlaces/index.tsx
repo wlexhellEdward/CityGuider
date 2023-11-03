@@ -9,6 +9,7 @@ import { clearResults, setRadius, setResults } from '@/store/reducers/index.ts';
 import { ButtonSearch } from "@/ui/buttonSearch"
 
 import PlateSearchPlacesStyle from "./styled"
+import { useSearchPlace } from '@/hooks/useSearchPlace';
 
 
 export const PlateSearchPlaces = () => {
@@ -16,9 +17,7 @@ export const PlateSearchPlaces = () => {
     const [inputValue, setInputValue] = useState("1")
     const map = useTypeSelector(state => state.map.mapRef)
     const center = useTypeSelector(state => state.currentPosition.position)
-    const selectedItems = useTypeSelector(state => state.searchSlice.selectedItems)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
-    const handleSetResults = (result: google.maps.places.PlaceResult[]) => dispatch(setResults(result))
     const dispatch = useAppDispatch()
     const handleSetRadius = (radius: number) => dispatch(setRadius(radius))
     const handlerSetInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,39 +25,11 @@ export const PlateSearchPlaces = () => {
         setInputValue(newValue);
         handleSetRadius(parseFloat(newValue) * 1000);
     }
+    const result = useSearchPlace({ map, center, inputValue })
+
     const handleSetSearchButtonIsClicked = () => {
         dispatch(clearResults())
-        if (inputValue.length > 0) {
-            if (!map) {
-                return
-            }
-            selectedItems.forEach(selectedItem => {
-                const request = {
-                    location: center,
-                    radius: Number(inputValue) * 520,
-                    keyword: selectedItem
-                }
-                const placesServices = new google.maps.places.PlacesService(map)
-                placesServices.nearbySearch(request, (results, status, pagination) => {
-                    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-                        results.forEach(result => {
-                            result.icon = Places.find(place => place.type === selectedItem)?.img
-                        })
-                        handleSetResults(results)
-                        if (pagination?.hasNextPage) {
-                            pagination.nextPage()
-                            handleSetResults(results)
-                        }
-                    }
-                    else {
-                        handleSetResults([])
-                    }
-                })
-            })
-        }
-        else {
-            alert('Введите радиус в км...')
-        }
+        dispatch(setResults(result))
     }
     function testIsSelected(type: string) {
         let result = true;
@@ -67,7 +38,7 @@ export const PlateSearchPlaces = () => {
         }
         return result
     }
-    const usePlateSearchPlacesStyle = PlateSearchPlacesStyle({Pallete:pallete})
+    const usePlateSearchPlacesStyle = PlateSearchPlacesStyle({ Pallete: pallete })
     return (
         <Box data-testid='plate-search' className={usePlateSearchPlacesStyle.classes.platePlaces}>
             <Typography className={usePlateSearchPlacesStyle.classes.titleFavorite}>Искать: </Typography>

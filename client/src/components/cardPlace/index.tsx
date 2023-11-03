@@ -5,16 +5,15 @@ import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/mat
 import { PopUp } from '@/components/pop-up';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
 import { useAuth } from '@/hooks/useAuth.ts';
+import { useRoute } from '@/hooks/useRoute.ts';
 import { IFavoriteItem } from '@/interfaces/IFavoriteItem.ts'
 import {
-    addFavoriteItem, clearDirection, setDirectionRenderer,
-    setTravelDistance, setTravelPlaceGeometry, setTravelTime
+    addFavoriteItem, clearDirection, setRouteInfo
 } from '@/store/reducers'
 import { ButtonSave } from '@/ui/buttonSave';
 import { ButtonTravel } from '@/ui/buttonTravel';
 import { convertPlaceToFavorite } from '@/utils/convert'
 import { addFavoriteCard, deleteFavoriteCard } from '@/utils/firebaseService.ts';
-import { getDirections } from '@/utils/route';
 
 import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
@@ -27,56 +26,37 @@ const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
 const CardPlace = ({ place }: CardPlaceProps) => {
     const dispatch = useAppDispatch()
     const { id } = useAuth()
-    const center = useTypeSelector(state => state.currentPosition.humanPosition)
+    const userLocation = useTypeSelector(state => state.currentPosition.humanPosition)
     const favoriteItems = useTypeSelector(state => state.favoriteItems.favoriteItems)
-    const isFavorite = () => {
-        return favoriteItems.some(item => item.id == place.place_id)
+    const destination = {
+        lat: place?.geometry?.location?.lat() || 0,
+        lng: place?.geometry?.location?.lng() || 0
     }
     const [isAdding, setIsAdding] = useState(false)
     const map = useTypeSelector(state => state.map.mapRef)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
+    const isFavorite = () => {
+        return favoriteItems.some(item => item.id == place.place_id)
+    }
     const handleSetFavorite = async (favoirteItem: IFavoriteItem) => {
         setIsAdding(true)
-        if (id != null) {
-            if (!isFavorite()) {
-                addFavoriteCard(favoirteItem, id).then(() => {
-                    setIsAdding(false)
-                    dispatch(addFavoriteItem(favoirteItem))
-                })
-            } else if (isFavorite()) {
-                deleteFavoriteCard(favoirteItem.id, id).then(() => {
-                    setIsAdding(false)
-                    dispatch(addFavoriteItem(favoirteItem))
-                })
-            }
+        if (id != null && !isFavorite()) {
+            addFavoriteCard(favoirteItem, id).then(() => {
+                setIsAdding(false)
+                dispatch(addFavoriteItem(favoirteItem))
+            })
+        } else if (id != null && isFavorite()) {
+            deleteFavoriteCard(favoirteItem.id, id).then(() => {
+                setIsAdding(false)
+                dispatch(addFavoriteItem(favoirteItem))
+            })
         }
     }
-    const handleClickMakeRoute = async () => {
-        try {
-            dispatch(clearDirection())
-            const placeLocation = {
-                lat: place.geometry?.location?.lat() || 0,
-                lng: place.geometry?.location?.lng() || 0
-            }
-            const directionRequest = {
-                origin: center,
-                destination: placeLocation,
-                travelMode: google.maps.TravelMode.WALKING
-            }
-            const result = await getDirections(directionRequest)
-            const distance = result?.routes[0].legs[0].distance?.value || 0
-            const time = result?.routes[0].legs[0].duration?.text || ''
-            const directionsRenderer = new google.maps.DirectionsRenderer({
-                map: map,
-                directions: result
-            })
-            dispatch(setTravelDistance(distance))
-            dispatch(setTravelPlaceGeometry(placeLocation))
-            dispatch(setTravelTime(time))
-            dispatch(setDirectionRenderer(directionsRenderer))
-        } catch (e) {
-            console.log(e);
-        }
+    const { directions, distanceTotal, placeLocation, time } = useRoute({ origin: userLocation, destination: destination })
+    const handleClickRoute = async () => {
+        dispatch(clearDirection())
+        const directionsRenderer = new google.maps.DirectionsRenderer({ map, directions })
+        dispatch(setRouteInfo({ directionsRenderer, distanceTotal, placeLocation, time }))
     }
 
     const useCardPlaceStyle = CardPlaceStyle({ Pallete: pallete })
@@ -100,7 +80,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                     <ButtonSave handleClick={() => handleSetFavorite(convertPlaceToFavorite(place))} isLoading={isAdding} isFavorite={isFavorite()} />
                     <ButtonTravel handleClick={() => {
                         if (place.geometry?.location != null && map != null) {
-                            handleClickMakeRoute()
+                            handleClickRoute()
                         } else {
                             <PopUp text={"У данного места нету координат"} />
                         }
@@ -114,7 +94,6 @@ const CardPlace = ({ place }: CardPlaceProps) => {
             <PopUp text={"Ошибка в обработке данных по данному месту"} />
         )
     }
-
 }
 
 export default memo(CardPlace)

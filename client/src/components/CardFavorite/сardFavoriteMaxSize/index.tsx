@@ -8,23 +8,29 @@ import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth';
 import { IFavoriteItem } from '@/interfaces/IFavoriteItem';
 import {
-    addFavoriteItem, clearDirection, setDirectionRenderer,
-    setTravelDistance, setTravelPlaceGeometry, setTravelTime
+    addFavoriteItem, clearDirection, setRouteInfo,
 } from '@/store/reducers';
 import { ButtonSave } from '@/ui/buttonSave';
 import { ButtonTravel } from '@/ui/buttonTravel';
 import { deleteFavoriteCard } from '@/utils/firebaseService';
-import { getDirections } from '@/utils/route';
 
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { useRoute } from '@/hooks/useRoute';
 
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const { id } = useAuth()
     const [isAdd, setIsAdd] = useState(false)
     const dispatch = useAppDispatch()
+    const coordinatesArray = favoriteItem.coordinates.toString()
+        .slice(1, -1)
+        .split(', ');
+    const destination = {
+        lat: Number(coordinatesArray[0]) || 0,
+        lng: Number(coordinatesArray[1]) || 0
+    }
     const handleDeleteFavorite = (favoirteItem: IFavoriteItem) => {
         setIsAdd(true)
         if (id != null) {
@@ -32,31 +38,14 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
             deleteFavoriteCard(favoirteItem.id, id).then(() => setIsAdd(false))
         }
     }
-    const center = useTypeSelector(state => state.currentPosition.humanPosition)
+    const userLocation = useTypeSelector(state => state.currentPosition.humanPosition)
     const map = useTypeSelector(state => state.map.mapRef)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
+    const { directions, distanceTotal, placeLocation, time } = useRoute({ origin: userLocation, destination: destination })
     const handleClickRoute = async () => {
-        try {
-            dispatch(clearDirection())
-            const directionRequest = {
-                origin: center,
-                destination: favoriteItem.coordinates,
-                travelMode: google.maps.TravelMode.WALKING
-            }
-            const result = await getDirections(directionRequest)
-            const distance = result?.routes[0].legs[0].distance?.value || 0
-            const time = result?.routes[0].legs[0].duration?.text || ''
-            const directionsRenderer = new google.maps.DirectionsRenderer({
-                map: map,
-                directions: result
-            })
-            dispatch(setTravelDistance(distance))
-            dispatch(setTravelPlaceGeometry(favoriteItem.coordinates))
-            dispatch(setTravelTime(time))
-            dispatch(setDirectionRenderer(directionsRenderer))
-        } catch (e) {
-            console.log(e);
-        }
+        dispatch(clearDirection())
+        const directionsRenderer = new google.maps.DirectionsRenderer({ map, directions })
+        dispatch(setRouteInfo({ directionsRenderer, distanceTotal, placeLocation, time }))
     }
 
 
@@ -101,6 +90,5 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
         </>
     )
 }
-
 
 export default CardFavoriteMaxSize

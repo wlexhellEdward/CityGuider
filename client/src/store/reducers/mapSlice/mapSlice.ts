@@ -52,6 +52,12 @@ const mapSlice = createSlice({
         clearDirection(state) {
             state.directionsRenderer?.setMap(null)
         },
+        setRouteInfo(state, action) {
+            state.directionsRenderer = action.payload.directionsRenderer
+            state.travelInfo.distance = action.payload.distanceTotal
+            state.travelInfo.placeGeometry = action.payload.placeLocation
+            state.travelInfo.time = action.payload.time
+        },
         setTravelPlaceGeometry(state, action) {
             state.travelInfo.placeGeometry = action.payload
         },
@@ -89,6 +95,6 @@ const mapSlice = createSlice({
     }
 })
 
-export const { setMap, setRadius, increaseZoom, decreaseZoom, setMapTheme, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
+export const { setMap, setRouteInfo, setRadius, increaseZoom, decreaseZoom, setMapTheme, clearDirection, setDirectionRenderer, setIsLoaded, deleteTravel, setTravelPlaceGeometry, setTravelDistance, setTravelDistanceTraveled, setTravelTime } = mapSlice.actions
 
 export default mapSlice.reducer
