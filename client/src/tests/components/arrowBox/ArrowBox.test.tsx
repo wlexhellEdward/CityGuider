@@ -1,10 +1,8 @@
-import { Provider } from 'react-redux';
-
 import ArrowBox from '@/components/arrowBox';
-import { store } from '@/store/store';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
+import { renderWithAllProviders } from '../../../utils/renderWithProvider';
 
 jest.mock('firebase/database', () => {
     const original = jest.requireActual('firebase/database');
@@ -16,10 +14,8 @@ jest.mock('firebase/database', () => {
 
 describe('Тестирование ArrowBox', () => {
     test('Проверка отображение Arrow Box на странице', () => {
-        render(
-            <Provider store={store}>
-                <ArrowBox />
-            </Provider>
+        renderWithAllProviders(
+            <ArrowBox />
         );
         const arrowBox = screen.getByTestId(/drawer-arrow-show-more/i);
         expect(arrowBox).toBeInTheDocument();

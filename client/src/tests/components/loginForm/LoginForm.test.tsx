@@ -1,10 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 
-import { Provider } from 'react-redux';
-
 import { LoginForm } from '@/components/loginForm';
-import { store } from '@/store/store';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { renderWithAllProviders } from '@/utils/renderWithProvider';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 import { initializeApp } from 'firebase/app';
@@ -40,12 +38,10 @@ describe('Тестирования формы авторизации', () => {
         initializeApp(firebaseConfig);
     });
     test('Проверка на корректный ввод значений в поля формы', async () => {
-        render(
-            <Provider store={store}>
-                <BrowserRouter>
-                    <LoginForm />
-                </BrowserRouter>
-            </Provider>
+        renderWithAllProviders(
+            <BrowserRouter>
+                <LoginForm />
+            </BrowserRouter>
         );
         const inputs = screen.getAllByTestId(/input/);
         await waitFor(() => {

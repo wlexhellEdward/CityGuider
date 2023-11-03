@@ -1,11 +1,10 @@
-import { Provider } from 'react-redux';
-
 import ArrowBox from '@/components/arrowBox';
 import Aside from '@/components/aside';
 import CardFavorite from '@/components/CardFavorite/toggleCardFavorite';
 import { store } from '@/store/store';
+import { renderWithAllProviders } from '@/utils/renderWithProvider';
 import { LatLng } from "@googlemaps/jest-mocks"
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
 
@@ -20,20 +19,18 @@ jest.mock('firebase/database', () => {
 describe('Тестирование CardFavorite', () => {
 
     test('Проверка отображение CardFavorite на странице при закрытом drawer contnet', () => {
-        render(
-            <Provider store={store}>
-                <ArrowBox />
-            </Provider>
+        renderWithAllProviders(
+            <ArrowBox />
         );
         const cardFavorite = screen.queryByTestId(/card-normal-size/i);
         expect(cardFavorite).toBeNull();
     });
     test('Проверка отображение CardFavorite на странице при открытом drawer contnet, но пустом избранном', () => {
-        render(
-            <Provider store={store}>
+        renderWithAllProviders(
+            <>
                 <Aside />
                 <ArrowBox />
-            </Provider>
+            </>
         );
         const btnShomMore = screen.getAllByTestId(/drawer-arrow-show-more/i);
         fireEvent.click(btnShomMore[1]);
@@ -43,10 +40,8 @@ describe('Тестирование CardFavorite', () => {
     test('Проверка отображение CardFavorite c замоканными данными', () => {
         const mockPlace = { id: "1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
 
-        render(
-            <Provider store={store}>
-                <CardFavorite favoriteItem={mockPlace} />
-            </Provider>
+        renderWithAllProviders(
+            <CardFavorite favoriteItem={mockPlace} />
         );
         const cardFavorite = screen.getByTestId(/card-normal-size/i)
         expect(cardFavorite).toBeInTheDocument()
@@ -54,10 +49,8 @@ describe('Тестирование CardFavorite', () => {
     test('Проверка на раскрытие CardFavorite c замоканными данными', async () => {
         const mockPlace = { id: "1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
 
-        render(
-            <Provider store={store}>
-                <CardFavorite favoriteItem={mockPlace} />
-            </Provider>
+        renderWithAllProviders(
+            <CardFavorite favoriteItem={mockPlace} />
         );
         const buttonShowMore = screen.getByTestId(/card-favorite-button-show-more/i)
         fireEvent.click(buttonShowMore)
@@ -69,31 +62,11 @@ describe('Тестирование CardFavorite', () => {
             expect(cardFavoriteMaxSize).toBeInTheDocument()
         })
     });
-    // test('Проверка на удаление из избранного', async () => {
-    //     const mockPlace = { id: "1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
-    //     render(
-    //         <Provider store={store}>
-    //             <CardFavorite favoriteItem={mockPlace} />
-    //         </Provider>
-    //     );
-    //     const state = store.getState()
-    //     const dispatch = store.dispatch
-    //     dispatch(setFavoriteItems(mockPlace))
-
-    //     const buttonDeleteFromFavorite = screen.getByTestId(/delete-from-favorite/i)
-    //     fireEvent.click(buttonDeleteFromFavorite)
-
-    //     await waitFor(() => {
-    //         expect(state.favoriteItems.favoriteItems).toEqual([])
-    //     })
-    // });
     test('Проверка на построение маршрута', async () => {
-        const mockPlace = { id:" 1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
+        const mockPlace = { id: " 1", type: ['fake'], img: '', coordinates: new LatLng(1, 2), title: '', description: '' }
 
-        render(
-            <Provider store={store}>
-                <CardFavorite favoriteItem={mockPlace} />
-            </Provider>
+        renderWithAllProviders(
+            <CardFavorite favoriteItem={mockPlace} />
         );
         const state = store.getState()
         const buttonShowMore = screen.getByTestId(/card-favorite-button-show-more/i)

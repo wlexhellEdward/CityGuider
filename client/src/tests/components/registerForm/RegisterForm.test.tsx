@@ -1,11 +1,9 @@
 import { BrowserRouter } from 'react-router-dom';
 
-import { Provider } from 'react-redux';
-
 import { RegisterForm } from '@/components/registerForm';
-import { store } from '@/store/store';
+import { renderWithAllProviders } from '@/utils/renderWithProvider';
 import { initializeApp } from '@firebase/app';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 
@@ -30,12 +28,10 @@ describe('Тестирования формы регистрации', () => {
         initializeApp(firebaseConfig);
     })
     test('Проверка на корректный ввод значений в поля формы', async () => {
-        render(
-            <Provider store={store}>
-                <BrowserRouter>
-                    <RegisterForm />
-                </BrowserRouter>
-            </Provider>
+        renderWithAllProviders(
+            <BrowserRouter>
+                <RegisterForm />
+            </BrowserRouter>
         );
         const inputs = screen.getAllByTestId(/input/);
         await waitFor(() => {
@@ -58,12 +54,10 @@ describe('Тестирования формы регистрации', () => {
     });
     test('Тестирование регистрации пользователя с валидными данными', async () => {
 
-        render(
-            <Provider store={store}>
-                <BrowserRouter>
-                    <RegisterForm />
-                </BrowserRouter>
-            </Provider>
+        renderWithAllProviders(
+            <BrowserRouter>
+                <RegisterForm />
+            </BrowserRouter>
         );
         const inputEmail = screen.getByLabelText(/Email адресс/);
         const inputElements = [

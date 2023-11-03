@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
-import { useTypeSelector } from "./redux"
+
 import { Places } from "@/components/drawer/Places"
+
+import { useTypeSelector } from "./redux"
 
 
 interface Params {

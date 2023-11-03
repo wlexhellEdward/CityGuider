@@ -6,6 +6,7 @@ import arrowMore from '@/assets/img/CardFavoriteActions/arrowMore.svg'
 import { Places } from '@/components/drawer/Places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth';
+import { useRoute } from '@/hooks/useRoute';
 import { IFavoriteItem } from '@/interfaces/IFavoriteItem';
 import {
     addFavoriteItem, clearDirection, setRouteInfo,
@@ -17,7 +18,6 @@ import { deleteFavoriteCard } from '@/utils/firebaseService';
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
 import DoesntExistPhoto from '/public/doesntExist.png'
-import { useRoute } from '@/hooks/useRoute';
 
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
