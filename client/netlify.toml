@@ -1,10 +1,9 @@
 [build]
-publish = "client"
 command = "npm run build" 
 
 [server]
-publish = "client"
-command = "npm run build" 
+publish = "../server"
+command = "node server.js" 
 
 [[redirects]]
   from = "/*"
