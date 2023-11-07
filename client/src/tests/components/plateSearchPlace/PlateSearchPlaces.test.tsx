@@ -1,8 +1,8 @@
-import { Provider } from 'react-redux';
 
 import { PlateSearchPlaces } from '@/components/plateSearchPlaces';
 import { store } from '@/store/store';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { renderWithAllProviders } from '@/utils/renderWithProvider';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
 
@@ -16,19 +16,15 @@ jest.mock('firebase/database', () => {
 
 describe('Тестирование PlateSearchPlaces', () => {
     test('Проверка отображение PlateSearchPlaces на странице', () => {
-        render(
-            <Provider store={store}>
-                <PlateSearchPlaces />
-            </Provider>
+        renderWithAllProviders(
+            <PlateSearchPlaces />
         );
         const cardFavorite = screen.getByTestId(/plate-search/i);
         expect(cardFavorite).toBeInTheDocument();
     });
     test('Проверка добавления типа места для поиска в state', () => {
-        render(
-            <Provider store={store}>
-                <PlateSearchPlaces />
-            </Provider>
+        renderWithAllProviders(
+            <PlateSearchPlaces />
         );
         const btnPlace = screen.getAllByTestId(/place-for-type-search/i)[0];
         fireEvent.click(btnPlace)
@@ -37,10 +33,8 @@ describe('Тестирование PlateSearchPlaces', () => {
 
     });
     test('Проверка удаления типа места для поиска в state', async () => {
-        render(
-            <Provider store={store}>
-                <PlateSearchPlaces />
-            </Provider>
+        renderWithAllProviders(
+            <PlateSearchPlaces />
         );
         const btnPlace = screen.getAllByTestId(/place-for-type-search/i)[0];
         fireEvent.click(btnPlace)
@@ -54,10 +48,8 @@ describe('Тестирование PlateSearchPlaces', () => {
         })
     });
     test('Проверка добавления нескольких типов места для поиска в state', async () => {
-        render(
-            <Provider store={store}>
-                <PlateSearchPlaces />
-            </Provider>
+        renderWithAllProviders(
+            <PlateSearchPlaces />
         );
         const btnPlace = screen.getAllByTestId(/place-for-type-search/i);
         await waitFor(() => {
@@ -69,10 +61,8 @@ describe('Тестирование PlateSearchPlaces', () => {
         expect(state.searchSlice.selectedItems).toEqual(['architecture', 'atm', 'tourist-attraction']);
     });
     test('Проверка удаления нескольких типов места для поиска в state', async () => {
-        render(
-            <Provider store={store}>
-                <PlateSearchPlaces />
-            </Provider>
+        renderWithAllProviders(
+            <PlateSearchPlaces />
         );
         const btnPlace = screen.getAllByTestId(/place-for-type-search/i);
         await waitFor(() => {
@@ -83,21 +73,4 @@ describe('Тестирование PlateSearchPlaces', () => {
         const state = store.getState()
         expect(state.searchSlice.selectedItems).toEqual([]);
     });
-    // test('Проверка наличия результата при поиске одного типа', async () => {
-    //     render(
-    //         <Provider store={store}>
-    //             <PlateSearchPlaces />
-    //         </Provider>
-    //     );
-    //     const btnPlace = screen.getAllByTestId(/place-for-type-search/i);
-    //     await waitFor(() => {
-    //         fireEvent.click(btnPlace[0])
-    //     })
-    //     const btnSearch = screen.getAllByTestId(/button-search/i)
-    //     await waitFor(() => {
-    //         fireEvent.click(btnSearch[0])
-    //     })
-    //     const state = store.getState()
-    //     expect(state.searchSlice.resultsSearch).not.toEqual([]);
-    // });
 })

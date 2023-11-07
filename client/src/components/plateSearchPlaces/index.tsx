@@ -5,11 +5,11 @@ import { Box, Input, List, Typography } from "@mui/material"
 import { Places } from '@/components/drawer/Places';
 import SearchPlace from '@/components/searchPlace';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
+import { useSearchPlace } from '@/hooks/useSearchPlace';
 import { clearResults, setRadius, setResults } from '@/store/reducers/index.ts';
 import { ButtonSearch } from "@/ui/buttonSearch"
 
 import PlateSearchPlacesStyle from "./styled"
-import { useSearchPlace } from '@/hooks/useSearchPlace';
 
 
 export const PlateSearchPlaces = () => {

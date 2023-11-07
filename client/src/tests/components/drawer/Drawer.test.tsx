@@ -1,8 +1,6 @@
-import { Provider } from 'react-redux';
-
 import SideBar from '@/components/drawer';
-import { store } from '@/store/store';
-import { render, screen, waitFor } from '@testing-library/react';
+import { renderWithAllProviders } from '@/utils/renderWithProvider';
+import { screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 
@@ -15,17 +13,15 @@ jest.mock('firebase/app', () => {
 jest.mock('firebase/database', () => {
   const original = jest.requireActual('firebase/database');
   return {
-      ...original,
-      getDatabase: jest.fn(),
+    ...original,
+    getDatabase: jest.fn(),
   };
 });
 
 describe('Тестирование Drawer', () => {
   test('Проверка drawer на смену статуса выбранного раздела', async () => {
-    render(
-      <Provider store={store}>
-        <SideBar currentStatus='close' />
-      </Provider>
+    renderWithAllProviders(
+      <SideBar currentStatus='close' />
     );
     await waitFor(() => {
       const plateFavorites = screen.queryByTestId(/plate-search/i);
