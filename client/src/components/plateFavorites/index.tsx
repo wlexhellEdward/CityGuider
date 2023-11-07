@@ -2,8 +2,9 @@ import { useEffect } from "react"
 
 import { CircularProgress, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-
 import CardFavorite from "@/components/cardFavorite/toggleCardFavorite"
+
+
 import { Waiter } from "@/components/waiter"
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { useAuth } from "@/hooks/useAuth"

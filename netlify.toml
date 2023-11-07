@@ -2,6 +2,10 @@
 publish = "client"
 command = "npm run build" 
 
+[server]
+publish = "client"
+command = "npm run build" 
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
