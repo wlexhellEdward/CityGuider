@@ -200,10 +200,15 @@ export const FIREBASE_CONFIG = {
 export const SUCCESES = {
     ADD_PLACE: "Место успешно добавленно!",
     DELETE_PLACE: "Место успешно удаленно!",
-    SEARCH_FINISH: "Поиск завершён"
+    SEARCH_FINISH: "Поиск завершён",
+    RESET_PASSWORD: "Сообщение отправлено, проверьте ваш email"
 }
 
 export const ERRORS = {
     CANT_ADD_PLACE: "Не удалось добавить место, попробуйте ещё раз",
     CANT_DELETE_PLACE: "Не удалось удалить место, попробуйте ещё раз",
+}
+
+export const FIREBASE = {
+    url: "http://localhost:5173/login"
 }

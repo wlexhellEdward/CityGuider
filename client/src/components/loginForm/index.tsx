@@ -5,6 +5,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { LoadingButton } from '@mui/lab';
 import {
     Avatar, Box,
+    Button,
     Link, TextField, Typography
 } from '@mui/material';
 
@@ -18,13 +19,18 @@ import { checkUserRole } from '@/utils/firebaseService';
 
 import LoginFormStyle from './styled';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { ResetPasswordModal } from '../resetPasswordModal';
 
 export const LoginForm = () => {
     const dispatch = useAppDispatch()
     const redirectTo = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
+    const [resetPassword, setResetPassword] = useState(false)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const isOpen = useTypeSelector(state => state.errorSlice.isOpen)
+    const handleCloseResetPassword = () => {
+        setResetPassword(false)
+    }
     const handleSetError = (isOpen: boolean, message: string, type: string) => {
         dispatch(setError({
             isOpen: isOpen,
@@ -72,6 +78,10 @@ export const LoginForm = () => {
             )
     };
 
+    const handleClickForgetPassword = () => {
+        setResetPassword(true)
+    }
+
     const useLoginFormStyle = LoginFormStyle({ Pallete: pallete })
     return (
         <>
@@ -107,12 +117,15 @@ export const LoginForm = () => {
                                 autoComplete="new-password"
                             />
                         </Box>
+                        <Button onClick={handleClickForgetPassword} className={useLoginFormStyle.classes.buttonForgetPassword} variant="text">
+                            Забыли пароль?
+                        </Button>
                     </Box>
                     <LoadingButton data-testid='btn-submit' loading={isLoading} className={useLoginFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Войти</LoadingButton>
                     <Box className={useLoginFormStyle.classes.featActionForm}>
                         <Box>
                             <Link className={useLoginFormStyle.classes.supportActionTitle} href="/register" variant="body2">
-                                Ещё нету аккаунта? Зарегистрироваться
+                                Ещё нету аккаунта?
                             </Link>
                         </Box>
                     </Box>
@@ -120,6 +133,11 @@ export const LoginForm = () => {
             </Box>
             {isOpen ?
                 <ModalFormError />
+                :
+                null
+            }
+            {resetPassword ?
+                <ResetPasswordModal open={resetPassword} handleClose={handleCloseResetPassword} />
                 :
                 null
             }

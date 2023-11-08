@@ -12,6 +12,10 @@ const LoginFormStyle = makeStyles<ThemeApp>()(
                 fontFamily: 'mont'
             }
         },
+        buttonForgetPassword:{
+            font:'mont',
+            fontSize:theme.spacing(1.5),
+        },
         titleForm: {
             margin: theme.spacing(2, 4),
             [theme.breakpoints.down('sm')]: {
@@ -26,8 +30,9 @@ const LoginFormStyle = makeStyles<ThemeApp>()(
         containerInputsForm:{
             display:'flex',
             flexDirection:'column',
+            alignItems:'end',
             '&>*':{
-                marginBottom:theme.spacing(2)
+                marginBottom:theme.spacing(0.5)
             }
         },
         containerInputsLine:{

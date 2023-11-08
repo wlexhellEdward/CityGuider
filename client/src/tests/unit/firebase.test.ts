@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { FirebaseApp } from 'firebase/app';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { Auth, UserCredential } from 'firebase/auth';
 
 
@@ -11,6 +11,7 @@ jest.mock('firebase/auth', () => {
         getAuth: jest.fn(() => ({
             signInWithEmailAndPassword: signInWithEmailAndPassword,
             createUserWithEmailAndPassword: createUserWithEmailAndPassword,
+            sendPasswordResetEmail: sendPasswordResetEmail,
             signOut: jest.fn(),
         })),
     };
@@ -67,5 +68,39 @@ describe('Тесты "firebase/auth', () => {
         const signInWithEmailAndPasswordMock = jest.fn().mockRejectedValue(error);
         (signInWithEmailAndPassword as jest.Mock) = signInWithEmailAndPasswordMock;
         await expect(createUserWithEmailAndPassword(auth, 'test@example.com', 'invalidPassword')).rejects.toThrow('User creation failed');
+    });
+    test('Восстановление пароля пользователя с валидными данными', async () => {
+        interface passwordCredinital {
+            user: {
+                email: string,
+                password: string
+            }
+        }
+        const sendPasswordResetEmailMock = jest.fn().mockResolvedValue({
+            user: {
+                email: 'test@example.com',
+                password: 'example'
+            },
+        } as passwordCredinital);
+        (sendPasswordResetEmail as jest.Mock) = sendPasswordResetEmailMock;
+        const userCredential = await sendPasswordResetEmail(auth, 'test@example.com', { url: 'url' });
+        expect(userCredential).toStrictEqual({ "user": { "email": "test@example.com", "password": "example" } });
+    });
+    test('Восстановление пароля пользователя с невалидными данными', async () => {
+        interface passwordCredinital {
+            user: {
+                email: string,
+                password: string
+            }
+        }
+        const sendPasswordResetEmailMock = jest.fn().mockResolvedValue({
+            user: {
+                email: 'test',
+                password: 'undefiend'
+            },
+        } as passwordCredinital);
+        (sendPasswordResetEmail as jest.Mock) = sendPasswordResetEmailMock;
+        const userCredential = await sendPasswordResetEmail(auth, 'test', { url: 'url' });
+        expect(userCredential).toStrictEqual({ "user": { "email": "test", "password": "undefiend" } });
     });
 });
