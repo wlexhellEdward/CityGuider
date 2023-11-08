@@ -81,16 +81,13 @@ describe('Тестирования формы регистрации', () => {
                 <RegisterForm />
             </BrowserRouter>
         );
-        const emailInput = screen.getByText("Email адресс");
-
-        if (emailInput) {
-            const emailInputValue = emailInput.querySelector('input')
-            if (emailInputValue) {
-                fireEvent.change(emailInputValue, { target: { value: 'invalid-email' } });
-                expect(emailInputValue).toHaveAttribute('aria-invalid', 'true');
-                const errorMessage = screen.getByText('Некорректный email');
-                expect(errorMessage).toBeInTheDocument();
-            }
+        const emailInput = screen.getByText("Email адресс") as HTMLDivElement;
+        const emailInputValue = emailInput.querySelector('input')
+        if (emailInputValue) {
+            fireEvent.change(emailInputValue, { target: { value: 'invalid-email' } });
+            expect(emailInputValue).toHaveAttribute('aria-invalid', 'true');
+            const errorMessage = screen.getByText('Некорректный email');
+            expect(errorMessage).toBeInTheDocument();
         }
     });
 
@@ -100,15 +97,13 @@ describe('Тестирования формы регистрации', () => {
                 <RegisterForm />
             </BrowserRouter>
         )
-        const passwordInput = screen.getByText("Пароль");
-        if (passwordInput) {
-            const passwordInputValue = passwordInput.querySelector('input')
-            if (passwordInputValue) {
-                fireEvent.change(passwordInputValue, { target: { value: '12345' } });
-                expect(passwordInputValue).toHaveAttribute('aria-invalid', 'true');
-                const errorMessage = screen.getByText('Пароль должен быть не менее 6 символов');
-                expect(errorMessage).toBeInTheDocument();
-            }
+        const passwordInput = screen.getByText("Пароль") as HTMLDivElement;
+        const passwordInputValue = passwordInput.querySelector('input')
+        if (passwordInputValue) {
+            fireEvent.change(passwordInputValue, { target: { value: '12345' } });
+            expect(passwordInputValue).toHaveAttribute('aria-invalid', 'true');
+            const errorMessage = screen.getByText('Пароль должен быть не менее 6 символов');
+            expect(errorMessage).toBeInTheDocument();
         }
     });
 
@@ -118,18 +113,16 @@ describe('Тестирования формы регистрации', () => {
                 <RegisterForm />
             </BrowserRouter>
         )
-        const passwordInput = screen.getByText("Пароль");
-        const confirmInput = screen.getByText("Подтвердите пароль");
-        if (passwordInput && confirmInput) {
-            const passwordInputValue = passwordInput.querySelector('input')
-            const confirmInputValue = confirmInput.querySelector('input')
-            if (passwordInputValue && confirmInputValue) {
-                fireEvent.change(passwordInputValue, { target: { value: 'password123' } });
-                fireEvent.change(confirmInputValue, { target: { value: 'differentpassword' } });
-                expect(confirmInputValue).toHaveAttribute('aria-invalid', 'true');
-                const errorMessage = screen.getByText('Пароли не совпадают');
-                expect(errorMessage).toBeInTheDocument();
-            }
+        const passwordInput = screen.getByText("Пароль") as HTMLDivElement;
+        const confirmInput = screen.getByText("Подтвердите пароль") as HTMLDivElement;
+        const passwordInputValue = passwordInput.querySelector('input')
+        const confirmInputValue = confirmInput.querySelector('input')
+        if (passwordInputValue && confirmInputValue) {
+            fireEvent.change(passwordInputValue, { target: { value: 'password123' } });
+            fireEvent.change(confirmInputValue, { target: { value: 'differentpassword' } });
+            expect(confirmInputValue).toHaveAttribute('aria-invalid', 'true');
+            const errorMessage = screen.getByText('Пароли не совпадают');
+            expect(errorMessage).toBeInTheDocument();
         }
     });
 })
