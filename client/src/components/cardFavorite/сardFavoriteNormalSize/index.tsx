@@ -15,6 +15,8 @@ import { refactorString } from '@/utils/textRefactors.ts';
 import CardFavoriteStyle from '../styled.ts';
 import { CardFavoritePropsNormalSize } from './interfaces.ts.ts';
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { toast } from 'react-toastify';
+import { ERRORS, SUCCESES } from '@/utils/consts.tsx';
 
 const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()
@@ -24,6 +26,12 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
     const handleAddToFavorite = (favoirteItem: IFavoriteItem) => {
         if (id != null) {
             deleteFavoriteCard(favoirteItem.id, id)
+                .then(() => {
+                    toast(SUCCESES.DELETE_PLACE, { type: 'success' });
+                })
+                .catch(() => {
+                    toast(ERRORS.CANT_DELETE_PLACE, { type: 'error' });
+                })
         }
         dispatch(addFavoriteItem(favoirteItem))
     }

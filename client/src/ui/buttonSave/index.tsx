@@ -24,7 +24,6 @@ export const ButtonSave = ({ handleClick, isLoading, isFavorite }: ButtonSavePro
                     :
                     null
                 }
-
             </LoadingButton>
         </>
     )

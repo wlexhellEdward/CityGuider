@@ -18,6 +18,8 @@ import { deleteFavoriteCard } from '@/utils/firebaseService';
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { toast } from 'react-toastify';
+import { ERRORS, SUCCESES } from '@/utils/consts';
 
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
@@ -35,10 +37,17 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
         setIsAdd(true)
         if (id != null) {
             dispatch(addFavoriteItem(favoirteItem))
-            deleteFavoriteCard(favoirteItem.id, id).then(() => setIsAdd(false))
+            deleteFavoriteCard(favoirteItem.id, id)
+                .then(() => {
+                    setIsAdd(false)
+                    toast(SUCCESES.DELETE_PLACE, { type: 'success' });
+                })
+                .catch(() => {
+                    toast(ERRORS.CANT_DELETE_PLACE, { type: 'error' });
+                })
         }
     }
-    const userLocation = useTypeSelector(state => state.currentPosition.humanPosition)
+    const userLocation = useTypeSelector(state => state.currentPosition.position)
     const map = useTypeSelector(state => state.map.mapRef)
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const { directions, distanceTotal, placeLocation, time } = useRoute({ origin: userLocation, destination: destination })

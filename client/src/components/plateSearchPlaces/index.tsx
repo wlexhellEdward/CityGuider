@@ -10,6 +10,8 @@ import { clearResults, setRadius, setResults } from '@/store/reducers/index.ts';
 import { ButtonSearch } from "@/ui/buttonSearch"
 
 import PlateSearchPlacesStyle from "./styled"
+import { toast } from 'react-toastify';
+import { SUCCESES } from '@/utils/consts';
 
 
 export const PlateSearchPlaces = () => {
@@ -30,6 +32,7 @@ export const PlateSearchPlaces = () => {
     const handleSetSearchButtonIsClicked = () => {
         dispatch(clearResults())
         dispatch(setResults(result))
+        toast(SUCCESES.SEARCH_FINISH, { type: 'info' })
     }
     function testIsSelected(type: string) {
         let result = true;
@@ -61,7 +64,6 @@ export const PlateSearchPlaces = () => {
                     <ButtonSearch handleSetSearchButtonIsClicked={handleSetSearchButtonIsClicked} />
                 </Box>
             </Box>
-
         </Box>
     )
 }

@@ -97,8 +97,7 @@ const Map = () => {
                     <Loader />
                 )}
             </Box >
-            {travel && <RouteInfo />
-            }
+            {travel && <RouteInfo />}
         </>
     );
 }

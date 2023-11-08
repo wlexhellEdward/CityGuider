@@ -8,10 +8,10 @@ const CardPlaceStyle = makeStyles<ThemeApp>()(
         cardPlace: {
             backgroundColor:Pallete.background,
             width: theme.spacing(40),
-            height: theme.spacing(43),
+            minHeight: theme.spacing(43),
             [theme.breakpoints.down('sm')]: {
                 width: theme.spacing(20),
-                height: theme.spacing(31)
+                minHeight: theme.spacing(20)
             }
         },
         placePhoto: {

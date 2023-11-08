@@ -1,5 +1,6 @@
 import { memo, useState } from 'react'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
 
 import { PopUp } from '@/components/pop-up';
@@ -18,6 +19,7 @@ import { addFavoriteCard, deleteFavoriteCard } from '@/utils/firebaseService.ts'
 import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { ERRORS, SUCCESES } from '@/utils/consts.tsx';
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
     return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : DoesntExistPhoto
@@ -26,7 +28,7 @@ const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
 const CardPlace = ({ place }: CardPlaceProps) => {
     const dispatch = useAppDispatch()
     const { id } = useAuth()
-    const userLocation = useTypeSelector(state => state.currentPosition.humanPosition)
+    const userLocation = useTypeSelector(state => state.currentPosition.position)
     const favoriteItems = useTypeSelector(state => state.favoriteItems.favoriteItems)
     const destination = {
         lat: place?.geometry?.location?.lat() || 0,
@@ -41,15 +43,25 @@ const CardPlace = ({ place }: CardPlaceProps) => {
     const handleSetFavorite = async (favoirteItem: IFavoriteItem) => {
         setIsAdding(true)
         if (id != null && !isFavorite()) {
-            addFavoriteCard(favoirteItem, id).then(() => {
-                setIsAdding(false)
-                dispatch(addFavoriteItem(favoirteItem))
-            })
+            addFavoriteCard(favoirteItem, id)
+                .then(() => {
+                    setIsAdding(false)
+                    dispatch(addFavoriteItem(favoirteItem))
+                    toast(SUCCESES.ADD_PLACE, { type: 'success' });
+                })
+                .catch(() => {
+                    toast(ERRORS.CANT_ADD_PLACE, { type: 'error' });
+                })
         } else if (id != null && isFavorite()) {
-            deleteFavoriteCard(favoirteItem.id, id).then(() => {
-                setIsAdding(false)
-                dispatch(addFavoriteItem(favoirteItem))
-            })
+            deleteFavoriteCard(favoirteItem.id, id)
+                .then(() => {
+                    setIsAdding(false)
+                    dispatch(addFavoriteItem(favoirteItem))
+                    toast(SUCCESES.DELETE_PLACE, { type: 'success' });
+                })
+                .catch(() => {
+                    toast(ERRORS.CANT_DELETE_PLACE, { type: 'error' });
+                })
         }
     }
     const { directions, distanceTotal, placeLocation, time } = useRoute({ origin: userLocation, destination: destination })
@@ -58,7 +70,6 @@ const CardPlace = ({ place }: CardPlaceProps) => {
         const directionsRenderer = new google.maps.DirectionsRenderer({ map, directions })
         dispatch(setRouteInfo({ directionsRenderer, distanceTotal, placeLocation, time }))
     }
-
     const useCardPlaceStyle = CardPlaceStyle({ Pallete: pallete })
 
     if (place != undefined) {
