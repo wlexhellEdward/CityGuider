@@ -9,7 +9,7 @@ import {
     Link, TextField, Typography
 } from '@mui/material';
 
-import { ModalFormError } from '@/components/modalFormError';
+import { ModalFormError } from '@/components/ModalFormError';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
@@ -19,7 +19,7 @@ import { checkUserRole } from '@/utils/firebaseService';
 
 import LoginFormStyle from './styled';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { ResetPasswordModal } from '../resetPasswordModal';
+import { ResetPasswordModal } from '../ResetPasswordModal';
 
 export const LoginForm = () => {
     const dispatch = useAppDispatch()

@@ -1,6 +1,6 @@
-import ArrowBox from '@/components/arrowBox';
-import Aside from '@/components/aside';
-import CardFavorite from '@/components/cardFavorite/toggleCardFavorite';
+import ArrowBox from '@/components/ArrowBox';
+import Aside from '@/components/Aside';
+import CardFavorite from '@/components/cardFavorite/ToggleCardFavorite';
 // import { store } from '@/store/store';
 import { renderWithAllProviders } from '@/utils/renderWithProvider';
 import { LatLng } from "@googlemaps/jest-mocks"

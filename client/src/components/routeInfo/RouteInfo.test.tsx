@@ -1,4 +1,4 @@
-import { RouteInfo } from '@/components/routeInfo';
+import { RouteInfo } from '@/components/RouteInfo';
 import { setTravelTime } from '@/store/reducers';
 import { store } from '@/store/store';
 import { renderWithAllProviders } from '@/utils/renderWithProvider';

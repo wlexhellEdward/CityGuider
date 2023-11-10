@@ -2,8 +2,8 @@ import { useState } from 'react'
 
 import { Box, Input, List, Typography } from "@mui/material"
 
-import { Places } from '@/components/drawer/Places';
-import SearchPlace from '@/components/searchPlace';
+import { Places } from '@/components/Drawer/Places';
+import SearchPlace from '@/components/SearchPlace';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useSearchPlace } from '@/hooks/useSearchPlace';
 import { clearResults, setRadius, setResults } from '@/store/reducers/index.ts';

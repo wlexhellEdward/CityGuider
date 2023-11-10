@@ -4,7 +4,7 @@ import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mu
 
 import arrowMore from '@/assets/img/CardFavoriteActions/arrowMore.svg'
 import FavoriteImg from '@/assets/img/CardFavoriteActions/inFavorite.svg'
-import { Places } from '@/components/drawer/Places.ts';
+import { Places } from '@/components/Drawer/Places.ts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth.ts';
 import { IFavoriteItem } from '@/interfaces/IFavoriteItem.ts';

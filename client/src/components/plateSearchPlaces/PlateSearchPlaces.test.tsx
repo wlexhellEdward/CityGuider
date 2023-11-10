@@ -1,5 +1,5 @@
 
-import { PlateSearchPlaces } from '@/components/plateSearchPlaces';
+import { PlateSearchPlaces } from '@/components/PlateSearchPlaces';
 import { store } from '@/store/store';
 import { renderWithAllProviders } from '@/utils/renderWithProvider';
 import { fireEvent, screen, waitFor } from '@testing-library/react';

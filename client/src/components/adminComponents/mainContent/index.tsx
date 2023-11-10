@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 
 import { Box, CircularProgress } from '@mui/material';
 
-import { CardUser } from "@/components/adminComponents/cardUser";
-import { ModalToEdit } from "@/components/adminComponents/modalToEdit";
-import { PaginationBar } from "@/components/pagination";
+import { CardUser } from "@/components/adminComponents/CardUser";
+import { ModalToEdit } from "@/components/adminComponents/ModalToEdit";
+import { PaginationBar } from "@/components/Pagination";
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { IUser } from "@/interfaces/IUser";
 import { setAllUsers } from "@/store/reducers/adminSlice/adminSlice";

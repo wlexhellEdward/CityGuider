@@ -3,10 +3,10 @@ import { useState } from 'react'
 import { Box } from '@mui/material'
 
 import Exit from '@/assets/img/DrawerActions/exit.svg'
-import ArrowBox from '@/components/arrowBox'
-import { AsideListItems } from '@/components/asideListItems';
-import { СonfirmModal } from '@/components/confirmModal'
-import SideBar from '@/components/drawer'
+import ArrowBox from '@/components/ArrowBox'
+import { AsideListItems } from '@/components/AsideListItems';
+import { СonfirmModal } from '@/components/ConfirmModal'
+import SideBar from '@/components/Drawer'
 import { useTypeSelector } from '@/hooks/redux'
 
 import AsideStyle from './styled'

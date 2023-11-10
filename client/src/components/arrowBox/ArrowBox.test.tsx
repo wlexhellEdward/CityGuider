@@ -1,8 +1,8 @@
-import ArrowBox from '@/components/arrowBox';
+import ArrowBox from '@/components/ArrowBox';
 import { screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
-import { renderWithAllProviders } from '../../../utils/renderWithProvider';
+import { renderWithAllProviders } from '../../utils/renderWithProvider';
 
 jest.mock('firebase/database', () => {
     const original = jest.requireActual('firebase/database');

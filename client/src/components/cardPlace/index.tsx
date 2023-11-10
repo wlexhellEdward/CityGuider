@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
 
-import { PopUp } from '@/components/pop-up';
+import { PopUp } from '@/components/Pop-up/index.tsx';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
 import { useAuth } from '@/hooks/useAuth.ts';
 import { useRoute } from '@/hooks/useRoute.ts';
@@ -100,11 +100,11 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                 </CardActions>
             </Card>
         )
-    } else {
-        return (
-            <PopUp text={"Ошибка в обработке данных по данному месту"} />
-        )
     }
+    return (
+        <PopUp text={"Ошибка в обработке данных по данному месту"} />
+    )
+
 }
 
 export default memo(CardPlace)

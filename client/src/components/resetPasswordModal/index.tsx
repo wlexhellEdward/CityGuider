@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Modal, Box, Typography, Button, TextField } from "@mui/material"
 import { ResetPasswordProps } from "./interfaces"
 import { getAuth, sendPasswordResetEmail } from "firebase/auth"
-import { FIREBASE, SUCCESES } from '@/utils/consts';
+import { SUCCESES } from '@/utils/consts';
 import { useTypeSelector } from "@/hooks/redux";
 import { toast } from "react-toastify";
 
@@ -21,7 +21,7 @@ export const ResetPasswordModal = ({ open, handleClose }: ResetPasswordProps) =>
             setError('Некорректный email');
         } else {
             setError('');
-            sendPasswordResetEmail(auth, email, { url: FIREBASE.url });
+            sendPasswordResetEmail(auth, email, { url: process.env.REACT_APP_BASE_PAT || "" });
             toast(SUCCESES.RESET_PASSWORD, { type: 'info' });
             handleClose();
         }

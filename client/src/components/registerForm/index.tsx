@@ -8,7 +8,7 @@ import {
     Link, TextField, Typography
 } from '@mui/material';
 
-import { ModalFormError } from '@/components/modalFormError';
+import { ModalFormError } from '@/components/ModalFormError';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';

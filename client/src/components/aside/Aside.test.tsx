@@ -1,4 +1,4 @@
-import Aside from '@/components/aside';
+import Aside from '@/components/Aside';
 import { setFavoriteItems } from '@/store/reducers';
 import { store } from '@/store/store';
 import { LatLng } from '@googlemaps/jest-mocks';

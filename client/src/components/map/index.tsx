@@ -5,19 +5,20 @@ import { Circle, GoogleMap, Marker } from "@react-google-maps/api";
 
 import { Box, } from "@mui/material";
 
-import CardPlace from "@/components/cardPlace";
-import { CurrentLocationMarker } from "@/components/currentLocationMarker";
-import { Loader } from "@/components/loader";
-import { MapAction } from '@/components/mapAction';
-import { RouteInfo } from "@/components/routeInfo";
+import CardPlace from "@/components/CardPlace";
+import { CurrentLocationMarker } from "@/components/CurrentLocationMarker";
+import { Loader } from "@/components/Loader";
+import { MapAction } from '@/components/MapAction';
+import { RouteInfo } from "@/components/RouteInfo";
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useGoogleMaps } from "@/hooks/useGoogleMapsLoader";
 import { setCenter, setHumanPosition } from '@/store/reducers';
 import { clearDirection, setMap, setRadius } from '@/store/reducers/mapSlice/mapSlice';
-import { CIRCLE_OPTIONS, DEFAULT_OPTIONS } from '@/utils/consts';
+import { CIRCLE_OPTIONS, DEFAULT_OPTIONS, ERRORS } from '@/utils/consts';
 import { getBrowserLocation } from '@/utils/geo';
 
 import MapStyle from './styled';
+import { toast } from 'react-toastify';
 
 const Map = () => {
     const dispatch = useAppDispatch()
@@ -43,6 +44,7 @@ const Map = () => {
             .catch((defaultLocation) => {
                 dispatch(setCenter(location))
                 dispatch(setHumanPosition(defaultLocation))
+                toast(ERRORS.CANT_DETERMINE_THE_LOCATION, { type: 'info' })
             });
     }, [])
     const handleClickClose = () => {

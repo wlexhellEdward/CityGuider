@@ -1,4 +1,4 @@
-import SideBar from '@/components/drawer';
+import SideBar from '@/components/Drawer';
 import { renderWithAllProviders } from '@/utils/renderWithProvider';
 import { screen, waitFor } from '@testing-library/react';
 

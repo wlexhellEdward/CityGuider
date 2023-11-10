@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
 
 import arrowMore from '@/assets/img/CardFavoriteActions/arrowMore.svg'
-import { Places } from '@/components/drawer/Places';
+import { Places } from '@/components/Drawer/Places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth';
 import { useRoute } from '@/hooks/useRoute';

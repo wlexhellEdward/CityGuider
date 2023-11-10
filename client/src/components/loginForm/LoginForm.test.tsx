@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 
-import { LoginForm } from '@/components/loginForm';
+import { LoginForm } from '@/components/LoginForm';
 import { renderWithAllProviders } from '@/utils/renderWithProvider';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 

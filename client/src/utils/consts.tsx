@@ -207,6 +207,7 @@ export const SUCCESES = {
 export const ERRORS = {
     CANT_ADD_PLACE: "Не удалось добавить место, попробуйте ещё раз",
     CANT_DELETE_PLACE: "Не удалось удалить место, попробуйте ещё раз",
+    CANT_DETERMINE_THE_LOCATION: "Не удалось определить ваше местоположение, попробуйте выключить VPN"
 }
 
 export const FIREBASE = {
