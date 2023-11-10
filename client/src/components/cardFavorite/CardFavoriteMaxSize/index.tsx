@@ -13,13 +13,13 @@ import {
 } from '@/store/reducers';
 import { ButtonSave } from '@/ui/buttonSave';
 import { ButtonTravel } from '@/ui/buttonTravel';
-import { deleteFavoriteCard } from '@/utils/firebaseService';
+import { deleteFavoriteCard } from '@/utils/services/firebaseService';
 
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
 import DoesntExistPhoto from '/public/doesntExist.png'
 import { toast } from 'react-toastify';
-import { ERRORS, SUCCESES } from '@/utils/consts';
+import { ERRORS, SUCCESES } from '@/consts/consts';
 
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {

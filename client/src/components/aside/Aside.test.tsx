@@ -5,7 +5,7 @@ import { LatLng } from '@googlemaps/jest-mocks';
 import { fireEvent, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
-import { renderWithAllProviders } from '@/utils/renderWithProvider';
+import { renderWithAllProviders } from '@/utils/helpers/renderWithProvider';
 
 jest.mock('firebase/database', () => {
     const original = jest.requireActual('firebase/database');

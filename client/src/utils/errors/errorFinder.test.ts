@@ -1,4 +1,4 @@
-import { getMessageError } from "@/utils/errorFinder";
+import { getMessageError } from "@/utils/errors/errorFinder";
 
 describe('Проверка метода erorFinder', () => {
     test('Проверка на наличие ответа при корректном запросе', () => {

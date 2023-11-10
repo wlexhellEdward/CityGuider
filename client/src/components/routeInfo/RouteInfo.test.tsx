@@ -1,7 +1,7 @@
 import { RouteInfo } from '@/components/RouteInfo';
 import { setTravelTime } from '@/store/reducers';
 import { store } from '@/store/store';
-import { renderWithAllProviders } from '@/utils/renderWithProvider';
+import { renderWithAllProviders } from '@/utils/helpers/renderWithProvider';
 import { screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom'

@@ -11,7 +11,7 @@ import { ButtonSearch } from "@/ui/buttonSearch"
 
 import PlateSearchPlacesStyle from "./styled"
 import { toast } from 'react-toastify';
-import { SUCCESES } from '@/utils/consts';
+import { SUCCESES } from '@/consts/consts';
 
 
 export const PlateSearchPlaces = () => {

@@ -9,7 +9,7 @@ import { Waiter } from "@/components/Waiter"
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { useAuth } from "@/hooks/useAuth"
 import { setFavoriteItemIsLoading, setFavoriteItems } from "@/store/reducers"
-import { getFavoriteCardsUser } from '@/utils/firebaseService'
+import { getFavoriteCardsUser } from '@/utils/services/firebaseService'
 
 import PlateFavoritesStyle from "./styled"
 

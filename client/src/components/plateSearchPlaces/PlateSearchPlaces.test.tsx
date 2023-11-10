@@ -1,7 +1,7 @@
 
 import { PlateSearchPlaces } from '@/components/PlateSearchPlaces';
 import { store } from '@/store/store';
-import { renderWithAllProviders } from '@/utils/renderWithProvider';
+import { renderWithAllProviders } from '@/utils/helpers/renderWithProvider';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom'

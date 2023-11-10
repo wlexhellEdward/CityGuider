@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { ILocation } from '@/interfaces/ILocations';
-import { getDirections } from '@/utils/route';
+import { getDirections } from '@/utils/map/route';
 
 interface Params {
     origin: ILocation,

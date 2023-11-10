@@ -7,7 +7,7 @@ import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useGoogleMaps } from '@/hooks/useGoogleMapsLoader.ts';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside.ts';
 import { setCenter } from '@/store/reducers/index.ts';
-import { refactorString } from '@/utils/textRefactors.ts';
+import { refactorString } from '@/utils/refactors/textRefactors.ts';
 
 import AutocompleteStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'

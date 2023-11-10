@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 
 import { RegisterForm } from '@/components/RegisterForm';
-import { renderWithAllProviders } from '@/utils/renderWithProvider';
+import { renderWithAllProviders } from '@/utils/helpers/renderWithProvider';
 import { initializeApp } from '@firebase/app';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 

@@ -14,8 +14,8 @@ import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
-import { getMessageError } from '@/utils/errorFinder';
-import { checkUserRole } from '@/utils/firebaseService';
+import { getMessageError } from '@/utils/errors/errorFinder';
+import { checkUserRole } from '@/utils/services/firebaseService';
 
 import LoginFormStyle from './styled';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";

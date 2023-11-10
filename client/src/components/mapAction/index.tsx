@@ -9,8 +9,8 @@ import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { setCenter } from "@/store/reducers";
 import { setAppTheme } from "@/store/reducers/appSlice/appSlice";
 import { decreaseZoom, increaseZoom, setMapTheme } from '@/store/reducers/mapSlice/mapSlice';
-import { DARK_THEME_APP, LIGHT_THEME_APP, MAP_DARK_THEME, MAP_THEME } from '@/utils/consts';
-import { getBrowserLocation } from "@/utils/geo";
+import { DARK_THEME_APP, LIGHT_THEME_APP, MAP_DARK_THEME, MAP_THEME } from '@/consts/consts';
+import { getBrowserLocation } from "@/utils/map/geo";
 
 import MapActionStyle from "./styled"
 import DoesntExistPhoto from '/public/doesntExist.png'

@@ -5,7 +5,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { clearDirection, deleteTravel, setDirectionRenderer, setTravelDistanceTraveled, setTravelTime } from '@/store/reducers';
-import { getDirections } from '@/utils/route';
+import { getDirections } from '@/utils/map/route';
 
 import RouteInfoStyle from "./styled"
 

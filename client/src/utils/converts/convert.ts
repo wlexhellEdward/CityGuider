@@ -1,6 +1,5 @@
 import DoesntExistPhoto from '/public/doesntExist.png'
 
-
 export const convertPlaceToFavorite = (place: google.maps.places.PlaceResult) => {
     const coordinates = place.geometry?.location || new google.maps.LatLng(0, 0);
     return {
@@ -12,7 +11,6 @@ export const convertPlaceToFavorite = (place: google.maps.places.PlaceResult) =>
         description: place.vicinity || "description"
     }
 }
-
 
 export const passwordToStrength = (password: string) => {
     let strength = 0;

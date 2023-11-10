@@ -7,7 +7,7 @@ import { Avatar, Box, Link, Typography } from '@mui/material';
 import { ModalFormError } from '@/components/ModalFormError';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
-import { getMessageError } from '@/utils/errorFinder';
+import { getMessageError } from '@/utils/errors/errorFinder';
 import { ContainerInputsForm } from '@/components/ContainerInputsForm';
 
 import RegisterFormStyle from './styled';

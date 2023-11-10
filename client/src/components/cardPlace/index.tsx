@@ -7,19 +7,18 @@ import { PopUp } from '@/components/Pop-up/index.tsx';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
 import { useAuth } from '@/hooks/useAuth.ts';
 import { useRoute } from '@/hooks/useRoute.ts';
-import { IFavoriteItem } from '@/interfaces/IFavoriteItem.ts'
 import {
     addFavoriteItem, clearDirection, setRouteInfo
 } from '@/store/reducers'
 import { ButtonSave } from '@/ui/buttonSave';
 import { ButtonTravel } from '@/ui/buttonTravel';
-import { convertPlaceToFavorite } from '@/utils/convert'
-import { addFavoriteCard, deleteFavoriteCard } from '@/utils/firebaseService.ts';
+import { convertPlaceToFavorite } from '@/utils/converts/convert.ts'
+import { addFavoriteCard, deleteFavoriteCard } from '@/utils/services/firebaseService.ts';
 
 import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
-import { ERRORS, SUCCESES } from '@/utils/consts.tsx';
+import { ERRORS, SUCCESES } from '@/consts/consts.tsx';
 import { errors, titles } from './config.ts';
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {

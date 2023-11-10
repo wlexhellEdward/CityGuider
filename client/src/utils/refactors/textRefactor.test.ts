@@ -1,4 +1,4 @@
-import { refactorString } from '@/utils/textRefactors';
+import { refactorString } from '@/utils/refactors/textRefactors';
 
 describe('Проверка метода textRefactor',()=>{
     test('Проверка на корректное значение [.length>20]', () => {

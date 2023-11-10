@@ -1,7 +1,7 @@
 import appReducer, {
     setAppTheme
 } from "@/store/reducers/appSlice/appSlice"
-import { DARK_THEME_APP, LIGHT_THEME_APP } from "@/utils/consts"
+import { DARK_THEME_APP, LIGHT_THEME_APP } from "@/consts/consts"
 
 jest.mock('firebase/database', () => {
     const original = jest.requireActual('firebase/database');

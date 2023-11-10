@@ -4,7 +4,7 @@ import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextFie
 
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';
-import { editUserInfo } from '@/utils/firebaseService';
+import { editUserInfo } from '@/utils/services/firebaseService';
 
 import { ModalProps } from './interfaces';
 import { modalToEditStyle } from './styled';
