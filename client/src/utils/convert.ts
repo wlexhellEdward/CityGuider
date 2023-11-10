@@ -13,3 +13,21 @@ export const convertPlaceToFavorite = (place: google.maps.places.PlaceResult) =>
     }
 }
 
+
+export const passwordToStrength = (password: string) => {
+    let strength = 0;
+    const uppercaseRegex = /[A-Z]/;
+    if (uppercaseRegex.test(password)) {
+        strength += 1 / 3;
+    }
+    const digitRegex = /\d/;
+    if (digitRegex.test(password)) {
+        strength += 1 / 3;
+    }
+    const minLength = 6;
+    if (password.length >= minLength) {
+        strength += 1 / 3;
+    }
+
+    return strength * 100;
+};

@@ -20,6 +20,7 @@ import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
 import { ERRORS, SUCCESES } from '@/utils/consts.tsx';
+import { errors, titles } from './config.ts';
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
     return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : DoesntExistPhoto
@@ -40,7 +41,8 @@ const CardPlace = ({ place }: CardPlaceProps) => {
     const isFavorite = () => {
         return favoriteItems.some(item => item.id == place.place_id)
     }
-    const handleSetFavorite = async (favoirteItem: IFavoriteItem) => {
+    const handleSetFavorite = async () => {
+        const favoirteItem = convertPlaceToFavorite(place)
         setIsAdding(true)
         if (id != null && !isFavorite()) {
             addFavoriteCard(favoirteItem, id)
@@ -64,6 +66,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                 })
         }
     }
+
     const { directions, distanceTotal, placeLocation, time } = useRoute({ origin: userLocation, destination: destination })
     const handleClickRoute = async () => {
         dispatch(clearDirection())
@@ -80,7 +83,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                         className={useCardPlaceStyle.classes.placePhoto}
                         src={checkValidPhoto(place)}
                         alt={DoesntExistPhoto}
-                        title='place photo'
+                        title={titles.media}
                     />
                 </CardMedia>
                 <CardContent className={useCardPlaceStyle.classes.cardContent}>
@@ -88,12 +91,12 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                     <Typography className={useCardPlaceStyle.classes.placeAdress}>{place.vicinity}</Typography>
                 </CardContent>
                 <CardActions className={useCardPlaceStyle.classes.cardActions}>
-                    <ButtonSave handleClick={() => handleSetFavorite(convertPlaceToFavorite(place))} isLoading={isAdding} isFavorite={isFavorite()} />
+                    <ButtonSave handleClick={handleSetFavorite} isLoading={isAdding} isFavorite={isFavorite()} />
                     <ButtonTravel handleClick={() => {
                         if (place.geometry?.location != null && map != null) {
                             handleClickRoute()
                         } else {
-                            <PopUp text={"У данного места нету координат"} />
+                            <PopUp text={errors.placeWithoutCoorginates} />
                         }
                     }
                     } />
@@ -102,7 +105,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
         )
     }
     return (
-        <PopUp text={"Ошибка в обработке данных по данному месту"} />
+        <PopUp text={errors.errorInRenderCardPlace} />
     )
 
 }

@@ -2,7 +2,7 @@ import { ThemeApp } from '@/interfaces/IThemeApp';
 
 import { makeStyles } from 'tss-react/mui';
 
-const RegisterFormStyle = makeStyles<ThemeApp>()(
+const containerInputsForm = makeStyles<ThemeApp>()(
     (theme, { Pallete }) => ({
         containerRegister: {
             backgroundColor: Pallete.background,
@@ -84,4 +84,4 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
 );
 
 
-export default RegisterFormStyle
+export default containerInputsForm

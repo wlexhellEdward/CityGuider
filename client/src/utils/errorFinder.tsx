@@ -20,3 +20,19 @@ export const getMessageError = (error: Error) => {
     return errorMessage
 }
 
+
+export const getPasswordErrors = (password: string) => {
+    const uppercaseRegex = /[A-Z]/;
+    const digitRegex = /\d/;
+    const minLength = 6;
+    const errorMessages = [
+        !uppercaseRegex.test(password) && 'Отсутствует заглавная буква английского алфавита',
+        !digitRegex.test(password) && 'Отсутствует цифра.',
+        password.length < minLength && `Пароль должен быть не менее ${minLength} символов.`,
+    ];
+    const errorsList = errorMessages
+        .filter(Boolean)
+        .map((error, index) => <li key={index}>{error}</li>);
+    return errorsList.length > 0 ? <ul>{errorsList}</ul> : null;
+};
+

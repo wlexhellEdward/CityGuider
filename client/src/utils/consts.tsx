@@ -2,6 +2,18 @@ import { AdminPage } from "@/pages/AdminPage"
 import { LoginPage } from "@/pages/LoginPage"
 import { RegisterPage } from "@/pages/RegisterPage"
 
+import DoesntExistPhoto from '/public/doesntExist.png'
+
+
+export const IMAGE_SETTINGS = {
+    titles: {
+        media: 'Photos of places taken using google street',
+        markers: 'Clickable marker for place selection',
+        icons: 'Place icon, you can select this to select the search category',
+    },
+    alt: DoesntExistPhoto
+}
+
 export const MAP_THEME =
     [
         {

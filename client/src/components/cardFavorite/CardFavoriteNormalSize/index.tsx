@@ -13,10 +13,11 @@ import { deleteFavoriteCard } from '@/utils/firebaseService.ts';
 import { refactorString } from '@/utils/textRefactors.ts';
 
 import CardFavoriteStyle from '../styled.ts';
-import { CardFavoritePropsNormalSize } from './interfaces.ts.ts';
+import { CardFavoritePropsNormalSize } from './interfaces.ts';
 import DoesntExistPhoto from '/public/doesntExist.png'
 import { toast } from 'react-toastify';
 import { ERRORS, SUCCESES } from '@/utils/consts.tsx';
+import { titles } from '../config.ts';
 
 const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()
@@ -51,7 +52,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
                                     return (
                                         <img
                                             alt={DoesntExistPhoto}
-                                            title='place icon'
+                                            title={titles.media}
                                             key={title}
                                             className={useCardFavoriteStyle.classes.iconStatis}
                                             src={img}
