@@ -1,62 +1,47 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { LoadingButton } from '@mui/lab';
-import {
-    Avatar, Box,
-    Link, TextField, Typography
-} from '@mui/material';
-
-import { ModalFormError } from '@/components/modalFormError';
-import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { Avatar, Box, Button, Link, Typography } from '@mui/material';
+import { ModalFormError } from '@/components/ModalFormError';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
-import { getMessageError } from '@/utils/errorFinder';
+import { getMessageError } from '@/utils/errors/errorFinder';
+import { ContainerInputsForm } from '@/components/ContainerInputsForm';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GoogleIcon from '@mui/icons-material/Google';
+import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from "firebase/auth";
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { setIsLoading } from '@/store/reducers';
+import { toast } from 'react-toastify';
 
-import { FormValues } from './interfaces';
 import RegisterFormStyle from './styled';
-import { Auth, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 
 export const RegisterForm: React.FC = () => {
     const dispatch = useAppDispatch();
     const redirectTo = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const isOpen = useTypeSelector(state => state.errorSlice.isOpen);
+    const isLoading = useTypeSelector(state => state.registerSlice.isLoading);
+    const isOpen = useTypeSelector(state => state.registerSlice.isOpen);
     const pallete = useTypeSelector(state => state.appSlice.Pallete);
-    const [emailValid, setEmailValid] = useState(true);
-    const [passwordValid, setPasswordValid] = useState(true);
-    const [confirmValid, setConfirmValid] = useState(true);
-    const [formValues, setFormValues] = useState<FormValues>({ email: '', password: '', confirm: '' });
-    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const email = event.target.value;
-        setEmailValid(/\S+@\S+\.\S+/.test(email));
-        setFormValues({ ...formValues, email });
-    };
-    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const password = event.target.value;
-        setPasswordValid(password.length >= 6);
-        setFormValues({ ...formValues, password });
-    };
-    const handleConfirmChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const confirm = event.target.value;
-        setConfirmValid(confirm === formValues.password);
-        setFormValues({ ...formValues, confirm });
-    };
-    const isFormValid = () => emailValid && passwordValid && confirmValid;
+    const formValues = useTypeSelector(state => state.registerSlice.formValues);
+    const formValidity = useTypeSelector(state => state.registerSlice.formValidity);
+    const auth = getAuth()
+
+    const isFormValid = () => formValidity.email && formValidity.password && formValidity.confirm;
     const handleSetIsLoading = () => {
-        setIsLoading(prev => !prev);
+        dispatch(setIsLoading(!isLoading));
     };
+
     const handleSetError = (isOpen: boolean, message: string, type: string) => {
-        dispatch(
-            setError({
-                isOpen: isOpen,
-                message: message,
-                type: type
-            })
-        );
+        dispatch(setError({
+            isOpen: isOpen,
+            message: message,
+            type: type
+        }));
     };
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const auth: Auth = getAuth();
@@ -85,6 +70,40 @@ export const RegisterForm: React.FC = () => {
                 });
         }
     };
+    const handleClickRegisterFacebook = async () => {
+        const provider = new FacebookAuthProvider()
+        try {
+            const result = await signInWithPopup(auth, provider)
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const token = credential?.accessToken;
+            const user = result.user;
+
+            dispatch(setUser({
+                id: user.uid,
+                email: user.email || '',
+                token: token || ''
+            }))
+            redirectTo('/')
+        } catch (error) {
+            if (error instanceof Error) {
+                toast(error.message, { type: 'error' })
+            }
+        }
+    }
+    const handleClickRegisterGoogle = async () => {
+        const provider = new GoogleAuthProvider()
+        const result = await signInWithPopup(auth, provider)
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        const user = result.user;
+        dispatch(setUser({
+            id: user.uid,
+            email: user.email || '',
+            token: token || ''
+        }))
+        redirectTo('/')
+    }
+
     const useRegisterFormStyle = RegisterFormStyle({ Pallete: pallete });
 
     return (
@@ -97,49 +116,7 @@ export const RegisterForm: React.FC = () => {
                     Регистрация
                 </Typography>
                 <Box component="form" className={useRegisterFormStyle.classes.formRegister} noValidate onSubmit={handleSubmit}>
-                    <Box className={useRegisterFormStyle.classes.containerInputsForm}>
-                        <TextField
-                            required
-                            fullWidth
-                            className={useRegisterFormStyle.classes.inputRegister}
-                            id="email"
-                            label="Email адресс"
-                            data-testid="input"
-                            name="email"
-                            autoComplete="email"
-                            onChange={handleEmailChange}
-                            error={!emailValid}
-                            helperText={!emailValid ? 'Некорректный email' : ''}
-                        />
-                        <TextField
-                            required
-                            fullWidth
-                            className={useRegisterFormStyle.classes.inputRegister}
-                            name="password"
-                            label="Пароль"
-                            type="password"
-                            data-testid="input"
-                            id="password"
-                            autoComplete="new-password"
-                            onChange={handlePasswordChange}
-                            error={!passwordValid}
-                            helperText={!passwordValid ? 'Пароль должен быть не менее 6 символов' : ''}
-                        />
-                        <TextField
-                            required
-                            fullWidth
-                            className={useRegisterFormStyle.classes.inputRegister}
-                            name="confirm"
-                            label="Подтвердите пароль"
-                            type="password"
-                            data-testid="input"
-                            id="confirm"
-                            autoComplete="confirm-password"
-                            onChange={handleConfirmChange}
-                            error={!confirmValid}
-                            helperText={!confirmValid ? 'Пароли не совпадают' : ''}
-                        />
-                    </Box>
+                    <ContainerInputsForm />
                     <LoadingButton
                         data-testid="button-submit"
                         loading={isLoading}
@@ -152,11 +129,13 @@ export const RegisterForm: React.FC = () => {
                         Зарегистрироваться
                     </LoadingButton>
                     <Box className={useRegisterFormStyle.classes.featActionForm}>
-                        <Box>
-                            <Link className={useRegisterFormStyle.classes.supportActionTitle} href="/login" variant="body2">
-                                Уже есть аккаунт? Войти
-                            </Link>
+                        <Box className={useRegisterFormStyle.classes.otherMethodSignIn}>
+                            <Button variant="outlined" onClick={handleClickRegisterFacebook} startIcon={<FacebookIcon />}></Button>
+                            <Button variant="outlined" onClick={handleClickRegisterGoogle} startIcon={<GoogleIcon />}></Button>
                         </Box>
+                        <Link className={useRegisterFormStyle.classes.supportActionTitle} href="/login" variant="body2">
+                            Уже есть аккаунт? Войти
+                        </Link>
                     </Box>
                 </Box>
             </Box>
@@ -164,3 +143,5 @@ export const RegisterForm: React.FC = () => {
         </>
     );
 };
+
+export default RegisterForm;

@@ -3,8 +3,9 @@ import { ThemeApp } from '@/interfaces/IThemeApp';
 import { makeStyles } from 'tss-react/mui';
 
 const RegisterFormStyle = makeStyles<ThemeApp>()(
-    (theme) => ({
+    (theme, { Pallete }) => ({
         containerRegister: {
+            backgroundColor: Pallete.background,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -12,15 +13,15 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
                 fontFamily: 'mont'
             }
         },
-        formRegister:{
-            width:theme.spacing(60),
+        formRegister: {
+            width: theme.spacing(60),
             [theme.breakpoints.down('sm')]: {
-                width:theme.spacing(30),
+                width: theme.spacing(30),
             }
         },
-        avatar:{
+        avatar: {
             [theme.breakpoints.down('sm')]: {
-                display:'none'
+                display: 'none'
             }
         },
         titleForm: {
@@ -31,24 +32,16 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
         },
         inputRegister: {
             '&>*': {
-                fontFamily: 'mont'
+                fontFamily: 'mont',
+                '&>*': {
+                    borderBottom: `3px solid ${Pallete.border}`,
+                },
             }
         },
-        containerInputsForm: {
-            gap: theme.spacing(0.5),
-            display: 'flex',
-            flexDirection: 'column',
-            '&>*': {
-                marginBottom: theme.spacing(2),
-                width:'100%',
-            },
-            [theme.breakpoints.down('sm')]: {
-                gap: theme.spacing(0.3),
-            }
-        },
+        
         containerInputsLine: {
             display: 'flex',
-            flexDirection:'column',
+            flexDirection: 'column',
             gap: theme.spacing(2),
             [theme.breakpoints.down('sm')]: {
                 flexDirection: 'column'
@@ -60,16 +53,44 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
         },
         featActionForm: {
             display: 'flex',
-            justifyContent: 'end',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             '&>*': {
                 '&>*': {
                     fontFamily: 'mont'
                 }
+            },
+            [theme.breakpoints.down('sm')]: {
+                display:'flex',
+                rowGap:theme.spacing(2),
+                justifyContent:'center',
+                flexDirection: 'column'
             }
+        },
+        otherMethodSignIn: {
+            color: Pallete.main,
+            cursor: 'pointer',
+            columnGap: theme.spacing(1),
+            display: 'flex',
+            justifyContent: 'space-between',
+            '&>*': {
+                margin: 0,
+                '&>*': {
+                    margin: 0,
+
+                }
+            }
+        },
+
+        passwordInput: {
+            display: 'flex',
+            alignItems: 'center',
+            columnGap: theme.spacing(2),
+            borderRadius: theme.spacing(1),
         },
         supportActionTitle: {
             fontFamily: 'mont'
-        }
+        },
     })
 );
 

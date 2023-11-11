@@ -6,23 +6,28 @@ import { LoadingButton } from '@mui/lab';
 import {
     Avatar, Box,
     Button,
-    Link, TextField, Typography
+    Link, Typography
 } from '@mui/material';
-
-import { ModalFormError } from '@/components/modalFormError';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GoogleIcon from '@mui/icons-material/Google';
+import { ModalFormError } from '@/components/ModalFormError';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
-import { getMessageError } from '@/utils/errorFinder';
-import { checkUserRole } from '@/utils/firebaseService';
+import { getMessageError } from '@/utils/errors/errorFinder';
+import { checkUserRole } from '@/utils/services/firebaseService';
+import { ContainerInputsLine } from '@/components/ContainerInputsLine';
 
 import LoginFormStyle from './styled';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { ResetPasswordModal } from '../resetPasswordModal';
+import { FacebookAuthProvider, GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { ResetPasswordModal } from '../ResetPasswordModal';
+import { toast } from 'react-toastify';
+
 
 export const LoginForm = () => {
     const dispatch = useAppDispatch()
+    const auth = getAuth()
     const redirectTo = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [resetPassword, setResetPassword] = useState(false)
@@ -82,6 +87,41 @@ export const LoginForm = () => {
         setResetPassword(true)
     }
 
+
+    const handleClickRegisterFacebook = async () => {
+        const provider = new FacebookAuthProvider()
+        try {
+            const result = await signInWithPopup(auth, provider)
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const token = credential?.accessToken;
+            const user = result.user;
+
+            dispatch(setUser({
+                id: user.uid,
+                email: user.email || '',
+                token: token || ''
+            }))
+            redirectTo('/')
+        } catch (error) {
+            if (error instanceof Error) {
+                toast(error.message, { type: 'error' })
+            }
+        }
+    }
+    const handleClickRegisterGoogle = async () => {
+        const provider = new GoogleAuthProvider()
+        const result = await signInWithPopup(auth, provider)
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        const user = result.user;
+        dispatch(setUser({
+            id: user.uid,
+            email: user.email || '',
+            token: token || ''
+        }))
+        redirectTo('/')
+    }
+
     const useLoginFormStyle = LoginFormStyle({ Pallete: pallete })
     return (
         <>
@@ -94,40 +134,20 @@ export const LoginForm = () => {
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit}>
                     <Box className={useLoginFormStyle.classes.containerInputsForm}>
-                        <Box className={useLoginFormStyle.classes.containerInputsLine}>
-                            <TextField
-                                required
-                                fullWidth
-                                data-testid='input'
-                                className={useLoginFormStyle.classes.inputRegister}
-                                id="email"
-                                label="Email адресс"
-                                name="email"
-                                autoComplete="email"
-                            />
-                            <TextField
-                                required
-                                fullWidth
-                                data-testid='input'
-                                className={useLoginFormStyle.classes.inputRegister}
-                                name="password"
-                                label="Пароль"
-                                type="password"
-                                id="password"
-                                autoComplete="new-password"
-                            />
-                        </Box>
+                        <ContainerInputsLine />
                         <Button onClick={handleClickForgetPassword} className={useLoginFormStyle.classes.buttonForgetPassword} variant="text">
                             Забыли пароль?
                         </Button>
                     </Box>
                     <LoadingButton data-testid='btn-submit' loading={isLoading} className={useLoginFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Войти</LoadingButton>
                     <Box className={useLoginFormStyle.classes.featActionForm}>
-                        <Box>
-                            <Link className={useLoginFormStyle.classes.supportActionTitle} href="/register" variant="body2">
-                                Ещё нету аккаунта?
-                            </Link>
+                        <Box className={useLoginFormStyle.classes.otherMethodSignIn}>
+                            <Button variant="outlined" onClick={handleClickRegisterFacebook} startIcon={<FacebookIcon />}></Button>
+                            <Button variant="outlined" onClick={handleClickRegisterGoogle} startIcon={<GoogleIcon />}></Button>
                         </Box>
+                        <Link className={useLoginFormStyle.classes.supportActionTitle} href="/register" variant="body2">
+                            Ещё нету аккаунта?
+                        </Link>
                     </Box>
                 </Box>
             </Box>

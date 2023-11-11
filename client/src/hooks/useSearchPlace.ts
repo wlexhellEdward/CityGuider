@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import { Places } from "@/components/drawer/Places"
+import { Places } from "@/consts/places"
 
 import { useTypeSelector } from "./redux"
 

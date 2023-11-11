@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import { HomePage } from '@/pages/HomePage';
-import { ROUTES_NOT_AUTH } from '@/utils/consts';
+import { ROUTES_NOT_AUTH } from '@/consts/consts';
 
 function App() {
   return (

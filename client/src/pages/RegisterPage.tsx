@@ -1,7 +1,7 @@
 import { Box, CssBaseline, Typography } from '@mui/material';
 import { Container } from '@mui/material';
 
-import { RegisterForm } from '@/components/registerForm'
+import { RegisterForm } from '@/components/RegisterForm'
 import { useTypeSelector } from '@/hooks/redux';
 
 import RegisterPageStyle from './styled';

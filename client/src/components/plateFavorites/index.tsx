@@ -2,14 +2,14 @@ import { useEffect } from "react"
 
 import { CircularProgress, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-import CardFavorite from "@/components/cardFavorite/toggleCardFavorite"
+import CardFavorite from "@/components/CardFavorite/ToggleCardFavorite"
 
 
-import { Waiter } from "@/components/waiter"
+import { Waiter } from "@/components/Waiter"
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { useAuth } from "@/hooks/useAuth"
 import { setFavoriteItemIsLoading, setFavoriteItems } from "@/store/reducers"
-import { getFavoriteCardsUser } from '@/utils/firebaseService'
+import { getFavoriteCardsUser } from '@/utils/services/firebaseService'
 
 import PlateFavoritesStyle from "./styled"
 

@@ -1,5 +1,5 @@
 import { ThemeApp } from "@/interfaces/IThemeApp";
-import { LIGHT_THEME_APP } from "@/utils/consts";
+import { LIGHT_THEME_APP } from "@/consts/consts";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: ThemeApp = {

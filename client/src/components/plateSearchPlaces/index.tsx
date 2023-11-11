@@ -2,8 +2,8 @@ import { useState } from 'react'
 
 import { Box, Input, List, Typography } from "@mui/material"
 
-import { Places } from '@/components/drawer/Places';
-import SearchPlace from '@/components/searchPlace';
+import { Places } from '@/consts/places';
+import SearchPlace from '@/components/SearchPlace';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useSearchPlace } from '@/hooks/useSearchPlace';
 import { clearResults, setRadius, setResults } from '@/store/reducers/index.ts';
@@ -11,7 +11,7 @@ import { ButtonSearch } from "@/ui/buttonSearch"
 
 import PlateSearchPlacesStyle from "./styled"
 import { toast } from 'react-toastify';
-import { SUCCESES } from '@/utils/consts';
+import { SUCCESES } from '@/consts/consts';
 
 
 export const PlateSearchPlaces = () => {

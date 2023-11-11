@@ -3,23 +3,23 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
 
-import { PopUp } from '@/components/pop-up';
+import { PopUp } from '@/components/Pop-up/index.tsx';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
 import { useAuth } from '@/hooks/useAuth.ts';
 import { useRoute } from '@/hooks/useRoute.ts';
-import { IFavoriteItem } from '@/interfaces/IFavoriteItem.ts'
 import {
     addFavoriteItem, clearDirection, setRouteInfo
 } from '@/store/reducers'
 import { ButtonSave } from '@/ui/buttonSave';
 import { ButtonTravel } from '@/ui/buttonTravel';
-import { convertPlaceToFavorite } from '@/utils/convert'
-import { addFavoriteCard, deleteFavoriteCard } from '@/utils/firebaseService.ts';
+import { convertPlaceToFavorite } from '@/utils/converts/convert.ts'
+import { addFavoriteCard, deleteFavoriteCard } from '@/utils/services/firebaseService.ts';
 
 import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
-import { ERRORS, SUCCESES } from '@/utils/consts.tsx';
+import { ERRORS, SUCCESES } from '@/consts/consts.tsx';
+import { errors, titles } from './config.ts';
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
     return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : DoesntExistPhoto
@@ -40,7 +40,8 @@ const CardPlace = ({ place }: CardPlaceProps) => {
     const isFavorite = () => {
         return favoriteItems.some(item => item.id == place.place_id)
     }
-    const handleSetFavorite = async (favoirteItem: IFavoriteItem) => {
+    const handleSetFavorite = async () => {
+        const favoirteItem = convertPlaceToFavorite(place)
         setIsAdding(true)
         if (id != null && !isFavorite()) {
             addFavoriteCard(favoirteItem, id)
@@ -64,6 +65,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                 })
         }
     }
+
     const { directions, distanceTotal, placeLocation, time } = useRoute({ origin: userLocation, destination: destination })
     const handleClickRoute = async () => {
         dispatch(clearDirection())
@@ -80,7 +82,7 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                         className={useCardPlaceStyle.classes.placePhoto}
                         src={checkValidPhoto(place)}
                         alt={DoesntExistPhoto}
-                        title='place photo'
+                        title={titles.media}
                     />
                 </CardMedia>
                 <CardContent className={useCardPlaceStyle.classes.cardContent}>
@@ -88,23 +90,23 @@ const CardPlace = ({ place }: CardPlaceProps) => {
                     <Typography className={useCardPlaceStyle.classes.placeAdress}>{place.vicinity}</Typography>
                 </CardContent>
                 <CardActions className={useCardPlaceStyle.classes.cardActions}>
-                    <ButtonSave handleClick={() => handleSetFavorite(convertPlaceToFavorite(place))} isLoading={isAdding} isFavorite={isFavorite()} />
+                    <ButtonSave handleClick={handleSetFavorite} isLoading={isAdding} isFavorite={isFavorite()} />
                     <ButtonTravel handleClick={() => {
                         if (place.geometry?.location != null && map != null) {
                             handleClickRoute()
                         } else {
-                            <PopUp text={"У данного места нету координат"} />
+                            <PopUp text={errors.placeWithoutCoorginates} />
                         }
                     }
                     } />
                 </CardActions>
             </Card>
         )
-    } else {
-        return (
-            <PopUp text={"Ошибка в обработке данных по данному месту"} />
-        )
     }
+    return (
+        <PopUp text={errors.errorInRenderCardPlace} />
+    )
+
 }
 
 export default memo(CardPlace)

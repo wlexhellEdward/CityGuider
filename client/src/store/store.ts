@@ -19,18 +19,20 @@ import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice
 import mapSlice from './reducers/mapSlice/mapSlice';
 import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
 import userSlice from './reducers/userSlice/userSlice';
+import registerSlice from './reducers/registerSlice/registerSlice';
 
 
 const rootReducer = combineReducers({
     currentStatus: currentStatusSlice,
-    appSlice:appSlice,
+    appSlice: appSlice,
     errorSlice: errorSlice,
     userSlice: userSlice,
     currentPosition: centerSlice,
     searchSlice: searchSlice,
     favoriteItems: favoriteItemsSlice,
     map: mapSlice,
-    adminSlice:adminSlice
+    adminSlice: adminSlice,
+    registerSlice: registerSlice
 })
 
 

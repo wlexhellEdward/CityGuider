@@ -6,8 +6,8 @@ import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } fr
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux";
 import { IUser } from "@/interfaces/IUser";
 import { deleteUser } from "@/store/reducers/adminSlice/adminSlice";
-import { deleteUserById } from "@/utils/firebaseService";
-import { refactorString } from "@/utils/textRefactors";
+import { deleteUserById } from "@/utils/services/firebaseService";
+import { refactorString } from "@/utils/refactors/textRefactors";
 
 import { CardUserProps } from "./interfaces";
 import CardUserStyle from "./styled";

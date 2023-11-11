@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router'
 
 import { Box } from '@mui/material'
 
-import Aside from '@/components/aside'
-import Map from '@/components/map'
+import Aside from '@/components/Aside'
+import Map from '@/components/Map'
 import { useTypeSelector } from '@/hooks/redux'
 import { useAuth } from '@/hooks/useAuth'
 

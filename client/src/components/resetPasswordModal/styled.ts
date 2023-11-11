@@ -11,23 +11,24 @@ const ResetPasswordModalStyle = makeStyles<ThemeApp>()(
             justifyContent: 'center',
             alignItems: 'center'
         },
-        title:{
-            display:'flex',
+        title: {
+            display: 'flex',
             justifyContent: 'center',
-            width:'100%',
-            fontSize:theme.spacing(2),
-            font:'mont',
-            marginBottom:theme.spacing(2)
+            width: '100%',
+            fontSize: theme.spacing(2),
+            font: 'mont',
+            marginBottom: theme.spacing(2)
         },
         formReset: {
             backgroundColor: Pallete.background,
             padding: theme.spacing(2, 5)
         },
         formAction: {
-            display:'flex',
-            marginTop:theme.spacing(2),
-            columnGap:theme.spacing(2)
-        }
+            display: 'flex',
+            marginTop: theme.spacing(2),
+            columnGap: theme.spacing(2)
+        },
+        
     })
 )
 
