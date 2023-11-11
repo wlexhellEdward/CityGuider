@@ -10,8 +10,8 @@ import { useRoute } from '@/hooks/useRoute';
 import {
     addFavoriteItem, clearDirection, setRouteInfo,
 } from '@/store/reducers';
-import { ButtonSave } from '@/ui/buttonSave';
-import { ButtonTravel } from '@/ui/buttonTravel';
+import { ButtonSave } from '@/ui/ButtonSave';
+import { ButtonTravel } from '@/ui/ButtonTravel';
 import { deleteFavoriteCard } from '@/utils/services/firebaseService';
 import { CardFavoritePropsMaxSize } from './interfaces';
 import DoesntExistPhoto from '/public/doesntExist.png'

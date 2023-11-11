@@ -1,8 +1,8 @@
 import { LoadingButton } from '@mui/lab'
 import { Icon, Typography } from '@mui/material'
 
-import favoriteGrey from '@/assets/img/CardFavoriteActions/greyFavorite.svg'
-import favorite from '@/assets/img/CardFavoriteActions/inFavorite.svg'
+import favoriteGrey from '@/assets/img/cardFavoriteActions/greyFavorite.svg'
+import favorite from '@/assets/img/cardFavoriteActions/inFavorite.svg'
 import { useTypeSelector } from '@/hooks/redux'
 
 import { ButtonSaveProps } from './interfaces'

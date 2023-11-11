@@ -10,8 +10,8 @@ import { useRoute } from '@/hooks/useRoute.ts';
 import {
     addFavoriteItem, clearDirection, setRouteInfo
 } from '@/store/reducers'
-import { ButtonSave } from '@/ui/buttonSave';
-import { ButtonTravel } from '@/ui/buttonTravel';
+import { ButtonSave } from '@/ui/ButtonSave/index.tsx';
+import { ButtonTravel } from '@/ui/ButtonTravel/index.tsx';
 import { convertPlaceToFavorite } from '@/utils/converts/convert.ts'
 import { addFavoriteCard, deleteFavoriteCard } from '@/utils/services/firebaseService.ts';
 
