@@ -11,7 +11,6 @@ import { getPasswordErrors } from '@/utils/errors/errorFinder';
 export const ContainerInputsForm = () => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete);
     const dispatch = useAppDispatch();
-    const useRegisterFormStyle = containerInputsForm({ Pallete: pallete });
     const formValidity = useTypeSelector(state => state.registerSlice.formValidity);
     const formValues = useTypeSelector(state => state.registerSlice.formValues);
 
@@ -29,7 +28,7 @@ export const ContainerInputsForm = () => {
             ...formValidity,
             strength,
             error,
-            colorsOfProgres: strength < 35 ? 'red' : strength < 70 ? 'orange' : 'green',
+            colorsOfProgres: strength < 35 ? 'crimson' : strength < 70 ? 'orange' : 'green',
         }));
     };
     const handleConfirmChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +36,8 @@ export const ContainerInputsForm = () => {
         dispatch(setFormValues({ ...formValues, confirm }));
         dispatch(setFormValidity({ ...formValidity, confirm: confirm === formValues.password }));
     };
+
+    const useRegisterFormStyle = containerInputsForm({ Pallete: pallete });
 
     return (
         <Box className={useRegisterFormStyle.classes.containerInputsForm} >

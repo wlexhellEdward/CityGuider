@@ -34,22 +34,11 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
             '&>*': {
                 fontFamily: 'mont',
                 '&>*': {
-                    borderBottom:`3px solid ${Pallete.border}`,
+                    borderBottom: `3px solid ${Pallete.border}`,
                 },
             }
         },
-        containerInputsForm: {
-            gap: theme.spacing(0.58),
-            display: 'flex',
-            flexDirection: 'column',
-            '&>*': {
-                marginBottom: theme.spacing(1),
-                width: '100%',
-            },
-            [theme.breakpoints.down('sm')]: {
-                gap: theme.spacing(0.3),
-            }
-        },
+        
         containerInputsLine: {
             display: 'flex',
             flexDirection: 'column',
@@ -64,13 +53,35 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
         },
         featActionForm: {
             display: 'flex',
-            justifyContent: 'end',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             '&>*': {
                 '&>*': {
                     fontFamily: 'mont'
                 }
+            },
+            [theme.breakpoints.down('sm')]: {
+                display:'flex',
+                rowGap:theme.spacing(2),
+                justifyContent:'center',
+                flexDirection: 'column'
             }
         },
+        otherMethodSignIn: {
+            color: Pallete.main,
+            cursor: 'pointer',
+            columnGap: theme.spacing(1),
+            display: 'flex',
+            justifyContent: 'space-between',
+            '&>*': {
+                margin: 0,
+                '&>*': {
+                    margin: 0,
+
+                }
+            }
+        },
+
         passwordInput: {
             display: 'flex',
             alignItems: 'center',

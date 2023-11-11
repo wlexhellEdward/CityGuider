@@ -1,21 +1,21 @@
-import erotics from '@/assets/img/icons-markers/18+.svg'
-import architecture from '@/assets/img/icons-markers/architecture1.svg'
-import bank from '@/assets/img/icons-markers/bank.svg'
-import hostel from '@/assets/img/icons-markers/bed.svg'
-import bike from '@/assets/img/icons-markers/bicycle.svg'
-import car from '@/assets/img/icons-markers/car.svg'
-import coffe from '@/assets/img/icons-markers/coffee.svg'
-import culture from '@/assets/img/icons-markers/culture.svg'
-import entertaiment from '@/assets/img/icons-markers/ferris-wheel.svg'
-import food from '@/assets/img/icons-markers/food.svg'
-import gasStation from '@/assets/img/icons-markers/gas station.svg'
-import history from '@/assets/img/icons-markers/history.svg'
-import industry from '@/assets/img/icons-markers/industry.svg'
-import nature from '@/assets/img/icons-markers/nature.svg'
-import other from '@/assets/img/icons-markers/other.svg'
-import religion from '@/assets/img/icons-markers/religion1.svg'
-import shoping from '@/assets/img/icons-markers/shopping-basket.svg'
-import sport from '@/assets/img/icons-markers/sports-soccer.svg'
+import erotics from '@/assets/img/iconsMarkers/18+.svg'
+import architecture from '@/assets/img/iconsMarkers/architecture1.svg'
+import bank from '@/assets/img/iconsMarkers/bank.svg'
+import hostel from '@/assets/img/iconsMarkers/bed.svg'
+import bike from '@/assets/img/iconsMarkers/bicycle.svg'
+import car from '@/assets/img/iconsMarkers/car.svg'
+import coffe from '@/assets/img/iconsMarkers/coffee.svg'
+import culture from '@/assets/img/iconsMarkers/culture.svg'
+import entertaiment from '@/assets/img/iconsMarkers/ferris-wheel.svg'
+import food from '@/assets/img/iconsMarkers/food.svg'
+import gasStation from '@/assets/img/iconsMarkers/gas station.svg'
+import history from '@/assets/img/iconsMarkers/history.svg'
+import industry from '@/assets/img/iconsMarkers/industry.svg'
+import nature from '@/assets/img/iconsMarkers/nature.svg'
+import other from '@/assets/img/iconsMarkers/other.svg'
+import religion from '@/assets/img/iconsMarkers/religion1.svg'
+import shoping from '@/assets/img/iconsMarkers/shopping-basket.svg'
+import sport from '@/assets/img/iconsMarkers/sports-soccer.svg'
 
 
 
@@ -88,7 +88,7 @@ export const Places = [
     },
     {
         id: 11,
-        type:'hostel',
+        type: 'hostel',
         img: hostel,
         title: 'Отели'
     },
@@ -106,7 +106,7 @@ export const Places = [
     },
     {
         id: 15,
-        type:'other',
+        type: 'other',
         img: other,
         title: 'Другое'
     },

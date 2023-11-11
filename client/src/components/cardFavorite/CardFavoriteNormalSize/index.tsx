@@ -4,10 +4,9 @@ import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mu
 
 import arrowMore from '@/assets/img/CardFavoriteActions/arrowMore.svg'
 import FavoriteImg from '@/assets/img/CardFavoriteActions/inFavorite.svg'
-import { Places } from '@/components/Drawer/Places.ts';
+import { Places } from '@/consts/places.ts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth.ts';
-import { IFavoriteItem } from '@/interfaces/IFavoriteItem.ts';
 import { addFavoriteItem } from '@/store/reducers/index.ts';
 import { deleteFavoriteCard } from '@/utils/services/firebaseService.ts';
 import { refactorString } from '@/utils/refactors/textRefactors.ts';
@@ -24,9 +23,9 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const { id } = useAuth()
 
-    const handleAddToFavorite = (favoirteItem: IFavoriteItem) => {
+    const handleAddToFavorite = () => {
         if (id != null) {
-            deleteFavoriteCard(favoirteItem.id, id)
+            deleteFavoriteCard(favoriteItem.id, id)
                 .then(() => {
                     toast(SUCCESES.DELETE_PLACE, { type: 'success' });
                 })
@@ -34,7 +33,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
                     toast(ERRORS.CANT_DELETE_PLACE, { type: 'error' });
                 })
         }
-        dispatch(addFavoriteItem(favoirteItem))
+        dispatch(addFavoriteItem(favoriteItem))
     }
 
     const useCardFavoriteStyle = CardFavoriteStyle({ isOpen: false, url: favoriteItem.img, Pallete: pallete })
@@ -71,8 +70,8 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions disableSpacing className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <img data-testid='delete-from-favorite' src={FavoriteImg} onClick={() => handleAddToFavorite(favoriteItem)} className={useCardFavoriteStyle.classes.icon} />
-                    <img data-testid='card-favorite-button-show-more' onClick={() => handleSetIsOpen(true)} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt='' />
+                    <img data-testid='delete-from-favorite' title={titles.btnDelete} src={FavoriteImg} onClick={handleAddToFavorite} className={useCardFavoriteStyle.classes.icon} />
+                    <img data-testid='card-favorite-button-show-more' title={titles.toggleCardSize} onClick={handleSetIsOpen} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>
 

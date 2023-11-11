@@ -14,6 +14,7 @@ import { getBrowserLocation } from "@/utils/map/geo";
 
 import MapActionStyle from "./styled"
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { titles } from "./config";
 
 
 export const MapAction = () => {
@@ -57,7 +58,7 @@ export const MapAction = () => {
                         <Box className={useMapActionStyle.classes.containerMapActions}>
 
                             <IconButton onClick={handleClickButtonFindMe} className={useMapActionStyle.classes.findMeButton} >
-                                <img src={FindMe} alt={DoesntExistPhoto} title='button find me for map' />
+                                <img src={FindMe} alt={DoesntExistPhoto} title={titles.btnFindMe} />
                             </IconButton>
                             <Box className={useMapActionStyle.classes.containerMapActionsZoom}>
                                 <Button className={useMapActionStyle.classes.buttonZoom} onClick={handleIncreaseZoom}>+</Button>
@@ -65,7 +66,7 @@ export const MapAction = () => {
                                 <Button className={useMapActionStyle.classes.buttonZoom} onClick={handleDecreaseZoom}>-</Button>
                             </Box>
                             <IconButton onClick={handleSwitchMapTheme} className={useMapActionStyle.classes.switchThemeButton} >
-                                <img src={themeIcon} alt={DoesntExistPhoto} title='switch theme map' />
+                                <img src={themeIcon} alt={DoesntExistPhoto} title={titles.btnSwitch} />
                             </IconButton>
                         </Box>
                         <Button onClick={handleClickSetIsOpenActionMap} className={useMapActionStyle.classes.buttonToggleAction}>{'>'}</Button>

@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import { CircularProgress, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-import CardFavorite from "@/components/cardFavorite/ToggleCardFavorite"
+import CardFavorite from "@/components/CardFavorite/ToggleCardFavorite"
 
 
 import { Waiter } from "@/components/Waiter"

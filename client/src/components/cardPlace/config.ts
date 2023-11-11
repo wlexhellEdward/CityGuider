@@ -4,5 +4,7 @@ export const errors = {
 }
 
 export const titles = {
-    media:'card place img'
+    media: 'Photos of places taken using google street',
+    markers: 'Clickable marker for place selection',
+    icons: 'Place icon, you can select this to select the search category',
 }

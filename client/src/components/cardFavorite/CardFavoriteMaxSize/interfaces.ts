@@ -7,6 +7,6 @@ export interface CardFavoritePropsMaxSize {
         title: string,
         description: string,
     },
-    handleSetIsOpen: (isOpen: boolean) => void,
+    handleSetIsOpen: () => void,
     isOpen: boolean
 }

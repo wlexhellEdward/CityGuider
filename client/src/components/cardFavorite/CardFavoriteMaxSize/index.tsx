@@ -3,23 +3,23 @@ import React, { useState } from 'react'
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
 
 import arrowMore from '@/assets/img/CardFavoriteActions/arrowMore.svg'
-import { Places } from '@/components/Drawer/Places';
+import { Places } from '@/consts/places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth';
 import { useRoute } from '@/hooks/useRoute';
-import { IFavoriteItem } from '@/interfaces/IFavoriteItem';
 import {
     addFavoriteItem, clearDirection, setRouteInfo,
 } from '@/store/reducers';
 import { ButtonSave } from '@/ui/buttonSave';
 import { ButtonTravel } from '@/ui/buttonTravel';
 import { deleteFavoriteCard } from '@/utils/services/firebaseService';
-
-import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
 import DoesntExistPhoto from '/public/doesntExist.png'
 import { toast } from 'react-toastify';
 import { ERRORS, SUCCESES } from '@/consts/consts';
+import { titles } from '../config';
+
+import CardFavoriteStyle from '../styled';
 
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {
@@ -33,11 +33,11 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
         lat: Number(coordinatesArray[0]) || 0,
         lng: Number(coordinatesArray[1]) || 0
     }
-    const handleDeleteFavorite = (favoirteItem: IFavoriteItem) => {
+    const handleDeleteFavorite = () => {
         setIsAdd(true)
         if (id != null) {
-            dispatch(addFavoriteItem(favoirteItem))
-            deleteFavoriteCard(favoirteItem.id, id)
+            dispatch(addFavoriteItem(favoriteItem))
+            deleteFavoriteCard(favoriteItem.id, id)
                 .then(() => {
                     setIsAdd(false)
                     toast(SUCCESES.DELETE_PLACE, { type: 'success' });
@@ -72,7 +72,7 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                                     return (
                                         <img
                                             alt={DoesntExistPhoto}
-                                            title='place icon'
+                                            title={titles.media}
                                             key={title}
                                             className={useCardFavoriteStyle.classes.iconStatis}
                                             src={img}
@@ -90,9 +90,9 @@ const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem,
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <ButtonSave data-testid='delete-from-favorite' isLoading={isAdd} handleClick={() => handleDeleteFavorite(favoriteItem)} isFavorite={true} />
+                    <ButtonSave data-testid='delete-from-favorite' isLoading={isAdd} handleClick={handleDeleteFavorite} isFavorite={true} />
                     <ButtonTravel handleClick={handleClickRoute} />
-                    <img onClick={() => handleSetIsOpen(false)} className={useCardFavoriteStyle.classes.imgArrowDown} title={'toggle drawer'} src={arrowMore} alt={DoesntExistPhoto} />
+                    <img onClick={handleSetIsOpen} className={useCardFavoriteStyle.classes.imgArrowDown} title={titles.toggleCardSize} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>
 
