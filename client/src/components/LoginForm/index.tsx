@@ -142,8 +142,8 @@ export const LoginForm = () => {
                     <LoadingButton data-testid='btn-submit' loading={isLoading} className={useLoginFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Войти</LoadingButton>
                     <Box className={useLoginFormStyle.classes.featActionForm}>
                         <Box className={useLoginFormStyle.classes.otherMethodSignIn}>
-                            <Button variant="outlined" onClick={handleClickRegisterFacebook} startIcon={<FacebookIcon />}></Button>
-                            <Button variant="outlined" onClick={handleClickRegisterGoogle} startIcon={<GoogleIcon />}></Button>
+                            <Button variant="outlined" className={useLoginFormStyle.classes.btnWithIcons} onClick={handleClickRegisterFacebook} startIcon={<FacebookIcon />}></Button>
+                            <Button variant="outlined" className={useLoginFormStyle.classes.btnWithIcons} onClick={handleClickRegisterGoogle} startIcon={<GoogleIcon />}></Button>
                         </Box>
                         <Link className={useLoginFormStyle.classes.supportActionTitle} href="/register" variant="body2">
                             Ещё нету аккаунта?

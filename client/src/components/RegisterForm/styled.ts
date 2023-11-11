@@ -38,7 +38,6 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
                 },
             }
         },
-        
         containerInputsLine: {
             display: 'flex',
             flexDirection: 'column',
@@ -61,9 +60,9 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
                 }
             },
             [theme.breakpoints.down('sm')]: {
-                display:'flex',
-                rowGap:theme.spacing(2),
-                justifyContent:'center',
+                display: 'flex',
+                rowGap: theme.spacing(2),
+                justifyContent: 'center',
                 flexDirection: 'column'
             }
         },
@@ -73,15 +72,18 @@ const RegisterFormStyle = makeStyles<ThemeApp>()(
             columnGap: theme.spacing(1),
             display: 'flex',
             justifyContent: 'space-between',
-            '&>*': {
-                margin: 0,
-                '&>*': {
-                    margin: 0,
 
-                }
+        },
+        btnWithIcons: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+            '&>span': {
+                marginLeft: theme.spacing(0),
+                marginRight: theme.spacing(0),
             }
         },
-
         passwordInput: {
             display: 'flex',
             alignItems: 'center',

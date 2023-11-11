@@ -43,6 +43,16 @@ const LoginFormStyle = makeStyles<ThemeApp>()(
             margin: theme.spacing(2, 0),
             fontFamily: 'mont'
         },
+        btnWithIcons: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+            '&>span': {
+                marginLeft: theme.spacing(0),
+                marginRight: theme.spacing(0),
+            }
+        },
         featActionForm: {
             display: 'flex',
             justifyContent: 'space-between',

@@ -130,8 +130,8 @@ export const RegisterForm: React.FC = () => {
                     </LoadingButton>
                     <Box className={useRegisterFormStyle.classes.featActionForm}>
                         <Box className={useRegisterFormStyle.classes.otherMethodSignIn}>
-                            <Button variant="outlined" onClick={handleClickRegisterFacebook} startIcon={<FacebookIcon />}></Button>
-                            <Button variant="outlined" onClick={handleClickRegisterGoogle} startIcon={<GoogleIcon />}></Button>
+                            <Button variant="outlined" onClick={handleClickRegisterFacebook} className={useRegisterFormStyle.classes.btnWithIcons} startIcon={<FacebookIcon />}></Button>
+                            <Button variant="outlined" onClick={handleClickRegisterGoogle} className={useRegisterFormStyle.classes.btnWithIcons} startIcon={<GoogleIcon />}></Button>
                         </Box>
                         <Link className={useRegisterFormStyle.classes.supportActionTitle} href="/login" variant="body2">
                             Уже есть аккаунт? Войти

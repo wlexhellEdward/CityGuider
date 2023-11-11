@@ -12,12 +12,10 @@ import { persistor, store } from './store/store.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
-  <BrowserRouter basename={process.env.REACT_APP_BASE_PATH}>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>
-  </BrowserRouter>
   // </React.StrictMode>,
 )
