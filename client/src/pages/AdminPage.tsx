@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 
-import { Bar } from '@/components/adminComponents/Bar';
-import { MainContent } from '@/components/adminComponents/MainContent';
+import { Bar } from '@/components/AdminComponents/Bar';
+import { MainContent } from '@/components/AdminComponents/MainContent';
 import { useTypeSelector } from '@/hooks/redux';
 
 import PageStyle from './styled';

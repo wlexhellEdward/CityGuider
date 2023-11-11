@@ -7,8 +7,8 @@ import { CardFavoriteProps } from './interfaces';
 
 const CardFavorite = ({ favoriteItem }: CardFavoriteProps) => {
     const [isOpen, setIsOpen] = useState(false)
-    function handleSetIsOpen(isOpenStatus: boolean) {
-        setIsOpen(isOpenStatus)
+    function handleSetIsOpen() {
+        setIsOpen(prev => !prev)
     }
     if (isOpen) {
         return (

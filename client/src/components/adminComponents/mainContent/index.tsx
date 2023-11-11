@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 
 import { Box, CircularProgress } from '@mui/material';
 
-import { CardUser } from "@/components/adminComponents/CardUser";
-import { ModalToEdit } from "@/components/adminComponents/ModalToEdit";
+import { CardUser } from "@/components/AdminComponents/CardUser";
+import { ModalToEdit } from "@/components/AdminComponents/ModalToEdit";
 import { PaginationBar } from "@/components/Pagination";
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { IUser } from "@/interfaces/IUser";

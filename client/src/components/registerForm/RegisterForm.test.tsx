@@ -14,6 +14,11 @@ jest.mock('firebase/database', () => {
         getDatabase: jest.fn(),
     };
 });
+jest.mock('firebase/auth', () => {
+    return {
+        getAuth: jest.fn()
+    }
+})
 
 describe('Тестирования формы регистрации', () => {
     beforeAll(() => {

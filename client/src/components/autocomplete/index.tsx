@@ -1,38 +1,31 @@
 import { useEffect, useRef } from 'react';
-
 import { Box, Input, List, ListItem, Typography } from '@mui/material'
-
 import searchSVG from '@/assets/img/DrawerActions/searchInput.svg'
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useGoogleMaps } from '@/hooks/useGoogleMapsLoader.ts';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside.ts';
 import { setCenter } from '@/store/reducers/index.ts';
 import { refactorString } from '@/utils/refactors/textRefactors.ts';
-
 import AutocompleteStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
 } from "use-places-autocomplete";
+import { statuses } from './config.ts';
 
 export default function Autocomplete() {
     const isLoaded = useGoogleMaps()
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const dispatch = useAppDispatch()
     const ref = useRef<HTMLDivElement>(null);
+
     const handlerSetCenter = (object: object) => {
         dispatch(setCenter(object))
     }
     const { ready, value, suggestions: { status, data },
         setValue, init, clearSuggestions,
     } = usePlacesAutocomplete({ initOnMount: false, debounce: 300, });
-    useEffect(() => {
-        if (isLoaded) {
-            init()
-        }
-    }, [isLoaded, init])
-
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
@@ -46,7 +39,6 @@ export default function Autocomplete() {
                     handlerSetCenter(getLatLng(results[0]))
                 });
             };
-
     const renderSuggestions = () =>
         data.map((suggestion) => {
             const {
@@ -60,16 +52,20 @@ export default function Autocomplete() {
                 </ListItem>
             );
         });
-
     const handleClickOutside = () => {
         clearSuggestions();
     };
 
     useOnClickOutside(ref, handleClickOutside);
 
+    useEffect(() => {
+        if (isLoaded) {
+            init()
+        }
+    }, [isLoaded, init])
 
     const useAutocompleteStyle = AutocompleteStyle({ Pallete: pallete })
-    const OK = "OK"
+
     return (
         <Box ref={ref} className={useAutocompleteStyle.classes.Autocomplete}>
             <Box className={useAutocompleteStyle.classes.containerInput}>
@@ -82,13 +78,11 @@ export default function Autocomplete() {
                     className={useAutocompleteStyle.classes.searchInput}
                 />
             </Box>
-
-            {status === OK && (
+            {status === statuses.OK && (
                 <List className={useAutocompleteStyle.classes.ListContainer}>
                     <ListItem disablePadding className={useAutocompleteStyle.classes.listItem}>{renderSuggestions()}</ListItem>
                 </List>)
             }
-
         </Box>
     )
 }
