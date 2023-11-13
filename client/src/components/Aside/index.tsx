@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Box } from '@mui/material'
 
-import Exit from '@/assets/img/DrawerActions/exit.svg'
+import Exit from '@/assets/img/drawerActions/exit.svg'
 import ArrowBox from '@/components/ArrowBox'
 import { AsideListItems } from '@/components/AsideListItems';
 import { СonfirmModal } from '@/components/ConfirmModal'

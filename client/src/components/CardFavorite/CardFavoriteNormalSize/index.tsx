@@ -2,8 +2,8 @@ import React from 'react'
 
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
 
-import arrowMore from '@/assets/img/CardFavoriteActions/arrowMore.svg'
-import FavoriteImg from '@/assets/img/CardFavoriteActions/inFavorite.svg'
+import arrowMore from '@/assets/img/cardFavoriteActions/arrowMore.svg'
+import FavoriteImg from '@/assets/img/cardFavoriteActions/inFavorite.svg'
 import { Places } from '@/consts/places.ts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth.ts';

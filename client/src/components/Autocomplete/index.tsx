@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Box, Input, List, ListItem, Typography } from '@mui/material'
-import searchSVG from '@/assets/img/DrawerActions/searchInput.svg'
+import searchSVG from '@/assets/img/drawerActions/searchInput.svg'
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useGoogleMaps } from '@/hooks/useGoogleMapsLoader.ts';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside.ts';

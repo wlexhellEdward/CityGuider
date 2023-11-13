@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { Box, Button, List, ListItem, ListItemIcon } from '@mui/material';
 
-import Logo from '@/assets/img/Drawer/Logo.svg';
+import Logo from '@/assets/img/drawer/Logo.svg';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { setCurrentStatus } from '@/store/reducers';
 import Favorite from '@/ui/favorite'

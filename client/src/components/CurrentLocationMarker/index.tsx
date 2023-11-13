@@ -2,7 +2,7 @@ import { Marker } from "@react-google-maps/api"
 
 import { Box } from '@mui/material'
 
-import im from '@/assets/img/MarkerHuman/Im.svg'
+import im from '@/assets/img/markerHuman/Im.svg'
 import { useTypeSelector } from '@/hooks/redux'
 
 import CurrentLocationMarkerStyle from "./styled"

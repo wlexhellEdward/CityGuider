@@ -2,9 +2,9 @@ import { useState } from "react"
 
 import { Box, Button, IconButton } from "@mui/material";
 
-import FindMe from '@/assets/img/MapActions/ButtonFindMe/findMe.svg'
-import Moon from '@/assets/img/MapActions/ButtonSwitchTheme/moon.svg'
-import Sun from '@/assets/img/MapActions/ButtonSwitchTheme/sun.svg'
+import FindMe from '@/assets/img/mapActions/buttonFindMe/findMe.svg'
+import Moon from '@/assets/img/mapActions/buttonSwitchTheme/moon.svg'
+import Sun from '@/assets/img/mapActions/buttonSwitchTheme/sun.svg'
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { setCenter } from "@/store/reducers";
 import { setAppTheme } from "@/store/reducers/appSlice/appSlice";

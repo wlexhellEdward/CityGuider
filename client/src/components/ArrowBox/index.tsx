@@ -1,6 +1,6 @@
 import { Box, Container } from '@mui/system';
 
-import openDrawerArrow from '@/assets/img/DrawerActions/CloseDrawerButton/arrowDisableDrawer.svg'
+import openDrawerArrow from '@/assets/img/drawerActions/closeDrawerButton/arrowDisableDrawer.svg'
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { setCurrentStatus } from '@/store/reducers';
 
