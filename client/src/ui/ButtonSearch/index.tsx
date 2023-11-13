@@ -1,6 +1,6 @@
 import { Box } from "@mui/system"
 
-import searchIcon from '@/assets/img/drawerActions/ButtonSearch/Search.svg'
+import searchIcon from '@/assets/img/drawerActions/buttonSearch/Search.svg'
 import { useTypeSelector } from "@/hooks/redux"
 
 import { ButtonSearchProps } from "./intefraces"
