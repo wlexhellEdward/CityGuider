@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -13,7 +13,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from "firebase/auth";
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
-import { setIsLoading } from '@/store/reducers';
+import { resetAll, setIsLoading } from '@/store/reducers';
 import { toast } from 'react-toastify';
 
 import RegisterFormStyle from './styled';
@@ -29,11 +29,16 @@ export const RegisterForm: React.FC = () => {
     const formValidity = useTypeSelector(state => state.registerSlice.formValidity);
     const auth = getAuth()
 
-    const isFormValid = () => formValidity.email && formValidity.password && formValidity.confirm;
+    const isFormValid = () => formValidity.email && formValidity.password && formValidity.confirm && formValues.email;
+
     const handleSetIsLoading = () => {
         dispatch(setIsLoading(!isLoading));
     };
-
+    useEffect(() => {
+        return () => {
+            dispatch(resetAll())
+        }
+    }, [])
     const handleSetError = (isOpen: boolean, message: string, type: string) => {
         dispatch(setError({
             isOpen: isOpen,

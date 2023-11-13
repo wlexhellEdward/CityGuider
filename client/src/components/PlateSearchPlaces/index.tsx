@@ -7,7 +7,7 @@ import SearchPlace from '@/components/SearchPlace';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useSearchPlace } from '@/hooks/useSearchPlace';
 import { clearResults, setRadius, setResults } from '@/store/reducers/index.ts';
-import { ButtonSearch } from "@/ui/buttonSearch"
+import { ButtonSearch } from "@/ui/ButtonSearch"
 
 import PlateSearchPlacesStyle from "./styled"
 import { toast } from 'react-toastify';

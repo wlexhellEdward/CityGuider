@@ -1,6 +1,6 @@
 import { Button, Icon, Typography } from '@mui/material'
 
-import travel from '@/assets/img/CardFavoriteActions/travel.svg'
+import travel from '@/assets/img/cardFavoriteActions/travel.svg'
 import { useTypeSelector } from '@/hooks/redux'
 
 import { ButtonTravelProps } from './interfaces'

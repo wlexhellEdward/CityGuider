@@ -50,10 +50,23 @@ const registerSlice = createSlice({
         setFormValidity(state, action) {
             state.formValidity = action.payload;
         },
+        resetAll(state) {
+            state.isLoading = false
+            state.formValidity = {
+                email: true,
+                password: true,
+                strength: 0,
+                colorsOfProgres: "red",
+                error: "",
+                confirm: true,
+            }
+            state.formValues = { email: "", password: "", confirm: "" }
+            state.isOpen = false
+        }
     },
 });
 
 export const {
-    setIsLoading, setOpen, setFormValues, setFormValidity, } = registerSlice.actions;
+    setIsLoading, setOpen, setFormValues, resetAll, setFormValidity, } = registerSlice.actions;
 
 export default registerSlice.reducer;
