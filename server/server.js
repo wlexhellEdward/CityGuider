@@ -12,7 +12,7 @@ initializeFirebase(admin);
 
 app.use(express.json());
 const corsOptions = {
-    origin: ["http://localhost:5173", "https://city-guider.netlify.app"],
+    origin: ["http://localhost:5173", "https://city-guider.netlify.app", "https://develop--city-guider.netlify.app"],
     methods: "GET,POST,DELETE",
     credentials: true,
 };
