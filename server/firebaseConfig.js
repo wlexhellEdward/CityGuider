@@ -1,5 +1,4 @@
 const dotenv = require('dotenv');
-const keys = require('./keys/firebaseKey.json');
 
 dotenv.config();
 
