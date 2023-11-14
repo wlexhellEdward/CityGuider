@@ -19,9 +19,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use("/api/users", userRoutes);
-app.use("/",(req,res)=>{
-    res.send('server is live')
-})
+
 
 
 app.listen(port, () => {
