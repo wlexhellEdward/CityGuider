@@ -21,7 +21,7 @@ export const ResetPasswordModal = ({ open, handleClose }: ResetPasswordProps) =>
             setError('Некорректный email');
         } else {
             setError('');
-            sendPasswordResetEmail(auth, email, { url: process.env.REACT_APP_BASE_PAT || "" });
+            sendPasswordResetEmail(auth, email, { url: process.env.REACT_APP_REDIRECT_PATH || "" });
             toast(SUCCESES.RESET_PASSWORD, { type: 'info' });
             handleClose();
         }
