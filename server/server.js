@@ -13,15 +13,14 @@ initializeFirebase(admin);
 app.use(express.json());
 const corsOptions = {
     origin: ["http://localhost:5173", "https://cityguider-api-prod.up.railway.app/"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: "GET,POST,DELETE",
     credentials: true,
-    optionsSuccessStatus: 204,
 };
 
 app.use(cors(corsOptions));
 app.use("/api/users", userRoutes);
-app.use('/', (req, res) => {
-    res.send('server part is live')
+app.use("/",(req,res)=>{
+    res.send('server is live')
 })
 
 
