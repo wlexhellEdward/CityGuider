@@ -18,7 +18,6 @@ router.get('/check-role/:uid', async (req, res) => {
     } catch {
         return res.status(server_answer.error).send("Something went wrong");
     }
-
 });
 
 router.delete("/delete/:uid", async (req, res) => {
