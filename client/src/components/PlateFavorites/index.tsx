@@ -12,6 +12,8 @@ import { setFavoriteItemIsLoading, setFavoriteItems } from "@/store/reducers"
 import { getFavoriteCardsUser } from '@/utils/services/firebaseService'
 
 import PlateFavoritesStyle from "./styled"
+import { toast } from "react-toastify"
+import { SUCCESES } from "@/consts/consts"
 
 export const PlateFavorites = () => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
@@ -25,6 +27,7 @@ export const PlateFavorites = () => {
             getFavoriteCardsUser(id).then((response) => {
                 dispatch(setFavoriteItemIsLoading(false))
                 dispatch(setFavoriteItems(response))
+                toast(SUCCESES.LOAD_FAVORITES, { type: 'success' })
             })
         }
     }, [])

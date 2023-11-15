@@ -8,6 +8,8 @@ import { editUserInfo } from '@/utils/services/firebaseService';
 
 import { ModalProps } from './interfaces';
 import { modalToEditStyle } from './styled';
+import { toast } from 'react-toastify';
+import { SUCCESES } from '@/consts/consts';
 
 export const ModalToEdit = ({ user, onClose }: ModalProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
@@ -18,12 +20,13 @@ export const ModalToEdit = ({ user, onClose }: ModalProps) => {
         dispatch(editUser(editedUser))
         editUserInfo(editedUser)
         onClose();
+        toast(SUCCESES.EDIT_USER, { type: 'success' })
     };
 
     const useModalToEditStyle = modalToEditStyle({ Pallete: pallete })
 
     return (
-        <Dialog  open={true} onClose={onClose}>
+        <Dialog open={true} onClose={onClose}>
             <DialogTitle className={useModalToEditStyle.classes.dialogTitle}>Редактирование пользователя</DialogTitle>
             <Box></Box>
             <DialogContent className={useModalToEditStyle.classes.dialogContent}>

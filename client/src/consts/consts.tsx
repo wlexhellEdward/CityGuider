@@ -213,7 +213,10 @@ export const SUCCESES = {
     ADD_PLACE: "Место успешно добавленно!",
     DELETE_PLACE: "Место успешно удаленно!",
     SEARCH_FINISH: "Поиск завершён",
-    RESET_PASSWORD: "Сообщение отправлено, проверьте ваш email"
+    RESET_PASSWORD: "Сообщение отправлено, проверьте ваш email",
+    LOAD_FAVORITES: "Избранные успешно загруженны",
+    DELETE_USER: "Пользователь удалён!",
+    EDIT_USER: "Данные пользователя измененным"
 }
 
 export const ERRORS = {

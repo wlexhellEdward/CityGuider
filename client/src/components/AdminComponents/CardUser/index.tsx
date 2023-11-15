@@ -11,6 +11,8 @@ import { refactorString } from "@/utils/refactors/textRefactors";
 
 import { CardUserProps } from "./interfaces";
 import CardUserStyle from "./styled";
+import { toast } from 'react-toastify';
+import { SUCCESES } from '@/consts/consts';
 
 export const CardUser = ({ user, onClickEditUser }: CardUserProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
@@ -18,6 +20,8 @@ export const CardUser = ({ user, onClickEditUser }: CardUserProps) => {
     const handleClickDelete = (user: IUser) => {
         dispatch(deleteUser(user.uid))
         deleteUserById(user.uid)
+        toast(SUCCESES.DELETE_USER, { type: 'success' })
+
     }
 
     const useCardUserStyle = CardUserStyle({ Pallete: pallete });
