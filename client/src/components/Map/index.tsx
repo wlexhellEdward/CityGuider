@@ -11,7 +11,7 @@ import { CurrentLocationMarker } from "@/components/CurrentLocationMarker";
 import { Loader } from "@/components/Loader";
 import { MapAction } from '@/components/MapAction';
 import { RouteInfo } from "@/components/RouteInfo";
-import { CIRCLE_OPTIONS, DEFAULT_OPTIONS, ERRORS } from '@/consts/consts';
+import { CIRCLE_OPTIONS, DEFAULT_OPTIONS } from '@/constants/theme';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useGoogleMaps } from "@/hooks/useGoogleMapsLoader";
 import { setCenter, setHumanPosition } from '@/store/reducers';
@@ -19,6 +19,7 @@ import { clearDirection, setMap, setRadius } from '@/store/reducers/mapSlice/map
 import { getBrowserLocation } from '@/utils/map/geo';
 
 import MapStyle from './styled';
+import { ERRORS } from '@/constants/consts';
 
 const Map = () => {
     const dispatch = useAppDispatch()

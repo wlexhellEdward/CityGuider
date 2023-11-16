@@ -14,7 +14,7 @@ import {
 
 import { ContainerInputsLine } from '@/components/ContainerInputsLine';
 import { ModalFormError } from '@/components/ModalFormError';
-import { ERRORS, PROVIDERS } from '@/consts/consts';
+import { ERRORS, PROVIDERS } from '@/constants/consts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { IResponse } from '@/interfaces/IResponse';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';

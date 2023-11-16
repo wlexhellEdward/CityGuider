@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import { Box, Input, List, Typography } from "@mui/material"
 
 import SearchPlace from '@/components/SearchPlace';
-import { SUCCESES } from '@/consts/consts';
-import { Places } from '@/consts/places';
+import { SUCCESES } from '@/constants/consts';
+import { Places } from '@/constants/places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useSearchPlace } from '@/hooks/useSearchPlace';
 import { clearResults, setRadius, setResults } from '@/store/reducers/index.ts';

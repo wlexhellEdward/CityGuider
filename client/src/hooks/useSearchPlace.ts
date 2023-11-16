@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Places } from "@/consts/places";
+import { Places } from "@/constants/places";
 import { ISearchPlaceParams } from "@/interfaces/ISearchPlaceParams";
 
 import { useTypeSelector } from "./redux";

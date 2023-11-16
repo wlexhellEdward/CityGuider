@@ -1,4 +1,4 @@
-import { ERRORS, PROVIDERS } from "@/consts/consts";
+import { ERRORS, PROVIDERS } from "@/constants/consts";
 import { IResponse } from "@/interfaces/IResponse";
 
 import { Auth, FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";

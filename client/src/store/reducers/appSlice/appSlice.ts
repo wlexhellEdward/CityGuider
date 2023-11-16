@@ -1,4 +1,4 @@
-import { LIGHT_THEME_APP } from "@/consts/consts";
+import { LIGHT_THEME_APP } from "@/constants/theme";
 import { ThemeApp } from "@/interfaces/IThemeApp";
 import { createSlice } from "@reduxjs/toolkit";
 

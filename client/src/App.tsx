@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import { ROUTES_NOT_AUTH } from '@/consts/consts';
+import { ROUTES_NOT_AUTH } from '@/constants/routes';
 import { HomePage } from '@/pages/HomePage';
 
 function App() {

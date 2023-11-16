@@ -10,7 +10,7 @@ import { Avatar, Box, Button, Link, Typography } from '@mui/material';
 
 import { ContainerInputsForm } from '@/components/ContainerInputsForm';
 import { ModalFormError } from '@/components/ModalFormError';
-import { ERRORS, PROVIDERS } from '@/consts/consts';
+import { ERRORS, PROVIDERS } from '@/constants/consts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { IResponse } from '@/interfaces/IResponse';
 import { resetAll, setIsLoading } from '@/store/reducers';

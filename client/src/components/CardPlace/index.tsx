@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
 
 import { PopUp } from '@/components/Pop-up/index.tsx';
-import { ERRORS, SUCCESES } from '@/consts/consts.tsx';
+import { ERRORS, SUCCESES } from '@/constants/consts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
 import { useAuth } from '@/hooks/useAuth.ts';
 import { useRoute } from '@/hooks/useRoute.ts';

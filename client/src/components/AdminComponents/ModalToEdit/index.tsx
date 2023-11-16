@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 
-import { SUCCESES } from '@/consts/consts';
+import { SUCCESES } from '@/constants/consts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';
 import { editUserInfo } from '@/utils/services/firebaseService';

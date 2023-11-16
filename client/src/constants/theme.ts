@@ -1,19 +1,3 @@
-import { AdminPage } from "@/pages/AdminPage"
-import { LoginPage } from "@/pages/LoginPage"
-import { RegisterPage } from "@/pages/RegisterPage"
-
-import DoesntExistPhoto from '/public/doesntExist.png'
-
-
-export const IMAGE_SETTINGS = {
-    titles: {
-        media: 'Photos of places taken using google street',
-        markers: 'Clickable marker for place selection',
-        icons: 'Place icon, you can select this to select the search category',
-    },
-    alt: DoesntExistPhoto
-}
-
 export const MAP_THEME =
     [
         {
@@ -192,45 +176,4 @@ export const CIRCLE_OPTIONS = {
     fillOpacity: 0.15,
     strokeColor: LIGHT_THEME_APP.main,
     strokeOpacity: 0.8,
-}
-
-export const ROUTES_NOT_AUTH = [
-    { url: '/login', component: <LoginPage /> },
-    { url: '/register', component: <RegisterPage /> },
-    { url: '/admin', component: <AdminPage /> },
-]
-
-export const FIREBASE_CONFIG = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID
-};
-
-export const SUCCESES = {
-    ADD_PLACE: "Место успешно добавленно!",
-    DELETE_PLACE: "Место успешно удаленно!",
-    SEARCH_FINISH: "Поиск завершён",
-    RESET_PASSWORD: "Сообщение отправлено, проверьте ваш email",
-    LOAD_FAVORITES: "Избранные успешно загруженны",
-    DELETE_USER: "Пользователь удалён!",
-    EDIT_USER: "Данные пользователя измененным"
-}
-
-export const PROVIDERS = {
-    facebook: 'facebook',
-    google: 'google'
-}
-
-export const ERRORS = {
-    CANT_ADD_PLACE: "Не удалось добавить место, попробуйте ещё раз",
-    CANT_DELETE_PLACE: "Не удалось удалить место, попробуйте ещё раз",
-    CANT_DETERMINE_THE_LOCATION: "Не удалось определить ваше местоположение, попробуйте выключить VPN",
-    CANT_REGISTER_WITH_RPOVIDER: "Не удалось зарегистрироваться, попробуйте позже"
-}
-
-export const FIREBASE = {
-    url: "http://localhost:5173/login"
 }

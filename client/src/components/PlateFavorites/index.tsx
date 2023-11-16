@@ -6,7 +6,7 @@ import { Box } from "@mui/system"
 
 import CardFavorite from "@/components/CardFavorite/ToggleCardFavorite"
 import { Waiter } from "@/components/Waiter"
-import { SUCCESES } from "@/consts/consts"
+import { SUCCESES } from "@/constants/consts"
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { useAuth } from "@/hooks/useAuth"
 import { setFavoriteItemIsLoading, setFavoriteItems } from "@/store/reducers"

@@ -5,8 +5,8 @@ import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mu
 
 import arrowMore from '@/assets/img/cardFavoriteActions/arrowMore.svg'
 import FavoriteImg from '@/assets/img/cardFavoriteActions/inFavorite.svg'
-import { ERRORS, SUCCESES } from '@/consts/consts.tsx';
-import { Places } from '@/consts/places.ts';
+import { ERRORS, SUCCESES } from '@/constants/consts';
+import { Places } from '@/constants/places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth.ts';
 import { addFavoriteItem } from '@/store/reducers/index.ts';

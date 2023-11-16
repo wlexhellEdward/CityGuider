@@ -1,4 +1,4 @@
-import { MAP_THEME } from "@/consts/consts";
+import { MAP_THEME } from "@/constants/theme";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface mapState {

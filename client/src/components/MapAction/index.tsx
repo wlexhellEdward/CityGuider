@@ -5,7 +5,7 @@ import { Box, Button, IconButton } from "@mui/material";
 import FindMe from '@/assets/img/mapActions/buttonFindMe/findMe.svg'
 import Moon from '@/assets/img/mapActions/buttonSwitchTheme/moon.svg'
 import Sun from '@/assets/img/mapActions/buttonSwitchTheme/sun.svg'
-import { DARK_THEME_APP, LIGHT_THEME_APP, MAP_DARK_THEME, MAP_THEME } from '@/consts/consts';
+import { DARK_THEME_APP, LIGHT_THEME_APP, MAP_DARK_THEME, MAP_THEME } from '@/constants/theme';
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { setCenter } from "@/store/reducers";
 import { setAppTheme } from "@/store/reducers/appSlice/appSlice";

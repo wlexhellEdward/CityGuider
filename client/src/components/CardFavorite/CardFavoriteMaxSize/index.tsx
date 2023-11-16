@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
 
 import arrowMore from '@/assets/img/cardFavoriteActions/arrowMore.svg'
-import { ERRORS, SUCCESES } from '@/consts/consts';
-import { Places } from '@/consts/places';
+import { ERRORS, SUCCESES } from '@/constants/consts';
+import { Places } from '@/constants/places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth';
 import { useRoute } from '@/hooks/useRoute';

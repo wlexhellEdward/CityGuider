@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import { Box, Button, Modal, TextField,Typography } from "@mui/material"
 
-import { SUCCESES } from '@/consts/consts';
+import { SUCCESES } from '@/constants/consts';
 import { useTypeSelector } from "@/hooks/redux";
 
 import { ResetPasswordProps } from "./interfaces"
