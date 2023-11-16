@@ -18,7 +18,7 @@ export const ContainerInputsForm = () => {
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const email = event.target.value;
         dispatch(setFormValues({ ...formValues, email }));
-        dispatch(setFormValidity({ ...formValidity, email: /\S+@\S+\.\S+/.test(email) }));
+        dispatch(setFormValidity({ ...formValidity, email: isValidEmail(email) }));
     };
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const password = event.target.value;
