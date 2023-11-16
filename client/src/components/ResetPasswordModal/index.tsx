@@ -1,13 +1,14 @@
 import { useState } from "react";
-
-import { Modal, Box, Typography, Button, TextField } from "@mui/material"
-import { ResetPasswordProps } from "./interfaces"
-import { getAuth, sendPasswordResetEmail } from "firebase/auth"
-import { SUCCESES } from '@/consts/consts';
-import { useTypeSelector } from "@/hooks/redux";
 import { toast } from "react-toastify";
 
+import { Box, Button, Modal, TextField,Typography } from "@mui/material"
+
+import { SUCCESES } from '@/consts/consts';
+import { useTypeSelector } from "@/hooks/redux";
+
+import { ResetPasswordProps } from "./interfaces"
 import ResetPasswordModalStyle from "./styled";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth"
 
 
 export const ResetPasswordModal = ({ open, handleClose }: ResetPasswordProps) => {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 import { Places } from "@/consts/places";
+import { ISearchPlaceParams } from "@/interfaces/ISearchPlaceParams";
 
 import { useTypeSelector } from "./redux";
-import { ISearchPlaceParams } from "@/interfaces/ISearchPlaceParams";
 
 export const useSearchPlace = ({ map, center, inputValue }: ISearchPlaceParams) => {
     const [results, setResults] = useState<google.maps.places.PlaceResult[]>([]);

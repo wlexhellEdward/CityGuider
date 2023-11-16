@@ -1,11 +1,11 @@
 import { BrowserRouter } from 'react-router-dom';
 
+import { ResetPasswordModal } from '@/components/ResetPasswordModal';
 import { renderWithAllProviders } from '@/utils/helpers/renderWithProvider';
 import { initializeApp } from '@firebase/app';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
-import { ResetPasswordModal } from '@/components/ResetPasswordModal';
 
 jest.mock('firebase/database', () => {
     const original = jest.requireActual('firebase/database');

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
 
 import { Box, Card, CardActions, CardContent, Container, Typography, } from '@mui/material';
 
 import arrowMore from '@/assets/img/cardFavoriteActions/arrowMore.svg'
+import { ERRORS, SUCCESES } from '@/consts/consts';
 import { Places } from '@/consts/places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth';
@@ -13,13 +15,11 @@ import {
 import { ButtonSave } from '@/ui/ButtonSave';
 import { ButtonTravel } from '@/ui/ButtonTravel';
 import { deleteFavoriteCard } from '@/utils/services/firebaseService';
+
+import { titles } from '../config';
+import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
 import DoesntExistPhoto from '/public/doesntExist.png'
-import { toast } from 'react-toastify';
-import { ERRORS, SUCCESES } from '@/consts/consts';
-import { titles } from '../config';
-
-import CardFavoriteStyle from '../styled';
 
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {

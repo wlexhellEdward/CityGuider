@@ -5,8 +5,8 @@ import { Box } from '@mui/material'
 import im from '@/assets/img/markerHuman/Im.svg'
 import { useTypeSelector } from '@/hooks/redux'
 
-import CurrentLocationMarkerStyle from "./styled"
 import { titles } from "./config"
+import CurrentLocationMarkerStyle from "./styled"
 
 export const CurrentLocationMarker = () => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)

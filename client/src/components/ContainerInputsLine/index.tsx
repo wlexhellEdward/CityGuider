@@ -1,5 +1,6 @@
-import { useTypeSelector } from "@/hooks/redux"
 import { Box, TextField } from "@mui/material"
+
+import { useTypeSelector } from "@/hooks/redux"
 
 import containerInputsLineStyle from "./styled"
 

@@ -1,11 +1,11 @@
 import Aside from '@/components/Aside';
 import { setFavoriteItems } from '@/store/reducers';
 import { store } from '@/store/store';
+import { renderWithAllProviders } from '@/utils/helpers/renderWithProvider';
 import { LatLng } from '@googlemaps/jest-mocks';
 import { fireEvent, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
-import { renderWithAllProviders } from '@/utils/helpers/renderWithProvider';
 
 jest.mock('firebase/database', () => {
     const original = jest.requireActual('firebase/database');

@@ -1,25 +1,26 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GoogleIcon from '@mui/icons-material/Google';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { LoadingButton } from '@mui/lab';
 import { Avatar, Box, Button, Link, Typography } from '@mui/material';
+
+import { ContainerInputsForm } from '@/components/ContainerInputsForm';
 import { ModalFormError } from '@/components/ModalFormError';
+import { ERRORS, PROVIDERS } from '@/consts/consts';
+import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { IResponse } from '@/interfaces/IResponse';
+import { resetAll, setIsLoading } from '@/store/reducers';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
+import { registerWithDifferentProvider } from '@/utils/auth/authDifferentProvider';
 import { getMessageError } from '@/utils/errors/errorFinder';
-import { ContainerInputsForm } from '@/components/ContainerInputsForm';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GoogleIcon from '@mui/icons-material/Google';
-import { Auth, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
-import { resetAll, setIsLoading } from '@/store/reducers';
-import { toast } from 'react-toastify';
 
 import RegisterFormStyle from './styled';
-import { registerWithDifferentProvider } from '@/utils/auth/authDifferentProvider';
-import { IResponse } from '@/interfaces/IResponse';
-import { ERRORS, PROVIDERS } from '@/consts/consts';
+import { Auth, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 
 export const RegisterForm: React.FC = () => {

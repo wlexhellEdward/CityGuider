@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GoogleIcon from '@mui/icons-material/Google';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { LoadingButton } from '@mui/lab';
 import {
@@ -8,24 +11,22 @@ import {
     Button,
     Link, Typography
 } from '@mui/material';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GoogleIcon from '@mui/icons-material/Google';
+
+import { ContainerInputsLine } from '@/components/ContainerInputsLine';
 import { ModalFormError } from '@/components/ModalFormError';
+import { ERRORS, PROVIDERS } from '@/consts/consts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
+import { IResponse } from '@/interfaces/IResponse';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';
 import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
+import { registerWithDifferentProvider } from '@/utils/auth/authDifferentProvider';
 import { getMessageError } from '@/utils/errors/errorFinder';
 import { checkUserRole } from '@/utils/services/firebaseService';
-import { ContainerInputsLine } from '@/components/ContainerInputsLine';
 
+import { ResetPasswordModal } from '../ResetPasswordModal';
 import LoginFormStyle from './styled';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { ResetPasswordModal } from '../ResetPasswordModal';
-import { toast } from 'react-toastify';
-import { registerWithDifferentProvider } from '@/utils/auth/authDifferentProvider';
-import { IResponse } from '@/interfaces/IResponse';
-import { ERRORS, PROVIDERS } from '@/consts/consts';
 
 
 export const LoginForm = () => {

@@ -1,8 +1,10 @@
 import { ListItem, Typography } from "@mui/material"
-import { SuggestionsProps } from "./interface"
-import { refactorString } from "@/utils/refactors/textRefactors"
-import SuggestionsStyle from "./styled"
+
 import { useTypeSelector } from "@/hooks/redux"
+import { refactorString } from "@/utils/refactors/textRefactors"
+
+import { SuggestionsProps } from "./interface"
+import SuggestionsStyle from "./styled"
 
 export const Suggestions = ({ handleSelect, main_text, secondary_text }: SuggestionsProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)

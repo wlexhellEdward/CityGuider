@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { InfoWindow } from '@react-google-maps/api';
 import { Circle, GoogleMap, Marker } from "@react-google-maps/api";
@@ -10,15 +11,14 @@ import { CurrentLocationMarker } from "@/components/CurrentLocationMarker";
 import { Loader } from "@/components/Loader";
 import { MapAction } from '@/components/MapAction';
 import { RouteInfo } from "@/components/RouteInfo";
+import { CIRCLE_OPTIONS, DEFAULT_OPTIONS, ERRORS } from '@/consts/consts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useGoogleMaps } from "@/hooks/useGoogleMapsLoader";
 import { setCenter, setHumanPosition } from '@/store/reducers';
 import { clearDirection, setMap, setRadius } from '@/store/reducers/mapSlice/mapSlice';
-import { CIRCLE_OPTIONS, DEFAULT_OPTIONS, ERRORS } from '@/consts/consts';
 import { getBrowserLocation } from '@/utils/map/geo';
 
 import MapStyle from './styled';
-import { toast } from 'react-toastify';
 
 const Map = () => {
     const dispatch = useAppDispatch()

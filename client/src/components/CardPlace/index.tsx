@@ -1,9 +1,10 @@
 import { memo, useState } from 'react'
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import { Card, CardActions, CardContent, CardMedia, Typography, } from '@mui/material'
 
 import { PopUp } from '@/components/Pop-up/index.tsx';
+import { ERRORS, SUCCESES } from '@/consts/consts.tsx';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux'
 import { useAuth } from '@/hooks/useAuth.ts';
 import { useRoute } from '@/hooks/useRoute.ts';
@@ -15,11 +16,11 @@ import { ButtonTravel } from '@/ui/ButtonTravel/index.tsx';
 import { convertPlaceToFavorite } from '@/utils/converts/convert.ts'
 import { addFavoriteCard, deleteFavoriteCard } from '@/utils/services/firebaseService.ts';
 
+import 'react-toastify/dist/ReactToastify.css';
+import { errors, titles } from './config.ts';
 import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
-import { ERRORS, SUCCESES } from '@/consts/consts.tsx';
-import { errors, titles } from './config.ts';
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
     return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : DoesntExistPhoto

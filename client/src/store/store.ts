@@ -17,9 +17,9 @@ import currentStatusSlice from './reducers/currentStatusSlice/currentStatusSlice
 import errorSlice from './reducers/errorSlice/errorSlice';
 import favoriteItemsSlice from './reducers/favoriteItemsSlice/favoriteItemsSlice';
 import mapSlice from './reducers/mapSlice/mapSlice';
+import registerSlice from './reducers/registerSlice/registerSlice';
 import searchSlice from './reducers/searchItemsSlice/searchItemsSlice'
 import userSlice from './reducers/userSlice/userSlice';
-import registerSlice from './reducers/registerSlice/registerSlice';
 
 
 const rootReducer = combineReducers({

@@ -1,11 +1,12 @@
-import { Box, LinearProgress, TextField, Tooltip } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
+import { Box, LinearProgress, TextField, Tooltip } from '@mui/material';
+
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { setFormValidity, setFormValues } from '@/store/reducers';
 import { passwordToStrength } from '@/utils/converts/convert';
+import { getPasswordErrors } from '@/utils/errors/errorFinder';
 
 import containerInputsForm from './styled';
-import { getPasswordErrors } from '@/utils/errors/errorFinder';
 
 
 export const ContainerInputsForm = () => {

@@ -1,18 +1,19 @@
+import { toast } from 'react-toastify';
+
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
 
+import { SUCCESES } from '@/consts/consts';
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux";
 import { IUser } from "@/interfaces/IUser";
 import { deleteUser } from "@/store/reducers/adminSlice/adminSlice";
-import { deleteUserById } from "@/utils/services/firebaseService";
 import { refactorString } from "@/utils/refactors/textRefactors";
+import { deleteUserById } from "@/utils/services/firebaseService";
 
 import { CardUserProps } from "./interfaces";
 import CardUserStyle from "./styled";
-import { toast } from 'react-toastify';
-import { SUCCESES } from '@/consts/consts';
 
 export const CardUser = ({ user, onClickEditUser }: CardUserProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)

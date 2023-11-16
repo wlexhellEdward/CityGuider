@@ -1,15 +1,15 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 
+import { SUCCESES } from '@/consts/consts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';
 import { editUserInfo } from '@/utils/services/firebaseService';
 
 import { ModalProps } from './interfaces';
 import { modalToEditStyle } from './styled';
-import { toast } from 'react-toastify';
-import { SUCCESES } from '@/consts/consts';
 
 export const ModalToEdit = ({ user, onClose }: ModalProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)

@@ -1,19 +1,18 @@
 import { useEffect } from "react"
+import { toast } from "react-toastify"
 
 import { CircularProgress, Typography } from "@mui/material"
 import { Box } from "@mui/system"
+
 import CardFavorite from "@/components/CardFavorite/ToggleCardFavorite"
-
-
 import { Waiter } from "@/components/Waiter"
+import { SUCCESES } from "@/consts/consts"
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { useAuth } from "@/hooks/useAuth"
 import { setFavoriteItemIsLoading, setFavoriteItems } from "@/store/reducers"
 import { getFavoriteCardsUser } from '@/utils/services/firebaseService'
 
 import PlateFavoritesStyle from "./styled"
-import { toast } from "react-toastify"
-import { SUCCESES } from "@/consts/consts"
 
 export const PlateFavorites = () => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)

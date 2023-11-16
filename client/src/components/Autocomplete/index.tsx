@@ -1,18 +1,21 @@
 import { useEffect, useRef } from 'react';
+
 import { Box, Input, List, ListItem } from '@mui/material'
+
 import searchSVG from '@/assets/img/drawerActions/searchInput.svg'
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useGoogleMaps } from '@/hooks/useGoogleMapsLoader.ts';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside.ts';
 import { setCenter } from '@/store/reducers/index.ts';
+
+import { Suggestions } from '../Suggestions/index.tsx';
+import { statuses } from './config.ts';
 import AutocompleteStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
 } from "use-places-autocomplete";
-import { statuses } from './config.ts';
-import { Suggestions } from '../Suggestions/index.tsx';
 
 export default function Autocomplete() {
     const isLoaded = useGoogleMaps()
