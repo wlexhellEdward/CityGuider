@@ -9,6 +9,6 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^public/(.*)$': '<rootDir>/public/$1',
     "\\.(svg|png)$": "<rootDir>/src/tests/mocks/fileMock.ts",
-    'city-guider-ui-library/src/*':'<rootDir>/src/tests/mocks/fileMock.ts'
+    // 'city-guider-ui-library/src/*':'<rootDir>/src/tests/mocks/fileMock.ts'
   },
 };
