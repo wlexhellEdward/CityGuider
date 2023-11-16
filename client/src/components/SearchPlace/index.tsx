@@ -1,11 +1,10 @@
-import { Box, Typography } from "@mui/material";
-
+import { Box } from "@mui/material";
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux";
 import { addItem, deleteItem } from "@/store/reducers";
-
 import { SearchPlaceProps } from "./interfaces";
 import SearchPlaceStyle from "./styled";
-import DoesntExistPhoto from "/public/doesntExist.png";
+import { SelectedPlace } from "../SelectedPlace";
+import { Place } from "../Place";
 
 const SearchPlace: React.FC<SearchPlaceProps> = ({
   searchPlace,
@@ -33,33 +32,9 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({
         key={searchPlace.id}
       >
         {isSelected ? (
-          <>
-            <img
-              data-testid="type-of-place"
-              className={useSearchPlaceStyle.classes.imgPlace}
-              src={searchPlace.img}
-              title="place photo"
-              alt={DoesntExistPhoto}
-            />
-            <Typography className={useSearchPlaceStyle.classes.titlePlace}>
-              {searchPlace.title}
-            </Typography>
-          </>
+          <SelectedPlace searchPlace={searchPlace} />
         ) : (
-          <>
-            <img
-              data-testid="selected-type-of-place"
-              className={useSearchPlaceStyle.classes.imgSelectedPlace}
-              src={searchPlace.img}
-              title="place photo"
-              alt={DoesntExistPhoto}
-            />
-            <Typography
-              className={useSearchPlaceStyle.classes.titleSelectedPlace}
-            >
-              {searchPlace.title}
-            </Typography>
-          </>
+          <Place searchPlace={searchPlace} />
         )}
       </Box>
     </>
