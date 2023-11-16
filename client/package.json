@@ -49,7 +49,6 @@
     "@babel/preset-react": "^7.22.15",
     "@firebase/testing": "^0.20.11",
     "@googlemaps/jest-mocks": "^2.20.2",
-    "@svgr/core": "^8.1.0",
     "@testing-library/dom": "^9.3.3",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
