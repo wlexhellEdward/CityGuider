@@ -11,16 +11,16 @@ import { useRoute } from '@/hooks/useRoute.ts';
 import {
     addFavoriteItem, clearDirection, setRouteInfo
 } from '@/store/reducers'
-import { ButtonSave } from '@/ui/ButtonSave/index.tsx';
-import { ButtonTravel } from '@/ui/ButtonTravel/index.tsx';
+import { ButtonSave } from 'city-guider-ui-library/src/components/ButtonSave';
+import { ButtonTravel } from 'city-guider-ui-library/src/components/ButtonTravel';
 import { convertPlaceToFavorite } from '@/utils/converts/convert.ts'
-import { addFavoriteCard, deleteFavoriteCard } from '@/utils/services/firebaseService.ts';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { errors, titles } from './config.ts';
 import { CardPlaceProps } from './interfaces.ts';
 import CardPlaceStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { addFavoriteCard, deleteFavoriteCard } from '@/utils/firebaseServices/favorites/favoriteService.ts';
 
 const checkValidPhoto = (place: google.maps.places.PlaceResult) => {
     return place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : DoesntExistPhoto

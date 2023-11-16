@@ -22,11 +22,11 @@ import { setError } from '@/store/reducers/errorSlice/errorSlice';
 import { setUser } from '@/store/reducers/userSlice/userSlice';
 import { registerWithDifferentProvider } from '@/utils/auth/authDifferentProvider';
 import { getMessageError } from '@/utils/errors/errorFinder';
-import { checkUserRole } from '@/utils/services/firebaseService';
 
 import { ResetPasswordModal } from '../ResetPasswordModal';
 import LoginFormStyle from './styled';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { checkUserRole } from '@/utils/firebaseServices/users/usersServices';
 
 
 export const LoginForm = () => {

@@ -10,9 +10,9 @@ import { SUCCESES } from "@/constants/consts"
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { useAuth } from "@/hooks/useAuth"
 import { setFavoriteItemIsLoading, setFavoriteItems } from "@/store/reducers"
-import { getFavoriteCardsUser } from '@/utils/services/firebaseService'
 
 import PlateFavoritesStyle from "./styled"
+import { getFavoriteCardsUser } from "@/utils/firebaseServices/favorites/favoriteService"
 
 export const PlateFavorites = () => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)

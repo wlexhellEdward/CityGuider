@@ -10,10 +10,10 @@ import { useAppDispatch, useTypeSelector } from "@/hooks/redux";
 import { IUser } from "@/interfaces/IUser";
 import { deleteUser } from "@/store/reducers/adminSlice/adminSlice";
 import { refactorString } from "@/utils/refactors/textRefactors";
-import { deleteUserById } from "@/utils/services/firebaseService";
 
 import { CardUserProps } from "./interfaces";
 import CardUserStyle from "./styled";
+import { deleteUserById } from '@/utils/firebaseServices/users/usersServices';
 
 export const CardUser = ({ user, onClickEditUser }: CardUserProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)

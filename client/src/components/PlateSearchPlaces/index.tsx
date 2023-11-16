@@ -9,7 +9,7 @@ import { Places } from '@/constants/places';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useSearchPlace } from '@/hooks/useSearchPlace';
 import { clearResults, setRadius, setResults } from '@/store/reducers/index.ts';
-import { ButtonSearch } from "@/ui/ButtonSearch"
+import { ButtonSearch } from "city-guider-ui-library/src/components/ButtonSearch"
 
 import PlateSearchPlacesStyle from "./styled"
 
@@ -61,7 +61,7 @@ export const PlateSearchPlaces = () => {
                     <Typography className={usePlateSearchPlacesStyle.classes.spanDescription}>км</Typography>
                 </Box>
                 <Box className={usePlateSearchPlacesStyle.classes.buttonSearchContainer}>
-                    <ButtonSearch handleSetSearchButtonIsClicked={handleSetSearchButtonIsClicked} />
+                    <ButtonSearch handleClick={handleSetSearchButtonIsClicked} />
                 </Box>
             </Box>
         </Box>

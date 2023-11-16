@@ -8,7 +8,7 @@ import { PaginationBar } from "@/components/Pagination";
 import { useAppDispatch, useTypeSelector } from "@/hooks/redux"
 import { IUser } from "@/interfaces/IUser";
 import { setAllUsers } from "@/store/reducers/adminSlice/adminSlice";
-import { getListAllUsers } from "@/utils/services/firebaseService";
+import { getListAllUsers } from "@/utils/firebaseServices/firebaseService";
 
 import userContentStyle from "./styled"
 

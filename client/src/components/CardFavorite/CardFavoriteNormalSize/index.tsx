@@ -11,12 +11,12 @@ import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { useAuth } from '@/hooks/useAuth.ts';
 import { addFavoriteItem } from '@/store/reducers/index.ts';
 import { refactorString } from '@/utils/refactors/textRefactors.ts';
-import { deleteFavoriteCard } from '@/utils/services/firebaseService.ts';
 
 import { titles } from '../config.ts';
 import CardFavoriteStyle from '../styled.ts';
 import { CardFavoritePropsNormalSize } from './interfaces.ts';
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { deleteFavoriteCard } from '@/utils/firebaseServices/favorites/favoriteService.ts';
 
 const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favoriteItem, handleSetIsOpen }) => {
     const dispatch = useAppDispatch()

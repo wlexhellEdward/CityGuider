@@ -7,10 +7,10 @@ import Logo from '@/assets/img/drawer/Logo.svg';
 import { URL } from '@/constants/routes';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { setCurrentStatus } from '@/store/reducers';
-import Favorite from '@/ui/favorite'
-import FavoriteSelected from '@/ui/favorite/favoriteSelected'
-import Search from '@/ui/search/Search';
-import SearchSelected from '@/ui/search/SearchSelected'
+import Favorite from 'city-guider-ui-library/src/svg/favorite'
+import FavoriteSelected from 'city-guider-ui-library/src/svg/favoriteSelected'
+import Search from 'city-guider-ui-library/src/svg/search/Search';
+import SearchSelected from 'city-guider-ui-library/src/svg/search/SearchSelected'
 
 import { titles } from './config';
 import AsideListItemsStyle from './styled';

@@ -12,14 +12,14 @@ import { useRoute } from '@/hooks/useRoute';
 import {
     addFavoriteItem, clearDirection, setRouteInfo,
 } from '@/store/reducers';
-import { ButtonSave } from '@/ui/ButtonSave';
-import { ButtonTravel } from '@/ui/ButtonTravel';
-import { deleteFavoriteCard } from '@/utils/services/firebaseService';
+import { ButtonSave } from 'city-guider-ui-library/src/components/ButtonSave';
+import { ButtonTravel } from 'city-guider-ui-library/src/components/ButtonTravel';
 
 import { titles } from '../config';
 import CardFavoriteStyle from '../styled';
 import { CardFavoritePropsMaxSize } from './interfaces';
 import DoesntExistPhoto from '/public/doesntExist.png'
+import { deleteFavoriteCard } from '@/utils/firebaseServices/favorites/favoriteService';
 
 
 const CardFavoriteMaxSize: React.FC<CardFavoritePropsMaxSize> = ({ favoriteItem, handleSetIsOpen }) => {

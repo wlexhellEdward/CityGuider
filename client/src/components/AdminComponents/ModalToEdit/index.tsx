@@ -6,10 +6,10 @@ import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextFie
 import { SUCCESES } from '@/constants/consts';
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { editUser } from '@/store/reducers/adminSlice/adminSlice';
-import { editUserInfo } from '@/utils/services/firebaseService';
 
 import { ModalProps } from './interfaces';
 import { modalToEditStyle } from './styled';
+import { editUserInfo } from '@/utils/firebaseServices/users/usersServices';
 
 export const ModalToEdit = ({ user, onClose }: ModalProps) => {
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
