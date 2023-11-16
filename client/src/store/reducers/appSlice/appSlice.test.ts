@@ -1,4 +1,4 @@
-import { DARK_THEME_APP, LIGHT_THEME_APP } from "@/consts/consts"
+import { DARK_THEME_APP, LIGHT_THEME_APP } from "@/constants/theme"
 import appReducer, {
     setAppTheme
 } from "@/store/reducers/appSlice/appSlice"

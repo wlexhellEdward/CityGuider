@@ -7,3 +7,11 @@ export const ROUTES_NOT_AUTH = [
     { url: '/register', component: <RegisterPage /> },
     { url: '/admin', component: <AdminPage /> },
 ]
+
+
+export const URL = {
+    register: '/register',
+    login: '/login',
+    main: '/',
+    admin: '/admin'
+}
