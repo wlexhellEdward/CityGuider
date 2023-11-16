@@ -1,3 +1,3 @@
 export interface LoaderProps {
-    text: string
+  text: string;
 }

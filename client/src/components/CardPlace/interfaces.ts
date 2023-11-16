@@ -1,3 +1,3 @@
 export interface CardPlaceProps {
-    place: google.maps.places.PlaceResult
+  place: google.maps.places.PlaceResult;
 }

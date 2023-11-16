@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const currentStatusSlice = createSlice({
-    name: 'currentStatus',
-    initialState: {
-        status: "close"
+  name: "currentStatus",
+  initialState: {
+    status: "close",
+  },
+  reducers: {
+    setCurrentStatus(state, action) {
+      state.status = action.payload;
     },
-    reducers: {
-        setCurrentStatus(state, action) {
-            state.status = action.payload
-        }
-    }
-})
+  },
+});
 
-export const {setCurrentStatus} = currentStatusSlice.actions
+export const { setCurrentStatus } = currentStatusSlice.actions;
 
-export default currentStatusSlice.reducer
+export default currentStatusSlice.reducer;

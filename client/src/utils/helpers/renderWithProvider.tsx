@@ -1,16 +1,12 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 
-import { store } from '@/store/store';
-import { render } from '@testing-library/react';
+import { store } from "@/store/store";
+import { render } from "@testing-library/react";
 
 const renderWithAllProviders = (component: ReactNode) => {
-    return render(
-        <Provider store={store} >
-            {component}
-        </Provider>
-    );
+  return render(<Provider store={store}>{component}</Provider>);
 };
 
 export { renderWithAllProviders };

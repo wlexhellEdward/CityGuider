@@ -1,3 +1,3 @@
 export interface WaiterProps {
-    text: string
+  text: string;
 }

@@ -1,3 +1,3 @@
 export const statuses = {
-    OK:"OK"
-}
+  OK: "OK",
+};

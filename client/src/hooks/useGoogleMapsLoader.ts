@@ -1,26 +1,26 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import { Libraries, useJsApiLoader } from '@react-google-maps/api';
+import { Libraries, useJsApiLoader } from "@react-google-maps/api";
 
-import { setIsLoaded } from '@/store/reducers';
+import { setIsLoaded } from "@/store/reducers";
 
-import { useAppDispatch } from './redux';
+import { useAppDispatch } from "./redux";
 
 export function useGoogleMaps() {
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-    const libraries: Libraries = ['places']
-    
-    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: apiKey,
-        libraries: libraries,
-    });
+  const libraries: Libraries = ["places"];
 
-    useEffect(() => {
-        dispatch(setIsLoaded(isLoaded))
-    }, [isLoaded]);
+  const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string;
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: apiKey,
+    libraries: libraries,
+  });
 
-    return isLoaded;
+  useEffect(() => {
+    dispatch(setIsLoaded(isLoaded));
+  }, [isLoaded]);
+
+  return isLoaded;
 }

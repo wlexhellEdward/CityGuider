@@ -1,3 +1,3 @@
 export interface AutocompleteProops {
-    isLoaded: boolean;
+  isLoaded: boolean;
 }

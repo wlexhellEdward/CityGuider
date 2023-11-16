@@ -1,4 +1,4 @@
 export interface RouteInfoProops {
-    distance: string,
-    handlerSetTravelKilometrs: (kilometrs: string) => void
+  distance: string;
+  handlerSetTravelKilometrs: (kilometrs: string) => void;
 }

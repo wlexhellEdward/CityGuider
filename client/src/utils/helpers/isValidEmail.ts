@@ -1,3 +1,3 @@
 const isValidEmail = (email: string) => {
-    return /\S+@\S+\.\S+/.test(email) // xxx@xxx.xxx
-}
+  return /\S+@\S+\.\S+/.test(email); // xxx@xxx.xxx
+};

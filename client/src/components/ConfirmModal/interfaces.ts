@@ -1,4 +1,4 @@
 export interface ConfrimModalProps {
-    isOpen: boolean,
-    handleClose: () => void
+  isOpen: boolean;
+  handleClose: () => void;
 }

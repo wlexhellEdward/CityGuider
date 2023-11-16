@@ -1,20 +1,15 @@
-import { ThemeApp } from '@/interfaces/IThemeApp';
+import { ThemeApp } from "@/interfaces/IThemeApp";
 
-import { makeStyles } from 'tss-react/mui';
+import { makeStyles } from "tss-react/mui";
 
+const MapStyle = makeStyles<ThemeApp>()(() => ({
+  containerMap: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    padding: 0,
+    margin: 0,
+  },
+}));
 
-
-const MapStyle = makeStyles<ThemeApp>()(
-    () => ({
-        containerMap: {
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            padding: 0,
-            margin: 0,
-
-        },
-    })
-);
-
-export default MapStyle
+export default MapStyle;

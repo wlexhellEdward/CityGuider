@@ -1,3 +1,3 @@
 export interface PopUpProps {
-    text: string
+  text: string;
 }
