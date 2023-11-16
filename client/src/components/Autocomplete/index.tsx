@@ -1,11 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { Box, Input, List, ListItem, Typography } from '@mui/material'
+import { Box, Input, List, ListItem } from '@mui/material'
 import searchSVG from '@/assets/img/drawerActions/searchInput.svg'
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux.ts';
 import { useGoogleMaps } from '@/hooks/useGoogleMapsLoader.ts';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside.ts';
 import { setCenter } from '@/store/reducers/index.ts';
-import { refactorString } from '@/utils/refactors/textRefactors.ts';
 import AutocompleteStyle from './styled.ts'
 import DoesntExistPhoto from '/public/doesntExist.png'
 import usePlacesAutocomplete, {
@@ -13,6 +12,7 @@ import usePlacesAutocomplete, {
     getLatLng,
 } from "use-places-autocomplete";
 import { statuses } from './config.ts';
+import { Suggestions } from '../Suggestions/index.tsx';
 
 export default function Autocomplete() {
     const isLoaded = useGoogleMaps()
@@ -39,19 +39,6 @@ export default function Autocomplete() {
                     handlerSetCenter(getLatLng(results[0]))
                 });
             };
-    const renderSuggestions = () =>
-        data.map((suggestion) => {
-            const {
-                place_id,
-                structured_formatting: { main_text, secondary_text },
-            } = suggestion;
-            return (
-                <ListItem key={place_id} onClick={handleSelect(suggestion)} className={useAutocompleteStyle.classes.suggestionContainer}>
-                    <Typography whiteSpace={'normal'} className={useAutocompleteStyle.classes.titleSuggestion}>{main_text}</Typography>
-                    <Typography whiteSpace={'normal'} className={useAutocompleteStyle.classes.titleDescription}>{refactorString(secondary_text)}</Typography>
-                </ListItem>
-            );
-        });
     const handleClickOutside = () => {
         clearSuggestions();
     };
@@ -80,7 +67,17 @@ export default function Autocomplete() {
             </Box>
             {status === statuses.OK && (
                 <List className={useAutocompleteStyle.classes.ListContainer}>
-                    <ListItem disablePadding className={useAutocompleteStyle.classes.listItem}>{renderSuggestions()}</ListItem>
+                    <ListItem disablePadding className={useAutocompleteStyle.classes.listItem}>
+                        {data.map((suggestion) => {
+                            const {
+                                place_id,
+                                structured_formatting: { main_text, secondary_text },
+                            } = suggestion;
+                            return (
+                                <Suggestions key={place_id} handleSelect={() => handleSelect(suggestion)} main_text={main_text} secondary_text={secondary_text} />
+                            );
+                        })}
+                    </ListItem>
                 </List>)
             }
         </Box>

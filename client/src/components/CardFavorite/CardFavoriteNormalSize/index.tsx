@@ -23,7 +23,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
     const pallete = useTypeSelector(state => state.appSlice.Pallete)
     const { id } = useAuth()
 
-    const handleAddToFavorite = () => {
+    const handleDeleteFavorite = () => {
         if (id != null) {
             deleteFavoriteCard(favoriteItem.id, id)
                 .then(() => {
@@ -70,7 +70,7 @@ const CardFavoriteNormalSize: React.FC<CardFavoritePropsNormalSize> = ({ favorit
                     <Typography whiteSpace={'normal'} className={useCardFavoriteStyle.classes.description}>{favoriteItem.description.substring(0, 150) + '...'}</Typography>
                 </Container>
                 <CardActions disableSpacing className={useCardFavoriteStyle.classes.containerDownIcons}>
-                    <img data-testid='delete-from-favorite' title={titles.btnDelete} src={FavoriteImg} onClick={handleAddToFavorite} className={useCardFavoriteStyle.classes.icon} />
+                    <img data-testid='delete-from-favorite' title={titles.btnDelete} src={FavoriteImg} onClick={handleDeleteFavorite} className={useCardFavoriteStyle.classes.icon} />
                     <img data-testid='card-favorite-button-show-more' title={titles.toggleCardSize} onClick={handleSetIsOpen} className={useCardFavoriteStyle.classes.imgArrow} src={arrowMore} alt={DoesntExistPhoto} />
                 </CardActions>
             </Card>

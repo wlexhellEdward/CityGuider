@@ -219,10 +219,16 @@ export const SUCCESES = {
     EDIT_USER: "Данные пользователя измененным"
 }
 
+export const PROVIDERS = {
+    facebook: 'facebook',
+    google: 'google'
+}
+
 export const ERRORS = {
     CANT_ADD_PLACE: "Не удалось добавить место, попробуйте ещё раз",
     CANT_DELETE_PLACE: "Не удалось удалить место, попробуйте ещё раз",
-    CANT_DETERMINE_THE_LOCATION: "Не удалось определить ваше местоположение, попробуйте выключить VPN"
+    CANT_DETERMINE_THE_LOCATION: "Не удалось определить ваше местоположение, попробуйте выключить VPN",
+    CANT_REGISTER_WITH_RPOVIDER: "Не удалось зарегистрироваться, попробуйте позже"
 }
 
 export const FIREBASE = {

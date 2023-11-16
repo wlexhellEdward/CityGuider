@@ -20,9 +20,12 @@ import { checkUserRole } from '@/utils/services/firebaseService';
 import { ContainerInputsLine } from '@/components/ContainerInputsLine';
 
 import LoginFormStyle from './styled';
-import { FacebookAuthProvider, GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ResetPasswordModal } from '../ResetPasswordModal';
 import { toast } from 'react-toastify';
+import { registerWithDifferentProvider } from '@/utils/auth/authDifferentProvider';
+import { IResponse } from '@/interfaces/IResponse';
+import { ERRORS, PROVIDERS } from '@/consts/consts';
 
 
 export const LoginForm = () => {
@@ -75,7 +78,6 @@ export const LoginForm = () => {
             })
             .catch(
                 (error) => {
-                    console.log(error)
                     const message = getMessageError(error)
                     handleSetError(true, message, 'Ошибка авторизации')
                     handleSetIsLoading()
@@ -87,40 +89,19 @@ export const LoginForm = () => {
         setResetPassword(true)
     }
 
-
-    const handleClickRegisterFacebook = async () => {
-        const provider = new FacebookAuthProvider()
-        try {
-            const result = await signInWithPopup(auth, provider)
-            const credential = FacebookAuthProvider.credentialFromResult(result);
-            const token = credential?.accessToken;
-            const user = result.user;
-
-            dispatch(setUser({
-                id: user.uid,
-                email: user.email || '',
-                token: token || ''
-            }))
-            redirectTo('/')
-        } catch (error) {
-            if (error instanceof Error) {
-                toast(error.message, { type: 'error' })
-            }
-        }
-    }
-    const handleClickRegisterGoogle = async () => {
-        const provider = new GoogleAuthProvider()
-        const result = await signInWithPopup(auth, provider)
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential?.accessToken;
-        const user = result.user;
-        dispatch(setUser({
-            id: user.uid,
-            email: user.email || '',
-            token: token || ''
-        }))
-        redirectTo('/')
-    }
+    const handleClickRegisterWithProvider = (provider: string) =>
+        registerWithDifferentProvider(auth, provider)
+            .then((result: IResponse) => {
+                dispatch(setUser({
+                    id: result.user.uid,
+                    email: result.user.email || '',
+                    token: result.token || ''
+                }))
+                redirectTo('/')
+            })
+            .catch(() => {
+                toast(ERRORS.CANT_REGISTER_WITH_RPOVIDER, { type: 'error' })
+            })
 
     const useLoginFormStyle = LoginFormStyle({ Pallete: pallete })
     return (
@@ -142,8 +123,8 @@ export const LoginForm = () => {
                     <LoadingButton data-testid='btn-submit' loading={isLoading} className={useLoginFormStyle.classes.buttonSubmit} type="submit" fullWidth variant="contained">Войти</LoadingButton>
                     <Box className={useLoginFormStyle.classes.featActionForm}>
                         <Box className={useLoginFormStyle.classes.otherMethodSignIn}>
-                            <Button variant="outlined" className={useLoginFormStyle.classes.btnWithIcons} onClick={handleClickRegisterFacebook} startIcon={<FacebookIcon />}></Button>
-                            <Button variant="outlined" className={useLoginFormStyle.classes.btnWithIcons} onClick={handleClickRegisterGoogle} startIcon={<GoogleIcon />}></Button>
+                            <Button variant="outlined" className={useLoginFormStyle.classes.btnWithIcons} onClick={() => handleClickRegisterWithProvider(PROVIDERS.facebook)} startIcon={<FacebookIcon />}></Button>
+                            <Button variant="outlined" className={useLoginFormStyle.classes.btnWithIcons} onClick={() => handleClickRegisterWithProvider(PROVIDERS.google)} startIcon={<GoogleIcon />}></Button>
                         </Box>
                         <Link className={useLoginFormStyle.classes.supportActionTitle} href="/register" variant="body2">
                             Ещё нету аккаунта?

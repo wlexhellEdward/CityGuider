@@ -11,12 +11,15 @@ import { getMessageError } from '@/utils/errors/errorFinder';
 import { ContainerInputsForm } from '@/components/ContainerInputsForm';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
-import { Auth, FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from "firebase/auth";
+import { Auth, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useAppDispatch, useTypeSelector } from '@/hooks/redux';
 import { resetAll, setIsLoading } from '@/store/reducers';
 import { toast } from 'react-toastify';
 
 import RegisterFormStyle from './styled';
+import { registerWithDifferentProvider } from '@/utils/auth/authDifferentProvider';
+import { IResponse } from '@/interfaces/IResponse';
+import { ERRORS, PROVIDERS } from '@/consts/consts';
 
 
 export const RegisterForm: React.FC = () => {
@@ -75,39 +78,19 @@ export const RegisterForm: React.FC = () => {
                 });
         }
     };
-    const handleClickRegisterFacebook = async () => {
-        const provider = new FacebookAuthProvider()
-        try {
-            const result = await signInWithPopup(auth, provider)
-            const credential = FacebookAuthProvider.credentialFromResult(result);
-            const token = credential?.accessToken;
-            const user = result.user;
-
-            dispatch(setUser({
-                id: user.uid,
-                email: user.email || '',
-                token: token || ''
-            }))
-            redirectTo('/')
-        } catch (error) {
-            if (error instanceof Error) {
-                toast(error.message, { type: 'error' })
-            }
-        }
-    }
-    const handleClickRegisterGoogle = async () => {
-        const provider = new GoogleAuthProvider()
-        const result = await signInWithPopup(auth, provider)
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential?.accessToken;
-        const user = result.user;
-        dispatch(setUser({
-            id: user.uid,
-            email: user.email || '',
-            token: token || ''
-        }))
-        redirectTo('/')
-    }
+    const handleClickRegisterWithProvider = (provider: string) =>
+        registerWithDifferentProvider(auth, provider)
+            .then((result: IResponse) => {
+                dispatch(setUser({
+                    id: result.user.uid,
+                    email: result.user.email || '',
+                    token: result.token || ''
+                }))
+                redirectTo('/')
+            })
+            .catch(() => {
+                toast(ERRORS.CANT_REGISTER_WITH_RPOVIDER, { type: 'error' })
+            })
 
     const useRegisterFormStyle = RegisterFormStyle({ Pallete: pallete });
 
@@ -135,8 +118,8 @@ export const RegisterForm: React.FC = () => {
                     </LoadingButton>
                     <Box className={useRegisterFormStyle.classes.featActionForm}>
                         <Box className={useRegisterFormStyle.classes.otherMethodSignIn}>
-                            <Button variant="outlined" onClick={handleClickRegisterFacebook} className={useRegisterFormStyle.classes.btnWithIcons} startIcon={<FacebookIcon />}></Button>
-                            <Button variant="outlined" onClick={handleClickRegisterGoogle} className={useRegisterFormStyle.classes.btnWithIcons} startIcon={<GoogleIcon />}></Button>
+                            <Button variant="outlined" onClick={() => handleClickRegisterWithProvider(PROVIDERS.facebook)} className={useRegisterFormStyle.classes.btnWithIcons} startIcon={<FacebookIcon />}></Button>
+                            <Button variant="outlined" onClick={() => handleClickRegisterWithProvider(PROVIDERS.google)} className={useRegisterFormStyle.classes.btnWithIcons} startIcon={<GoogleIcon />}></Button>
                         </Box>
                         <Link className={useRegisterFormStyle.classes.supportActionTitle} href="/login" variant="body2">
                             Уже есть аккаунт? Войти

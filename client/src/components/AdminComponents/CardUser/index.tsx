@@ -21,7 +21,6 @@ export const CardUser = ({ user, onClickEditUser }: CardUserProps) => {
         dispatch(deleteUser(user.uid))
         deleteUserById(user.uid)
         toast(SUCCESES.DELETE_USER, { type: 'success' })
-
     }
 
     const useCardUserStyle = CardUserStyle({ Pallete: pallete });
