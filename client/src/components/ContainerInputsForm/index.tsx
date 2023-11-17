@@ -7,6 +7,7 @@ import { passwordToStrength } from "@/utils/converts/convert";
 import { getPasswordErrors } from "@/utils/errors/errorFinder";
 
 import containerInputsForm from "./styled";
+import { isValidEmail } from "@/utils/helpers/isValidEmail";
 
 export const ContainerInputsForm = () => {
   const pallete = useTypeSelector((state) => state.appSlice.Pallete);
