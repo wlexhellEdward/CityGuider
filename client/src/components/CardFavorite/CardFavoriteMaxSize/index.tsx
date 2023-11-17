@@ -21,8 +21,8 @@ import {
   clearDirection,
   setRouteInfo,
 } from "@/store/reducers";
-import { ButtonSave } from "city-guider-ui-library/src/components/ButtonSave";
-import { ButtonTravel } from "city-guider-ui-library/src/components/ButtonTravel";
+import { ButtonSave } from "@/ui/ButtonSave";
+import { ButtonTravel } from "@/ui/ButtonTravel";
 
 import { titles } from "../config";
 import CardFavoriteStyle from "../styled";

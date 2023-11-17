@@ -19,8 +19,8 @@ import {
   clearDirection,
   setRouteInfo,
 } from "@/store/reducers";
-import { ButtonSave } from "city-guider-ui-library/src/components/ButtonSave";
-import { ButtonTravel } from "city-guider-ui-library/src/components/ButtonTravel";
+import { ButtonSave } from "@/ui/ButtonSave";
+import { ButtonTravel } from "@/ui/ButtonTravel";
 import { convertPlaceToFavorite } from "@/utils/converts/convert.ts";
 
 import "react-toastify/dist/ReactToastify.css";
